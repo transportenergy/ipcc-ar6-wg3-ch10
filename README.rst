@@ -27,14 +27,14 @@ Spec
 ~~~~
 
 - Ordinate: CO₂ emissions [t], normalized so that 2010 = 1.
-- Horizontal:
+- Abscissa:
 
   - Panels: 2020, 2030, 2050, and 2100.
   - Groups within panels: IAM and Sectoral.
   - Sub-groups:
 
-    - For IAM group: 3 sub-groups for scenarios
-    - For Sectoral group: baseline and policy groups.
+    - For IAM group: 3 sub-groups of scenarios by CO₂eq concentration.
+    - For Sectoral group: 2 sub-groups: baseline, policy.
 
 - Geometry: vertical bar.
 
@@ -81,7 +81,41 @@ Update of AR5 Figure 8.11.
 
 Figure 5: Global shares of final fuel energy in the transport sector
 --------------------------------------------------------------------
-Update of AR5 Figure 8.12.
+
+- Update of AR5 Figure 8.12. Caption was:
+
+  Global shares of final fuel energy in the transport sector in 2020, 2050, and 2100 based on integrated models grouped by CO₂eq concentration levels by 2100 and compared with sectoral models (grouped by baseline and policies) in 2050. Box plots show minimum/maximum, 25th/75th percentile and median. Source: […]
+
+Spec
+~~~~
+
+- Ordinate: % share of each fuel in total final energy used in transport.
+- Abscissa:
+
+  - Panels: 2020 (IAM), 2050 (IAM), 2050 (Sectoral), and 2100 (IAM).
+  - Groups within panels:
+
+    - For IAM panels: 3 sub-groups of scenarios by CO₂-eq concentration.
+    - For Sectoral panel: 2 sub-groups of scenarios: baseline, policy.
+
+  - Ticks within groups:
+
+    - For IAM panels: 5 fuels: oil, biofuels, gas, electricity, hydrogen.
+    - For Sectoral panel: 3 fuels: biofuels, electricity, hydrogen.
+
+- Geometry: vertical bar.
+
+  - For IAM group: min, max, and quartiles, with interquartile range coloured and bar at the median; colors by fuel type.
+  - For Scenario group: min and max, with dots for all data points.
+
+- Additional features:
+
+  - Horizontal strip with 'n=' showing the number of data points in each sub-group.
+  - Sectoral panel background in a different colour.
+  - Legend.
+
+Example
+~~~~~~~
 
 .. image:: ref/12_figure_8.12.png
     :width: 50%
