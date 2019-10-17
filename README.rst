@@ -18,7 +18,29 @@ These appear in the current draft.
 
 Figure 1: Direct global transport CO₂ emissions
 -----------------------------------------------
-Update of AR5 Figure 8.9.
+
+- Update of AR5 Figure 8.9. Caption was:
+
+  Direct global transport CO₂ emissions. All results for passenger and freight transport are indexed relative to 2010 values for each scenario from integrated models grouped by CO₂-eq concentration levels by 2100, and sectoral studies grouped by baseline and policy categories. Sources: integrated models—WGIII AR5 Scenario Database (Annex II.10). Sectoral models: IAC (2008, 2011b, 2012b), WEC (2011a), EIA (2011), IEEJ (2011).
+
+Spec
+~~~~
+
+- Ordinate: CO₂ emissions [t], normalized so that 2010 = 1
+- Horizontal:
+  - Panels: 2020, 2030, 2050, and 2100
+  - Groups within panels: IAM and Sectoral
+  - Sub-groups:
+    - For IAM group: 3 sub-groups for scenarios
+- Geometry: vertical bar
+  - For IAM group: min, max, and quartiles, with interquartile range coloured and bar at the median.
+  - For Scenario group: min and max, with dots for all data points.
+- Additional features:
+  - Horizontal strip with 'n=' showing the number of data points in each sub-group.
+  - Legend.
+
+Example
+~~~~~~~
 
 .. image:: ref/09_figure_8.9.png
     :width: 50%
