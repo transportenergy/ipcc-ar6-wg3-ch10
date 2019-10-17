@@ -1,5 +1,5 @@
-Plotting and other codes for Ch. 10 “Transport” of IPCC AR6 WGIII
-*****************************************************************
+Plotting & other codes for Ch.10 “Transport” of IPCC AR6 WGIII
+**************************************************************
 
 Main figures
 ============
