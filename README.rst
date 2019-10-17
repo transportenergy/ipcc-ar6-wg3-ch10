@@ -26,16 +26,23 @@ Figure 1: Direct global transport CO₂ emissions
 Spec
 ~~~~
 
-- Ordinate: CO₂ emissions [t], normalized so that 2010 = 1
+- Ordinate: CO₂ emissions [t], normalized so that 2010 = 1.
 - Horizontal:
-  - Panels: 2020, 2030, 2050, and 2100
-  - Groups within panels: IAM and Sectoral
+
+  - Panels: 2020, 2030, 2050, and 2100.
+  - Groups within panels: IAM and Sectoral.
   - Sub-groups:
+
     - For IAM group: 3 sub-groups for scenarios
-- Geometry: vertical bar
+    - For Sectoral group: baseline and policy groups.
+
+- Geometry: vertical bar.
+
   - For IAM group: min, max, and quartiles, with interquartile range coloured and bar at the median.
   - For Scenario group: min and max, with dots for all data points.
+
 - Additional features:
+
   - Horizontal strip with 'n=' showing the number of data points in each sub-group.
   - Legend.
 
@@ -94,3 +101,8 @@ Running the code
 
    $ pip install -r requirements.txt
    $ python figures.py
+
+
+History
+=======
+Use `git log` on the command line or the `commits` tab on the GitHub website.
