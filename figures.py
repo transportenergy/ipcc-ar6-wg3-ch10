@@ -13,6 +13,9 @@ def get_references():
     ref_dir = Path('ref')
 
     for url in open(ref_dir / 'urls.txt'):
+        # Strip trailing newline
+        url = url.strip()
+
         # Name of the file to be written
         name = Path(urlparse(url).path).name
         log.info(name)
