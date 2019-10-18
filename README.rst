@@ -1,6 +1,13 @@
 Plotting & other codes for Ch.10 “Transport” of IPCC AR6 WGIII
 **************************************************************
 
+Contents: Main figures
+­— `Additional figures <#additional-figures>`__
+— `Running the code <#running-the-code>`__
+— `History <#history>`__
+— `References <#references>`__
+
+
 Main figures
 ============
 These appear in the current draft.
@@ -189,8 +196,23 @@ Example
 
 Additional figures
 ==================
-These are for author reference, annexes, or potential inclusion in the draft.
+These would be for author reference, annexes, or potential inclusion in the draft:
 
+- Passenger (global, by region):
+- vehicle/capita,
+- Mode share
+- Vehicle type share
+- Schafer mode shift: historical trend and the trends for the transitions**
+
+  - New mobility (AV-shared, AV-single occupancy)**
+
+- EV penetration vs. policy target
+
+  - Electrification of everything (EV, trucks, shipping, aviation)**
+
+- NDCs (2nd order draft)**
+
+** = Needs more heavy lifting from summaries of bottom-up models.
 
 Running the code
 ================
@@ -205,3 +227,11 @@ History
 =======
 
 Use ``git log`` on the command line or the “commits” tab on the GitHub website.
+
+
+References
+==========
+
+These are only for convenience; the chapter/section Mendeley collections should be used to store all key references.
+
+- `AR5 WGIII chapters & figures <https://archive.ipcc.ch/report/ar5/wg3/>`_
