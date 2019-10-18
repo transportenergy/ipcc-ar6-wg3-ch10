@@ -12,15 +12,15 @@ Main figures
 ============
 These appear in the current draft.
 
-==== ===== ==========
-#    Ref   Short name
----- ----- ----------
-1    10.7  Direct global transport CO₂ emissions
-2    10.8  Global passenger and freight transport activity by region
-3    10.9  Mode shares of passenger and freight transport by scenario and region
-4    10.10 Energy intensity of transport by scenario
-5    10.11 Global shares of final fuel energy in the transport sector
-==== ===== ==========
+========================================================================================== ===== ==========
+#                                                                                          Ref   Short name
+------------------------------------------------------------------------------------------ ----- ----------
+`1 <#figure-1-direct-global-transport-co-emissions>`__                                     10.7  Direct global transport CO₂ emissions
+`2 <#figure-2-global-passenger-and-freight-transport-activity-by-region>`__                10.8  Global passenger and freight transport activity by region
+`3 <#figure-3-mode-shares-of-passenger-and-freight-transport-by-scenario-and-region>`__    10.9  Mode shares of passenger and freight transport by scenario and region
+`4 <#figure-4-energy-intensity-of-transport-by-scenario>`__                                10.10 Energy intensity of transport by scenario
+`5 <#figure-5-global-shares-of-final-fuel-energy-in-the-transport-sector>`__               10.11 Global shares of final fuel energy in the transport sector
+========================================================================================== ===== ==========
 
 
 Figure 1: Direct global transport CO₂ emissions
