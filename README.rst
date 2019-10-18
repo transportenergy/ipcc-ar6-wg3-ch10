@@ -57,8 +57,45 @@ Example
 
 Figure 2: Global passenger and freight transport activity by region
 -------------------------------------------------------------------
-Update of AR5 Figure 8.10.
 
+- Update of AR5 Figure 8.10. Caption was:
+
+  Global passenger (p-km / capita / yr) and freight (t-km / capita / yr) regional demand projections out to 2050 based on integrated models for various CO₂-eq concentration levels by 2100—with normalized values highlighting growth and controlling differences in base year values across models. Source: […]
+
+- But, a *modified* figure that includes demand scenarios by regions:
+
+  - Row 1 – Region 1
+
+    - Left side panel 1.a)
+
+      - per capita pkm travel for Scenario 1..N
+      - for 2020( current) -2030-2050-2100 with bars (min-25%- Median-75% -max)
+      - (Layout as 10.5.1 for each region)
+
+    - Right side panel 1,b)
+
+      - per capita tkm freigth for Scenario 1..N
+      - By region
+      - for 2020(current) -2030-2050-2100 with bars (min-25%- Median-75% -max)
+      - (Layout as 10.5.1 for each region – normalized to 2015)
+
+  - Row N – Region M
+
+    - Left side panel n.a)
+
+      - per capita pkm travel for Scenario 1..N
+      - for 2020(current) -2030-2050-2100 with bars (min-25%- Median-75% -max)
+      - (Layout as 10.5.1 for each region)
+
+    - Right side panel n,b)
+
+      - per capita tkm freigth for Scenario 1..N
+      - By region
+      - for 2020(current) -2030-2050-2100 with bars (min-25%- Median-75% -max)
+      - (Layout as 10.5.1 for each region  – normalized to 2015)
+
+Example
+~~~~~~~
 .. image:: ref/10_figure_8.10.png
     :width: 50%
     :align: right
@@ -67,12 +104,39 @@ Update of AR5 Figure 8.10.
 Figure 3: Mode shares of passenger and freight transport by scenario and region
 -------------------------------------------------------------------------------
 
-- Layout as Figure 10.7 only instead of per capita passenger and freight demand we will present the % mode shares for freight and passenger transport.
+- Layout as Figure 1 only instead of per capita passenger and freight demand we will present the % mode shares for freight and passenger transport.
 
 Figure 4: Energy intensity of transport by scenario
 ---------------------------------------------------
-Update of AR5 Figure 8.11.
 
+- Update of AR5 Figure 8.11. Caption was:
+
+  Normalized energy intensity scenarios (indexed relative to 2010 values) out to 2100 for passenger (left panel) and freight transport (centre panel), and for fuel carbon intensity based on scenarios from integrated models grouped by CO 2 eq concentration levels by 2100 (right panel). Source: […]. Note “n” equals number of scenarios assessed in each category.
+
+Spec
+~~~~
+
+- Abscissa:
+
+  - Panels: Passenger, Freight, Fuel Carbon Intensity
+  - Groups within panels: 2020, 2030, 2050, 2100.
+  - Ticks within groups: 3 sub-groups by CO₂-eq concentration.
+
+- Ordinate:
+
+  - Passenger panel: energy intensity of passenger-distance activity.
+  - Freight panel: energy intensity of freight mass-distance activity.
+  - Fuel Carbon Intensity panel: carbon intensity of total fuel energy.
+
+- Geometry: vertical bar with min, max, and quartiles, with interquartile range coloured and bar at the median; colors by CO₂-eq concentration sub-group.
+
+- Additional features:
+
+  - Horizontal strip with 'n=' showing the number of data points in each sub-group.
+  - Legend.
+
+Example
+~~~~~~~
 .. image:: ref/11_figure_8.11.png
     :width: 50%
     :align: right
@@ -139,4 +203,5 @@ Running the code
 
 History
 =======
-Use `git log` on the command line or the `commits` tab on the GitHub website.
+
+Use ``git log`` on the command line or the “commits” tab on the GitHub website.
