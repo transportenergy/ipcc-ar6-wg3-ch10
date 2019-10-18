@@ -216,12 +216,42 @@ These would be for author reference, annexes, or potential inclusion in the draf
 
 Running the code
 ================
+Create a file named ``config.json`` with content like:
+
+.. code-block:: json
+
+   {
+     "credentials": {
+       "username": "your-user-name",
+       "password": "your-password"
+     },
+     "application": "IXSE_AR6"
+   }
+
+(NB. do **not** commit this file to the git repository; your password will become a permanent part of the history, and you will need to change it.)
+
+Then:
 
 .. code-block::
 
    $ pip install -r requirements.txt
-   $ python figures.py
 
+   # Show help text
+   $ python figures.py --help
+   Usage: figures.py [OPTIONS] COMMAND [ARGS]...
+
+     Command-line interface for IPCC AR6 WGIII Ch.10 figures.
+
+   Options:
+     --help  Show this message and exit.
+
+   Commands:
+     debug  Demonstrate/debug features.
+     plot   Generate all plots.
+     refs   Retrieve reference files listed in ref/urls.txt to ref/.
+
+   # Run a particular command
+   $ python3 figures.py plot
 
 History
 =======
