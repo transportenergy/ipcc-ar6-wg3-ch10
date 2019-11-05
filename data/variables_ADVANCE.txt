@@ -1,0 +1,699 @@
+Transport|CO2 concentration
+Transport|CO2 intensity|Biofuels
+Transport|CO2 intensity|Electricity
+Transport|CO2 intensity|Fossil Synfuel
+Transport|CO2 intensity|Hydrogen
+Transport|CO2 intensity|Natural Gas
+Transport|CO2 intensity|Oil
+Transport|CO2|All
+Transport|CO2|Aviation|All
+Transport|CO2|Aviation|Freight
+Transport|CO2|Aviation|Passenger
+Transport|CO2|Maritime|All
+Transport|CO2|Maritime|Freight
+Transport|CO2|Maritime|Passenger
+Transport|CO2|Rail|All
+Transport|CO2|Rail|Freight
+Transport|CO2|Rail|Passenger
+Transport|CO2|Road|All
+Transport|CO2|Road|Freight|All
+Transport|CO2|Road|Passenger|2W&3W
+Transport|CO2|Road|Passenger|All
+Transport|CO2|Road|Passenger|Bus
+Transport|CO2|Road|Passenger|LDV
+Transport|Capital|Vehicles
+Transport|Carbon price
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|All
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|All
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|All
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|All
+Transport|Energy Intensity|All|Freight|Biofuels
+Transport|Energy Intensity|All|Freight|Electricity
+Transport|Energy Intensity|All|Freight|Fossil Synfuel
+Transport|Energy Intensity|All|Freight|Hydrogen
+Transport|Energy Intensity|All|Freight|Natural gas
+Transport|Energy Intensity|All|Freight|Oil
+Transport|Energy Intensity|All|Passenger|Biofuels
+Transport|Energy Intensity|All|Passenger|Electricity
+Transport|Energy Intensity|All|Passenger|Fossil Synfuel
+Transport|Energy Intensity|All|Passenger|Hydrogen
+Transport|Energy Intensity|All|Passenger|Natural gas
+Transport|Energy Intensity|All|Passenger|Oil
+Transport|Energy Intensity|Aviation|Freight|Biofuels
+Transport|Energy Intensity|Aviation|Freight|Electricity
+Transport|Energy Intensity|Aviation|Freight|Fossil Synfuel
+Transport|Energy Intensity|Aviation|Freight|Hydrogen
+Transport|Energy Intensity|Aviation|Freight|Natural Gas
+Transport|Energy Intensity|Aviation|Freight|Oil
+Transport|Energy Intensity|Aviation|Passenger|Biofuels
+Transport|Energy Intensity|Aviation|Passenger|Electricity
+Transport|Energy Intensity|Aviation|Passenger|Fossil Synfuel
+Transport|Energy Intensity|Aviation|Passenger|Hydrogen
+Transport|Energy Intensity|Aviation|Passenger|Natural Gas
+Transport|Energy Intensity|Aviation|Passenger|Oil
+Transport|Energy Intensity|Maritime|Freight|Biofuels
+Transport|Energy Intensity|Maritime|Freight|Electricity
+Transport|Energy Intensity|Maritime|Freight|Fossil Synfuel
+Transport|Energy Intensity|Maritime|Freight|Hydrogen
+Transport|Energy Intensity|Maritime|Freight|Natural Gas
+Transport|Energy Intensity|Maritime|Freight|Oil
+Transport|Energy Intensity|Rail|Freight|Biofuels
+Transport|Energy Intensity|Rail|Freight|Electricity
+Transport|Energy Intensity|Rail|Freight|Fossil Synfuel
+Transport|Energy Intensity|Rail|Freight|Hydrogen
+Transport|Energy Intensity|Rail|Freight|Natural Gas
+Transport|Energy Intensity|Rail|Freight|Oil
+Transport|Energy Intensity|Rail|Passenger|Biofuels
+Transport|Energy Intensity|Rail|Passenger|Electricity
+Transport|Energy Intensity|Rail|Passenger|Fossil Synfuel
+Transport|Energy Intensity|Rail|Passenger|Hydrogen
+Transport|Energy Intensity|Rail|Passenger|Natural Gas
+Transport|Energy Intensity|Rail|Passenger|Oil
+Transport|Energy Intensity|Road|Freight|All|Electric|All|All
+Transport|Energy Intensity|Road|Freight|All|Electric|All|Electricity
+Transport|Energy Intensity|Road|Freight|All|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|All
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Freight|All|FC|All|All
+Transport|Energy Intensity|Road|Freight|All|FC|All|Biofuels
+Transport|Energy Intensity|Road|Freight|All|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Freight|All|FC|All|Natural gas
+Transport|Energy Intensity|Road|Freight|All|ICE|All|All
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Oil
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|All|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|All|Electricity
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Oil
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|All|All
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|All|Electricity
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|All
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|All
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|All
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Oil
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|All|All
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|All|Electricity
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|All
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|All
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|All
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Oil
+Transport|Final Energy|All|All|All
+Transport|Final Energy|All|All|Biofuels
+Transport|Final Energy|All|All|Electricity
+Transport|Final Energy|All|All|Fossil Synfuel
+Transport|Final Energy|All|All|Hydrogen
+Transport|Final Energy|All|All|Natural gas
+Transport|Final Energy|All|All|Oil
+Transport|Final Energy|All|Freight|All
+Transport|Final Energy|All|Freight|Biofuels
+Transport|Final Energy|All|Freight|Electricity
+Transport|Final Energy|All|Freight|Fossil Synfuel
+Transport|Final Energy|All|Freight|Hydrogen
+Transport|Final Energy|All|Freight|Natural gas
+Transport|Final Energy|All|Freight|Oil
+Transport|Final Energy|All|Passenger|All
+Transport|Final Energy|All|Passenger|Biofuels
+Transport|Final Energy|All|Passenger|Electricity
+Transport|Final Energy|All|Passenger|Fossil Synfuel
+Transport|Final Energy|All|Passenger|Hydrogen
+Transport|Final Energy|All|Passenger|Natural gas
+Transport|Final Energy|All|Passenger|Oil
+Transport|Final Energy|Aviation|All
+Transport|Final Energy|Aviation|Freight|All
+Transport|Final Energy|Aviation|Freight|Biofuels
+Transport|Final Energy|Aviation|Freight|Electricity
+Transport|Final Energy|Aviation|Freight|Fossil Synfuel
+Transport|Final Energy|Aviation|Freight|Hydrogen
+Transport|Final Energy|Aviation|Freight|Natural Gas
+Transport|Final Energy|Aviation|Freight|Oil
+Transport|Final Energy|Aviation|Passenger|All
+Transport|Final Energy|Aviation|Passenger|Biofuels
+Transport|Final Energy|Aviation|Passenger|Electricity
+Transport|Final Energy|Aviation|Passenger|Fossil Synfuel
+Transport|Final Energy|Aviation|Passenger|Hydrogen
+Transport|Final Energy|Aviation|Passenger|Natural Gas
+Transport|Final Energy|Aviation|Passenger|Oil
+Transport|Final Energy|Maritime|All
+Transport|Final Energy|Maritime|Freight|All
+Transport|Final Energy|Maritime|Freight|Biofuels
+Transport|Final Energy|Maritime|Freight|Electricity
+Transport|Final Energy|Maritime|Freight|Fossil Synfuel
+Transport|Final Energy|Maritime|Freight|Hydrogen
+Transport|Final Energy|Maritime|Freight|Natural Gas
+Transport|Final Energy|Maritime|Freight|Oil
+Transport|Final Energy|Rail|All
+Transport|Final Energy|Rail|Freight|All
+Transport|Final Energy|Rail|Freight|Biofuels
+Transport|Final Energy|Rail|Freight|Electricity
+Transport|Final Energy|Rail|Freight|Fossil Synfuel
+Transport|Final Energy|Rail|Freight|Hydrogen
+Transport|Final Energy|Rail|Freight|Natural Gas
+Transport|Final Energy|Rail|Freight|Oil
+Transport|Final Energy|Rail|Passenger|All
+Transport|Final Energy|Rail|Passenger|Biofuels
+Transport|Final Energy|Rail|Passenger|Electricity
+Transport|Final Energy|Rail|Passenger|Fossil Synfuel
+Transport|Final Energy|Rail|Passenger|Hydrogen
+Transport|Final Energy|Rail|Passenger|Natural Gas
+Transport|Final Energy|Rail|Passenger|Oil
+Transport|Final Energy|Road|Freight|All
+Transport|Final Energy|Road|Freight|All|Electric|All|All
+Transport|Final Energy|Road|Freight|All|Electric|All|Electricity
+Transport|Final Energy|Road|Freight|All|Electric|BEV|Electricity
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|All
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Oil
+Transport|Final Energy|Road|Freight|All|FC|All|All
+Transport|Final Energy|Road|Freight|All|FC|All|Biofuels
+Transport|Final Energy|Road|Freight|All|FC|All|Hydrogen
+Transport|Final Energy|Road|Freight|All|FC|All|Natural gas
+Transport|Final Energy|Road|Freight|All|ICE|All|All
+Transport|Final Energy|Road|Freight|All|ICE|All|Biofuels
+Transport|Final Energy|Road|Freight|All|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Freight|All|ICE|All|Hydrogen
+Transport|Final Energy|Road|Freight|All|ICE|All|Natural gas
+Transport|Final Energy|Road|Freight|All|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|2W&3W|All
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|All|All
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|All
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|All
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|All
+Transport|Final Energy|Road|Passenger|All|Electric|All|All
+Transport|Final Energy|Road|Passenger|All|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|All|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|All|FC|All|All
+Transport|Final Energy|Road|Passenger|All|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|All|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|All|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|All|ICE|All|All
+Transport|Final Energy|Road|Passenger|All|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|All|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|All|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|All|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|All|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|Bus|All
+Transport|Final Energy|Road|Passenger|Bus|Electric|All|All
+Transport|Final Energy|Road|Passenger|Bus|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|Bus|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|Bus|FC|All|All
+Transport|Final Energy|Road|Passenger|Bus|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|Bus|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|Bus|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|All
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|LDV|All
+Transport|Final Energy|Road|Passenger|LDV|Electric|All|All
+Transport|Final Energy|Road|Passenger|LDV|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|LDV|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|LDV|FC|All|All
+Transport|Final Energy|Road|Passenger|LDV|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|LDV|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|LDV|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|All
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Oil
+Transport|Fixed O&M Costs|Aviation|Freight
+Transport|Fixed O&M Costs|Aviation|Passenger
+Transport|Fixed O&M Costs|Maritime|Freight
+Transport|Fixed O&M Costs|Rail|Freight
+Transport|Fixed O&M Costs|Rail|Passenger
+Transport|Fixed O&M Costs|Road|Freight|All
+Transport|Fixed O&M Costs|Road|Freight|All|Electric|All
+Transport|Fixed O&M Costs|Road|Freight|All|Electric|BEV
+Transport|Fixed O&M Costs|Road|Freight|All|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Freight|All|FC
+Transport|Fixed O&M Costs|Road|Freight|All|ICE
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|All
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|Electric|All
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|Electric|BEV
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|FC
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|ICE
+Transport|Fixed O&M Costs|Road|Passenger|Bus|All
+Transport|Fixed O&M Costs|Road|Passenger|Bus|Electric|All
+Transport|Fixed O&M Costs|Road|Passenger|Bus|Electric|BEV
+Transport|Fixed O&M Costs|Road|Passenger|Bus|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Passenger|Bus|FC
+Transport|Fixed O&M Costs|Road|Passenger|Bus|ICE
+Transport|Fixed O&M Costs|Road|Passenger|LDV|All
+Transport|Fixed O&M Costs|Road|Passenger|LDV|Electric|All
+Transport|Fixed O&M Costs|Road|Passenger|LDV|Electric|BEV
+Transport|Fixed O&M Costs|Road|Passenger|LDV|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Passenger|LDV|FC
+Transport|Fixed O&M Costs|Road|Passenger|LDV|ICE
+Transport|Fuel Price|Biofuels
+Transport|Fuel Price|Electricity
+Transport|Fuel Price|Fossil Synfuel
+Transport|Fuel Price|Hydrogen
+Transport|Fuel Price|Natural Gas
+Transport|Fuel Price|Oil
+Transport|GDP MER
+Transport|GDP PPP
+Transport|Infrastructure Capacity|Aviation|Freight
+Transport|Infrastructure Capacity|Aviation|Passenger
+Transport|Infrastructure Capacity|Maritime|Freight
+Transport|Infrastructure Capacity|Maritime|Passenger
+Transport|Infrastructure Capacity|Rail|Freight
+Transport|Infrastructure Capacity|Rail|Passenger
+Transport|Infrastructure Capacity|Road|Freight
+Transport|Infrastructure Capacity|Road|Passenger
+Transport|Infrastructure Investment|Aviation
+Transport|Infrastructure Investment|Maritime
+Transport|Infrastructure Investment|Rail
+Transport|Infrastructure Investment|Road
+Transport|Investment Costs|Aviation|Freight
+Transport|Investment Costs|Aviation|Passenger
+Transport|Investment Costs|Maritime|Freight
+Transport|Investment Costs|Rail|Freight
+Transport|Investment Costs|Rail|Passenger
+Transport|Investment Costs|Road|Freight|All
+Transport|Investment Costs|Road|Freight|All|Electric|All
+Transport|Investment Costs|Road|Freight|All|Electric|BEV
+Transport|Investment Costs|Road|Freight|All|Electric|PHEV
+Transport|Investment Costs|Road|Freight|All|FC
+Transport|Investment Costs|Road|Freight|All|ICE
+Transport|Investment Costs|Road|Passenger|2W&3W|All
+Transport|Investment Costs|Road|Passenger|2W&3W|Electric|All
+Transport|Investment Costs|Road|Passenger|2W&3W|Electric|BEV
+Transport|Investment Costs|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Investment Costs|Road|Passenger|2W&3W|FC
+Transport|Investment Costs|Road|Passenger|2W&3W|ICE
+Transport|Investment Costs|Road|Passenger|Bus|All
+Transport|Investment Costs|Road|Passenger|Bus|Electric|All
+Transport|Investment Costs|Road|Passenger|Bus|Electric|BEV
+Transport|Investment Costs|Road|Passenger|Bus|Electric|PHEV
+Transport|Investment Costs|Road|Passenger|Bus|FC
+Transport|Investment Costs|Road|Passenger|Bus|ICE
+Transport|Investment Costs|Road|Passenger|LDV|All
+Transport|Investment Costs|Road|Passenger|LDV|Electric|All
+Transport|Investment Costs|Road|Passenger|LDV|Electric|BEV
+Transport|Investment Costs|Road|Passenger|LDV|Electric|PHEV
+Transport|Investment Costs|Road|Passenger|LDV|FC
+Transport|Investment Costs|Road|Passenger|LDV|ICE
+Transport|Load Factor|Aviation|Freight
+Transport|Load Factor|Aviation|Passenger
+Transport|Load Factor|Maritime|Freight
+Transport|Load Factor|Rail|Freight
+Transport|Load Factor|Rail|Passenger
+Transport|Load Factor|Road|Freight
+Transport|Load Factor|Road|Passenger
+Transport|Load Factor|Road|Passenger|2W&3W
+Transport|Load Factor|Road|Passenger|Bus
+Transport|Load Factor|Road|Passenger|LDV
+Transport|New Energy Intensity|All|Freight|Biofuels
+Transport|New Energy Intensity|All|Freight|Electricity
+Transport|New Energy Intensity|All|Freight|Fossil Synfuel
+Transport|New Energy Intensity|All|Freight|Hydrogen
+Transport|New Energy Intensity|All|Freight|Natural gas
+Transport|New Energy Intensity|All|Freight|Oil
+Transport|New Energy Intensity|All|Passenger|Biofuels
+Transport|New Energy Intensity|All|Passenger|Electricity
+Transport|New Energy Intensity|All|Passenger|Fossil Synfuel
+Transport|New Energy Intensity|All|Passenger|Hydrogen
+Transport|New Energy Intensity|All|Passenger|Natural gas
+Transport|New Energy Intensity|All|Passenger|Oil
+Transport|New Energy Intensity|Aviation|Freight|Biofuels
+Transport|New Energy Intensity|Aviation|Freight|Electricity
+Transport|New Energy Intensity|Aviation|Freight|Fossil Synfuel
+Transport|New Energy Intensity|Aviation|Freight|Hydrogen
+Transport|New Energy Intensity|Aviation|Freight|Natural Gas
+Transport|New Energy Intensity|Aviation|Freight|Oil
+Transport|New Energy Intensity|Aviation|Passenger|Biofuels
+Transport|New Energy Intensity|Aviation|Passenger|Electricity
+Transport|New Energy Intensity|Aviation|Passenger|Fossil Synfuel
+Transport|New Energy Intensity|Aviation|Passenger|Hydrogen
+Transport|New Energy Intensity|Aviation|Passenger|Natural Gas
+Transport|New Energy Intensity|Aviation|Passenger|Oil
+Transport|New Energy Intensity|Maritime|Freight|Biofuels
+Transport|New Energy Intensity|Maritime|Freight|Electricity
+Transport|New Energy Intensity|Maritime|Freight|Fossil Synfuel
+Transport|New Energy Intensity|Maritime|Freight|Hydrogen
+Transport|New Energy Intensity|Maritime|Freight|Natural Gas
+Transport|New Energy Intensity|Maritime|Freight|Oil
+Transport|New Energy Intensity|Rail|Freight|Biofuels
+Transport|New Energy Intensity|Rail|Freight|Electricity
+Transport|New Energy Intensity|Rail|Freight|Fossil Synfuel
+Transport|New Energy Intensity|Rail|Freight|Hydrogen
+Transport|New Energy Intensity|Rail|Freight|Natural Gas
+Transport|New Energy Intensity|Rail|Freight|Oil
+Transport|New Energy Intensity|Rail|Passenger|Biofuels
+Transport|New Energy Intensity|Rail|Passenger|Electricity
+Transport|New Energy Intensity|Rail|Passenger|Fossil Synfuel
+Transport|New Energy Intensity|Rail|Passenger|Hydrogen
+Transport|New Energy Intensity|Rail|Passenger|Natural Gas
+Transport|New Energy Intensity|Rail|Passenger|Oil
+Transport|New Energy Intensity|Road|Freight|All|Electric|All|All
+Transport|New Energy Intensity|Road|Freight|All|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Freight|All|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Freight|All|FC|All|All
+Transport|New Energy Intensity|Road|Freight|All|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Freight|All|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Freight|All|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|All
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Oil
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|All|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Oil
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|All|All
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|All
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|All
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Oil
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|All|All
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|All
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|All
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Oil
+Transport|Population
+Transport|Sales|Aviation|All
+Transport|Sales|Aviation|Freight
+Transport|Sales|Aviation|Passenger
+Transport|Sales|Maritime|All
+Transport|Sales|Maritime|Freight
+Transport|Sales|Maritime|Passenger
+Transport|Sales|Rail|All
+Transport|Sales|Rail|Freight
+Transport|Sales|Rail|Passenger
+Transport|Sales|Road|All
+Transport|Sales|Road|Freight|All|All
+Transport|Sales|Road|Freight|All|Electric|All
+Transport|Sales|Road|Freight|All|Electric|BEV
+Transport|Sales|Road|Freight|All|Electric|PHEV
+Transport|Sales|Road|Freight|All|FC
+Transport|Sales|Road|Freight|All|ICE
+Transport|Sales|Road|Passenger|2W&3W|All
+Transport|Sales|Road|Passenger|2W&3W|Electric|All
+Transport|Sales|Road|Passenger|2W&3W|Electric|BEV
+Transport|Sales|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Sales|Road|Passenger|2W&3W|FC
+Transport|Sales|Road|Passenger|2W&3W|ICE
+Transport|Sales|Road|Passenger|All
+Transport|Sales|Road|Passenger|Bus|All
+Transport|Sales|Road|Passenger|Bus|Electric|All
+Transport|Sales|Road|Passenger|Bus|Electric|BEV
+Transport|Sales|Road|Passenger|Bus|Electric|PHEV
+Transport|Sales|Road|Passenger|Bus|FC
+Transport|Sales|Road|Passenger|Bus|ICE
+Transport|Sales|Road|Passenger|LDV|All
+Transport|Sales|Road|Passenger|LDV|Electric|All
+Transport|Sales|Road|Passenger|LDV|Electric|BEV
+Transport|Sales|Road|Passenger|LDV|Electric|PHEV
+Transport|Sales|Road|Passenger|LDV|FC
+Transport|Sales|Road|Passenger|LDV|ICE
+Transport|Service demand|All|Freight
+Transport|Service demand|All|Passenger
+Transport|Service demand|Aviation|All
+Transport|Service demand|Aviation|Freight
+Transport|Service demand|Aviation|Passenger
+Transport|Service demand|Bicycling&Walking|All
+Transport|Service demand|Maritime|All
+Transport|Service demand|Maritime|Freight
+Transport|Service demand|Maritime|Passenger
+Transport|Service demand|Rail|All
+Transport|Service demand|Rail|Freight
+Transport|Service demand|Rail|Passenger
+Transport|Service demand|Road|All
+Transport|Service demand|Road|Freight
+Transport|Service demand|Road|Passenger|2W&3W
+Transport|Service demand|Road|Passenger|All
+Transport|Service demand|Road|Passenger|Bus
+Transport|Service demand|Road|Passenger|LDV
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|All
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|All
+Transport|Speed|Aviation|Freight
+Transport|Speed|Aviation|Passenger
+Transport|Speed|Bicycling&Walking
+Transport|Speed|Maritime|Freight
+Transport|Speed|Rail|Freight
+Transport|Speed|Rail|Passenger
+Transport|Speed|Road|Freight
+Transport|Speed|Road|Passenger
+Transport|Speed|Road|Passenger|2W&3W
+Transport|Speed|Road|Passenger|Bus
+Transport|Speed|Road|Passenger|LDV
+Transport|Stock|Aviation|All
+Transport|Stock|Aviation|Freight
+Transport|Stock|Aviation|Passenger
+Transport|Stock|Maritime|All
+Transport|Stock|Maritime|Freight
+Transport|Stock|Rail|All
+Transport|Stock|Rail|Freight
+Transport|Stock|Rail|Passenger
+Transport|Stock|Road|All
+Transport|Stock|Road|Freight|All|All
+Transport|Stock|Road|Freight|All|Electric|All
+Transport|Stock|Road|Freight|All|Electric|BEV
+Transport|Stock|Road|Freight|All|Electric|PHEV
+Transport|Stock|Road|Freight|All|FC
+Transport|Stock|Road|Freight|All|ICE
+Transport|Stock|Road|Passenger|2W&3W|All
+Transport|Stock|Road|Passenger|2W&3W|Electric|All
+Transport|Stock|Road|Passenger|2W&3W|Electric|BEV
+Transport|Stock|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Stock|Road|Passenger|2W&3W|FC
+Transport|Stock|Road|Passenger|2W&3W|ICE
+Transport|Stock|Road|Passenger|All
+Transport|Stock|Road|Passenger|Bus|All
+Transport|Stock|Road|Passenger|Bus|Electric|All
+Transport|Stock|Road|Passenger|Bus|Electric|BEV
+Transport|Stock|Road|Passenger|Bus|Electric|PHEV
+Transport|Stock|Road|Passenger|Bus|FC
+Transport|Stock|Road|Passenger|Bus|ICE
+Transport|Stock|Road|Passenger|LDV|All
+Transport|Stock|Road|Passenger|LDV|Electric|All
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|All
+Transport|Stock|Road|Passenger|LDV|Electric|BEV
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|All
+Transport|Stock|Road|Passenger|LDV|FC
+Transport|Stock|Road|Passenger|LDV|FC|All|All|All
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|All
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|All
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|All
+Transport|Stock|Road|Passenger|LDV|ICE
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|All
+Transport|Variable O&M Costs|Aviation|Freight
+Transport|Variable O&M Costs|Aviation|Passenger
+Transport|Variable O&M Costs|Maritime|Freight
+Transport|Variable O&M Costs|Rail|Freight
+Transport|Variable O&M Costs|Rail|Passenger
+Transport|Variable O&M Costs|Road|Freight|All
+Transport|Variable O&M Costs|Road|Freight|All|Electric|All
+Transport|Variable O&M Costs|Road|Freight|All|Electric|BEV
+Transport|Variable O&M Costs|Road|Freight|All|Electric|PHEV
+Transport|Variable O&M Costs|Road|Freight|All|FC
+Transport|Variable O&M Costs|Road|Freight|All|ICE
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|All
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|Electric|All
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|Electric|BEV
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|FC
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|ICE
+Transport|Variable O&M Costs|Road|Passenger|Bus|All
+Transport|Variable O&M Costs|Road|Passenger|Bus|Electric|All
+Transport|Variable O&M Costs|Road|Passenger|Bus|Electric|BEV
+Transport|Variable O&M Costs|Road|Passenger|Bus|Electric|PHEV
+Transport|Variable O&M Costs|Road|Passenger|Bus|FC
+Transport|Variable O&M Costs|Road|Passenger|Bus|ICE
+Transport|Variable O&M Costs|Road|Passenger|LDV|All
+Transport|Variable O&M Costs|Road|Passenger|LDV|Electric|All
+Transport|Variable O&M Costs|Road|Passenger|LDV|Electric|BEV
+Transport|Variable O&M Costs|Road|Passenger|LDV|Electric|PHEV
+Transport|Variable O&M Costs|Road|Passenger|LDV|FC
+Transport|Variable O&M Costs|Road|Passenger|LDV|ICE

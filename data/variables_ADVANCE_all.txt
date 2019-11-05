@@ -1,0 +1,2499 @@
+Transport|CO2 concentration
+Transport|CO2 intensity|Biofuels
+Transport|CO2 intensity|Electricity
+Transport|CO2 intensity|Fossil Synfuel
+Transport|CO2 intensity|Hydrogen
+Transport|CO2 intensity|Natural Gas
+Transport|CO2 intensity|Oil
+Transport|CO2|All
+Transport|CO2|Aviation|All
+Transport|CO2|Aviation|Freight
+Transport|CO2|Aviation|Passenger
+Transport|CO2|Maritime|All
+Transport|CO2|Maritime|Freight
+Transport|CO2|Maritime|Passenger
+Transport|CO2|Rail|All
+Transport|CO2|Rail|Freight
+Transport|CO2|Rail|Passenger
+Transport|CO2|Road|All
+Transport|CO2|Road|Freight|All
+Transport|CO2|Road|Passenger|2W&3W
+Transport|CO2|Road|Passenger|All
+Transport|CO2|Road|Passenger|Bus
+Transport|CO2|Road|Passenger|LDV
+Transport|Capital|Vehicles
+Transport|Carbon price
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|All
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|All
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Biofuels|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|All
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Hydrogen|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|All
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|FC|All|Natural gas|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Biofuels|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Natural gas|XXLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|All
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|RULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SUEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SUEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SUEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SUEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SUEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SUEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SULMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SULMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|SULMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|UREAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|UREAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|UREAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|UREMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|UREMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|UREMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|URLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|URLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|URLMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXEAA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXEAF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXEAM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXEMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXEMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXEMM
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXLMA
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXLMF
+Transport|Disutility Costs|Road|Passenger|LDV|ICE|All|Oil|XXLMM
+Transport|Energy Intensity|All|Freight|Biofuels
+Transport|Energy Intensity|All|Freight|Electricity
+Transport|Energy Intensity|All|Freight|Fossil Synfuel
+Transport|Energy Intensity|All|Freight|Hydrogen
+Transport|Energy Intensity|All|Freight|Natural gas
+Transport|Energy Intensity|All|Freight|Oil
+Transport|Energy Intensity|All|Passenger|Biofuels
+Transport|Energy Intensity|All|Passenger|Electricity
+Transport|Energy Intensity|All|Passenger|Fossil Synfuel
+Transport|Energy Intensity|All|Passenger|Hydrogen
+Transport|Energy Intensity|All|Passenger|Natural gas
+Transport|Energy Intensity|All|Passenger|Oil
+Transport|Energy Intensity|Aviation|Freight|Biofuels
+Transport|Energy Intensity|Aviation|Freight|Electricity
+Transport|Energy Intensity|Aviation|Freight|Fossil Synfuel
+Transport|Energy Intensity|Aviation|Freight|Hydrogen
+Transport|Energy Intensity|Aviation|Freight|Natural Gas
+Transport|Energy Intensity|Aviation|Freight|Oil
+Transport|Energy Intensity|Aviation|Passenger|Biofuels
+Transport|Energy Intensity|Aviation|Passenger|Electricity
+Transport|Energy Intensity|Aviation|Passenger|Fossil Synfuel
+Transport|Energy Intensity|Aviation|Passenger|Hydrogen
+Transport|Energy Intensity|Aviation|Passenger|Natural Gas
+Transport|Energy Intensity|Aviation|Passenger|Oil
+Transport|Energy Intensity|Maritime|Freight|Biofuels
+Transport|Energy Intensity|Maritime|Freight|Electricity
+Transport|Energy Intensity|Maritime|Freight|Fossil Synfuel
+Transport|Energy Intensity|Maritime|Freight|Hydrogen
+Transport|Energy Intensity|Maritime|Freight|Natural Gas
+Transport|Energy Intensity|Maritime|Freight|Oil
+Transport|Energy Intensity|Rail|Freight|Biofuels
+Transport|Energy Intensity|Rail|Freight|Electricity
+Transport|Energy Intensity|Rail|Freight|Fossil Synfuel
+Transport|Energy Intensity|Rail|Freight|Hydrogen
+Transport|Energy Intensity|Rail|Freight|Natural Gas
+Transport|Energy Intensity|Rail|Freight|Oil
+Transport|Energy Intensity|Rail|Passenger|Biofuels
+Transport|Energy Intensity|Rail|Passenger|Electricity
+Transport|Energy Intensity|Rail|Passenger|Fossil Synfuel
+Transport|Energy Intensity|Rail|Passenger|Hydrogen
+Transport|Energy Intensity|Rail|Passenger|Natural Gas
+Transport|Energy Intensity|Rail|Passenger|Oil
+Transport|Energy Intensity|Road|Freight|All|Electric|All|All
+Transport|Energy Intensity|Road|Freight|All|Electric|All|Electricity
+Transport|Energy Intensity|Road|Freight|All|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|All
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Freight|All|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Freight|All|FC|All|All
+Transport|Energy Intensity|Road|Freight|All|FC|All|Biofuels
+Transport|Energy Intensity|Road|Freight|All|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Freight|All|FC|All|Natural gas
+Transport|Energy Intensity|Road|Freight|All|ICE|All|All
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Freight|All|ICE|All|Oil
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|All|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|All|Electricity
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|2W&3W|FC|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|All
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|2W&3W|ICE|All|Oil
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|All|All
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|All|Electricity
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|All
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|All
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|Bus|FC|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|All
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|Bus|ICE|All|Oil
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|All|All
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|All|Electricity
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|BEV|Electricity
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|All
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Biofuels
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Electricity
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Hydrogen
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Natural gas
+Transport|Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Oil
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|All
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|LDV|FC|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|All
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Biofuels
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Fossil Synfuel
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Hydrogen
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Natural gas
+Transport|Energy Intensity|Road|Passenger|LDV|ICE|All|Oil
+Transport|Final Energy|All|All|All
+Transport|Final Energy|All|All|Biofuels
+Transport|Final Energy|All|All|Electricity
+Transport|Final Energy|All|All|Fossil Synfuel
+Transport|Final Energy|All|All|Hydrogen
+Transport|Final Energy|All|All|Natural gas
+Transport|Final Energy|All|All|Oil
+Transport|Final Energy|All|Freight|All
+Transport|Final Energy|All|Freight|Biofuels
+Transport|Final Energy|All|Freight|Electricity
+Transport|Final Energy|All|Freight|Fossil Synfuel
+Transport|Final Energy|All|Freight|Hydrogen
+Transport|Final Energy|All|Freight|Natural gas
+Transport|Final Energy|All|Freight|Oil
+Transport|Final Energy|All|Passenger|All
+Transport|Final Energy|All|Passenger|Biofuels
+Transport|Final Energy|All|Passenger|Electricity
+Transport|Final Energy|All|Passenger|Fossil Synfuel
+Transport|Final Energy|All|Passenger|Hydrogen
+Transport|Final Energy|All|Passenger|Natural gas
+Transport|Final Energy|All|Passenger|Oil
+Transport|Final Energy|Aviation|All
+Transport|Final Energy|Aviation|Freight|All
+Transport|Final Energy|Aviation|Freight|Biofuels
+Transport|Final Energy|Aviation|Freight|Electricity
+Transport|Final Energy|Aviation|Freight|Fossil Synfuel
+Transport|Final Energy|Aviation|Freight|Hydrogen
+Transport|Final Energy|Aviation|Freight|Natural Gas
+Transport|Final Energy|Aviation|Freight|Oil
+Transport|Final Energy|Aviation|Passenger|All
+Transport|Final Energy|Aviation|Passenger|Biofuels
+Transport|Final Energy|Aviation|Passenger|Electricity
+Transport|Final Energy|Aviation|Passenger|Fossil Synfuel
+Transport|Final Energy|Aviation|Passenger|Hydrogen
+Transport|Final Energy|Aviation|Passenger|Natural Gas
+Transport|Final Energy|Aviation|Passenger|Oil
+Transport|Final Energy|Maritime|All
+Transport|Final Energy|Maritime|Freight|All
+Transport|Final Energy|Maritime|Freight|Biofuels
+Transport|Final Energy|Maritime|Freight|Electricity
+Transport|Final Energy|Maritime|Freight|Fossil Synfuel
+Transport|Final Energy|Maritime|Freight|Hydrogen
+Transport|Final Energy|Maritime|Freight|Natural Gas
+Transport|Final Energy|Maritime|Freight|Oil
+Transport|Final Energy|Rail|All
+Transport|Final Energy|Rail|Freight|All
+Transport|Final Energy|Rail|Freight|Biofuels
+Transport|Final Energy|Rail|Freight|Electricity
+Transport|Final Energy|Rail|Freight|Fossil Synfuel
+Transport|Final Energy|Rail|Freight|Hydrogen
+Transport|Final Energy|Rail|Freight|Natural Gas
+Transport|Final Energy|Rail|Freight|Oil
+Transport|Final Energy|Rail|Passenger|All
+Transport|Final Energy|Rail|Passenger|Biofuels
+Transport|Final Energy|Rail|Passenger|Electricity
+Transport|Final Energy|Rail|Passenger|Fossil Synfuel
+Transport|Final Energy|Rail|Passenger|Hydrogen
+Transport|Final Energy|Rail|Passenger|Natural Gas
+Transport|Final Energy|Rail|Passenger|Oil
+Transport|Final Energy|Road|Freight|All
+Transport|Final Energy|Road|Freight|All|Electric|All|All
+Transport|Final Energy|Road|Freight|All|Electric|All|Electricity
+Transport|Final Energy|Road|Freight|All|Electric|BEV|Electricity
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|All
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Freight|All|Electric|PHEV|Oil
+Transport|Final Energy|Road|Freight|All|FC|All|All
+Transport|Final Energy|Road|Freight|All|FC|All|Biofuels
+Transport|Final Energy|Road|Freight|All|FC|All|Hydrogen
+Transport|Final Energy|Road|Freight|All|FC|All|Natural gas
+Transport|Final Energy|Road|Freight|All|ICE|All|All
+Transport|Final Energy|Road|Freight|All|ICE|All|Biofuels
+Transport|Final Energy|Road|Freight|All|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Freight|All|ICE|All|Hydrogen
+Transport|Final Energy|Road|Freight|All|ICE|All|Natural gas
+Transport|Final Energy|Road|Freight|All|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|2W&3W|All
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|All|All
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|2W&3W|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|All
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|2W&3W|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|All
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|2W&3W|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|All
+Transport|Final Energy|Road|Passenger|All|Electric|All|All
+Transport|Final Energy|Road|Passenger|All|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|All|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|All|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|All|FC|All|All
+Transport|Final Energy|Road|Passenger|All|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|All|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|All|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|All|ICE|All|All
+Transport|Final Energy|Road|Passenger|All|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|All|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|All|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|All|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|All|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|Bus|All
+Transport|Final Energy|Road|Passenger|Bus|Electric|All|All
+Transport|Final Energy|Road|Passenger|Bus|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|Bus|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|Bus|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|Bus|FC|All|All
+Transport|Final Energy|Road|Passenger|Bus|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|Bus|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|Bus|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|All
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|Bus|ICE|All|Oil
+Transport|Final Energy|Road|Passenger|LDV|All
+Transport|Final Energy|Road|Passenger|LDV|Electric|All|All
+Transport|Final Energy|Road|Passenger|LDV|Electric|All|Electricity
+Transport|Final Energy|Road|Passenger|LDV|Electric|BEV|Electricity
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|All
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Biofuels
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Electricity
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Hydrogen
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Natural gas
+Transport|Final Energy|Road|Passenger|LDV|Electric|PHEV|Oil
+Transport|Final Energy|Road|Passenger|LDV|FC|All|All
+Transport|Final Energy|Road|Passenger|LDV|FC|All|Biofuels
+Transport|Final Energy|Road|Passenger|LDV|FC|All|Hydrogen
+Transport|Final Energy|Road|Passenger|LDV|FC|All|Natural gas
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|All
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Biofuels
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Fossil Synfuel
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Hydrogen
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Natural gas
+Transport|Final Energy|Road|Passenger|LDV|ICE|All|Oil
+Transport|Fixed O&M Costs|Aviation|Freight
+Transport|Fixed O&M Costs|Aviation|Passenger
+Transport|Fixed O&M Costs|Maritime|Freight
+Transport|Fixed O&M Costs|Rail|Freight
+Transport|Fixed O&M Costs|Rail|Passenger
+Transport|Fixed O&M Costs|Road|Freight|All
+Transport|Fixed O&M Costs|Road|Freight|All|Electric|All
+Transport|Fixed O&M Costs|Road|Freight|All|Electric|BEV
+Transport|Fixed O&M Costs|Road|Freight|All|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Freight|All|FC
+Transport|Fixed O&M Costs|Road|Freight|All|ICE
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|All
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|Electric|All
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|Electric|BEV
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|FC
+Transport|Fixed O&M Costs|Road|Passenger|2W&3W|ICE
+Transport|Fixed O&M Costs|Road|Passenger|Bus|All
+Transport|Fixed O&M Costs|Road|Passenger|Bus|Electric|All
+Transport|Fixed O&M Costs|Road|Passenger|Bus|Electric|BEV
+Transport|Fixed O&M Costs|Road|Passenger|Bus|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Passenger|Bus|FC
+Transport|Fixed O&M Costs|Road|Passenger|Bus|ICE
+Transport|Fixed O&M Costs|Road|Passenger|LDV|All
+Transport|Fixed O&M Costs|Road|Passenger|LDV|Electric|All
+Transport|Fixed O&M Costs|Road|Passenger|LDV|Electric|BEV
+Transport|Fixed O&M Costs|Road|Passenger|LDV|Electric|PHEV
+Transport|Fixed O&M Costs|Road|Passenger|LDV|FC
+Transport|Fixed O&M Costs|Road|Passenger|LDV|ICE
+Transport|Fuel Price|Biofuels
+Transport|Fuel Price|Electricity
+Transport|Fuel Price|Fossil Synfuel
+Transport|Fuel Price|Hydrogen
+Transport|Fuel Price|Natural Gas
+Transport|Fuel Price|Oil
+Transport|GDP MER
+Transport|GDP PPP
+Transport|Infrastructure Capacity|Aviation|Freight
+Transport|Infrastructure Capacity|Aviation|Passenger
+Transport|Infrastructure Capacity|Maritime|Freight
+Transport|Infrastructure Capacity|Maritime|Passenger
+Transport|Infrastructure Capacity|Rail|Freight
+Transport|Infrastructure Capacity|Rail|Passenger
+Transport|Infrastructure Capacity|Road|Freight
+Transport|Infrastructure Capacity|Road|Passenger
+Transport|Infrastructure Investment|Aviation
+Transport|Infrastructure Investment|Maritime
+Transport|Infrastructure Investment|Rail
+Transport|Infrastructure Investment|Road
+Transport|Investment Costs|Aviation|Freight
+Transport|Investment Costs|Aviation|Passenger
+Transport|Investment Costs|Maritime|Freight
+Transport|Investment Costs|Rail|Freight
+Transport|Investment Costs|Rail|Passenger
+Transport|Investment Costs|Road|Freight|All
+Transport|Investment Costs|Road|Freight|All|Electric|All
+Transport|Investment Costs|Road|Freight|All|Electric|BEV
+Transport|Investment Costs|Road|Freight|All|Electric|PHEV
+Transport|Investment Costs|Road|Freight|All|FC
+Transport|Investment Costs|Road|Freight|All|ICE
+Transport|Investment Costs|Road|Passenger|2W&3W|All
+Transport|Investment Costs|Road|Passenger|2W&3W|Electric|All
+Transport|Investment Costs|Road|Passenger|2W&3W|Electric|BEV
+Transport|Investment Costs|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Investment Costs|Road|Passenger|2W&3W|FC
+Transport|Investment Costs|Road|Passenger|2W&3W|ICE
+Transport|Investment Costs|Road|Passenger|Bus|All
+Transport|Investment Costs|Road|Passenger|Bus|Electric|All
+Transport|Investment Costs|Road|Passenger|Bus|Electric|BEV
+Transport|Investment Costs|Road|Passenger|Bus|Electric|PHEV
+Transport|Investment Costs|Road|Passenger|Bus|FC
+Transport|Investment Costs|Road|Passenger|Bus|ICE
+Transport|Investment Costs|Road|Passenger|LDV|All
+Transport|Investment Costs|Road|Passenger|LDV|Electric|All
+Transport|Investment Costs|Road|Passenger|LDV|Electric|BEV
+Transport|Investment Costs|Road|Passenger|LDV|Electric|PHEV
+Transport|Investment Costs|Road|Passenger|LDV|FC
+Transport|Investment Costs|Road|Passenger|LDV|ICE
+Transport|Load Factor|Aviation|Freight
+Transport|Load Factor|Aviation|Passenger
+Transport|Load Factor|Maritime|Freight
+Transport|Load Factor|Rail|Freight
+Transport|Load Factor|Rail|Passenger
+Transport|Load Factor|Road|Freight
+Transport|Load Factor|Road|Passenger
+Transport|Load Factor|Road|Passenger|2W&3W
+Transport|Load Factor|Road|Passenger|Bus
+Transport|Load Factor|Road|Passenger|LDV
+Transport|New Energy Intensity|All|Freight|Biofuels
+Transport|New Energy Intensity|All|Freight|Electricity
+Transport|New Energy Intensity|All|Freight|Fossil Synfuel
+Transport|New Energy Intensity|All|Freight|Hydrogen
+Transport|New Energy Intensity|All|Freight|Natural gas
+Transport|New Energy Intensity|All|Freight|Oil
+Transport|New Energy Intensity|All|Passenger|Biofuels
+Transport|New Energy Intensity|All|Passenger|Electricity
+Transport|New Energy Intensity|All|Passenger|Fossil Synfuel
+Transport|New Energy Intensity|All|Passenger|Hydrogen
+Transport|New Energy Intensity|All|Passenger|Natural gas
+Transport|New Energy Intensity|All|Passenger|Oil
+Transport|New Energy Intensity|Aviation|Freight|Biofuels
+Transport|New Energy Intensity|Aviation|Freight|Electricity
+Transport|New Energy Intensity|Aviation|Freight|Fossil Synfuel
+Transport|New Energy Intensity|Aviation|Freight|Hydrogen
+Transport|New Energy Intensity|Aviation|Freight|Natural Gas
+Transport|New Energy Intensity|Aviation|Freight|Oil
+Transport|New Energy Intensity|Aviation|Passenger|Biofuels
+Transport|New Energy Intensity|Aviation|Passenger|Electricity
+Transport|New Energy Intensity|Aviation|Passenger|Fossil Synfuel
+Transport|New Energy Intensity|Aviation|Passenger|Hydrogen
+Transport|New Energy Intensity|Aviation|Passenger|Natural Gas
+Transport|New Energy Intensity|Aviation|Passenger|Oil
+Transport|New Energy Intensity|Maritime|Freight|Biofuels
+Transport|New Energy Intensity|Maritime|Freight|Electricity
+Transport|New Energy Intensity|Maritime|Freight|Fossil Synfuel
+Transport|New Energy Intensity|Maritime|Freight|Hydrogen
+Transport|New Energy Intensity|Maritime|Freight|Natural Gas
+Transport|New Energy Intensity|Maritime|Freight|Oil
+Transport|New Energy Intensity|Rail|Freight|Biofuels
+Transport|New Energy Intensity|Rail|Freight|Electricity
+Transport|New Energy Intensity|Rail|Freight|Fossil Synfuel
+Transport|New Energy Intensity|Rail|Freight|Hydrogen
+Transport|New Energy Intensity|Rail|Freight|Natural Gas
+Transport|New Energy Intensity|Rail|Freight|Oil
+Transport|New Energy Intensity|Rail|Passenger|Biofuels
+Transport|New Energy Intensity|Rail|Passenger|Electricity
+Transport|New Energy Intensity|Rail|Passenger|Fossil Synfuel
+Transport|New Energy Intensity|Rail|Passenger|Hydrogen
+Transport|New Energy Intensity|Rail|Passenger|Natural Gas
+Transport|New Energy Intensity|Rail|Passenger|Oil
+Transport|New Energy Intensity|Road|Freight|All|Electric|All|All
+Transport|New Energy Intensity|Road|Freight|All|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Freight|All|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Freight|All|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Freight|All|FC|All|All
+Transport|New Energy Intensity|Road|Freight|All|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Freight|All|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Freight|All|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|All
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Freight|All|ICE|All|Oil
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|All|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Passenger|2W&3W|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|2W&3W|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|All
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|2W&3W|ICE|All|Oil
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|All|All
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Passenger|Bus|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|All
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|Bus|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|All
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|Bus|ICE|All|Oil
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|All|All
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|All|Electricity
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|BEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|All
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Biofuels
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Electricity
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Natural gas
+Transport|New Energy Intensity|Road|Passenger|LDV|Electric|PHEV|Oil
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|All
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|LDV|FC|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|All
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Biofuels
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Fossil Synfuel
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Hydrogen
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Natural gas
+Transport|New Energy Intensity|Road|Passenger|LDV|ICE|All|Oil
+Transport|Population
+Transport|Sales|Aviation|All
+Transport|Sales|Aviation|Freight
+Transport|Sales|Aviation|Passenger
+Transport|Sales|Maritime|All
+Transport|Sales|Maritime|Freight
+Transport|Sales|Maritime|Passenger
+Transport|Sales|Rail|All
+Transport|Sales|Rail|Freight
+Transport|Sales|Rail|Passenger
+Transport|Sales|Road|All
+Transport|Sales|Road|Freight|All|All
+Transport|Sales|Road|Freight|All|Electric|All
+Transport|Sales|Road|Freight|All|Electric|BEV
+Transport|Sales|Road|Freight|All|Electric|PHEV
+Transport|Sales|Road|Freight|All|FC
+Transport|Sales|Road|Freight|All|ICE
+Transport|Sales|Road|Passenger|2W&3W|All
+Transport|Sales|Road|Passenger|2W&3W|Electric|All
+Transport|Sales|Road|Passenger|2W&3W|Electric|BEV
+Transport|Sales|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Sales|Road|Passenger|2W&3W|FC
+Transport|Sales|Road|Passenger|2W&3W|ICE
+Transport|Sales|Road|Passenger|All
+Transport|Sales|Road|Passenger|Bus|All
+Transport|Sales|Road|Passenger|Bus|Electric|All
+Transport|Sales|Road|Passenger|Bus|Electric|BEV
+Transport|Sales|Road|Passenger|Bus|Electric|PHEV
+Transport|Sales|Road|Passenger|Bus|FC
+Transport|Sales|Road|Passenger|Bus|ICE
+Transport|Sales|Road|Passenger|LDV|All
+Transport|Sales|Road|Passenger|LDV|Electric|All
+Transport|Sales|Road|Passenger|LDV|Electric|BEV
+Transport|Sales|Road|Passenger|LDV|Electric|PHEV
+Transport|Sales|Road|Passenger|LDV|FC
+Transport|Sales|Road|Passenger|LDV|ICE
+Transport|Service demand|All|Freight
+Transport|Service demand|All|Passenger
+Transport|Service demand|Aviation|All
+Transport|Service demand|Aviation|Freight
+Transport|Service demand|Aviation|Passenger
+Transport|Service demand|Bicycling&Walking|All
+Transport|Service demand|Maritime|All
+Transport|Service demand|Maritime|Freight
+Transport|Service demand|Maritime|Passenger
+Transport|Service demand|Rail|All
+Transport|Service demand|Rail|Freight
+Transport|Service demand|Rail|Passenger
+Transport|Service demand|Road|All
+Transport|Service demand|Road|Freight
+Transport|Service demand|Road|Passenger|2W&3W
+Transport|Service demand|Road|Passenger|All
+Transport|Service demand|Road|Passenger|Bus
+Transport|Service demand|Road|Passenger|LDV
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|All
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|All|All|XXLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|All
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|All|XXLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|All
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|RULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SULMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SULMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|SULMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|UREAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|UREAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|UREAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|UREMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|UREMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|UREMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|URLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|URLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|URLMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMM
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMA
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMF
+Transport|Service demand|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|RULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|SULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|UREAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|UREAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|UREAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|UREMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|UREMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|UREMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|URLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|URLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|URLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|All|XXLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|RULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|SULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|UREAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|UREAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|UREAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|UREMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|UREMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|UREMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|URLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|URLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|URLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Biofuels|XXLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|RULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|SULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|UREAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|UREAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|UREAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|UREMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|UREMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|UREMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|URLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|URLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|URLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Hydrogen|XXLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|All
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|RULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SUEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SUEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SUEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SUEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SUEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SUEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SULMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SULMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|SULMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|UREAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|UREAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|UREAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|UREMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|UREMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|UREMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|URLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|URLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|URLMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXEAA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXEAF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXEAM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXEMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXEMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXEMM
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXLMA
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXLMF
+Transport|Service demand|Road|Passenger|LDV|FC|All|Natural gas|XXLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|RULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|SULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|UREAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|UREAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|UREAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|UREMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|UREMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|UREMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|URLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|URLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|URLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|All|XXLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|RULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|SULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|UREAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|UREAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|UREAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|UREMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|UREMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|UREMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|URLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|URLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|URLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Biofuels|XXLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|RULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|SULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|UREAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|UREAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|UREAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|UREMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|UREMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|UREMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|URLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|URLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|URLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|RULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|SULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|UREAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|UREAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|UREAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|UREMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|UREMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|UREMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|URLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|URLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|URLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Natural gas|XXLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|All
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|RULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SUEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SUEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SUEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SUEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SUEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SUEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SULMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SULMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|SULMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|UREAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|UREAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|UREAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|UREMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|UREMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|UREMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|URLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|URLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|URLMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXEAA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXEAF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXEAM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXEMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXEMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXEMM
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXLMA
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXLMF
+Transport|Service demand|Road|Passenger|LDV|ICE|All|Oil|XXLMM
+Transport|Speed|Aviation|Freight
+Transport|Speed|Aviation|Passenger
+Transport|Speed|Bicycling&Walking
+Transport|Speed|Maritime|Freight
+Transport|Speed|Rail|Freight
+Transport|Speed|Rail|Passenger
+Transport|Speed|Road|Freight
+Transport|Speed|Road|Passenger
+Transport|Speed|Road|Passenger|2W&3W
+Transport|Speed|Road|Passenger|Bus
+Transport|Speed|Road|Passenger|LDV
+Transport|Stock|Aviation|All
+Transport|Stock|Aviation|Freight
+Transport|Stock|Aviation|Passenger
+Transport|Stock|Maritime|All
+Transport|Stock|Maritime|Freight
+Transport|Stock|Rail|All
+Transport|Stock|Rail|Freight
+Transport|Stock|Rail|Passenger
+Transport|Stock|Road|All
+Transport|Stock|Road|Freight|All|All
+Transport|Stock|Road|Freight|All|Electric|All
+Transport|Stock|Road|Freight|All|Electric|BEV
+Transport|Stock|Road|Freight|All|Electric|PHEV
+Transport|Stock|Road|Freight|All|FC
+Transport|Stock|Road|Freight|All|ICE
+Transport|Stock|Road|Passenger|2W&3W|All
+Transport|Stock|Road|Passenger|2W&3W|Electric|All
+Transport|Stock|Road|Passenger|2W&3W|Electric|BEV
+Transport|Stock|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Stock|Road|Passenger|2W&3W|FC
+Transport|Stock|Road|Passenger|2W&3W|ICE
+Transport|Stock|Road|Passenger|All
+Transport|Stock|Road|Passenger|Bus|All
+Transport|Stock|Road|Passenger|Bus|Electric|All
+Transport|Stock|Road|Passenger|Bus|Electric|BEV
+Transport|Stock|Road|Passenger|Bus|Electric|PHEV
+Transport|Stock|Road|Passenger|Bus|FC
+Transport|Stock|Road|Passenger|Bus|ICE
+Transport|Stock|Road|Passenger|LDV|All
+Transport|Stock|Road|Passenger|LDV|Electric|All
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|All
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|All|All|XXLMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|All
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|BEV|Electricity|XXLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|All|XXLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Biofuels|XXLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Fossil Synfuel|XXLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Hydrogen|XXLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Natural gas|XXLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|All
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|RULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SUEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SUEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SULMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SULMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|SULMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|UREAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|UREAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|UREAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|UREMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|UREMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|UREMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|URLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|URLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|URLMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXEAM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXEMM
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMA
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMF
+Transport|Stock|Road|Passenger|LDV|Electric|PHEV|Oil|XXLMM
+Transport|Stock|Road|Passenger|LDV|FC
+Transport|Stock|Road|Passenger|LDV|FC|All|All|All
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|RULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|SULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|UREAA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|UREAF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|UREAM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|UREMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|UREMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|UREMM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|URLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|URLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|URLMM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|All|XXLMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|All
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|RULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|SULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|UREAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|UREAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|UREAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|UREMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|UREMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|UREMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|URLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|URLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|URLMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Biofuels|XXLMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|All
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|RULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|SULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|UREAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|UREAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|UREAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|UREMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|UREMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|UREMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|URLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|URLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|URLMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Hydrogen|XXLMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|All
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|RULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SUEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SUEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SUEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SUEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SUEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SUEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SULMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SULMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|SULMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|UREAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|UREAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|UREAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|UREMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|UREMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|UREMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|URLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|URLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|URLMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXEAA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXEAF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXEAM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXEMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXEMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXEMM
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXLMA
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXLMF
+Transport|Stock|Road|Passenger|LDV|FC|All|Natural gas|XXLMM
+Transport|Stock|Road|Passenger|LDV|ICE
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|RULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|SULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|UREAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|UREAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|UREAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|UREMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|UREMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|UREMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|URLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|URLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|URLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|All|XXLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|RULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|SULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|UREAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|UREAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|UREAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|UREMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|UREMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|UREMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|URLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|URLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|URLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Biofuels|XXLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|RULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|SULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|UREMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|URLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Fossil Synfuel|XXLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|RULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|SULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|UREAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|UREAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|UREAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|UREMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|UREMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|UREMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|URLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|URLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|URLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Hydrogen|XXLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|RULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|SULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|UREAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|UREAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|UREAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|UREMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|UREMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|UREMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|URLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|URLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|URLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Natural gas|XXLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|All
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|RULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SUEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SUEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SUEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SUEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SUEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SUEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SULMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SULMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|SULMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|UREAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|UREAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|UREAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|UREMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|UREMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|UREMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|URLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|URLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|URLMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXEAA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXEAF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXEAM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXEMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXEMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXEMM
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXLMA
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXLMF
+Transport|Stock|Road|Passenger|LDV|ICE|All|Oil|XXLMM
+Transport|Variable O&M Costs|Aviation|Freight
+Transport|Variable O&M Costs|Aviation|Passenger
+Transport|Variable O&M Costs|Maritime|Freight
+Transport|Variable O&M Costs|Rail|Freight
+Transport|Variable O&M Costs|Rail|Passenger
+Transport|Variable O&M Costs|Road|Freight|All
+Transport|Variable O&M Costs|Road|Freight|All|Electric|All
+Transport|Variable O&M Costs|Road|Freight|All|Electric|BEV
+Transport|Variable O&M Costs|Road|Freight|All|Electric|PHEV
+Transport|Variable O&M Costs|Road|Freight|All|FC
+Transport|Variable O&M Costs|Road|Freight|All|ICE
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|All
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|Electric|All
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|Electric|BEV
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|Electric|PHEV
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|FC
+Transport|Variable O&M Costs|Road|Passenger|2W&3W|ICE
+Transport|Variable O&M Costs|Road|Passenger|Bus|All
+Transport|Variable O&M Costs|Road|Passenger|Bus|Electric|All
+Transport|Variable O&M Costs|Road|Passenger|Bus|Electric|BEV
+Transport|Variable O&M Costs|Road|Passenger|Bus|Electric|PHEV
+Transport|Variable O&M Costs|Road|Passenger|Bus|FC
+Transport|Variable O&M Costs|Road|Passenger|Bus|ICE
+Transport|Variable O&M Costs|Road|Passenger|LDV|All
+Transport|Variable O&M Costs|Road|Passenger|LDV|Electric|All
+Transport|Variable O&M Costs|Road|Passenger|LDV|Electric|BEV
+Transport|Variable O&M Costs|Road|Passenger|LDV|Electric|PHEV
+Transport|Variable O&M Costs|Road|Passenger|LDV|FC
+Transport|Variable O&M Costs|Road|Passenger|LDV|ICE
