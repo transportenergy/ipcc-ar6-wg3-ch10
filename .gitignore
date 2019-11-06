@@ -7,6 +7,7 @@ config.json
 # Downloaded files
 data/*.csv
 data/*.zip
+ref/*.xls*
 
 # Generated and temporary files
 data/cache

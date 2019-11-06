@@ -1,0 +1,185 @@
+Capacity|Transportation|Aviation|Freight
+Capacity|Transportation|Aviation|Passenger
+Capacity|Transportation|Maritime|Freight
+Capacity|Transportation|Maritime|Passenger
+Capacity|Transportation|Rail|Freight
+Capacity|Transportation|Rail|Passenger
+Capacity|Transportation|Road|Freight
+Capacity|Transportation|Road|Passenger
+Discount rate|Economy
+Discount rate|Electricity
+Discount rate|Energy Supply
+Discount rate|Industry
+Discount rate|Mobility
+Discount rate|Social
+Discount rate|Transport Infrastructure
+Emissions|CO2
+Emissions|CO2|Energy
+Emissions|CO2|Energy|Combustion
+Emissions|CO2|Energy|Demand
+Emissions|CO2|Energy|Demand|Transportation
+Emissions|CO2|Energy|Demand|Transportation|Aviation
+Emissions|CO2|Energy|Demand|Transportation|Aviation|Freight
+Emissions|CO2|Energy|Demand|Transportation|Aviation|International
+Emissions|CO2|Energy|Demand|Transportation|Aviation|Passenger
+Emissions|CO2|Energy|Demand|Transportation|Freight
+Emissions|CO2|Energy|Demand|Transportation|Maritime
+Emissions|CO2|Energy|Demand|Transportation|Maritime|Freight
+Emissions|CO2|Energy|Demand|Transportation|Maritime|Passenger
+Emissions|CO2|Energy|Demand|Transportation|Passenger
+Emissions|CO2|Energy|Demand|Transportation|Rail
+Emissions|CO2|Energy|Demand|Transportation|Rail|Freight
+Emissions|CO2|Energy|Demand|Transportation|Rail|Passenger
+Emissions|CO2|Energy|Demand|Transportation|Road
+Emissions|CO2|Energy|Demand|Transportation|Road Rail and Domestic Shipping
+Emissions|CO2|Energy|Demand|Transportation|Road|Freight
+Emissions|CO2|Energy|Demand|Transportation|Road|Passenger
+Emissions|CO2|Energy|Demand|Transportation|Road|Passenger|2W&3W
+Emissions|CO2|Energy|Demand|Transportation|Road|Passenger|Bus
+Emissions|CO2|Energy|Demand|Transportation|Road|Passenger|LDV
+Emissions|CO2|Energy|Demand|Transportation|Shipping
+Emissions|CO2|Energy|Demand|Transportation|Shipping|International
+Emissions|CO2|Energy|Supply
+Emissions|CO2|Energy|Supply|Gases
+Emissions|CO2|Energy|Supply|Gases|Transportation
+Emissions|CO2|Energy|Supply|Gases|Transportation|Combustion
+Emissions|CO2|Energy|Supply|Gases|Transportation|Fugitive
+Emissions|CO2|Energy|Supply|Liquids
+Emissions|CO2|Energy|Supply|Liquids|Transportation
+Emissions|CO2|Energy|Supply|Liquids|Transportation|Combustion
+Emissions|CO2|Energy|Supply|Liquids|Transportation|Fugitive
+Emissions|CO2|Energy|Supply|Solids
+Emissions|CO2|Energy|Supply|Solids|Transportation
+Emissions|CO2|Energy|Supply|Solids|Transportation|Combustion
+Emissions|CO2|Energy|Supply|Solids|Transportation|Fugitive
+Energy Service|Transportation|Aviation
+Energy Service|Transportation|Freight
+Energy Service|Transportation|Freight|Aviation
+Energy Service|Transportation|Freight|International Shipping
+Energy Service|Transportation|Freight|Navigation
+Energy Service|Transportation|Freight|Other
+Energy Service|Transportation|Freight|Railways
+Energy Service|Transportation|Freight|Road
+Energy Service|Transportation|Navigation
+Energy Service|Transportation|Passenger
+Energy Service|Transportation|Passenger|Aviation
+Energy Service|Transportation|Passenger|Bicycling and Walking
+Energy Service|Transportation|Passenger|Navigation
+Energy Service|Transportation|Passenger|Other
+Energy Service|Transportation|Passenger|Railways
+Energy Service|Transportation|Passenger|Road
+Energy Service|Transportation|Passenger|Road|2W and 3W
+Energy Service|Transportation|Passenger|Road|Bus
+Energy Service|Transportation|Passenger|Road|LDV
+Energy Service|Transportation|Rail
+Energy Service|Transportation|Road
+Final Energy|Transportation
+Final Energy|Transportation|Aviation
+Final Energy|Transportation|Aviation|Freight
+Final Energy|Transportation|Aviation|Passenger
+Final Energy|Transportation|Electricity
+Final Energy|Transportation|Fossil
+Final Energy|Transportation|Freight
+Final Energy|Transportation|Freight|Electricity
+Final Energy|Transportation|Freight|Gases
+Final Energy|Transportation|Freight|Gases|Bioenergy
+Final Energy|Transportation|Freight|Gases|Fossil
+Final Energy|Transportation|Freight|Hydrogen
+Final Energy|Transportation|Freight|Liquids
+Final Energy|Transportation|Freight|Liquids|Bioenergy
+Final Energy|Transportation|Freight|Liquids|Biomass
+Final Energy|Transportation|Freight|Liquids|Fossil synfuel
+Final Energy|Transportation|Freight|Liquids|Oil
+Final Energy|Transportation|Freight|Other
+Final Energy|Transportation|Gases
+Final Energy|Transportation|Gases|Bioenergy
+Final Energy|Transportation|Gases|Fossil
+Final Energy|Transportation|Gases|Shipping
+Final Energy|Transportation|Geothermal
+Final Energy|Transportation|Heat
+Final Energy|Transportation|Hydrogen
+Final Energy|Transportation|Hydrogen|Shipping
+Final Energy|Transportation|Liquids
+Final Energy|Transportation|Liquids|Bioenergy
+Final Energy|Transportation|Liquids|Biomass
+Final Energy|Transportation|Liquids|Biomass|Shipping
+Final Energy|Transportation|Liquids|Coal
+Final Energy|Transportation|Liquids|Coal|Shipping
+Final Energy|Transportation|Liquids|Fossil synfuel
+Final Energy|Transportation|Liquids|Gas
+Final Energy|Transportation|Liquids|Natural Gas
+Final Energy|Transportation|Liquids|Oil
+Final Energy|Transportation|Liquids|Oil|Shipping
+Final Energy|Transportation|Liquids|Oil|Shipping|Fuel Oil
+Final Energy|Transportation|Liquids|Oil|Shipping|Light Oil
+Final Energy|Transportation|Maritime
+Final Energy|Transportation|Other
+Final Energy|Transportation|Passenger
+Final Energy|Transportation|Passenger|Electricity
+Final Energy|Transportation|Passenger|Gases
+Final Energy|Transportation|Passenger|Gases|Bioenergy
+Final Energy|Transportation|Passenger|Gases|Fossil
+Final Energy|Transportation|Passenger|Hydrogen
+Final Energy|Transportation|Passenger|Liquids
+Final Energy|Transportation|Passenger|Liquids|Bioenergy
+Final Energy|Transportation|Passenger|Liquids|Biomass
+Final Energy|Transportation|Passenger|Liquids|Fossil synfuel
+Final Energy|Transportation|Passenger|Liquids|Oil
+Final Energy|Transportation|Passenger|Other
+Final Energy|Transportation|Rail
+Final Energy|Transportation|Rail|Freight
+Final Energy|Transportation|Rail|Passenger
+Final Energy|Transportation|Road|Freight
+Final Energy|Transportation|Road|Freight|Electric
+Final Energy|Transportation|Road|Freight|FC
+Final Energy|Transportation|Road|Freight|ICE
+Final Energy|Transportation|Road|Passenger
+Final Energy|Transportation|Road|Passenger|2W&3W
+Final Energy|Transportation|Solar
+Final Energy|Transportation|Solids|Biomass
+Final Energy|Transportation|Solids|Coal
+Investment
+Investment|Energy Demand|Transportation|Freight|Aviation
+Investment|Energy Demand|Transportation|Freight|Railways
+Investment|Energy Demand|Transportation|Freight|Road|HDT|EV
+Investment|Energy Demand|Transportation|Freight|Road|HDT|FCV
+Investment|Energy Demand|Transportation|Freight|Road|HDT|ICE
+Investment|Energy Demand|Transportation|Passenger|Aviation
+Investment|Energy Demand|Transportation|Passenger|Railways
+Investment|Energy Demand|Transportation|Passenger|Road|LDV|EV
+Investment|Energy Demand|Transportation|Passenger|Road|LDV|FCV
+Investment|Energy Demand|Transportation|Passenger|Road|LDV|ICE
+Investment|Infrastructure
+Investment|Infrastructure|Transportation
+Investment|Infrastructure|Transportation|Aviation
+Investment|Infrastructure|Transportation|Maritime
+Investment|Infrastructure|Transportation|Rail
+Investment|Infrastructure|Transportation|Road
+Price|Carbon
+Price|Final Energy|Transportation|Electricity
+Price|Final Energy|Transportation|Gases
+Price|Final Energy|Transportation|Gases|Bioenergy
+Price|Final Energy|Transportation|Gases|Fossil
+Price|Final Energy|Transportation|Hydrogen
+Price|Final Energy|Transportation|Liquids
+Price|Final Energy|Transportation|Liquids|Bioenergy
+Price|Final Energy|Transportation|Liquids|Fossil
+Price|Final Energy|Transportation|Liquids|Hydrogen synfuel
+Transport|Stock|Aviation
+Transport|Stock|Aviation|Freight
+Transport|Stock|Aviation|Passenger
+Transport|Stock|Maritime
+Transport|Stock|Maritime|Freight
+Transport|Stock|Rail
+Transport|Stock|Rail|Freight
+Transport|Stock|Rail|Passenger
+Transport|Stock|Road
+Transport|Stock|Road|Freight
+Transport|Stock|Road|Passenger
+Transport|Stock|Road|Passenger|2W&3W
+Transport|Stock|Road|Passenger|Bus
+Transport|Stock|Road|Passenger|LDV
+Useful Energy|Input|Shipping
+Useful Energy|Input|Transport
+Useful Energy|Shipping
+Useful Energy|Transport
