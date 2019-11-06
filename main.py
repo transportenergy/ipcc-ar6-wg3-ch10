@@ -47,7 +47,13 @@ def debug():
 @click.argument('action', type=click.Choice(['refresh', 'clear']))
 @click.argument('source', type=click.Choice(REMOTE_DATA.keys()))
 def cache(action, source):
-    """Cache data from the IIASA API in data/cache/."""
+    """Cache data from the IIASA API in data/cache/.
+
+    \b
+    The download takes:
+    - AR6: approximately 60 minutes for 768 scenarios / 3.2 GiB.
+    - SR15: approximately 15 minutes for 416 scenarios / 832 MiB.
+    """
     if action == 'refresh':
         cache_data(source)
     else:
