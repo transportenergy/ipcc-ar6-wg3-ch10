@@ -1,3 +1,481 @@
+Buildings|CO2 concentration
+Buildings|CO2 intensity|Coal
+Buildings|CO2 intensity|Electricity
+Buildings|CO2 intensity|Hydrogen
+Buildings|CO2 intensity|Natural Gas
+Buildings|CO2 intensity|Oil
+Buildings|Carbon price
+Buildings|Final Energy|All|All
+Buildings|Final Energy|All|All|Biofuels
+Buildings|Final Energy|All|All|Coal
+Buildings|Final Energy|All|All|Electricity
+Buildings|Final Energy|All|All|Heat
+Buildings|Final Energy|All|All|Hydrogen
+Buildings|Final Energy|All|All|Natural gas
+Buildings|Final Energy|All|All|Oil
+Buildings|Final Energy|All|Appliances|All
+Buildings|Final Energy|All|Appliances|Electricity
+Buildings|Final Energy|All|Cooling|All
+Buildings|Final Energy|All|Cooling|Electricity
+Buildings|Final Energy|All|Cooling|Natural gas
+Buildings|Final Energy|All|Heating|All|All
+Buildings|Final Energy|All|Heating|All|Biofuels
+Buildings|Final Energy|All|Heating|All|Coal
+Buildings|Final Energy|All|Heating|All|Electricity
+Buildings|Final Energy|All|Heating|All|Heat
+Buildings|Final Energy|All|Heating|All|Natural gas
+Buildings|Final Energy|All|Heating|All|Oil
+Buildings|Final Energy|All|Heating|Cooking|All
+Buildings|Final Energy|All|Heating|Cooking|Biofuels
+Buildings|Final Energy|All|Heating|Cooking|Coal
+Buildings|Final Energy|All|Heating|Cooking|Electricity
+Buildings|Final Energy|All|Heating|Cooking|Natural gas
+Buildings|Final Energy|All|Heating|Cooking|Oil
+Buildings|Final Energy|All|Heating|Space|All
+Buildings|Final Energy|All|Heating|Space|Biofuels
+Buildings|Final Energy|All|Heating|Space|Coal
+Buildings|Final Energy|All|Heating|Space|Electricity
+Buildings|Final Energy|All|Heating|Space|Heat
+Buildings|Final Energy|All|Heating|Space|Natural gas
+Buildings|Final Energy|All|Heating|Space|Oil
+Buildings|Final Energy|All|Heating|Water|All
+Buildings|Final Energy|All|Heating|Water|Biofuels
+Buildings|Final Energy|All|Heating|Water|Coal
+Buildings|Final Energy|All|Heating|Water|Electricity
+Buildings|Final Energy|All|Heating|Water|Natural gas
+Buildings|Final Energy|All|Heating|Water|Oil
+Buildings|Final Energy|All|Lighting|All
+Buildings|Final Energy|All|Lighting|Electricity
+Buildings|Final Energy|All|Lighting|Oil
+Buildings|Final Energy|All|Other|All
+Buildings|Final Energy|All|Other|Biofuels
+Buildings|Final Energy|All|Other|Coal
+Buildings|Final Energy|All|Other|Electricity
+Buildings|Final Energy|All|Other|Heat
+Buildings|Final Energy|All|Other|Natural gas
+Buildings|Final Energy|All|Other|Oil
+Buildings|Final Energy|Residential|All|All|All
+Buildings|Final Energy|Residential|All|All|Biofuels
+Buildings|Final Energy|Residential|All|All|Coal
+Buildings|Final Energy|Residential|All|All|Electricity
+Buildings|Final Energy|Residential|All|All|Heat
+Buildings|Final Energy|Residential|All|All|Hydrogen
+Buildings|Final Energy|Residential|All|All|Natural gas
+Buildings|Final Energy|Residential|All|All|Oil
+Buildings|Final Energy|Residential|All|Appliances|All
+Buildings|Final Energy|Residential|All|Appliances|Biofuels
+Buildings|Final Energy|Residential|All|Appliances|Coal
+Buildings|Final Energy|Residential|All|Appliances|Electricity
+Buildings|Final Energy|Residential|All|Appliances|Heat
+Buildings|Final Energy|Residential|All|Appliances|Hydrogen
+Buildings|Final Energy|Residential|All|Appliances|Natural gas
+Buildings|Final Energy|Residential|All|Appliances|Oil
+Buildings|Final Energy|Residential|All|Cooling|All
+Buildings|Final Energy|Residential|All|Cooling|Biofuels
+Buildings|Final Energy|Residential|All|Cooling|Coal
+Buildings|Final Energy|Residential|All|Cooling|Electricity
+Buildings|Final Energy|Residential|All|Cooling|Heat
+Buildings|Final Energy|Residential|All|Cooling|Hydrogen
+Buildings|Final Energy|Residential|All|Cooling|Natural gas
+Buildings|Final Energy|Residential|All|Cooling|Oil
+Buildings|Final Energy|Residential|All|Heating|All|All
+Buildings|Final Energy|Residential|All|Heating|All|Biofuels
+Buildings|Final Energy|Residential|All|Heating|All|Coal
+Buildings|Final Energy|Residential|All|Heating|All|Electricity
+Buildings|Final Energy|Residential|All|Heating|All|Heat
+Buildings|Final Energy|Residential|All|Heating|All|Hydrogen
+Buildings|Final Energy|Residential|All|Heating|All|Natural gas
+Buildings|Final Energy|Residential|All|Heating|All|Oil
+Buildings|Final Energy|Residential|All|Heating|Cooking|All
+Buildings|Final Energy|Residential|All|Heating|Cooking|Biofuels
+Buildings|Final Energy|Residential|All|Heating|Cooking|Coal
+Buildings|Final Energy|Residential|All|Heating|Cooking|Electricity
+Buildings|Final Energy|Residential|All|Heating|Cooking|Heat
+Buildings|Final Energy|Residential|All|Heating|Cooking|Hydrogen
+Buildings|Final Energy|Residential|All|Heating|Cooking|Natural gas
+Buildings|Final Energy|Residential|All|Heating|Cooking|Oil
+Buildings|Final Energy|Residential|All|Heating|Space|All
+Buildings|Final Energy|Residential|All|Heating|Space|Biofuels
+Buildings|Final Energy|Residential|All|Heating|Space|Coal
+Buildings|Final Energy|Residential|All|Heating|Space|Electricity
+Buildings|Final Energy|Residential|All|Heating|Space|Heat
+Buildings|Final Energy|Residential|All|Heating|Space|Hydrogen
+Buildings|Final Energy|Residential|All|Heating|Space|Natural gas
+Buildings|Final Energy|Residential|All|Heating|Space|Oil
+Buildings|Final Energy|Residential|All|Heating|Water|All
+Buildings|Final Energy|Residential|All|Heating|Water|Biofuels
+Buildings|Final Energy|Residential|All|Heating|Water|Coal
+Buildings|Final Energy|Residential|All|Heating|Water|Electricity
+Buildings|Final Energy|Residential|All|Heating|Water|Heat
+Buildings|Final Energy|Residential|All|Heating|Water|Hydrogen
+Buildings|Final Energy|Residential|All|Heating|Water|Natural gas
+Buildings|Final Energy|Residential|All|Heating|Water|Oil
+Buildings|Final Energy|Residential|All|Lighting|All
+Buildings|Final Energy|Residential|All|Lighting|Biofuels
+Buildings|Final Energy|Residential|All|Lighting|Coal
+Buildings|Final Energy|Residential|All|Lighting|Electricity
+Buildings|Final Energy|Residential|All|Lighting|Heat
+Buildings|Final Energy|Residential|All|Lighting|Hydrogen
+Buildings|Final Energy|Residential|All|Lighting|Natural gas
+Buildings|Final Energy|Residential|All|Lighting|Oil
+Buildings|Final Energy|Residential|All|Other|All
+Buildings|Final Energy|Residential|All|Other|Biofuels
+Buildings|Final Energy|Residential|All|Other|Coal
+Buildings|Final Energy|Residential|All|Other|Electricity
+Buildings|Final Energy|Residential|All|Other|Heat
+Buildings|Final Energy|Residential|All|Other|Natural gas
+Buildings|Final Energy|Residential|All|Other|Oil
+Buildings|Final Energy|Residential|Rural|All|All
+Buildings|Final Energy|Residential|Rural|All|Biofuels
+Buildings|Final Energy|Residential|Rural|All|Coal
+Buildings|Final Energy|Residential|Rural|All|Electricity
+Buildings|Final Energy|Residential|Rural|All|Heat
+Buildings|Final Energy|Residential|Rural|All|Hydrogen
+Buildings|Final Energy|Residential|Rural|All|Natural gas
+Buildings|Final Energy|Residential|Rural|All|Oil
+Buildings|Final Energy|Residential|Rural|Appliances|All
+Buildings|Final Energy|Residential|Rural|Appliances|Biofuels
+Buildings|Final Energy|Residential|Rural|Appliances|Coal
+Buildings|Final Energy|Residential|Rural|Appliances|Electricity
+Buildings|Final Energy|Residential|Rural|Appliances|Heat
+Buildings|Final Energy|Residential|Rural|Appliances|Hydrogen
+Buildings|Final Energy|Residential|Rural|Appliances|Natural gas
+Buildings|Final Energy|Residential|Rural|Appliances|Oil
+Buildings|Final Energy|Residential|Rural|Heating|All|All
+Buildings|Final Energy|Residential|Rural|Heating|All|Biofuels
+Buildings|Final Energy|Residential|Rural|Heating|All|Coal
+Buildings|Final Energy|Residential|Rural|Heating|All|Electricity
+Buildings|Final Energy|Residential|Rural|Heating|All|Heat
+Buildings|Final Energy|Residential|Rural|Heating|All|Hydrogen
+Buildings|Final Energy|Residential|Rural|Heating|All|Natural gas
+Buildings|Final Energy|Residential|Rural|Heating|All|Oil
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|All
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|Biofuels
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|Coal
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|Electricity
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|Heat
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|Hydrogen
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|Natural gas
+Buildings|Final Energy|Residential|Rural|Heating|Cooking|Oil
+Buildings|Final Energy|Residential|Rural|Heating|Space|All
+Buildings|Final Energy|Residential|Rural|Heating|Space|Biofuels
+Buildings|Final Energy|Residential|Rural|Heating|Space|Coal
+Buildings|Final Energy|Residential|Rural|Heating|Space|Electricity
+Buildings|Final Energy|Residential|Rural|Heating|Space|Heat
+Buildings|Final Energy|Residential|Rural|Heating|Space|Hydrogen
+Buildings|Final Energy|Residential|Rural|Heating|Space|Natural gas
+Buildings|Final Energy|Residential|Rural|Heating|Space|Oil
+Buildings|Final Energy|Residential|Rural|Heating|Water|All
+Buildings|Final Energy|Residential|Rural|Heating|Water|Biofuels
+Buildings|Final Energy|Residential|Rural|Heating|Water|Coal
+Buildings|Final Energy|Residential|Rural|Heating|Water|Electricity
+Buildings|Final Energy|Residential|Rural|Heating|Water|Heat
+Buildings|Final Energy|Residential|Rural|Heating|Water|Hydrogen
+Buildings|Final Energy|Residential|Rural|Heating|Water|Natural gas
+Buildings|Final Energy|Residential|Rural|Heating|Water|Oil
+Buildings|Final Energy|Residential|Rural|Lighting|All
+Buildings|Final Energy|Residential|Rural|Lighting|Biofuels
+Buildings|Final Energy|Residential|Rural|Lighting|Coal
+Buildings|Final Energy|Residential|Rural|Lighting|Electricity
+Buildings|Final Energy|Residential|Rural|Lighting|Heat
+Buildings|Final Energy|Residential|Rural|Lighting|Hydrogen
+Buildings|Final Energy|Residential|Rural|Lighting|Natural gas
+Buildings|Final Energy|Residential|Rural|Lighting|Oil
+Buildings|Final Energy|Residential|Urban|All|All
+Buildings|Final Energy|Residential|Urban|All|Biofuels
+Buildings|Final Energy|Residential|Urban|All|Coal
+Buildings|Final Energy|Residential|Urban|All|Electricity
+Buildings|Final Energy|Residential|Urban|All|Heat
+Buildings|Final Energy|Residential|Urban|All|Hydrogen
+Buildings|Final Energy|Residential|Urban|All|Natural gas
+Buildings|Final Energy|Residential|Urban|All|Oil
+Buildings|Final Energy|Residential|Urban|Appliances|All
+Buildings|Final Energy|Residential|Urban|Appliances|Biofuels
+Buildings|Final Energy|Residential|Urban|Appliances|Coal
+Buildings|Final Energy|Residential|Urban|Appliances|Electricity
+Buildings|Final Energy|Residential|Urban|Appliances|Heat
+Buildings|Final Energy|Residential|Urban|Appliances|Hydrogen
+Buildings|Final Energy|Residential|Urban|Appliances|Natural gas
+Buildings|Final Energy|Residential|Urban|Appliances|Oil
+Buildings|Final Energy|Residential|Urban|Cooling|All
+Buildings|Final Energy|Residential|Urban|Cooling|Biofuels
+Buildings|Final Energy|Residential|Urban|Cooling|Coal
+Buildings|Final Energy|Residential|Urban|Cooling|Electricity
+Buildings|Final Energy|Residential|Urban|Cooling|Heat
+Buildings|Final Energy|Residential|Urban|Cooling|Hydrogen
+Buildings|Final Energy|Residential|Urban|Cooling|Natural gas
+Buildings|Final Energy|Residential|Urban|Cooling|Oil
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|All
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|Biofuels
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|Coal
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|Electricity
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|Heat
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|Hydrogen
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|Natural gas
+Buildings|Final Energy|Residential|Urban|Heating|Cooking|Oil
+Buildings|Final Energy|Residential|Urban|Heating|Space|All
+Buildings|Final Energy|Residential|Urban|Heating|Space|Biofuels
+Buildings|Final Energy|Residential|Urban|Heating|Space|Coal
+Buildings|Final Energy|Residential|Urban|Heating|Space|Electricity
+Buildings|Final Energy|Residential|Urban|Heating|Space|Heat
+Buildings|Final Energy|Residential|Urban|Heating|Space|Hydrogen
+Buildings|Final Energy|Residential|Urban|Heating|Space|Natural gas
+Buildings|Final Energy|Residential|Urban|Heating|Space|Oil
+Buildings|Final Energy|Residential|Urban|Heating|Water|All
+Buildings|Final Energy|Residential|Urban|Heating|Water|Biofuels
+Buildings|Final Energy|Residential|Urban|Heating|Water|Coal
+Buildings|Final Energy|Residential|Urban|Heating|Water|Electricity
+Buildings|Final Energy|Residential|Urban|Heating|Water|Heat
+Buildings|Final Energy|Residential|Urban|Heating|Water|Hydrogen
+Buildings|Final Energy|Residential|Urban|Heating|Water|Natural gas
+Buildings|Final Energy|Residential|Urban|Heating|Water|Oil
+Buildings|Final Energy|Residential|Urban|Lighting|All
+Buildings|Final Energy|Residential|Urban|Lighting|Biofuels
+Buildings|Final Energy|Residential|Urban|Lighting|Coal
+Buildings|Final Energy|Residential|Urban|Lighting|Electricity
+Buildings|Final Energy|Residential|Urban|Lighting|Heat
+Buildings|Final Energy|Residential|Urban|Lighting|Hydrogen
+Buildings|Final Energy|Residential|Urban|Lighting|Natural gas
+Buildings|Final Energy|Residential|Urban|Lighting|Oil
+Buildings|Final Energy|Service Sector|All|All
+Buildings|Final Energy|Service Sector|All|Biofuels
+Buildings|Final Energy|Service Sector|All|Coal
+Buildings|Final Energy|Service Sector|All|Electricity
+Buildings|Final Energy|Service Sector|All|Heat
+Buildings|Final Energy|Service Sector|All|Hydrogen
+Buildings|Final Energy|Service Sector|All|Natural gas
+Buildings|Final Energy|Service Sector|All|Oil
+Buildings|Final Energy|Service Sector|Cooling|All
+Buildings|Final Energy|Service Sector|Cooling|Electricity
+Buildings|Final Energy|Service Sector|Cooling|Natural gas
+Buildings|Final Energy|Service Sector|Heating|All|All
+Buildings|Final Energy|Service Sector|Heating|All|Biofuels
+Buildings|Final Energy|Service Sector|Heating|All|Coal
+Buildings|Final Energy|Service Sector|Heating|All|Electricity
+Buildings|Final Energy|Service Sector|Heating|All|Heat
+Buildings|Final Energy|Service Sector|Heating|All|Natural gas
+Buildings|Final Energy|Service Sector|Heating|All|Oil
+Buildings|Final Energy|Service Sector|Heating|Cooking|All
+Buildings|Final Energy|Service Sector|Heating|Cooking|Biofuels
+Buildings|Final Energy|Service Sector|Heating|Cooking|Coal
+Buildings|Final Energy|Service Sector|Heating|Cooking|Electricity
+Buildings|Final Energy|Service Sector|Heating|Cooking|Natural gas
+Buildings|Final Energy|Service Sector|Heating|Cooking|Oil
+Buildings|Final Energy|Service Sector|Heating|Space|All
+Buildings|Final Energy|Service Sector|Heating|Space|Biofuels
+Buildings|Final Energy|Service Sector|Heating|Space|Coal
+Buildings|Final Energy|Service Sector|Heating|Space|Electricity
+Buildings|Final Energy|Service Sector|Heating|Space|Heat
+Buildings|Final Energy|Service Sector|Heating|Space|Natural gas
+Buildings|Final Energy|Service Sector|Heating|Space|Oil
+Buildings|Final Energy|Service Sector|Heating|Water|All
+Buildings|Final Energy|Service Sector|Heating|Water|Biofuels
+Buildings|Final Energy|Service Sector|Heating|Water|Coal
+Buildings|Final Energy|Service Sector|Heating|Water|Electricity
+Buildings|Final Energy|Service Sector|Heating|Water|Natural gas
+Buildings|Final Energy|Service Sector|Heating|Water|Oil
+Buildings|Final Energy|Service Sector|Lighting|All
+Buildings|Final Energy|Service Sector|Lighting|Electricity
+Buildings|Final Energy|Service Sector|Lighting|Oil
+Buildings|Final Energy|Service Sector|Other|All
+Buildings|Final Energy|Service Sector|Other|Biofuels
+Buildings|Final Energy|Service Sector|Other|Coal
+Buildings|Final Energy|Service Sector|Other|Electricity
+Buildings|Final Energy|Service Sector|Other|Heat
+Buildings|Final Energy|Service Sector|Other|Natural gas
+Buildings|Final Energy|Service Sector|Other|Oil
+Buildings|Floorspace|Residential|All
+Buildings|Floorspace|Residential|Rural
+Buildings|Floorspace|Residential|Urban
+Buildings|Floorspace|Service Sector
+Buildings|Fuel Price|Biofuels
+Buildings|Fuel Price|Coal
+Buildings|Fuel Price|Electricity
+Buildings|Fuel Price|Heat
+Buildings|Fuel Price|Hydrogen
+Buildings|Fuel Price|Natural Gas
+Buildings|Fuel Price|Oil
+Buildings|GDP MER
+Buildings|GDP PPP
+Buildings|Population
+Buildings|Service demand|All|All|
+Buildings|Service demand|All|Appliances
+Buildings|Service demand|All|Cooling
+Buildings|Service demand|All|Heating|All
+Buildings|Service demand|All|Heating|Cooking
+Buildings|Service demand|All|Heating|Space
+Buildings|Service demand|All|Heating|Water
+Buildings|Service demand|All|Lighting
+Buildings|Service demand|All|Other
+Buildings|Service demand|Residential|All|All
+Buildings|Service demand|Residential|All|Appliances
+Buildings|Service demand|Residential|All|Cooling
+Buildings|Service demand|Residential|All|Heating|All
+Buildings|Service demand|Residential|All|Heating|Cooking
+Buildings|Service demand|Residential|All|Heating|Space
+Buildings|Service demand|Residential|All|Heating|Water
+Buildings|Service demand|Residential|All|Lighting
+Buildings|Service demand|Residential|All|Other
+Buildings|Service demand|Residential|Rural|Heating|Cooking
+Buildings|Service demand|Residential|Rural|Heating|Space
+Buildings|Service demand|Residential|Rural|Heating|Water
+Buildings|Service demand|Residential|Urban|Heating|Cooking
+Buildings|Service demand|Residential|Urban|Heating|Space
+Buildings|Service demand|Residential|Urban|Heating|Water
+Buildings|Service demand|Service Sector|All
+Buildings|Service demand|Service Sector|Cooling
+Buildings|Service demand|Service Sector|Heating|All
+Buildings|Service demand|Service Sector|Heating|Cooking
+Buildings|Service demand|Service Sector|Heating|Space
+Buildings|Service demand|Service Sector|Heating|Water
+Buildings|Service demand|Service Sector|Lighting
+Buildings|Service demand|Service Sector|Other
+Industry|Activity indicator|All
+Industry|Activity indicator|Chemicals & Petrochemicals
+Industry|Activity indicator|Iron & Steel
+Industry|Activity indicator|Non ferrous metals
+Industry|Activity indicator|Non metallic minerals
+Industry|Activity indicator|Other
+Industry|Activity indicator|Pulp & Paper
+Industry|CO2 capture|All
+Industry|CO2 capture|Chemicals & Petrochemicals
+Industry|CO2 capture|Iron & Steel
+Industry|CO2 capture|Non ferrous metals
+Industry|CO2 capture|Non metallic minerals
+Industry|CO2 capture|Other
+Industry|CO2 capture|Pulp & paper
+Industry|CO2e (excl. process emissions)|All
+Industry|CO2e (excl. process emissions)|Chemicals & Petrochemicals
+Industry|CO2e (excl. process emissions)|Iron & Steel
+Industry|CO2e (excl. process emissions)|Non ferrous metals
+Industry|CO2e (excl. process emissions)|Non metallic minerals
+Industry|CO2e (excl. process emissions)|Other
+Industry|CO2e (excl. process emissions)|Pulp & Paper
+Industry|CO2e (incl. process emissions)|All
+Industry|CO2e (incl. process emissions)|Chemicals & Petrochemicals
+Industry|CO2e (incl. process emissions)|Iron & Steel
+Industry|CO2e (incl. process emissions)|Non ferrous metals
+Industry|CO2e (incl. process emissions)|Non metallic minerals
+Industry|CO2e (incl. process emissions)|Other
+Industry|Consumption|Iron & Steel
+Industry|Consumption|Non metallic minerals
+Industry|Consumption|Other
+Industry|Final Energy (excl. feedstock use)|All
+Industry|Final Energy (excl. feedstock use)|All|Electricity
+Industry|Final Energy (excl. feedstock use)|All|Gases|All
+Industry|Final Energy (excl. feedstock use)|All|Gases|Biogas
+Industry|Final Energy (excl. feedstock use)|All|Gases|Natural Gas
+Industry|Final Energy (excl. feedstock use)|All|Heat
+Industry|Final Energy (excl. feedstock use)|All|Hydrogen
+Industry|Final Energy (excl. feedstock use)|All|Liquids|All
+Industry|Final Energy (excl. feedstock use)|All|Liquids|Biofuel
+Industry|Final Energy (excl. feedstock use)|All|Liquids|Oil
+Industry|Final Energy (excl. feedstock use)|All|Solids|All
+Industry|Final Energy (excl. feedstock use)|All|Solids|Biomass
+Industry|Final Energy (excl. feedstock use)|All|Solids|Coal
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|All
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Electricity
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Gases|All
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Gases|Biogas
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Gases|Natural Gas
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Heat
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Hydrogen
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Liquids|All
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Liquids|Biofuel
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Liquids|Oil
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Solids|All
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Solids|Biomass
+Industry|Final Energy (excl. feedstock use)|Chemicals & Petrochemicals|Solids|Coal
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|All
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Electricity
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Gases|All
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Gases|Biogas
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Gases|Natural Gas
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Heat
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Hydrogen
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Liquids|All
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Liquids|Biofuel
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Liquids|Oil
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Solids|All
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Solids|Biomass
+Industry|Final Energy (excl. feedstock use)|Iron & Steel|Solids|Coal
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|All
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Electricity
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Gases|All
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Gases|Biogas
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Gases|Natural Gas
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Heat
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Hydrogen
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Liquids|All
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Liquids|Biofuel
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Liquids|Oil
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Solids|All
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Solids|Biomass
+Industry|Final Energy (excl. feedstock use)|Non ferrous metals|Solids|Coal
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|All
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Electricity
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Gases|All
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Gases|Biogas
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Gases|Natural Gas
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Heat
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Hydrogen
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Liquids|All
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Liquids|Biofuel
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Liquids|Oil
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Solids|All
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Solids|Biomass
+Industry|Final Energy (excl. feedstock use)|Non metallic minerals|Solids|Coal
+Industry|Final Energy (excl. feedstock use)|Other|All
+Industry|Final Energy (excl. feedstock use)|Other|Electricity
+Industry|Final Energy (excl. feedstock use)|Other|Gases|All
+Industry|Final Energy (excl. feedstock use)|Other|Gases|Biogas
+Industry|Final Energy (excl. feedstock use)|Other|Gases|Natural Gas
+Industry|Final Energy (excl. feedstock use)|Other|Heat
+Industry|Final Energy (excl. feedstock use)|Other|Hydrogen
+Industry|Final Energy (excl. feedstock use)|Other|Liquids|All
+Industry|Final Energy (excl. feedstock use)|Other|Liquids|Biofuel
+Industry|Final Energy (excl. feedstock use)|Other|Liquids|Oil
+Industry|Final Energy (excl. feedstock use)|Other|Solids|All
+Industry|Final Energy (excl. feedstock use)|Other|Solids|Biomass
+Industry|Final Energy (excl. feedstock use)|Other|Solids|Coal
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|All
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Electricity
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Gases|All
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Gases|Biogas
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Gases|Natural Gas
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Heat
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Hydrogen
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Liquids|All
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Liquids|Biofuel
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Liquids|Oil
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Solids|All
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Solids|Biomass
+Industry|Final Energy (excl. feedstock use)|Pulp & Paper|Solids|Coal
+Industry|Final Energy (incl. feedstock use)|All
+Industry|Final Energy (incl. feedstock use)|Chemicals & Petrochemicals
+Industry|Final Energy (incl. feedstock use)|Iron & Steel
+Industry|Final Energy (incl. feedstock use)|Non ferrous metals
+Industry|Fuel Price|Electricity
+Industry|Fuel Price|Gases|All
+Industry|Fuel Price|Gases|Biogas
+Industry|Fuel Price|Gases|Natural Gas
+Industry|Fuel Price|Heat
+Industry|Fuel Price|Hydrogen
+Industry|Fuel Price|Liquids|All
+Industry|Fuel Price|Liquids|Biofuel
+Industry|Fuel Price|Liquids|Oil
+Industry|Fuel Price|Solids|All
+Industry|Fuel Price|Solids|Biomass
+Industry|Fuel Price|Solids|Coal
+Industry|GDP MER
+Industry|GDP PPP
+Industry|Population
+Industry|Production (incl. secondary)|Iron & Steel
+Industry|Production|Chemicals & Petrochemicals
+Industry|Production|Iron & Steel
+Industry|Production|Non ferrous metals
+Industry|Production|Non metallic minerals
+Industry|Production|Pulp & Paper
 Transport|CO2 concentration
 Transport|CO2 intensity|Biofuels
 Transport|CO2 intensity|Electricity

@@ -119,3 +119,6 @@ class AppClient(BaseClient):
             data=json.dumps(dict(filters=filters)),
             headers={'Content-Type': 'application/json'},
         )
+
+    def variables(self, run_id, filters=[]):
+        return self.get(f'runs/{run_id}/vars', params={'filters': '[]'})

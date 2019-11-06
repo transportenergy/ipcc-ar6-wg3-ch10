@@ -237,8 +237,8 @@ Then:
    $ pip install -r requirements.txt
 
    # Show help text
-   $ python figures.py --help
-   Usage: figures.py [OPTIONS] COMMAND [ARGS]...
+   $ python main.py --help
+   Usage: main.py [OPTIONS] COMMAND [ARGS]...
 
      Command-line interface for IPCC AR6 WGIII Ch.10 figures.
 
@@ -246,12 +246,14 @@ Then:
      --help  Show this message and exit.
 
    Commands:
-     debug  Demonstrate/debug features.
-     plot   Generate all plots.
-     refs   Retrieve reference files listed in ref/urls.txt to ref/.
+     cache      Cache data from the IIASA API in data/cache/.
+     debug      Demo or debug code.
+     plot       Plot data to output/.
+     refs       Retrieve reference files listed in ref/urls.txt to ref/.
+     variables  Write lists of variables for each data source.
 
    # Run a particular command
-   $ python3 figures.py plot
+   $ python3 main.py plot
 
 History
 =======

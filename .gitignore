@@ -1,7 +1,15 @@
+# Python temporary files
 __pycache__
+
+# Private authentication information
 config.json
+
+# Downloaded files
 data/*.csv
 data/*.zip
+
+# Generated and temporary files
+data/cache
 output/
 
 # LibreOffice lockfiles

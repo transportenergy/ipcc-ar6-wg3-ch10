@@ -1,0 +1,148 @@
+Concentration|CO2|MAGICC6|MED
+Consumption
+Emissions|BC
+Emissions|CH4
+Emissions|CO
+Emissions|CO2
+Emissions|CO2|Carbon Capture and Storage
+Emissions|CO2|Fossil Fuels and Industry
+Emissions|CO2|Fossil Fuels and Industry|Energy Demand
+Emissions|CO2|Fossil Fuels and Industry|Energy Demand|Industry
+Emissions|CO2|Fossil Fuels and Industry|Energy Demand|Residential and Commercial
+Emissions|CO2|Fossil Fuels and Industry|Energy Demand|Transportation
+Emissions|CO2|Fossil Fuels and Industry|Energy Supply
+Emissions|CO2|Fossil Fuels and Industry|Energy Supply|Electricity
+Emissions|CO2|Land Use
+Emissions|F-Gases
+Emissions|Kyoto Gases
+Emissions|N2O
+Emissions|NOx
+Emissions|OC
+Emissions|Sulfur
+Energy Service|Residential and Commercial|Floor Space
+Energy Service|Transportation|Freight
+Energy Service|Transportation|Passenger
+Final Energy
+Final Energy|Electricity
+Final Energy|Gases
+Final Energy|Geothermal
+Final Energy|Heat
+Final Energy|Hydrogen
+Final Energy|Industry
+Final Energy|Industry|Electricity
+Final Energy|Industry|Gases
+Final Energy|Industry|Heat
+Final Energy|Industry|Hydrogen
+Final Energy|Industry|Liquids
+Final Energy|Industry|Solids
+Final Energy|Industry|Solids|Biomass
+Final Energy|Industry|Solids|Coal
+Final Energy|Liquids
+Final Energy|Residential and Commercial
+Final Energy|Residential and Commercial|Electricity
+Final Energy|Residential and Commercial|Gases
+Final Energy|Residential and Commercial|Heat
+Final Energy|Residential and Commercial|Hydrogen
+Final Energy|Residential and Commercial|Liquids
+Final Energy|Residential and Commercial|Solids
+Final Energy|Residential and Commercial|Solids|Biomass
+Final Energy|Residential and Commercial|Solids|Coal
+Final Energy|Solar
+Final Energy|Solids
+Final Energy|Solids|Biomass
+Final Energy|Solids|Biomass|Traditional
+Final Energy|Solids|Coal
+Final Energy|Transportation
+Final Energy|Transportation|Electricity
+Final Energy|Transportation|Freight
+Final Energy|Transportation|Gases
+Final Energy|Transportation|Hydrogen
+Final Energy|Transportation|Liquids
+Final Energy|Transportation|Liquids|Biomass
+Final Energy|Transportation|Liquids|Oil
+Final Energy|Transportation|Passenger
+Forcing|CO2|MAGICC6|MED
+Forcing|Kyoto Gases|MAGICC6|MED
+Forcing|MAGICC6|MED
+GDP|MER
+Land Cover
+Land Cover|Cropland
+Land Cover|Cropland|Energy Crops
+Land Cover|Forest
+Land Cover|Other Arable Land
+Land Cover|Other Land
+Land Cover|Pasture
+Policy Cost|Additional Total Energy System Cost
+Policy Cost|Area under MAC Curve
+Policy Cost|Consumption Loss
+Policy Cost|Equivalent Variation
+Policy Cost|GDP Loss
+Policy Cost|Other
+Population
+Price|Carbon
+Primary Energy
+Primary Energy|Biomass
+Primary Energy|Biomass|w/ CCS
+Primary Energy|Biomass|w/o CCS
+Primary Energy|Coal
+Primary Energy|Coal|w/ CCS
+Primary Energy|Coal|w/o CCS
+Primary Energy|Fossil
+Primary Energy|Fossil|w/ CCS
+Primary Energy|Fossil|w/o CCS
+Primary Energy|Gas
+Primary Energy|Gas|w/ CCS
+Primary Energy|Gas|w/o CCS
+Primary Energy|Geothermal
+Primary Energy|Hydro
+Primary Energy|Non-Biomass Renewables
+Primary Energy|Nuclear
+Primary Energy|Ocean
+Primary Energy|Oil
+Primary Energy|Oil|w/ CCS
+Primary Energy|Oil|w/o CCS
+Primary Energy|Solar
+Primary Energy|Wind
+Secondary Energy|Electricity
+Secondary Energy|Electricity|Biomass
+Secondary Energy|Electricity|Biomass|w/ CCS
+Secondary Energy|Electricity|Biomass|w/o CCS
+Secondary Energy|Electricity|Coal
+Secondary Energy|Electricity|Coal|w/ CCS
+Secondary Energy|Electricity|Coal|w/o CCS
+Secondary Energy|Electricity|Gas
+Secondary Energy|Electricity|Gas|w/ CCS
+Secondary Energy|Electricity|Gas|w/o CCS
+Secondary Energy|Electricity|Geothermal
+Secondary Energy|Electricity|Hydro
+Secondary Energy|Electricity|Non-Biomass Renewables
+Secondary Energy|Electricity|Nuclear
+Secondary Energy|Electricity|Ocean
+Secondary Energy|Electricity|Oil
+Secondary Energy|Electricity|Oil|w/ CCS
+Secondary Energy|Electricity|Oil|w/o CCS
+Secondary Energy|Electricity|Solar
+Secondary Energy|Electricity|Wind
+Secondary Energy|Gases
+Secondary Energy|Heat|Geothermal
+Secondary Energy|Hydrogen
+Secondary Energy|Liquids
+Secondary Energy|Liquids|Biomass
+Secondary Energy|Liquids|Coal
+Secondary Energy|Liquids|Coal|w/ CCS
+Secondary Energy|Liquids|Coal|w/o CCS
+Secondary Energy|Liquids|Fossil
+Secondary Energy|Liquids|Fossil|w/ CCS
+Secondary Energy|Liquids|Fossil|w/o CCS
+Secondary Energy|Liquids|Gas
+Secondary Energy|Liquids|Gas|w/ CCS
+Secondary Energy|Liquids|Gas|w/o CCS
+Secondary Energy|Liquids|Oil
+Secondary Energy|Solids
+Temperature|Exceedance Probability|1.5 degC|MAGICC6
+Temperature|Exceedance Probability|2.0 degC|MAGICC6
+Temperature|Exceedance Probability|3.0 degC|MAGICC6
+Temperature|Exceedance Probability|4.0 degC|MAGICC6
+Temperature|Global Mean|MAGICC6|MED
+Temperature|Global Mean|MAGICC6|P5
+Temperature|Global Mean|MAGICC6|P95

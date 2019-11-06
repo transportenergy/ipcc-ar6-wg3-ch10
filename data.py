@@ -1,23 +1,34 @@
 """Retrieve data from the AR6 WGIII Scenarios Database hosted by IIASA."""
 import json
+import logging
 from pathlib import Path
 
 import pandas as pd
+from tqdm import tqdm
 
 from iiasa_se_client import AuthClient
 
+
+log = logging.getLogger(__name__)
+
+data_path = Path('.', 'data').resolve()
 
 LOCAL_DATA = {
     'ADVANCE':  'advance_compare_20171018-134445.csv',
     'AR5': 'ar5_public_version102_compare_compare_20150629-130000.csv',
     }
 
+REMOTE_DATA = {
+    'AR6': 'IXSE_AR6',
+    'SR15': 'IXSE_SR15',
+}
+
 
 config = json.load(open('config.json'))
 client = None
 
 
-def get_client():
+def get_client(source):
     """Return a client for the configured application."""
     global client
 
@@ -25,7 +36,7 @@ def get_client():
         return client
 
     auth_client = AuthClient(**config['credentials'])
-    client = auth_client.get_app(config['application'])
+    client = auth_client.get_app(REMOTE_DATA[source])
     return client
 
 
@@ -34,15 +45,16 @@ def _filter(df, filters):
     return df[df.isin(filters)[list(filters.keys())].all(axis=1)]
 
 
-def get_data(drop=('meta', 'runId', 'time'), source='AR6', **filters):
+def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
+             **filters):
     """Retrieve and return data as a pandas.DataFrame.
 
     Parameters
     ----------
-    source : 'AR6' or 'ADVANCE' or 'AR5'
+    source : 'AR6' or 'SR15' or 'ADVANCE' or 'AR5'
         Data to load. ADVANCE and AR5 are from local files; see README.
     drop : list of str
-        Columns to drop when loading from AR6 web API.
+        Columns to drop when loading from web API.
 
     Other parameters
     ----------------
@@ -60,12 +72,9 @@ def get_data(drop=('meta', 'runId', 'time'), source='AR6', **filters):
                          var_name='year') \
                    .dropna(subset=['value'])
         return result
-    else:
-        assert source == 'AR6'
-
-        # Get data from the AR6 web API
-
-        get_client()
+    elif source in REMOTE_DATA and not use_cache:
+        # Get data from the web API
+        client = get_client(source)
 
         # Retrieve all data for some runs
         result = pd.DataFrame.from_dict(client.runs_bulk_ts(**filters))
@@ -74,3 +83,45 @@ def get_data(drop=('meta', 'runId', 'time'), source='AR6', **filters):
             result.drop(list(drop), axis=1, inplace=True)
 
         return result
+    elif source in REMOTE_DATA:
+        # Load data from cache
+        return pd.concat(pd.read_csv(f) for f
+                         in (data_path / 'cache' / source).glob('*.csv'))
+    else:
+        raise ValueError(source)
+
+
+def get_references():
+    """Retrieve reference files listed in ref/urls.txt to ref/."""
+    from pathlib import Path
+    from urllib.parse import urlparse
+
+    import requests
+
+    ref_dir = Path('ref')
+
+    for url in open(ref_dir / 'urls.txt'):
+        # Strip trailing newline
+        url = url.strip()
+
+        # Name of the file to be written
+        name = Path(urlparse(url).path).name
+        log.info(name)
+
+        # Retrieve the content from the web and write its contents to a new
+        # file in ref/
+        with open(ref_dir / name, 'wb') as f:
+            f.write(requests.get(url, timeout=3).content)
+
+
+def cache_data(source):
+    cache_path = data_path / 'cache' / source
+    cache_path.mkdir(parents=True, exist_ok=True)
+
+    client = get_client(source)
+    for run in tqdm(client.runs()):
+        filename = cache_path / '{model_id}-{run_id}.csv'.format(**run)
+        # Retrieve, convert to CSV, and write
+        pd.DataFrame.from_dict(
+            client.runs_bulk_ts(runs=[run['run_id']])) \
+            .to_csv(filename)

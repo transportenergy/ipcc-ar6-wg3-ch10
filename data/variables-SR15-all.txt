@@ -1,0 +1,336 @@
+AR5 climate diagnostics|Concentration|CO2|FAIR|MED
+AR5 climate diagnostics|Concentration|CO2|MAGICC6|MED
+AR5 climate diagnostics|Forcing|Aerosol|Direct|MAGICC6|MED
+AR5 climate diagnostics|Forcing|Aerosol|MAGICC6|MED
+AR5 climate diagnostics|Forcing|Aerosol|Total|FAIR|MED
+AR5 climate diagnostics|Forcing|Aerosol|Total|MAGICC6|MED
+AR5 climate diagnostics|Forcing|CH4|FAIR|MED
+AR5 climate diagnostics|Forcing|CH4|MAGICC6|MED
+AR5 climate diagnostics|Forcing|CO2|FAIR|MED
+AR5 climate diagnostics|Forcing|CO2|MAGICC6|MED
+AR5 climate diagnostics|Forcing|F-Gases|MAGICC6|MED
+AR5 climate diagnostics|Forcing|FAIR|MED
+AR5 climate diagnostics|Forcing|Kyoto Gases|MAGICC6|MED
+AR5 climate diagnostics|Forcing|MAGICC6|MED
+AR5 climate diagnostics|Forcing|Montreal Protocol (orig.) gases|MAGICC6|MED
+AR5 climate diagnostics|Forcing|N2O|FAIR|MED
+AR5 climate diagnostics|Forcing|N2O|MAGICC6|MED
+AR5 climate diagnostics|Forcing|OtherGHGs|FAIR|MED
+AR5 climate diagnostics|Forcing|Tropospheric Ozone|FAIR|MED
+AR5 climate diagnostics|Forcing|Tropospheric Ozone|MAGICC6|MED
+AR5 climate diagnostics|Temperature|Exceedance Probability|1.0 °C|FAIR
+AR5 climate diagnostics|Temperature|Exceedance Probability|1.0 °C|MAGICC6
+AR5 climate diagnostics|Temperature|Exceedance Probability|1.5 °C|FAIR
+AR5 climate diagnostics|Temperature|Exceedance Probability|1.5 °C|MAGICC6
+AR5 climate diagnostics|Temperature|Exceedance Probability|2.0 °C|FAIR
+AR5 climate diagnostics|Temperature|Exceedance Probability|2.0 °C|MAGICC6
+AR5 climate diagnostics|Temperature|Exceedance Probability|2.5 °C|FAIR
+AR5 climate diagnostics|Temperature|Exceedance Probability|2.5 °C|MAGICC6
+AR5 climate diagnostics|Temperature|Exceedance Probability|3.0 °C|FAIR
+AR5 climate diagnostics|Temperature|Exceedance Probability|3.0 °C|MAGICC6
+AR5 climate diagnostics|Temperature|Exceedance Probability|3.5 °C|FAIR
+AR5 climate diagnostics|Temperature|Exceedance Probability|3.5 °C|MAGICC6
+AR5 climate diagnostics|Temperature|Exceedance Probability|4.0 °C|FAIR
+AR5 climate diagnostics|Temperature|Exceedance Probability|4.0 °C|MAGICC6
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|Expected value
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|Expected value|Non CO2
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|MED
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|MED|Non CO2
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P5
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P5|Non CO2
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P66
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P66|Non CO2
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P90
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P90|Non CO2
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P95
+AR5 climate diagnostics|Temperature|Global Mean|FAIR|P95|Non CO2
+AR5 climate diagnostics|Temperature|Global Mean|MAGICC6|Expected value
+AR5 climate diagnostics|Temperature|Global Mean|MAGICC6|Expected value|Non CO2
+AR5 climate diagnostics|Temperature|Global Mean|MAGICC6|MED
+AR5 climate diagnostics|Temperature|Global Mean|MAGICC6|P5
+AR5 climate diagnostics|Temperature|Global Mean|MAGICC6|P66
+AR5 climate diagnostics|Temperature|Global Mean|MAGICC6|P90
+AR5 climate diagnostics|Temperature|Global Mean|MAGICC6|P95
+Agricultural Demand
+Agricultural Demand|Crops|Feed
+Agricultural Demand|Crops|Food
+Agricultural Demand|Crops|Other
+Agricultural Demand|Livestock|Food
+Agricultural Demand|Livestock|Other
+Agricultural Production
+Capacity|Electricity
+Capacity|Electricity|Biomass
+Capacity|Electricity|Coal
+Capacity|Electricity|Gas
+Capacity|Electricity|Geothermal
+Capacity|Electricity|Hydro
+Capacity|Electricity|Nuclear
+Capacity|Electricity|Oil
+Capacity|Electricity|Solar
+Capacity|Electricity|Solar|PV
+Capacity|Electricity|Wind
+Capacity|Electricity|Wind|Onshore
+Carbon Sequestration|CCS
+Carbon Sequestration|CCS|Biomass
+Carbon Sequestration|CCS|Biomass|Energy|Supply
+Carbon Sequestration|CCS|Biomass|Energy|Supply|Electricity
+Carbon Sequestration|CCS|Biomass|Energy|Supply|Liquids
+Carbon Sequestration|CCS|Fossil
+Carbon Sequestration|CCS|Fossil|Energy|Demand|Industry
+Carbon Sequestration|CCS|Fossil|Energy|Supply
+Carbon Sequestration|CCS|Fossil|Energy|Supply|Electricity
+Carbon Sequestration|CCS|Fossil|Energy|Supply|Liquids
+Carbon Sequestration|Land Use
+Concentration|CH4
+Concentration|CO2
+Concentration|N2O
+Consumption
+Cumulative Capacity|Electricity|Biomass
+Cumulative Capacity|Electricity|Biomass|w/ CCS
+Cumulative Capacity|Electricity|Coal
+Cumulative Capacity|Electricity|Coal|w/ CCS
+Cumulative Capacity|Electricity|Coal|w/o CCS
+Cumulative Capacity|Electricity|Gas
+Cumulative Capacity|Electricity|Gas|w/ CCS
+Cumulative Capacity|Electricity|Gas|w/o CCS
+Cumulative Capacity|Electricity|Nuclear
+Cumulative Capacity|Electricity|Oil
+Cumulative Capacity|Electricity|Solar
+Cumulative Capacity|Electricity|Solar|PV
+Diagnostics|MAGICC6|Harmonized Input|Emissions|BC
+Diagnostics|MAGICC6|Harmonized Input|Emissions|C2F6
+Diagnostics|MAGICC6|Harmonized Input|Emissions|C6F14
+Diagnostics|MAGICC6|Harmonized Input|Emissions|CH4
+Diagnostics|MAGICC6|Harmonized Input|Emissions|CO
+Diagnostics|MAGICC6|Harmonized Input|Emissions|CO2|AFOLU
+Diagnostics|MAGICC6|Harmonized Input|Emissions|CO2|Energy and Industrial Processes
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC125
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC134a
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC143a
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC227ea
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC23
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC245ca
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC32
+Diagnostics|MAGICC6|Harmonized Input|Emissions|HFC|HFC43-10
+Diagnostics|MAGICC6|Harmonized Input|Emissions|N2O
+Diagnostics|MAGICC6|Harmonized Input|Emissions|NH3
+Diagnostics|MAGICC6|Harmonized Input|Emissions|NOx
+Diagnostics|MAGICC6|Harmonized Input|Emissions|OC
+Diagnostics|MAGICC6|Harmonized Input|Emissions|PFC
+Diagnostics|MAGICC6|Harmonized Input|Emissions|SF6
+Diagnostics|MAGICC6|Harmonized Input|Emissions|Sulfur
+Diagnostics|MAGICC6|Harmonized Input|Emissions|VOC
+Emissions|BC
+Emissions|BC|AFOLU
+Emissions|BC|Energy
+Emissions|BC|Energy|Demand|Industry
+Emissions|BC|Energy|Demand|Residential and Commercial
+Emissions|BC|Energy|Demand|Transportation
+Emissions|BC|Energy|Supply
+Emissions|CH4
+Emissions|CH4|AFOLU
+Emissions|CH4|Energy
+Emissions|CH4|Energy|Demand|Industry
+Emissions|CH4|Energy|Demand|Residential and Commercial
+Emissions|CH4|Energy|Demand|Transportation
+Emissions|CH4|Energy|Supply
+Emissions|CO
+Emissions|CO2
+Emissions|CO2|AFOLU
+Emissions|CO2|Energy
+Emissions|CO2|Energy and Industrial Processes
+Emissions|CO2|Energy|Demand
+Emissions|CO2|Energy|Demand|AFOFI
+Emissions|CO2|Energy|Demand|Industry
+Emissions|CO2|Energy|Demand|Residential and Commercial
+Emissions|CO2|Energy|Demand|Transportation
+Emissions|CO2|Energy|Supply
+Emissions|CO2|Energy|Supply|Other Sector
+Emissions|CO2|Industrial Processes
+Emissions|CO2|Other
+Emissions|CO|AFOLU
+Emissions|CO|Energy
+Emissions|CO|Energy|Demand|Industry
+Emissions|CO|Energy|Demand|Residential and Commercial
+Emissions|CO|Energy|Demand|Transportation
+Emissions|CO|Energy|Supply
+Emissions|F-Gases
+Emissions|HFC
+Emissions|HFC|HFC125
+Emissions|HFC|HFC134a
+Emissions|HFC|HFC143a
+Emissions|HFC|HFC227ea
+Emissions|HFC|HFC23
+Emissions|HFC|HFC32
+Emissions|HFC|HFC43-10
+Emissions|Kyoto Gases
+Emissions|Kyoto Gases (AR4-GWP100)
+Emissions|Kyoto Gases (AR5-GWP100)
+Emissions|Kyoto Gases (SAR-GWP100)
+Emissions|N2O
+Emissions|N2O|AFOLU
+Emissions|N2O|Energy
+Emissions|N2O|Other
+Emissions|NH3
+Emissions|NH3|AFOLU
+Emissions|NH3|Energy
+Emissions|NH3|Energy|Demand|Industry
+Emissions|NH3|Energy|Demand|Residential and Commercial
+Emissions|NH3|Energy|Demand|Transportation
+Emissions|NH3|Energy|Supply
+Emissions|NOx
+Emissions|NOx|AFOLU
+Emissions|NOx|Energy
+Emissions|NOx|Energy|Demand|Industry
+Emissions|NOx|Energy|Demand|Residential and Commercial
+Emissions|NOx|Energy|Demand|Transportation
+Emissions|NOx|Energy|Supply
+Emissions|OC
+Emissions|OC|AFOLU
+Emissions|OC|Energy
+Emissions|OC|Energy|Demand|Industry
+Emissions|OC|Energy|Demand|Residential and Commercial
+Emissions|OC|Energy|Demand|Transportation
+Emissions|OC|Energy|Supply
+Emissions|PFC
+Emissions|SF6
+Emissions|Sulfur
+Emissions|Sulfur|AFOLU
+Emissions|Sulfur|Energy
+Emissions|Sulfur|Energy|Demand|Industry
+Emissions|Sulfur|Energy|Demand|Residential and Commercial
+Emissions|Sulfur|Energy|Demand|Transportation
+Emissions|Sulfur|Energy|Supply
+Emissions|VOC
+Emissions|VOC|AFOLU
+Emissions|VOC|Energy
+Emissions|VOC|Energy|Demand|Industry
+Emissions|VOC|Energy|Demand|Residential and Commercial
+Emissions|VOC|Energy|Demand|Transportation
+Emissions|VOC|Energy|Supply
+Final Energy
+Final Energy|Electricity
+Final Energy|Gases
+Final Energy|Heat
+Final Energy|Industry
+Final Energy|Industry|Electricity
+Final Energy|Industry|Gases
+Final Energy|Industry|Heat
+Final Energy|Industry|Liquids
+Final Energy|Industry|Solids
+Final Energy|Industry|Solids|Biomass
+Final Energy|Industry|Solids|Coal
+Final Energy|Liquids
+Final Energy|Residential and Commercial
+Final Energy|Residential and Commercial|Electricity
+Final Energy|Residential and Commercial|Gases
+Final Energy|Residential and Commercial|Heat
+Final Energy|Residential and Commercial|Liquids
+Final Energy|Residential and Commercial|Solids
+Final Energy|Residential and Commercial|Solids|Biomass
+Final Energy|Residential and Commercial|Solids|Coal
+Final Energy|Solids
+Final Energy|Solids|Biomass
+Final Energy|Solids|Coal
+Final Energy|Transportation
+Final Energy|Transportation|Electricity
+Final Energy|Transportation|Gases
+Final Energy|Transportation|Liquids
+Final Energy|Transportation|Liquids|Biomass
+Final Energy|Transportation|Liquids|Oil
+Food Energy Supply
+Forcing
+Forcing|Aerosol
+Forcing|Aerosol|BC
+Forcing|Aerosol|OC
+Forcing|Aerosol|Other
+Forcing|Aerosol|Sulfate Direct
+Forcing|CH4
+Forcing|CO2
+Forcing|F-Gases
+Forcing|Kyoto Gases
+Forcing|N2O
+Forcing|Other
+Forcing|Tropospheric Ozone
+GDP|MER
+GDP|PPP
+Investment|Energy Supply
+Investment|Energy Supply|CO2 Transport and Storage
+Investment|Energy Supply|Electricity
+Investment|Energy Supply|Electricity|Fossil
+Investment|Energy Supply|Electricity|Non-fossil
+Investment|Energy Supply|Electricity|Other
+Investment|Energy Supply|Electricity|Transmission and Distribution
+Investment|Energy Supply|Extraction|Fossil
+Investment|Energy Supply|Heat
+Investment|Energy Supply|Liquids
+Land Cover
+Land Cover|Built-up Area
+Land Cover|Cropland
+Land Cover|Cropland|Cereals
+Land Cover|Cropland|Energy Crops
+Land Cover|Forest
+Land Cover|Forest|Natural Forest
+Land Cover|Other Arable Land
+Land Cover|Other Land
+Land Cover|Pasture
+Policy Cost|Consumption Loss
+Policy Cost|GDP Loss
+Population
+Price|Agriculture|Non-Energy Crops and Livestock|Index
+Price|Agriculture|Non-Energy Crops|Index
+Price|Carbon
+Price|Primary Energy|Coal
+Price|Primary Energy|Gas
+Price|Primary Energy|Oil
+Price|Secondary Energy|Electricity
+Price|Secondary Energy|Liquids|Biomass
+Primary Energy
+Primary Energy|Biomass
+Primary Energy|Coal
+Primary Energy|Coal|w/ CCS
+Primary Energy|Coal|w/o CCS
+Primary Energy|Fossil
+Primary Energy|Fossil|w/ CCS
+Primary Energy|Fossil|w/o CCS
+Primary Energy|Gas
+Primary Energy|Gas|w/ CCS
+Primary Energy|Gas|w/o CCS
+Primary Energy|Non-Biomass Renewables
+Primary Energy|Nuclear
+Primary Energy|Oil
+Primary Energy|Oil|w/ CCS
+Primary Energy|Oil|w/o CCS
+Primary Energy|Other
+Primary Energy|Secondary Energy Trade
+Secondary Energy|Electricity
+Secondary Energy|Electricity|Biomass
+Secondary Energy|Electricity|Biomass|w/ CCS
+Secondary Energy|Electricity|Biomass|w/o CCS
+Secondary Energy|Electricity|Coal
+Secondary Energy|Electricity|Coal|w/ CCS
+Secondary Energy|Electricity|Coal|w/o CCS
+Secondary Energy|Electricity|Gas
+Secondary Energy|Electricity|Gas|w/ CCS
+Secondary Energy|Electricity|Gas|w/o CCS
+Secondary Energy|Electricity|Geothermal
+Secondary Energy|Electricity|Hydro
+Secondary Energy|Electricity|Non-Biomass Renewables
+Secondary Energy|Electricity|Nuclear
+Secondary Energy|Electricity|Oil
+Secondary Energy|Electricity|Oil|w/ CCS
+Secondary Energy|Electricity|Oil|w/o CCS
+Secondary Energy|Electricity|Solar
+Secondary Energy|Electricity|Wind
+Secondary Energy|Electricity|Wind|Onshore
+Secondary Energy|Gases
+Secondary Energy|Gases|Natural Gas
+Secondary Energy|Heat
+Secondary Energy|Heat|Geothermal
+Secondary Energy|Liquids
+Secondary Energy|Liquids|Biomass
+Secondary Energy|Liquids|Oil
+Temperature|Global Mean
+Trade|Primary Energy|Coal|Volume
+Trade|Primary Energy|Gas|Volume
+Trade|Primary Energy|Oil|Volume

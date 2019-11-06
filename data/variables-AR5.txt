@@ -1,0 +1,35 @@
+Concentration|CO2|MAGICC6|MED
+Consumption
+Emissions|CO2
+Emissions|CO2|Fossil Fuels and Industry
+Emissions|CO2|Fossil Fuels and Industry|Energy Demand|Transportation
+Energy Service|Transportation|Freight
+Energy Service|Transportation|Passenger
+Final Energy|Transportation
+Final Energy|Transportation|Electricity
+Final Energy|Transportation|Freight
+Final Energy|Transportation|Gases
+Final Energy|Transportation|Hydrogen
+Final Energy|Transportation|Liquids
+Final Energy|Transportation|Liquids|Biomass
+Final Energy|Transportation|Liquids|Oil
+Final Energy|Transportation|Passenger
+Forcing|CO2|MAGICC6|MED
+Forcing|Kyoto Gases|MAGICC6|MED
+Forcing|MAGICC6|MED
+GDP|MER
+Policy Cost|Additional Total Energy System Cost
+Policy Cost|Area under MAC Curve
+Policy Cost|Consumption Loss
+Policy Cost|Equivalent Variation
+Policy Cost|GDP Loss
+Policy Cost|Other
+Population
+Price|Carbon
+Temperature|Exceedance Probability|1.5 degC|MAGICC6
+Temperature|Exceedance Probability|2.0 degC|MAGICC6
+Temperature|Exceedance Probability|3.0 degC|MAGICC6
+Temperature|Exceedance Probability|4.0 degC|MAGICC6
+Temperature|Global Mean|MAGICC6|MED
+Temperature|Global Mean|MAGICC6|P5
+Temperature|Global Mean|MAGICC6|P95
