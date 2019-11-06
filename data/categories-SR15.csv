@@ -1,0 +1,417 @@
+model,scenario,category,subcategory
+AIM/CGE 2.0,ADVANCE_2020_1.5C-2100,1.5C low overshoot,Lower 1.5C low overshoot
+AIM/CGE 2.0,ADVANCE_2020_Med2C,Higher 2C,Higher 2C
+AIM/CGE 2.0,ADVANCE_2020_WB2C,Lower 2C,Lower 2C
+AIM/CGE 2.0,ADVANCE_2030_Med2C,Above 2C,Above 2C
+AIM/CGE 2.0,ADVANCE_2030_Price1.5C,Lower 2C,Lower 2C
+AIM/CGE 2.0,ADVANCE_2030_WB2C,Lower 2C,Lower 2C
+AIM/CGE 2.0,ADVANCE_INDC,Above 2C,Above 2C
+AIM/CGE 2.0,ADVANCE_NoPolicy,Above 2C,Above 2C
+AIM/CGE 2.0,ADVANCE_Reference,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_Bio_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_Bio_2Degree,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_Bio_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_EEEI_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_EEEI_2Degree,Higher 2C,Higher 2C
+AIM/CGE 2.0,SFCM_SSP2_EEEI_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_LifeStyle_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_LifeStyle_2Degree,Higher 2C,Higher 2C
+AIM/CGE 2.0,SFCM_SSP2_LifeStyle_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_Ref_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_Ref_2Degree,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_Ref_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_CCS_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_CCS_2Degree,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_CCS_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_bio_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_bio_2Degree,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_bio_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_nuclear_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_nuclear_2Degree,Higher 2C,Higher 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_nuclear_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_solar_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_solar_2Degree,Higher 2C,Higher 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_solar_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_wind_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_wind_2Degree,Higher 2C,Higher 2C
+AIM/CGE 2.0,SFCM_SSP2_ST_wind_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_SupTech_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_SupTech_2Degree,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_SupTech_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SFCM_SSP2_combined_1p5Degree,Lower 2C,Lower 2C
+AIM/CGE 2.0,SFCM_SSP2_combined_2Degree,Higher 2C,Higher 2C
+AIM/CGE 2.0,SFCM_SSP2_combined_Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SSP1-19,1.5C low overshoot,Lower 1.5C low overshoot
+AIM/CGE 2.0,SSP1-26,Lower 2C,Lower 2C
+AIM/CGE 2.0,SSP1-34,Above 2C,Above 2C
+AIM/CGE 2.0,SSP1-45,Above 2C,Above 2C
+AIM/CGE 2.0,SSP1-Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SSP2-19,1.5C low overshoot,Lower 1.5C low overshoot
+AIM/CGE 2.0,SSP2-26,Lower 2C,Lower 2C
+AIM/CGE 2.0,SSP2-34,Above 2C,Above 2C
+AIM/CGE 2.0,SSP2-45,Above 2C,Above 2C
+AIM/CGE 2.0,SSP2-60,Above 2C,Above 2C
+AIM/CGE 2.0,SSP2-Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SSP3-34,Above 2C,Above 2C
+AIM/CGE 2.0,SSP3-45,Above 2C,Above 2C
+AIM/CGE 2.0,SSP3-60,Above 2C,Above 2C
+AIM/CGE 2.0,SSP3-Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SSP4-26,Lower 2C,Lower 2C
+AIM/CGE 2.0,SSP4-34,Above 2C,Above 2C
+AIM/CGE 2.0,SSP4-45,Above 2C,Above 2C
+AIM/CGE 2.0,SSP4-Baseline,Above 2C,Above 2C
+AIM/CGE 2.0,SSP5-26,Lower 2C,Lower 2C
+AIM/CGE 2.0,SSP5-34,Above 2C,Above 2C
+AIM/CGE 2.0,SSP5-45,Above 2C,Above 2C
+AIM/CGE 2.0,SSP5-60,Above 2C,Above 2C
+AIM/CGE 2.0,SSP5-Baseline,Above 2C,Above 2C
+AIM/CGE 2.1,CD-LINKS_INDCi,Above 2C,Above 2C
+AIM/CGE 2.1,CD-LINKS_NPi,Above 2C,Above 2C
+AIM/CGE 2.1,CD-LINKS_NPi2020_1000,Lower 2C,Lower 2C
+AIM/CGE 2.1,CD-LINKS_NPi2020_1600,Above 2C,Above 2C
+AIM/CGE 2.1,CD-LINKS_NPi2020_400,1.5C low overshoot,Lower 1.5C low overshoot
+AIM/CGE 2.1,CD-LINKS_NoPolicy,Above 2C,Above 2C
+AIM/CGE 2.1,EMF33_Baseline,Above 2C,Above 2C
+AIM/CGE 2.1,EMF33_Med2C_cost100,Higher 2C,Higher 2C
+AIM/CGE 2.1,EMF33_Med2C_full,Higher 2C,Higher 2C
+AIM/CGE 2.1,EMF33_Med2C_nobeccs,Higher 2C,Higher 2C
+AIM/CGE 2.1,EMF33_Med2C_nofuel,Lower 2C,Lower 2C
+AIM/CGE 2.1,EMF33_Med2C_none,Lower 2C,Lower 2C
+AIM/CGE 2.1,EMF33_WB2C_cost100,1.5C high overshoot,Higher 1.5C high overshoot
+AIM/CGE 2.1,EMF33_WB2C_full,Lower 2C,Lower 2C
+AIM/CGE 2.1,EMF33_tax_hi_full,Above 2C,Above 2C
+AIM/CGE 2.1,EMF33_tax_hi_none,Above 2C,Above 2C
+AIM/CGE 2.1,EMF33_tax_lo_full,Above 2C,Above 2C
+AIM/CGE 2.1,EMF33_tax_lo_none,Above 2C,Above 2C
+AIM/CGE 2.1,TERL_15D_LowCarbonTransportPolicy,1.5C low overshoot,Lower 1.5C low overshoot
+AIM/CGE 2.1,TERL_15D_NoTransportPolicy,1.5C low overshoot,Higher 1.5C low overshoot
+AIM/CGE 2.1,TERL_2D_LowCarbonTransportPolicy,Lower 2C,Lower 2C
+AIM/CGE 2.1,TERL_2D_NoTransportPolicy,Lower 2C,Lower 2C
+AIM/CGE 2.1,TERL_Baseline_LowCarbonTransportPolicy,Above 2C,Above 2C
+AIM/CGE 2.1,TERL_Baseline_NoTransportPolicy,Above 2C,Above 2C
+C-ROADS-5.005,Ratchet-1.5-allCDR,1.5C high overshoot,Lower 1.5C high overshoot
+C-ROADS-5.005,Ratchet-1.5-limCDR,1.5C high overshoot,Lower 1.5C high overshoot
+C-ROADS-5.005,Ratchet-1.5-limCDR-noOS,Below 1.5C,Below 1.5C (II)
+C-ROADS-5.005,Ratchet-1.5-noCDR,1.5C low overshoot,Lower 1.5C low overshoot
+C-ROADS-5.005,Ratchet-1.5-noCDR-noOS,Below 1.5C,Below 1.5C (II)
+C-ROADS-5.005,Reference,Above 2C,Above 2C
+GCAM 4.2,SSP1-19,1.5C low overshoot,Lower 1.5C low overshoot
+GCAM 4.2,SSP1-26,Lower 2C,Lower 2C
+GCAM 4.2,SSP1-34,Above 2C,Above 2C
+GCAM 4.2,SSP1-45,Above 2C,Above 2C
+GCAM 4.2,SSP1-Baseline,Above 2C,Above 2C
+GCAM 4.2,SSP2-19,1.5C high overshoot,Lower 1.5C high overshoot
+GCAM 4.2,SSP2-26,Higher 2C,Higher 2C
+GCAM 4.2,SSP2-34,Above 2C,Above 2C
+GCAM 4.2,SSP2-45,Above 2C,Above 2C
+GCAM 4.2,SSP2-60,Above 2C,Above 2C
+GCAM 4.2,SSP2-Baseline,Above 2C,Above 2C
+GCAM 4.2,SSP3-Baseline,Above 2C,Above 2C
+GCAM 4.2,SSP4-26,Higher 2C,Higher 2C
+GCAM 4.2,SSP4-34,Above 2C,Above 2C
+GCAM 4.2,SSP4-45,Above 2C,Above 2C
+GCAM 4.2,SSP4-60,Above 2C,Above 2C
+GCAM 4.2,SSP4-Baseline,Above 2C,Above 2C
+GCAM 4.2,SSP5-19,1.5C high overshoot,Lower 1.5C high overshoot
+GCAM 4.2,SSP5-26,Higher 2C,Higher 2C
+GCAM 4.2,SSP5-34,Above 2C,Above 2C
+GCAM 4.2,SSP5-45,Above 2C,Above 2C
+GCAM 4.2,SSP5-60,Above 2C,Above 2C
+GCAM 4.2,SSP5-Baseline,Above 2C,Above 2C
+GENeSYS-MOD 1.0,1,no-climate-assessment,no-climate-assessment
+IEA Energy Technology Perspective Model 2017,B2DS,no-climate-assessment,no-climate-assessment
+IEA World Energy Model 2017,Faster Transition Scenario,Higher 2C,Higher 2C
+IMAGE 3.0.1,ADVANCE_2020_1.5C-2100,1.5C high overshoot,Higher 1.5C high overshoot
+IMAGE 3.0.1,ADVANCE_2020_Med2C,Higher 2C,Higher 2C
+IMAGE 3.0.1,ADVANCE_2020_WB2C,Lower 2C,Lower 2C
+IMAGE 3.0.1,ADVANCE_2030_Med2C,Higher 2C,Higher 2C
+IMAGE 3.0.1,ADVANCE_2030_WB2C,Lower 2C,Lower 2C
+IMAGE 3.0.1,ADVANCE_INDC,Above 2C,Above 2C
+IMAGE 3.0.1,ADVANCE_NoPolicy,Above 2C,Above 2C
+IMAGE 3.0.1,ADVANCE_Reference,Above 2C,Above 2C
+IMAGE 3.0.1,CD-LINKS_INDCi,Above 2C,Above 2C
+IMAGE 3.0.1,CD-LINKS_NPi,Above 2C,Above 2C
+IMAGE 3.0.1,CD-LINKS_NPi2020_1000,Lower 2C,Lower 2C
+IMAGE 3.0.1,CD-LINKS_NPi2020_1600,Higher 2C,Higher 2C
+IMAGE 3.0.1,CD-LINKS_NPi2020_400,1.5C high overshoot,Higher 1.5C high overshoot
+IMAGE 3.0.1,CD-LINKS_NoPolicy,Above 2C,Above 2C
+IMAGE 3.0.1,IMA15-AGInt,1.5C low overshoot,Lower 1.5C low overshoot
+IMAGE 3.0.1,IMA15-Def,1.5C low overshoot,Lower 1.5C low overshoot
+IMAGE 3.0.1,IMA15-Eff,1.5C low overshoot,Lower 1.5C low overshoot
+IMAGE 3.0.1,IMA15-LiStCh,1.5C low overshoot,Lower 1.5C low overshoot
+IMAGE 3.0.1,IMA15-LoNCO2,1.5C high overshoot,Lower 1.5C high overshoot
+IMAGE 3.0.1,IMA15-Pop,1.5C low overshoot,Lower 1.5C low overshoot
+IMAGE 3.0.1,IMA15-RenElec,1.5C high overshoot,Lower 1.5C high overshoot
+IMAGE 3.0.1,IMA15-TOT,1.5C low overshoot,Lower 1.5C low overshoot
+IMAGE 3.0.1,SSP1-19,1.5C low overshoot,Lower 1.5C low overshoot
+IMAGE 3.0.1,SSP1-26,Lower 2C,Lower 2C
+IMAGE 3.0.1,SSP1-34,Above 2C,Above 2C
+IMAGE 3.0.1,SSP1-45,Above 2C,Above 2C
+IMAGE 3.0.1,SSP1-Baseline,Above 2C,Above 2C
+IMAGE 3.0.1,SSP2-26,Lower 2C,Lower 2C
+IMAGE 3.0.1,SSP2-34,Above 2C,Above 2C
+IMAGE 3.0.1,SSP2-45,Above 2C,Above 2C
+IMAGE 3.0.1,SSP2-60,Above 2C,Above 2C
+IMAGE 3.0.1,SSP2-Baseline,Above 2C,Above 2C
+IMAGE 3.0.1,SSP3-34,Above 2C,Above 2C
+IMAGE 3.0.1,SSP3-45,Above 2C,Above 2C
+IMAGE 3.0.1,SSP3-60,Above 2C,Above 2C
+IMAGE 3.0.1,SSP3-Baseline,Above 2C,Above 2C
+IMAGE 3.0.1,SSP4-26,Lower 2C,Lower 2C
+IMAGE 3.0.1,SSP4-34,Above 2C,Above 2C
+IMAGE 3.0.1,SSP4-45,Above 2C,Above 2C
+IMAGE 3.0.1,SSP4-60,Above 2C,Above 2C
+IMAGE 3.0.1,SSP4-Baseline,Above 2C,Above 2C
+IMAGE 3.0.1,SSP5-34,Above 2C,Above 2C
+IMAGE 3.0.1,SSP5-45,Above 2C,Above 2C
+IMAGE 3.0.1,SSP5-60,Above 2C,Above 2C
+IMAGE 3.0.1,SSP5-Baseline,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_Baseline,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_Med2C_cost100,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_Med2C_full,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_Med2C_limbio,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_Med2C_nobeccs,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_Med2C_nofuel,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_Med2C_none,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_WB2C_cost100,Higher 2C,Higher 2C
+IMAGE 3.0.2,EMF33_WB2C_full,Higher 2C,Higher 2C
+IMAGE 3.0.2,EMF33_WB2C_limbio,Higher 2C,Higher 2C
+IMAGE 3.0.2,EMF33_WB2C_nobeccs,Higher 2C,Higher 2C
+IMAGE 3.0.2,EMF33_WB2C_nofuel,Higher 2C,Higher 2C
+IMAGE 3.0.2,EMF33_tax_hi_full,Higher 2C,Higher 2C
+IMAGE 3.0.2,EMF33_tax_hi_none,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_tax_lo_full,Above 2C,Above 2C
+IMAGE 3.0.2,EMF33_tax_lo_none,Above 2C,Above 2C
+MERGE-ETL 6.0,BAU,Above 2C,Above 2C
+MERGE-ETL 6.0,DAC15_50,1.5C low overshoot,Lower 1.5C low overshoot
+MERGE-ETL 6.0,DAC2_66,Higher 2C,Higher 2C
+MESSAGE V.3,GEA_Eff_1p5C,Lower 2C,Lower 2C
+MESSAGE V.3,GEA_Eff_1p5C_Delay2020,Lower 2C,Lower 2C
+MESSAGE V.3,GEA_Eff_2C_Delay2020,Higher 2C,Higher 2C
+MESSAGE V.3,GEA_Eff_AdvNCO2_1p5C,Lower 2C,Lower 2C
+MESSAGE V.3,GEA_Eff_base,Above 2C,Above 2C
+MESSAGE V.3,GEA_Mix_1p5C_AdvNCO2_PartialDelay2020,Lower 2C,Lower 2C
+MESSAGE V.3,GEA_Mix_1p5C_AdvTrans_PartialDelay2020,Lower 2C,Lower 2C
+MESSAGE V.3,GEA_Mix_2C_AdvNCO2_PartialDelay2020,Higher 2C,Higher 2C
+MESSAGE V.3,GEA_Mix_2C_AdvTrans_PartialDelay2020,Higher 2C,Higher 2C
+MESSAGE V.3,GEA_Mix_base,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,ADVANCE_2020_1.5C-2100,1.5C low overshoot,Lower 1.5C low overshoot
+MESSAGE-GLOBIOM 1.0,ADVANCE_2020_Med2C,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,ADVANCE_2020_WB2C,Lower 2C,Lower 2C
+MESSAGE-GLOBIOM 1.0,ADVANCE_2030_Med2C,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,ADVANCE_2030_Price1.5C,1.5C high overshoot,Higher 1.5C high overshoot
+MESSAGE-GLOBIOM 1.0,ADVANCE_2030_WB2C,Lower 2C,Lower 2C
+MESSAGE-GLOBIOM 1.0,ADVANCE_INDC,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,ADVANCE_NoPolicy,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,ADVANCE_Reference,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,EMF33_1.5C_cost100,1.5C low overshoot,Lower 1.5C low overshoot
+MESSAGE-GLOBIOM 1.0,EMF33_1.5C_full,1.5C low overshoot,Lower 1.5C low overshoot
+MESSAGE-GLOBIOM 1.0,EMF33_Baseline,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,EMF33_Med2C_cost100,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,EMF33_Med2C_full,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,EMF33_Med2C_limbio,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,EMF33_Med2C_nobeccs,Lower 2C,Lower 2C
+MESSAGE-GLOBIOM 1.0,EMF33_Med2C_nofuel,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,EMF33_Med2C_none,Lower 2C,Lower 2C
+MESSAGE-GLOBIOM 1.0,EMF33_WB2C_cost100,1.5C high overshoot,Higher 1.5C high overshoot
+MESSAGE-GLOBIOM 1.0,EMF33_WB2C_full,1.5C high overshoot,Higher 1.5C high overshoot
+MESSAGE-GLOBIOM 1.0,EMF33_WB2C_limbio,1.5C high overshoot,Higher 1.5C high overshoot
+MESSAGE-GLOBIOM 1.0,EMF33_WB2C_nofuel,1.5C high overshoot,Higher 1.5C high overshoot
+MESSAGE-GLOBIOM 1.0,EMF33_tax_hi_full,Lower 2C,Lower 2C
+MESSAGE-GLOBIOM 1.0,EMF33_tax_hi_none,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,EMF33_tax_lo_full,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,EMF33_tax_lo_none,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP1-19,1.5C low overshoot,Lower 1.5C low overshoot
+MESSAGE-GLOBIOM 1.0,SSP1-26,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,SSP1-34,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP1-45,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP1-Baseline,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP2-19,1.5C low overshoot,Lower 1.5C low overshoot
+MESSAGE-GLOBIOM 1.0,SSP2-26,Higher 2C,Higher 2C
+MESSAGE-GLOBIOM 1.0,SSP2-34,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP2-45,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP2-60,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP2-Baseline,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP3-34,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP3-45,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP3-60,Above 2C,Above 2C
+MESSAGE-GLOBIOM 1.0,SSP3-Baseline,Above 2C,Above 2C
+MESSAGEix-GLOBIOM 1.0,CD-LINKS_INDCi,Above 2C,Above 2C
+MESSAGEix-GLOBIOM 1.0,CD-LINKS_NPi,Above 2C,Above 2C
+MESSAGEix-GLOBIOM 1.0,CD-LINKS_NPi2020_1000,Lower 2C,Lower 2C
+MESSAGEix-GLOBIOM 1.0,CD-LINKS_NPi2020_1600,Higher 2C,Higher 2C
+MESSAGEix-GLOBIOM 1.0,CD-LINKS_NPi2020_400,1.5C high overshoot,Lower 1.5C high overshoot
+MESSAGEix-GLOBIOM 1.0,CD-LINKS_NoPolicy,Above 2C,Above 2C
+MESSAGEix-GLOBIOM 1.0,LowEnergyDemand,1.5C low overshoot,Higher 1.5C low overshoot
+POLES ADVANCE,ADVANCE_2020_1.5C-2100,1.5C low overshoot,Lower 1.5C low overshoot
+POLES ADVANCE,ADVANCE_2020_Med2C,Lower 2C,Lower 2C
+POLES ADVANCE,ADVANCE_2020_WB2C,1.5C high overshoot,Higher 1.5C high overshoot
+POLES ADVANCE,ADVANCE_2030_1.5C-2100,1.5C high overshoot,Lower 1.5C high overshoot
+POLES ADVANCE,ADVANCE_2030_Med2C,Lower 2C,Lower 2C
+POLES ADVANCE,ADVANCE_2030_Price1.5C,1.5C high overshoot,Lower 1.5C high overshoot
+POLES ADVANCE,ADVANCE_2030_WB2C,1.5C high overshoot,Higher 1.5C high overshoot
+POLES ADVANCE,ADVANCE_INDC,Above 2C,Above 2C
+POLES ADVANCE,ADVANCE_NoPolicy,Above 2C,Above 2C
+POLES ADVANCE,ADVANCE_Reference,Above 2C,Above 2C
+POLES CD-LINKS,CD-LINKS_INDCi,Above 2C,Above 2C
+POLES CD-LINKS,CD-LINKS_NPi,Above 2C,Above 2C
+POLES CD-LINKS,CD-LINKS_NPi2020_1000,Lower 2C,Lower 2C
+POLES CD-LINKS,CD-LINKS_NPi2020_1600,Higher 2C,Higher 2C
+POLES CD-LINKS,CD-LINKS_NPi2020_400,1.5C high overshoot,Lower 1.5C high overshoot
+POLES CD-LINKS,CD-LINKS_NoPolicy,Above 2C,Above 2C
+POLES EMF33,EMF33_1.5C_cost100,Below 1.5C,Below 1.5C (II)
+POLES EMF33,EMF33_1.5C_full,Below 1.5C,Below 1.5C (II)
+POLES EMF33,EMF33_1.5C_limbio,Below 1.5C,Below 1.5C (II)
+POLES EMF33,EMF33_1.5C_nofuel,Below 1.5C,Below 1.5C (II)
+POLES EMF33,EMF33_Baseline,Above 2C,Above 2C
+POLES EMF33,EMF33_Med2C_cost100,Lower 2C,Lower 2C
+POLES EMF33,EMF33_Med2C_full,Lower 2C,Lower 2C
+POLES EMF33,EMF33_Med2C_limbio,Lower 2C,Lower 2C
+POLES EMF33,EMF33_Med2C_nobeccs,Lower 2C,Lower 2C
+POLES EMF33,EMF33_Med2C_nofuel,Lower 2C,Lower 2C
+POLES EMF33,EMF33_Med2C_none,Lower 2C,Lower 2C
+POLES EMF33,EMF33_WB2C_cost100,1.5C low overshoot,Higher 1.5C low overshoot
+POLES EMF33,EMF33_WB2C_full,1.5C low overshoot,Higher 1.5C low overshoot
+POLES EMF33,EMF33_WB2C_limbio,1.5C low overshoot,Higher 1.5C low overshoot
+POLES EMF33,EMF33_WB2C_nobeccs,1.5C low overshoot,Lower 1.5C low overshoot
+POLES EMF33,EMF33_WB2C_nofuel,1.5C low overshoot,Lower 1.5C low overshoot
+POLES EMF33,EMF33_WB2C_none,1.5C low overshoot,Lower 1.5C low overshoot
+POLES EMF33,EMF33_tax_hi_full,Higher 2C,Higher 2C
+POLES EMF33,EMF33_tax_hi_none,Higher 2C,Higher 2C
+POLES EMF33,EMF33_tax_lo_full,Above 2C,Above 2C
+POLES EMF33,EMF33_tax_lo_none,Above 2C,Above 2C
+REMIND 1.5,EMC_Def_100$,1.5C low overshoot,Higher 1.5C low overshoot
+REMIND 1.5,EMC_Def_30$,Higher 2C,Higher 2C
+REMIND 1.5,EMC_LimSW_100$,1.5C low overshoot,Higher 1.5C low overshoot
+REMIND 1.5,EMC_LimSW_30$,Above 2C,Above 2C
+REMIND 1.5,EMC_NucPO_100$,1.5C low overshoot,Higher 1.5C low overshoot
+REMIND 1.5,EMC_NucPO_30$,Higher 2C,Higher 2C
+REMIND 1.5,EMC_lowEI_100$,1.5C low overshoot,Lower 1.5C low overshoot
+REMIND 1.5,EMC_lowEI_30$,Higher 2C,Higher 2C
+REMIND 1.7,ADVANCE_2020_1.5C-2100,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND 1.7,ADVANCE_2020_Med2C,Higher 2C,Higher 2C
+REMIND 1.7,ADVANCE_2020_WB2C,Lower 2C,Lower 2C
+REMIND 1.7,ADVANCE_2030_1.5C-2100,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND 1.7,ADVANCE_2030_Med2C,Above 2C,Above 2C
+REMIND 1.7,ADVANCE_2030_Price1.5C,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND 1.7,ADVANCE_2030_WB2C,Higher 2C,Higher 2C
+REMIND 1.7,ADVANCE_INDC,Above 2C,Above 2C
+REMIND 1.7,ADVANCE_NoPolicy,Above 2C,Above 2C
+REMIND 1.7,ADVANCE_Reference,Above 2C,Above 2C
+REMIND 1.7,CEMICS-1.5-CDR12,1.5C low overshoot,Lower 1.5C low overshoot
+REMIND 1.7,CEMICS-1.5-CDR20,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND 1.7,CEMICS-1.5-CDR8,1.5C low overshoot,Lower 1.5C low overshoot
+REMIND 1.7,CEMICS-2.0-CDR12,Lower 2C,Lower 2C
+REMIND 1.7,CEMICS-2.0-CDR20,Higher 2C,Higher 2C
+REMIND 1.7,CEMICS-2.0-CDR8,Lower 2C,Lower 2C
+REMIND 1.7,CEMICS-Ref,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP1-19,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.5,SSP1-26,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.5,SSP1-34,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP1-45,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP1-Baseline,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP2-19,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.5,SSP2-26,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.5,SSP2-34,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP2-45,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP2-60,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP2-Baseline,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP5-19,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.5,SSP5-26,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP5-34,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP5-45,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP5-60,Above 2C,Above 2C
+REMIND-MAgPIE 1.5,SSP5-Baseline,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,CD-LINKS_INDCi,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,CD-LINKS_NPi,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,CD-LINKS_NPi2020_1000,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,CD-LINKS_NPi2020_1600,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,CD-LINKS_NPi2020_400,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,CD-LINKS_NoPolicy,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_1.5C_cost100,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,EMF33_1.5C_full,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,EMF33_1.5C_nofuel,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,EMF33_Baseline,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_Med2C_cost100,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_Med2C_full,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_Med2C_limbio,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_Med2C_nobeccs,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_Med2C_nofuel,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_Med2C_none,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_WB2C_cost100,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_WB2C_full,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_WB2C_limbio,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_WB2C_nobeccs,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_WB2C_nofuel,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_WB2C_none,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_tax_hi_full,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_tax_hi_none,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_tax_lo_full,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,EMF33_tax_lo_none,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,PEP_1p5C_full_NDC,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,PEP_1p5C_full_eff,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,PEP_1p5C_full_goodpractice,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,PEP_1p5C_full_netzero,1.5C high overshoot,Lower 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,PEP_1p5C_red_eff,1.5C low overshoot,Lower 1.5C low overshoot
+REMIND-MAgPIE 1.7-3.0,PEP_2C_full_NDC,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,PEP_2C_full_eff,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,PEP_2C_full_goodpractice,Higher 2C,Higher 2C
+REMIND-MAgPIE 1.7-3.0,PEP_2C_full_netzero,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,PEP_2C_red_NDC,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,PEP_2C_red_eff,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,PEP_2C_red_goodpractice,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,PEP_2C_red_netzero,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,SMP_1p5C_Def,1.5C low overshoot,Lower 1.5C low overshoot
+REMIND-MAgPIE 1.7-3.0,SMP_1p5C_Sust,Below 1.5C,Below 1.5C (II)
+REMIND-MAgPIE 1.7-3.0,SMP_1p5C_early,Below 1.5C,Below 1.5C (II)
+REMIND-MAgPIE 1.7-3.0,SMP_1p5C_lifesty,1.5C low overshoot,Lower 1.5C low overshoot
+REMIND-MAgPIE 1.7-3.0,SMP_1p5C_regul,1.5C low overshoot,Lower 1.5C low overshoot
+REMIND-MAgPIE 1.7-3.0,SMP_2C_Def,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,SMP_2C_Sust,1.5C low overshoot,Higher 1.5C low overshoot
+REMIND-MAgPIE 1.7-3.0,SMP_2C_early,Lower 2C,Lower 2C
+REMIND-MAgPIE 1.7-3.0,SMP_2C_lifesty,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,SMP_2C_regul,1.5C high overshoot,Higher 1.5C high overshoot
+REMIND-MAgPIE 1.7-3.0,SMP_REF_Def,Above 2C,Above 2C
+REMIND-MAgPIE 1.7-3.0,SMP_REF_Sust,Above 2C,Above 2C
+Reference,CEDS,reference,reference
+Reference,IEA Energy Statistics (r2017),reference,reference
+Shell World Energy Model 2018,Sky,no-climate-assessment,no-climate-assessment
+WITCH-GLOBIOM 3.1,SSP1-19,1.5C low overshoot,Lower 1.5C low overshoot
+WITCH-GLOBIOM 3.1,SSP1-26,Lower 2C,Lower 2C
+WITCH-GLOBIOM 3.1,SSP1-34,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP1-45,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP1-Baseline,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP2-26,Lower 2C,Lower 2C
+WITCH-GLOBIOM 3.1,SSP2-34,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP2-45,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP2-60,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP2-Baseline,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP3-34,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP3-45,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP3-60,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP3-Baseline,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP4-19,1.5C low overshoot,Lower 1.5C low overshoot
+WITCH-GLOBIOM 3.1,SSP4-26,Lower 2C,Lower 2C
+WITCH-GLOBIOM 3.1,SSP4-34,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP4-45,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP4-60,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP4-Baseline,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP5-34,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP5-45,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP5-60,Above 2C,Above 2C
+WITCH-GLOBIOM 3.1,SSP5-Baseline,Above 2C,Above 2C
+WITCH-GLOBIOM 4.2,ADVANCE_2020_1.5C-2100,1.5C low overshoot,Lower 1.5C low overshoot
+WITCH-GLOBIOM 4.2,ADVANCE_2020_Med2C,Higher 2C,Higher 2C
+WITCH-GLOBIOM 4.2,ADVANCE_2020_WB2C,Lower 2C,Lower 2C
+WITCH-GLOBIOM 4.2,ADVANCE_2030_Med2C,Higher 2C,Higher 2C
+WITCH-GLOBIOM 4.2,ADVANCE_2030_Price1.5C,Lower 2C,Lower 2C
+WITCH-GLOBIOM 4.2,ADVANCE_2030_WB2C,Lower 2C,Lower 2C
+WITCH-GLOBIOM 4.2,ADVANCE_INDC,Above 2C,Above 2C
+WITCH-GLOBIOM 4.2,ADVANCE_NoPolicy,Above 2C,Above 2C
+WITCH-GLOBIOM 4.2,ADVANCE_Reference,Above 2C,Above 2C
+WITCH-GLOBIOM 4.4,CD-LINKS_INDCi,Above 2C,Above 2C
+WITCH-GLOBIOM 4.4,CD-LINKS_NPi,Above 2C,Above 2C
+WITCH-GLOBIOM 4.4,CD-LINKS_NPi2020_1000,1.5C low overshoot,Higher 1.5C low overshoot
+WITCH-GLOBIOM 4.4,CD-LINKS_NPi2020_1600,Lower 2C,Lower 2C
+WITCH-GLOBIOM 4.4,CD-LINKS_NPi2020_400,Below 1.5C,Below 1.5C (II)
+WITCH-GLOBIOM 4.4,CD-LINKS_NoPolicy,Above 2C,Above 2C
