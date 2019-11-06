@@ -1,0 +1,36 @@
+Discount rate|Economy
+Discount rate|Transport Infrastructure
+Emissions|CO2
+Emissions|CO2|Energy
+Emissions|CO2|Energy|Demand
+Emissions|CO2|Energy|Demand|Transportation
+Energy Service|Transportation|Freight
+Energy Service|Transportation|Freight|Aviation
+Energy Service|Transportation|Freight|Navigation
+Energy Service|Transportation|Freight|Railways
+Energy Service|Transportation|Freight|Road
+Energy Service|Transportation|Passenger
+Energy Service|Transportation|Passenger|Aviation
+Energy Service|Transportation|Passenger|Railways
+Energy Service|Transportation|Passenger|Road
+Final Energy
+Final Energy|Transportation
+Final Energy|Transportation|Electricity
+Final Energy|Transportation|Fossil
+Final Energy|Transportation|Freight
+Final Energy|Transportation|Gases
+Final Energy|Transportation|Geothermal
+Final Energy|Transportation|Heat
+Final Energy|Transportation|Hydrogen
+Final Energy|Transportation|Liquids
+Final Energy|Transportation|Liquids|Biomass
+Final Energy|Transportation|Liquids|Oil
+Final Energy|Transportation|Solar
+Final Energy|Transportation|Solids|Biomass
+Final Energy|Transportation|Solids|Coal
+Price|Secondary Energy|Electricity
+Price|Secondary Energy|Gases|Natural Gas
+Price|Secondary Energy|Hydrogen
+Price|Secondary Energy|Liquids
+Price|Secondary Energy|Liquids|Biomass
+Price|Secondary Energy|Liquids|Oil
