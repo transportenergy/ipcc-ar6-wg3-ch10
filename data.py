@@ -119,8 +119,16 @@ def cache_data(source):
     cache_path.mkdir(parents=True, exist_ok=True)
 
     client = get_client(source)
-    for run in tqdm(client.runs()):
-        filename = cache_path / '{model_id}-{run_id}.csv'.format(**run)
+
+    # Display a progress bar while downloading
+    runs_iter = tqdm(client.runs())
+
+    for run in runs_iter:
+        filename = cache_path / '{run_id:03}.csv'.format(**run)
+
+        # Update the progress bar
+        runs_iter.set_postfix_str('{model}/{scenario}'.format(**run))
+
         # Retrieve, convert to CSV, and write
         pd.DataFrame.from_dict(
             client.runs_bulk_ts(runs=[run['run_id']])) \
