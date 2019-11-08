@@ -46,7 +46,7 @@ def _filter(df, filters):
 
 
 def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
-             **filters):
+             vars_from_file=False, **filters):
     """Retrieve and return data as a pandas.DataFrame.
 
     Parameters
@@ -63,6 +63,11 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
     variables : list of str
         Names of variables to retrieve.
     """
+    if vars_from_file:
+        variables = (data_path / f'variables-{source}.txt').read_text() \
+            .strip().split('\n')
+        filters['variable'] = sorted(filters.get('variable', []) + variables)
+
     if source in LOCAL_DATA:
         result = pd.read_csv(Path('data', LOCAL_DATA[source])) \
                    .rename(columns=lambda c: c.lower()) \
@@ -71,24 +76,33 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
                                   'unit'],
                          var_name='year') \
                    .dropna(subset=['value'])
-        return result
     elif source in REMOTE_DATA and not use_cache:
         # Get data from the web API
         client = get_client(source)
 
         # Retrieve all data for some runs
         result = pd.DataFrame.from_dict(client.runs_bulk_ts(**filters))
-
-        if len(result):
-            result.drop(list(drop), axis=1, inplace=True)
-
-        return result
     elif source in REMOTE_DATA:
         # Load data from cache
-        return pd.concat(pd.read_csv(f) for f
-                         in (data_path / 'cache' / source).glob('*.csv'))
+        result = pd.concat(
+            (pd.read_csv(f, index_col=0).pipe(_filter, filters)
+             for f in (data_path / 'cache' / source).glob('*.csv')),
+            ignore_index=True)
     else:
         raise ValueError(source)
+
+    # Drop unneeded columns
+    result.drop(list(d for d in drop if d in result.columns), axis=1,
+                inplace=True)
+
+    # Read and apply category metadata, if any
+    try:
+        metadata = pd.read_csv(data_path / f'categories-{source}.csv')
+        result = result.merge(metadata, how='left', on=['model', 'scenario'])
+    except FileNotFoundError:
+        pass
+
+    return result
 
 
 def get_references():

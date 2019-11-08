@@ -4,7 +4,7 @@ from pathlib import Path
 import plotnine as p9
 
 from data import get_data
-
+from main import output_path
 
 log = logging.getLogger()
 
@@ -33,7 +33,7 @@ FIG1_STATIC = [
 def fig_1():
     source = 'ADVANCE'
     data = get_data(source=source, variable=['Transport|CO2|All'],
-                    region=['World'])
+                    region=['World'], use_cache=True)
 
     years = ['2020', '2030', '2050', '2100']
     data = data[data['year'].isin(years)]
@@ -42,7 +42,6 @@ def fig_1():
                .describe()['value'] \
                .reset_index() \
                .astype({'count': int})
-    print(data)
 
     plot = (
         p9.ggplot(p9.aes(x='model'), data)
@@ -50,4 +49,4 @@ def fig_1():
         + p9.ggtitle(f'Figure 1 ({source} database)')
         + FIG1_STATIC
         )
-    plot.save(Path('output', '1.pdf'))
+    plot.save(output_path, 'fig_1.pdf'))
