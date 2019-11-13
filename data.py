@@ -1,4 +1,5 @@
 """Retrieve data from the AR6 WGIII Scenarios Database hosted by IIASA."""
+from datetime import datetime
 import json
 import logging
 from pathlib import Path
@@ -128,6 +129,9 @@ def get_references():
             f.write(requests.get(url, timeout=3).content)
 
 
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
+
+
 def cache_data(source):
     cache_path = data_path / 'cache' / source
     cache_path.mkdir(parents=True, exist_ok=True)
@@ -138,10 +142,24 @@ def cache_data(source):
     runs_iter = tqdm(client.runs())
 
     for run in runs_iter:
-        filename = cache_path / '{run_id:03}.csv'.format(**run)
+        try:
+            updated = datetime.strptime(run['upd_date'], DATE_FORMAT)
+        except TypeError:
+            # upd_date is None
+            updated = datetime.strptime(run['cre_date'], DATE_FORMAT)
+
+        filename = cache_path / '{run_id:04}.csv'.format(**run)
 
         # Update the progress bar
         runs_iter.set_postfix_str('{model}/{scenario}'.format(**run))
+
+        try:
+            file_mtime = datetime.fromtimestamp(filename.stat().st_mtime)
+            if file_mtime > updated:
+                # Skip
+                continue
+        except FileNotFoundError:
+            pass
 
         # Retrieve, convert to CSV, and write
         pd.DataFrame.from_dict(
