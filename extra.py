@@ -9,7 +9,7 @@ import matplotlib as mpl
 import pandas as pd
 import plotnine as p9
 
-from data import data_path, get_data
+from data import compute_descriptives, data_path, get_data
 
 
 # Metadata for categories and 'super'categories
@@ -71,29 +71,6 @@ variables_to_plot = {
     }
 
 
-# Compute descriptives
-def compute_descriptives(group_data):
-    """Compute descriptive statistics by category and supercategory."""
-    # Compute descriptive statistics, by category
-    df1 = group_data \
-        .groupby(['category', 'year']) \
-        .apply(lambda g: g.describe()['value']) \
-        .reset_index()
-
-    # by supercategory. The rename creates a new category named '2C' when
-    # concat()'d below
-    df2 = group_data \
-        .groupby(['supercategory', 'year']) \
-        .apply(lambda g: g.describe()['value']) \
-        .reset_index() \
-        .rename(columns={'supercategory': 'category'})
-
-    # Discard the statistics for scenarios not part of either supercategory
-    df2 = df2[df2.category != '']
-
-    return pd.concat([df1, df2])
-
-
 def prepare_data_sr15():
     source = 'SR15'
 
@@ -110,8 +87,7 @@ def prepare_data_sr15():
 
     # Compute descriptives by variable, then re-merge the category-level
     # metadata
-    result = data.groupby('variable') \
-                 .apply(compute_descriptives) \
+    result = data.pipe(compute_descriptives) \
                  .reset_index() \
                  .merge(cat_meta, how='left', on='category')
 

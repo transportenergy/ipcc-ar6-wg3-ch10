@@ -8,6 +8,7 @@ from data import get_data
 log = logging.getLogger()
 output_path = Path('output')
 
+
 # Individual figures
 
 FIG1_STATIC = [

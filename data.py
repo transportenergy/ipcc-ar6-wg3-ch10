@@ -17,6 +17,7 @@ data_path = Path('.', 'data').resolve()
 LOCAL_DATA = {
     'ADVANCE':  'advance_compare_20171018-134445.csv',
     'AR5': 'ar5_public_version102_compare_compare_20150629-130000.csv',
+    'iTEM MIP2': 'iTEM-MIP2.csv',
     }
 
 REMOTE_DATA = {
@@ -27,6 +28,32 @@ REMOTE_DATA = {
 
 config = json.load(open('config.json'))
 client = None
+
+
+def compute_descriptives(df):
+    """Compute descriptive statistics on *df*.
+
+    Descriptives are returned for each ('variable', 'category', 'year') and
+    ('variable', 'supercategory', 'year').
+    """
+    # Compute descriptive statistics, by category
+    cat = df \
+        .groupby(['variable', 'category', 'year']) \
+        .apply(lambda g: g.describe()['value']) \
+        .reset_index()
+
+    # by supercategory. The rename creates a new category named '2C' when
+    # concat()'d below
+    supercat = df \
+        .groupby(['variable', 'supercategory', 'year']) \
+        .apply(lambda g: g.describe()['value']) \
+        .reset_index() \
+        .rename(columns={'supercategory': 'category'})
+
+    # Discard the statistics for scenarios not part of either supercategory
+    supercat = supercat[supercat.category != '']
+
+    return pd.concat([cat, supercat])
 
 
 def get_client(source):
@@ -56,6 +83,8 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
         Data to load. ADVANCE and AR5 are from local files; see README.
     drop : list of str
         Columns to drop when loading from web API.
+    use_cache : bool, optional
+    vars_from_file : bool, optional
 
     Other parameters
     ----------------
