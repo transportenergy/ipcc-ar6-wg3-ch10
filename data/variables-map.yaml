@@ -1,0 +1,50 @@
+# Mapping of variables between data sets
+
+- SR15: Emissions|CO2|Energy|Demand|Transportation
+  iTEM MIP2:
+    select: { variable: ['ttw_co2e'] }
+- SR15: Final Energy|Transportation
+  iTEM MIP2:
+    select: { variable: ['energy'] }
+    scale: 1e-3
+- SR15: Final Energy|Transportation|Electricity
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Electricity']}
+    scale: 1e-3
+- SR15: Final Energy|Transportation|Freight
+  iTEM MIP2:
+- SR15: Energy Service|Transportation|Freight
+  iTEM MIP2:
+    select: { variable: ['tkm'] }
+- SR15: Energy Service|Transportation|Freight|Railways
+  iTEM MIP2:
+    select: { variable: ['tkm'], mode: ['Freight Rail'] }
+- SR15: Energy Service|Transportation|Freight|Road
+  iTEM MIP2:
+    select: { variable: ['tkm'], mode: ['HDT'] }
+- SR15: Energy Service|Transportation|Passenger
+  iTEM MIP2:
+    select: { variable: ['pkm'] }
+- SR15: Energy Service|Transportation|Passenger|Aviation
+  iTEM MIP2:
+    select: { variable: ['pkm'], mode: ['Aviation'] }
+- SR15: Energy Service|Transportation|Passenger|Railways
+  iTEM MIP2:
+    select: { variable: ['pkm'], mode: ['Passenger Rail'] }
+- SR15: Energy Service|Transportation|Passenger|Road
+  iTEM MIP2:
+    select: { variable: ['pkm'], mode: ['Road'] }
+
+# Disabled
+- SR15: Emissions|CO2
+- SR15: Emissions|CO2|Energy
+- SR15: Emissions|CO2|Energy|Demand
+- SR15: Final Energy
+- SR15: Final Energy|Transportation|Fossil
+- SR15: Final Energy|Transportation|Gases
+- SR15: Final Energy|Transportation|Geothermal
+- SR15: Final Energy|Transportation|Hydrogen
+- SR15: Final Energy|Transportation|Heat
+- SR15: Energy Service|Transportation|Freight|Aviation  # not in iTEM MIP2 MIP2
+- SR15: Energy Service|Transportation|Freight|Navigation
+  # NB sum of 'Domestic-' and 'International Shipping'

@@ -1,12 +1,17 @@
 import logging
 from pathlib import Path
 
+import matplotlib as mpl
 import plotnine as p9
 
 from data import get_data
 
 log = logging.getLogger()
 output_path = Path('output')
+
+
+# Matplotlib style
+mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
 
 
 # Individual figures

@@ -2,14 +2,23 @@
 
 Repurposed from P.N. Kishimoto code for iTEM4, October 2018.
 """
-from functools import lru_cache
-
-import item.model
 import matplotlib as mpl
 import pandas as pd
 import plotnine as p9
 
-from data import compute_descriptives, data_path, get_data
+from data import (
+    VARIABLES,
+    compute_descriptives,
+    get_data,
+    get_data_item,
+    item_var_info,
+)
+
+# Matplotlib style
+mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
+
+
+YEARS = [2030, 2050, 2100]
 
 
 # Metadata for categories and 'super'categories
@@ -29,55 +38,11 @@ cat_meta = pd.DataFrame([
     ], columns=['category', 'color',   'label',  'supercategory'])
 
 
-# Variables
-# - Keys are SR1.5 variable strings.
-# - Values are tuples of (iTEM2 selectors dict, conversion factor)
-variables_to_plot = {
-    # 'Emissions|CO2': (None, 1),
-    # 'Emissions|CO2|Energy': (None, 1),
-    # 'Emissions|CO2|Energy|Demand': (None, 1),
-    'Emissions|CO2|Energy|Demand|Transportation':
-        (dict(Variable='ttw_co2e'), 1),
-    # 'Final Energy', None, 1),
-    'Final Energy|Transportation':
-        (dict(Variable='energy'), 1e-3),
-    'Final Energy|Transportation|Electricity':
-        (dict(Variable='energy', Fuel='Electricity'), 1e-3),
-    # 'Final Energy|Transportation|Fossil': (None, 1),
-    # 'Final Energy|Transportation|Gases': (None, 1),
-    # 'Final Energy|Transportation|Geothermal': (None, 1),
-    # 'Final Energy|Transportation|Hydrogen': (None, 1),
-    # 'Final Energy|Transportation|Heat': (None, 1),
-    'Final Energy|Transportation|Freight':
-        (None, None),  # Sum of several categories
-    'Energy Service|Transportation|Freight':
-        (dict(Variable='tkm'), 1),
-    'Energy Service|Transportation|Freight|Aviation':
-        (None, None),  # Not in iTEM2 database
-    'Energy Service|Transportation|Freight|Navigation':
-        (None, None),  # NB sum of 'Domestic-' and 'International Shipping'
-    'Energy Service|Transportation|Freight|Railways':
-        (dict(Variable='tkm', Mode='Freight Rail'), 1),
-    'Energy Service|Transportation|Freight|Road':
-        (dict(Variable='tkm', Mode='HDT'), 1),
-    'Energy Service|Transportation|Passenger':
-        (dict(Variable='pkm'), 1),
-    'Energy Service|Transportation|Passenger|Aviation':
-        (dict(Variable='pkm', Mode='Aviation'), 1),
-    'Energy Service|Transportation|Passenger|Railways':
-        (dict(Variable='pkm', Mode='Passenger Rail'), 1),
-    'Energy Service|Transportation|Passenger|Road':
-        (dict(Variable='pkm', Mode='Road'), 1),
-    }
-
-
-def prepare_data_sr15():
-    source = 'SR15'
-
-    # Read SR15 data from local cache using a subset of variables;
+def prepare_data(source):
+    # Read data from local cache using a subset of variables;
     # drop scenarios that belong to no recognized category
     data = get_data(source, use_cache=True, vars_from_file=True,
-                    year=[2030, 2050, 2100], region=['World']) \
+                    year=YEARS, region=['World']) \
         .dropna(subset=['category'])
 
     # Filter further by category;
@@ -95,70 +60,12 @@ def prepare_data_sr15():
     return data, result
 
 
-@lru_cache()
-def load_data_item2():
-    # Read iTEM2 model database
-    data = pd.read_csv(data_path / 'iTEM-MIP2.csv')
-
-    # Remove private companies' projections
-    data = data[~data.Model.isin(['BP', 'ExxonMobil', 'Shell'])]
-
-    # Filter data
-    return data \
-        .set_index(['Model', 'Scenario', 'Region', 'Mode',
-                   'Technology', 'Fuel', 'Variable', 'Unit']) \
-        .xs(('Global', 'All'), level=('Region', 'Technology')) \
-        .filter(items=['2030', '2050']) \
-        .rename_axis('year', axis=1) \
-        .stack() \
-        .rename('value')
-
-
-@lru_cache()
-def scen_info(name):
-    """Return iTEM metadata for model *name*."""
-    name = {'WEPS+': 'EIA'}.get(name, name)
-    return item.model.load_model_scenarios(name.lower(), 2)
-
-
-def prepare_data_item2(var):
-    """Retrieve iTEM2 data for *var*."""
-    sel, cf = variables_to_plot[var]
-    if sel is None:
-        raise KeyError(var)
-
-    # Select relevant data
-    selectors = dict(Mode='All', Fuel='All')
-    selectors.update(sel)
-    levels = list(selectors.keys())
-    labels = list(selectors.values())
-
-    # Apply the conversion factor and convert a pd.Series to pd.DataFrame
-    df = (load_data_item2().xs(labels, level=levels).copy() * cf) \
-        .reset_index() \
-        .astype({'year': int})
-
-    # Store category
-    df['supercategory'] = 'item'
-
-    # Determine scenario category
-    def cat_for_scen(row):
-        result = scen_info(row['Model'])[row['Scenario']]['category']
-        return result
-    df['category'] = df.apply(cat_for_scen, axis=1)
-
-    return df
-
-
-# Matplotlib style
-mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
-
 # Common plot features
 plot_common = [
     # Aesthetic mappings
     p9.aes(x='category', color='category'),
 
-    # Two panels wide by the two years shown
+    # Horizontal panels by the years shown
     p9.facet_wrap('year'),
 
     # Vertical bars showing range of projections
@@ -196,31 +103,41 @@ plot_common = [
 
 
 # Create plot objects
-def gen_plots():
-    data, plot_data = prepare_data_sr15()
+def gen_plots(source='SR15'):
+    # Raw data and descriptives by category and supercategory
+    data, plot_data = prepare_data(source)
 
-    for var in variables_to_plot.keys():
+    for var_info in VARIABLES:
+        # Variable name
+        name = var_info[source]
+
         # Select data
-        df = plot_data[plot_data.variable == var]
+        df = plot_data[plot_data.variable == name]
 
         # Y-axis label
-        row = data[data.variable == var]
+        row = data[data.variable == name]
         if not len(row):
             # No SR1.5 data for this variable
             continue
 
-        labels = p9.labs(y=row.iloc[0, :]['unit']) + p9.ggtitle(var)
+        labels = p9.labs(y=row.iloc[0, :]['unit'])
+        title = p9.ggtitle('{} ({}, {})'.format(name, source, 'iTEM MIP2'))
 
         # Create the plot
-        plot = p9.ggplot(df) + plot_common + labels
+        plot = p9.ggplot(df) + plot_common + labels + title
         try:
-            plot += p9.geom_point(mapping=p9.aes(y='value', shape='Model'),
-                                  data=prepare_data_item2(var),
-                                  color='black', size=2, fill=None)
+            # Info for corresponding iTEM variable
+            filters, scale = item_var_info('SR15', name)
+            filters['year'] = YEARS
         except KeyError:
             # No iTEM2 data for this variable
             pass
+        else:
+            plot += p9.geom_point(
+                mapping=p9.aes(y='value', shape='model'),
+                data=get_data_item(filters, scale),
+                color='black', size=2, fill=None)
 
-        print('Plotting {}'.format(var))
+        print('Plotting {}'.format(name))
 
         yield plot

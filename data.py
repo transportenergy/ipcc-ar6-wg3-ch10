@@ -1,11 +1,14 @@
 """Retrieve data from the AR6 WGIII Scenarios Database hosted by IIASA."""
 from datetime import datetime
+from functools import lru_cache
 import json
 import logging
 from pathlib import Path
 
+import item.model
 import pandas as pd
 from tqdm import tqdm
+import yaml
 
 from iiasa_se_client import AuthClient
 
@@ -28,6 +31,9 @@ REMOTE_DATA = {
 
 config = json.load(open('config.json'))
 client = None
+
+
+VARIABLES = yaml.safe_load(open(data_path / 'variables-map.yaml'))
 
 
 def compute_descriptives(df):
@@ -56,6 +62,11 @@ def compute_descriptives(df):
     return pd.concat([cat, supercat])
 
 
+def filter(df, filters):
+    """Helper to filter CSV data."""
+    return df[df.isin(filters)[list(filters.keys())].all(axis=1)]
+
+
 def get_client(source):
     """Return a client for the configured application."""
     global client
@@ -66,11 +77,6 @@ def get_client(source):
     auth_client = AuthClient(**config['credentials'])
     client = auth_client.get_app(REMOTE_DATA[source])
     return client
-
-
-def _filter(df, filters):
-    """Helper to filter CSV data."""
-    return df[df.isin(filters)[list(filters.keys())].all(axis=1)]
 
 
 def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
@@ -99,12 +105,16 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
         filters['variable'] = sorted(filters.get('variable', []) + variables)
 
     if source in LOCAL_DATA:
+        id_vars = ['model', 'scenario', 'region', 'variable', 'unit']
+
+        if 'iTEM' in source:
+            id_vars.extend(['mode', 'technology', 'fuel'])
+
         result = pd.read_csv(Path('data', LOCAL_DATA[source])) \
                    .rename(columns=lambda c: c.lower()) \
-                   .pipe(_filter, filters) \
-                   .melt(id_vars=['model', 'scenario', 'region', 'variable',
-                                  'unit'],
-                         var_name='year') \
+                   .melt(id_vars=id_vars, var_name='year') \
+                   .astype({'year': int}) \
+                   .pipe(filter, filters) \
                    .dropna(subset=['value'])
     elif source in REMOTE_DATA and not use_cache:
         # Get data from the web API
@@ -115,7 +125,7 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
     elif source in REMOTE_DATA:
         # Load data from cache
         result = pd.concat(
-            (pd.read_csv(f, index_col=0).pipe(_filter, filters)
+            (pd.read_csv(f, index_col=0).pipe(filter, filters)
              for f in (data_path / 'cache' / source).glob('*.csv')),
             ignore_index=True)
     else:
@@ -130,9 +140,35 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
         metadata = pd.read_csv(data_path / f'categories-{source}.csv')
         result = result.merge(metadata, how='left', on=['model', 'scenario'])
     except FileNotFoundError:
-        pass
+        if 'iTEM' in source:
+            result['supercategory'] = 'item'
+            print(result.head())
+            result['category'] = result.apply(_item_cat_for_scen, axis=1)
 
     return result
+
+
+def get_data_item(filters, scale, mip=2):
+    """Retrieve iTEM2 data."""
+    # Select relevant data
+    all_filters = dict(
+        mode=['All'],
+        fuel=['All'],
+        region=['Global'],
+        technology=['All'],
+        )
+    all_filters.update(filters)
+
+    data = get_data(f'iTEM MIP{mip}', **all_filters)
+
+    # Remove private companies' projections
+    data = data[~data.model.isin(['BP', 'ExxonMobil', 'Shell'])]
+
+    # Apply the conversion factor
+    print(data['value'].unique())
+    data['value'] *= scale
+
+    return data
 
 
 def get_references():
@@ -156,6 +192,28 @@ def get_references():
         # file in ref/
         with open(ref_dir / name, 'wb') as f:
             f.write(requests.get(url, timeout=3).content)
+
+
+@lru_cache()
+def _item_scen_info(name):
+    """Return iTEM metadata for model *name*."""
+    name = {'WEPS+': 'EIA'}.get(name, name)
+    return item.model.load_model_scenarios(name.lower(), 2)
+
+
+def _item_cat_for_scen(row):
+    """Return the iTEM scenario category."""
+    return _item_scen_info(row['model'])[row['scenario']]['category']
+
+
+@lru_cache()
+def item_var_info(source, name):
+    """Return iTEM variable info corresponding to *name* in *source*."""
+    for v_info in VARIABLES:
+        if v_info[source] == name:
+            result = v_info['iTEM MIP2'].copy()
+            return result.get('select', dict()), result.get('scale', 1)
+    raise KeyError(name)
 
 
 DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
