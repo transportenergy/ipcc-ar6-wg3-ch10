@@ -11,8 +11,6 @@
   iTEM MIP2:
     select: { variable: ['energy'], fuel: ['Electricity']}
     scale: 1e-3
-- SR15: Final Energy|Transportation|Freight
-  iTEM MIP2:
 - SR15: Energy Service|Transportation|Freight
   iTEM MIP2:
     select: { variable: ['tkm'] }
@@ -40,6 +38,7 @@
 - SR15: Emissions|CO2|Energy
 - SR15: Emissions|CO2|Energy|Demand
 - SR15: Final Energy
+- SR15: Final Energy|Transportation|Freight
 - SR15: Final Energy|Transportation|Fossil
 - SR15: Final Energy|Transportation|Gases
 - SR15: Final Energy|Transportation|Geothermal

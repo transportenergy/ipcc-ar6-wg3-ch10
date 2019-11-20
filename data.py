@@ -142,7 +142,6 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
     except FileNotFoundError:
         if 'iTEM' in source:
             result['supercategory'] = 'item'
-            print(result.head())
             result['category'] = result.apply(_item_cat_for_scen, axis=1)
 
     return result
@@ -165,8 +164,7 @@ def get_data_item(filters, scale, mip=2):
     data = data[~data.model.isin(['BP', 'ExxonMobil', 'Shell'])]
 
     # Apply the conversion factor
-    print(data['value'].unique())
-    data['value'] *= scale
+    data['value'] = data['value'] * scale
 
     return data
 
@@ -212,7 +210,7 @@ def item_var_info(source, name):
     for v_info in VARIABLES:
         if v_info[source] == name:
             result = v_info['iTEM MIP2'].copy()
-            return result.get('select', dict()), result.get('scale', 1)
+            return result.get('select', dict()), float(result.get('scale', 1))
     raise KeyError(name)
 
 
