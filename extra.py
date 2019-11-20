@@ -74,8 +74,6 @@ variables_to_plot = {
 # Compute descriptives
 def compute_descriptives(group_data):
     """Compute descriptive statistics by category and supercategory."""
-    print(len(group_data), group_data.head(1).transpose())
-
     # Compute descriptive statistics, by category
     df1 = group_data \
         .groupby(['category', 'year']) \
@@ -102,7 +100,7 @@ def prepare_data_sr15():
     # Read SR15 data from local cache using a subset of variables;
     # drop scenarios that belong to no recognized category
     data = get_data(source, use_cache=True, vars_from_file=True,
-                    year=[2030, 2050], region=['World']) \
+                    year=[2030, 2050, 2100], region=['World']) \
         .dropna(subset=['category'])
 
     # Filter further by category;

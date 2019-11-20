@@ -1,12 +1,12 @@
 import logging
+from pathlib import Path
 
 import plotnine as p9
 
 from data import get_data
-from main import output_path
 
 log = logging.getLogger()
-
+output_path = Path('output')
 
 # Individual figures
 
@@ -48,4 +48,4 @@ def fig_1():
         + p9.ggtitle(f'Figure 1 ({source} database)')
         + FIG1_STATIC
         )
-    plot.save(output_path, 'fig_1.pdf')
+    plot.save(output_path / 'fig_1.pdf')
