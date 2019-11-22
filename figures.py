@@ -2,56 +2,91 @@ import logging
 from pathlib import Path
 
 import matplotlib as mpl
-import plotnine as p9
+from plotnine import (
+    aes,
+    element_rect,
+    element_text,
+    facet_wrap,
+    geom_linerange,
+    geom_point,
+    geom_text,
+    ggplot,
+    ggtitle,
+    labs,
+    theme,
+)
 
-from data import get_data
+from data import (
+    apply_plot_meta,
+    compute_descriptives,
+    get_data,
+    get_data_item,
+    item_var_info,
+)
 
 log = logging.getLogger()
-output_path = Path('output')
+
+OUTPUT_PATH = Path('output')
 
 
 # Matplotlib style
 mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
 
 
-# Individual figures
+# Components for individual figures
 
 FIG1_STATIC = [
+    # Aesthetic mappings
+    aes(x='category', color='category'),
+
+    # Horizontal panels by the years shown
+    facet_wrap('year'),
+
     # Ranges of data as vertical bars
-    p9.geom_linerange(p9.aes(ymin='min', ymax='max'), size=4, color='#999999'),
-    p9.geom_linerange(p9.aes(ymin='25%', ymax='75%', color='model'), size=4),
+    geom_linerange(aes(ymin='min', ymax='max'), size=4, color='#999999'),
+    geom_linerange(aes(ymin='25%', ymax='75%', color='model'), size=4),
 
     # Median
-    p9.geom_point(p9.aes(y='50%'), color='black', shape='_', size=3.5),
+    geom_point(aes(y='50%'), color='black', shape='_', size=3.5),
 
     # Counts
-    p9.geom_text(p9.aes(label='count'), y=0, size=5),
+    geom_text(aes(label='count'), y=0, size=5),
 
     # Axis labels
-    p9.labs(x='', y='Transport CO₂ emissions [Mt/y]', color='Model'),
-    p9.theme(axis_text_x=p9.element_text(rotation=90)),
+    labs(x='', y='Transport CO₂ emissions [Mt/y]', color='Model'),
+    theme(axis_text_x=element_text(rotation=90)),
 
-    p9.theme(plot_background=p9.element_rect(alpha=0)),
+    theme(plot_background=element_rect(alpha=0)),
 ]
 
 
 def fig_1():
-    source = 'ADVANCE'
-    data = get_data(source=source, variable=['Transport|CO2|All'],
-                    region=['World'], use_cache=True)
-
-    years = ['2020', '2030', '2050', '2100']
-    data = data[data['year'].isin(years)]
-
-    data = data.groupby(['model', 'year']) \
-               .describe()['value'] \
-               .reset_index() \
-               .astype({'count': int})
+    var_name = 'Transport|CO2|All'
+    years = [2030, 2050, 2100]
+    source = 'AR6'
+    data = get_data(source=source,
+                    variable=[var_name],
+                    region=['World'],
+                    year=years) \
+        .pipe(apply_plot_meta, source)
+    plot_data = data.pipe(compute_descriptives) \
+                    .pipe(apply_plot_meta, source)
 
     plot = (
-        p9.ggplot(p9.aes(x='model'), data)
-        + p9.facet_wrap('year', ncol=len(years))
-        + p9.ggtitle(f'Figure 1 ({source} database)')
+        ggplot(aes(x='model'), plot_data)
+        + ggtitle(f'Figure 1 ({source} database)')
         + FIG1_STATIC
         )
-    plot.save(output_path / 'fig_1.pdf')
+
+    # Info for corresponding iTEM variable
+    filters, scale = item_var_info('AR6', var_name)
+    filters['year'] = years
+    item_data = get_data_item(filters, scale)
+
+    plot += geom_point(
+        mapping=aes(y='value', shape='model'), data=item_data,
+        color='black', size=2, fill=None)
+
+    print('Plotting Figure 1')
+
+    plot.save(OUTPUT_PATH / 'fig_1.pdf')

@@ -15,6 +15,8 @@ from iiasa_se_client import AuthClient
 
 log = logging.getLogger(__name__)
 
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
+
 data_path = Path('.', 'data').resolve()
 
 LOCAL_DATA = {
@@ -40,30 +42,36 @@ def compute_descriptives(df):
     """Compute descriptive statistics on *df*.
 
     Descriptives are returned for each ('variable', 'category', 'year') and
-    ('variable', 'supercategory', 'year').
+    ('variable', 'category+1', 'year').
     """
+    dfs = []
+
     # Compute descriptive statistics, by category
-    cat = df \
-        .groupby(['variable', 'category', 'year']) \
-        .apply(lambda g: g.describe()['value']) \
-        .reset_index()
+    dfs.append(
+        df
+        .groupby(['variable', 'category', 'year'])
+        .apply(lambda g: g.describe()['value'])
+        .reset_index())
 
     # by supercategory. The rename creates a new category named '2C' when
     # concat()'d below
-    supercat = df \
-        .groupby(['variable', 'supercategory', 'year']) \
-        .apply(lambda g: g.describe()['value']) \
-        .reset_index() \
-        .rename(columns={'supercategory': 'category'})
+    if 'category+1' in df.columns:
+        supercat = df \
+            .groupby(['variable', 'category+1', 'year']) \
+            .apply(lambda g: g.describe()['value']) \
+            .reset_index() \
+            .rename(columns={'category+1': 'category'})
 
-    # Discard the statistics for scenarios not part of either supercategory
-    supercat = supercat[supercat.category != '']
+        # Discard the statistics for scenarios not part of either supercategory
+        supercat = supercat[supercat.category != '']
 
-    return pd.concat([cat, supercat])
+        dfs.append(supercat)
+
+    return pd.concat(dfs)
 
 
-def filter(df, filters):
-    """Helper to filter CSV data."""
+def _filter(df, filters):
+    """Filter *df*."""
     return df[df.isin(filters)[list(filters.keys())].all(axis=1)]
 
 
@@ -79,8 +87,8 @@ def get_client(source):
     return client
 
 
-def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
-             vars_from_file=False, **filters):
+def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
+             **filters):
     """Retrieve and return data as a pandas.DataFrame.
 
     Parameters
@@ -99,6 +107,8 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
     variables : list of str
         Names of variables to retrieve.
     """
+    log.info(f'Get data for {source} with {filters}')
+
     if vars_from_file:
         variables = (data_path / f'variables-{source}.txt').read_text() \
             .strip().split('\n')
@@ -114,37 +124,54 @@ def get_data(source='AR6', drop=('meta', 'runId', 'time'), use_cache=False,
                    .rename(columns=lambda c: c.lower()) \
                    .melt(id_vars=id_vars, var_name='year') \
                    .astype({'year': int}) \
-                   .pipe(filter, filters) \
+                   .pipe(_filter, filters) \
                    .dropna(subset=['value'])
-    elif source in REMOTE_DATA and not use_cache:
-        # Get data from the web API
-        client = get_client(source)
-
-        # Retrieve all data for some runs
-        result = pd.DataFrame.from_dict(client.runs_bulk_ts(**filters))
     elif source in REMOTE_DATA:
         # Load data from cache
-        result = pd.concat(
-            (pd.read_csv(f, index_col=0).pipe(filter, filters)
-             for f in (data_path / 'cache' / source).glob('*.csv')),
-            ignore_index=True)
+        log.info('  from cache')
+        result = pd.read_hdf(data_path / 'cache' / source / 'all.h5')
+        log.info('  done.')
     else:
         raise ValueError(source)
 
-    # Drop unneeded columns
-    result.drop(list(d for d in drop if d in result.columns), axis=1,
-                inplace=True)
+    # - Drop unneeded columns,
+    # - Read and apply category metadata, if any
+    return result.drop(list(d for d in drop if d in result.columns), axis=1) \
+                 .pipe(apply_categories, source)
 
-    # Read and apply category metadata, if any
-    try:
-        metadata = pd.read_csv(data_path / f'categories-{source}.csv')
-        result = result.merge(metadata, how='left', on=['model', 'scenario'])
-    except FileNotFoundError:
-        if 'iTEM' in source:
-            result['supercategory'] = 'item'
-            result['category'] = result.apply(_item_cat_for_scen, axis=1)
+
+def apply_categories(df, source, **options):
+    """Modify *df* from *source* to add 'category' columns."""
+    if source in ('SR15',):
+        # Read a CSV file
+        cat_data = pd.read_csv(data_path / f'categories-{source}.csv')
+        result = df.merge(cat_data, how='left', on=['model', 'scenario'])
+    elif source == 'AR6':
+        # Read an Excel file
+        cat_data = pd.read_excel(data_path / 'ar6_metadata_indicators.xlsx') \
+                     .rename({'Temperature-in-2100_bin': 'category'}) \
+                     .loc[:, ['model', 'scenario', 'category']]
+        result = df.merge(cat_data, how='left', on=['model', 'scenario'])
+    elif source in ('iTEM MIP2',):
+        # From the iTEM database metadata
+        df['category'] = df.apply(_item_cat_for_scen, axis=1)
+        # Directly
+        df['category+1'] = 'item'
+        result = df
+    else:
+        pass
 
     return result
+
+
+def apply_plot_meta(df, source):
+    """Add plot metadata columns 'color' and 'label' *df* from *source*."""
+    try:
+        meta = pd.read_csv(data_path / f'meta-{source}.csv')
+    except FileNotFoundError:
+        return df
+    else:
+        return df.merge(meta, how='left', on=['category'])
 
 
 def get_data_item(filters, scale, mip=2):
@@ -200,7 +227,7 @@ def _item_scen_info(name):
 
 
 def _item_cat_for_scen(row):
-    """Return the iTEM scenario category."""
+    """Return the iTEM scenario category for model & scenario info."""
     return _item_scen_info(row['model'])[row['scenario']]['category']
 
 
@@ -214,25 +241,27 @@ def item_var_info(source, name):
     raise KeyError(name)
 
 
-DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
-
-
 def cache_data(source):
+    """Retrieve data from *source* and cache it locally."""
     cache_path = data_path / 'cache' / source
     cache_path.mkdir(parents=True, exist_ok=True)
 
+    # List of 'runs' (=scenarios)
     client = get_client(source)
+    runs = client.runs()
 
     # Display a progress bar while downloading
-    runs_iter = tqdm(client.runs())
+    runs_iter = tqdm(runs)
 
     for run in runs_iter:
+        # Modification date or creation date; whichever is more recent
         try:
             updated = datetime.strptime(run['upd_date'], DATE_FORMAT)
         except TypeError:
             # upd_date is None
             updated = datetime.strptime(run['cre_date'], DATE_FORMAT)
 
+        # Cache target file
         filename = cache_path / '{run_id:04}.csv'.format(**run)
 
         # Update the progress bar
@@ -241,12 +270,30 @@ def cache_data(source):
         try:
             file_mtime = datetime.fromtimestamp(filename.stat().st_mtime)
             if file_mtime > updated:
-                # Skip
-                continue
+                continue  # File on disk is newer; skip
         except FileNotFoundError:
-            pass
+            pass  # File doesn't exist
 
         # Retrieve, convert to CSV, and write
         pd.DataFrame.from_dict(
             client.runs_bulk_ts(runs=[run['run_id']])) \
             .to_csv(filename)
+
+    # Concatenate and pickle
+    h5_path = cache_path / 'all.h5'
+    log.info(f'Compiling {h5_path}')
+    store = pd.HDFStore(h5_path)
+    dtypes = {c: int for c in 'year meta runId version'.split()}
+    dtypes['time'] = float  # runID 1202 contains NaN (empty)
+    dtypes['scenario'] = str  # runID 0274 contains float '1.0'
+    sizes = dict(model=44, region=94, scenario=54, unit=39, variable=88)
+    for f in tqdm(sorted(cache_path.glob('*.csv'))):
+        # print(f)
+        df = pd.read_csv(f, index_col=0, dtype=dtypes).reset_index(drop=True)
+        # print(df.dtypes)
+        try:
+            store.append(source, df, min_itemsize=sizes)
+        except ValueError as e:
+            print(e, f)
+            raise
+    store.close()

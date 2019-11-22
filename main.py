@@ -1,10 +1,10 @@
 """Command-line interface using 'click'"""
 from datetime import datetime
+import logging
 from pathlib import Path
 
 import click
 import pandas as pd
-import plotnine as p9
 
 from data import (
     LOCAL_DATA,
@@ -15,9 +15,10 @@ from data import (
     get_data,
     get_references,
 )
-from extra import gen_plots
 import figures
 
+
+logging.basicConfig(level=logging.INFO)
 
 output_path = Path('output')
 now = datetime.now().isoformat(timespec='seconds')
@@ -39,9 +40,9 @@ def plot():
     """Plot data to output/."""
     figures.fig_1()
 
-    # Extra plots: Render and save
-    extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')
-    p9.save_as_pdf_pages(gen_plots(), extra_fn)
+    # # Extra plots: Render and save
+    # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')
+    # p9.save_as_pdf_pages(gen_plots(), extra_fn)
 
 
 @cli.command()
@@ -60,7 +61,9 @@ def debug():
 @click.argument('action', type=click.Choice(['refresh', 'clear']))
 @click.argument('source', type=click.Choice(REMOTE_DATA.keys()))
 def cache(action, source):
-    """Cache data from the IIASA API in data/cache/.
+    """Cache data from the IIASA API in data/cache/SOURCE/.
+
+    A file named all.pkl is also created with the date concatenated.
 
     \b
     The download takes:
@@ -70,6 +73,7 @@ def cache(action, source):
     if action == 'refresh':
         cache_data(source)
     else:
+        print('Please clear the cache manually.')
         raise NotImplementedError
 
 

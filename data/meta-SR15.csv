@@ -1,0 +1,9 @@
+category,            color,   label, category+1
+Above 2C,            red,     >2°,
+2C,                  #ca34de, 2°,
+Higher 2C,           purple,  hi,    2C
+Lower 2C,            magenta, lo,    2C
+1.5C,                #fca503, 1.5°,
+1.5C high overshoot, #f97306, hi,    1.5C
+1.5C low overshoot,  gold,    lo,    1.5C
+Below 1.5C,          green,   <1.5°,

@@ -5,7 +5,8 @@ __pycache__
 config.json
 
 # Downloaded files
-data/*.csv
+data/advance_*.csv
+data/ar5_*.csv
 data/*.zip
 ref/*.xls*
 
