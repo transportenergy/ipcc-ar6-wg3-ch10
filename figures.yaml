@@ -1,16 +1,19 @@
 # Configuration for figures
 
 fig_1:
+  short title: Direct transport CO₂ emissions
+  units: Gt CO2/year
   variables:
   - Emissions|CO2|Energy|Demand|Transportation
 
 fig_2:
+  short title: Passenger and freight transport activity
   variables:
   - Energy Service|Transportation|Freight
   - Energy Service|Transportation|Passenger
 
-
 fig_3:
+  short title: Mode shares of transport activity
   variables:
   - Energy Service|Transportation|Aviation
   - Energy Service|Transportation|Freight
@@ -33,14 +36,15 @@ fig_3:
   - Energy Service|Transportation|Passenger|Road|LDV
 
 fig_4:
+  short title: Energy intensity of transport
   variables:
   - Energy Service|Transportation|Freight
   - Energy Service|Transportation|Passenger
   - Final Energy|Transportation|Freight
   - Final Energy|Transportation|Passenger
 
-
 fig_5:
+  short title: Fuel shares of transport final energy
   variables:
   - Final Energy|Transportation
   - Final Energy|Transportation|Electricity

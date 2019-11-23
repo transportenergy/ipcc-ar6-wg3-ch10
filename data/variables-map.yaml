@@ -3,7 +3,7 @@
 - AR6:  Emissions|CO2|Energy|Demand|Transportation
   SR15: Emissions|CO2|Energy|Demand|Transportation
   iTEM MIP2:
-    select: { variable: ['ttw_co2e'] }
+    select: { variable: ['ttw_co2'] }
 
 - AR6:  Final Energy|Transportation
   SR15: Final Energy|Transportation

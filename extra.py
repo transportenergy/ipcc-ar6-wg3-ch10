@@ -81,7 +81,7 @@ plot_common = [
     p9.geom_vline(xintercept=7.5, color='#bbbbbb'),
     p9.geom_vline(xintercept=8.5, color='#999999'),
 
-    # # Counts of number of scenarios included
+    # Counts of number of scenarios included
     p9.geom_text(p9.aes(label='count', y='max'), format_string='{:.0f}',
                  va='bottom',),
 
