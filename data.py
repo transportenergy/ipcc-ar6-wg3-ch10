@@ -107,12 +107,12 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
     variables : list of str
         Names of variables to retrieve.
     """
-    log.info(f'Get data for {source} with {filters}')
-
     if vars_from_file and 'variable' not in filters:
         variables = (data_path / f'variables-{source}.txt').read_text() \
             .strip().split('\n')
         filters['variable'] = sorted(variables)
+
+    log.info(f"Get {source} data for {len(filters['variable'])} variable(s)")
 
     if source in LOCAL_DATA:
         id_vars = ['model', 'scenario', 'region', 'variable', 'unit']
@@ -132,8 +132,8 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
         arg = dict(
             where=' | '.join(f'variable == {v!r}' for v in filters['variable'])
         )
-        log.info(f'  from {cache_path}')
-        log.info(f"  where: {arg['where']}")
+        log.debug(f'  from {cache_path}')
+        log.debug(f"  where: {arg['where']}")
 
         result = pd.read_hdf(cache_path, source, **arg)
 
@@ -144,7 +144,7 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
     # - Drop unneeded columns,
     # - Read and apply category metadata, if any
     return result.drop(list(d for d in drop if d in result.columns), axis=1) \
-                 .pipe(apply_categories, source)
+                 .pipe(apply_categories, source, drop_uncategorized=True)
 
 
 def apply_categories(df, source, **options):
@@ -156,7 +156,7 @@ def apply_categories(df, source, **options):
     elif source == 'AR6':
         # Read an Excel file
         cat_data = pd.read_excel(data_path / 'ar6_metadata_indicators.xlsx') \
-                     .rename({'Temperature-in-2100_bin': 'category'}) \
+                     .rename(columns={'Temperature-in-2100_bin': 'category'}) \
                      .loc[:, ['model', 'scenario', 'category']]
         result = df.merge(cat_data, how='left', on=['model', 'scenario'])
     elif source in ('iTEM MIP2',):
@@ -167,6 +167,9 @@ def apply_categories(df, source, **options):
         result = df
     else:
         pass
+
+    if options.get('drop_uncategorized', False):
+        result = result.dropna(subset=['category'])
 
     return result
 
@@ -239,13 +242,22 @@ def _item_cat_for_scen(row):
 
 
 @lru_cache()
-def item_var_info(source, name):
+def item_var_info(source, name, errors='both'):
     """Return iTEM variable info corresponding to *name* in *source*."""
-    for v_info in VARIABLES:
-        if v_info[source] == name:
-            result = v_info['iTEM MIP2'].copy()
-            return result.get('select', dict()), float(result.get('scale', 1))
-    raise KeyError(name)
+    result = None
+    for variable in VARIABLES:
+        if variable.get(source, None) == name:
+            info = variable['iTEM MIP2'].copy()
+            result = (info.get('select', dict()), float(info.get('scale', 1)))
+
+    if not result:
+        if errors in ('warn', 'both'):
+            log.warning(f'no iTEM variable info for {source}: {name!r}')
+            result = (dict(variable=[]), 1)
+        if errors in ('raise', 'both'):
+            raise KeyError(name)
+
+    return result
 
 
 def cache_data(source):
@@ -286,21 +298,26 @@ def cache_data(source):
             client.runs_bulk_ts(runs=[run['run_id']])) \
             .to_csv(filename)
 
-    # Concatenate and pickle
+    # Combine files into a single HDF5 file
     h5_path = cache_path / 'all.h5'
     log.info(f'Compiling {h5_path}')
     store = pd.HDFStore(h5_path)
+
+    # Enforce types when reading from CSV
     dtypes = {c: int for c in 'year meta runId version'.split()}
-    dtypes['time'] = float  # runID 1202 contains NaN (empty)
-    dtypes['scenario'] = str  # runID 0274 contains float '1.0'
+    dtypes['time'] = float  # runID 1202 are empty -> NaN -> cannot use int
+    dtypes['scenario'] = str  # runID 0274 contains '1.0' -> float
+
+    # Minimum sizes for HDF5 columns; the longest appearing in the data
     sizes = dict(model=44, region=94, scenario=54, unit=39, variable=88)
+
+    # Iterate over files
     for f in tqdm(sorted(cache_path.glob('*.csv'))):
-        # print(f)
         df = pd.read_csv(f, index_col=0, dtype=dtypes).reset_index(drop=True)
-        # print(df.dtypes)
         try:
             store.append(source, df, min_itemsize=sizes)
         except ValueError as e:
             print(e, f)
             raise
+
     store.close()

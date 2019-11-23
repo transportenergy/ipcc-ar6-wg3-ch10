@@ -39,6 +39,10 @@ def refs():
 def plot():
     """Plot data to output/."""
     figures.fig_1()
+    figures.fig_2()
+    figures.fig_3()
+    figures.fig_4()
+    figures.fig_5()
 
     # # Extra plots: Render and save
     # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')
