@@ -1,4 +1,5 @@
-"""Retrieve data from the AR6 WGIII Scenarios Database hosted by IIASA."""
+"""Load and process data."""
+from copy import copy
 from functools import lru_cache
 import json
 import logging
@@ -17,12 +18,15 @@ DATA_PATH = Path('.', 'data').resolve()
 
 DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
 
+# Filenames for local data
 LOCAL_DATA = {
-    'ADVANCE':  'advance_compare_20171018-134445.csv',
+    'ADVANCE': 'advance_compare_20171018-134445.csv',
     'AR5': 'ar5_public_version102_compare_compare_20150629-130000.csv',
     'iTEM MIP2': 'iTEM-MIP2.csv',
+    'iTEM MIP3': '2019_11_19_item_region_data.csv',
     }
 
+# IIASA Scenario Explorer names for remote data
 REMOTE_DATA = {
     'AR6': 'IXSE_AR6',
     'SR15': 'IXSE_SR15',
@@ -33,6 +37,7 @@ config = json.load(open('config.json'))
 client = None
 
 
+# Mapping between variable names in different data sources
 VARIABLES = yaml.safe_load(open(DATA_PATH / 'variables-map.yaml'))
 
 
@@ -86,22 +91,24 @@ def get_client(source):
 
 
 def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
-             **filters):
+             conform_to=None, **filters):
     """Retrieve and return data as a pandas.DataFrame.
 
     Parameters
     ----------
-    source : 'AR6' or 'SR15' or 'ADVANCE' or 'AR5'
+    source : str
         Data to load. ADVANCE and AR5 are from local files; see README.
     drop : list of str
         Columns to drop when loading from web API.
-    use_cache : bool, optional
     vars_from_file : bool, optional
+        Use the list from "data/variables-*source*.txt" if no variables are
+        given with *filters*.
 
     Other parameters
     ----------------
     runs : list of int
-        ID numbers of particular model runs (~scenarios) to retrieve.
+        For remote sources, ID numbers of particular model runs (~scenarios) to
+        retrieve.
     variables : list of str
         Names of variables to retrieve.
     """
@@ -110,15 +117,38 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
             .strip().split('\n')
         filters['variable'] = sorted(variables)
 
+    if 'iTEM' in source and not isinstance(filters['variable'], str):
+        # Recurse: handle each iTEM variable individually
+        dfs = []
+        for var_name in filters['variable']:
+            _filters = copy(filters)
+            _filters['variable'] = var_name
+            try:
+                dfs.append(get_data(source, conform_to=conform_to, **_filters))
+            except KeyError:
+                continue
+        return pd.concat(dfs)
+    elif 'iTEM' in source:
+        # Default filters for iTEM data
+        filters.setdefault('mode', ['All'])
+        filters.setdefault('fuel', ['All'])
+        filters.setdefault('region', ['Global'])
+        filters.setdefault('technology', ['All'])
+
+        _filters, scale = _item_var_info(conform_to, filters['variable'])
+        filters.update(_filters)
+    else:
+        scale = None
+
     log.info(f"Get {source} data for {len(filters['variable'])} variable(s)")
 
     if source in LOCAL_DATA:
+        # Variables for pandas melt()
         id_vars = ['model', 'scenario', 'region', 'variable', 'unit']
-
         if 'iTEM' in source:
             id_vars.extend(['mode', 'technology', 'fuel'])
 
-        result = pd.read_csv(Path('data', LOCAL_DATA[source])) \
+        result = pd.read_csv(DATA_PATH / LOCAL_DATA[source]) \
                    .rename(columns=lambda c: c.lower()) \
                    .melt(id_vars=id_vars, var_name='year')
 
@@ -137,10 +167,16 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
     else:
         raise ValueError(source)
 
-    # - Drop unneeded columns,
-    # - Read and apply category metadata, if any
+    # Finalize:
+    # - Year column as integer,
+    # - Apply filters,
+    # - Apply iTEM-specific cleaning (TODO and scaling)
+    # - Drop missing values,
+    # - Drop undesired columns,
+    # - Read and apply category metadata, if any.
     return result.astype({'year': int}) \
                  .pipe(_filter, filters) \
+                 .pipe(_item_clean_data, source, scale) \
                  .dropna(subset=['value']) \
                  .drop(list(d for d in drop if d in result.columns), axis=1) \
                  .pipe(apply_categories, source, drop_uncategorized=True)
@@ -183,26 +219,17 @@ def apply_plot_meta(df, source):
         return df.merge(meta, how='left', on=['category'])
 
 
-def get_data_item(filters, scale, mip=2):
-    """Retrieve iTEM2 data."""
-    # Select relevant data
-    all_filters = dict(
-        mode=['All'],
-        fuel=['All'],
-        region=['Global'],
-        technology=['All'],
-        )
-    all_filters.update(filters)
-
-    data = get_data(f'iTEM MIP{mip}', **all_filters)
+def _item_clean_data(df, source, scale):
+    if 'iTEM' not in source:
+        return df
 
     # Remove private companies' projections
-    data = data[~data.model.isin(['BP', 'ExxonMobil', 'Shell'])]
+    df = df[~df.model.isin(['BP', 'ExxonMobil', 'Shell'])]
 
-    # Apply the conversion factor
-    data['value'] = data['value'] * scale
+    # Apply scaling
+    df['value'] = df['value'] * scale
 
-    return data
+    return df
 
 
 def get_references():
@@ -241,7 +268,7 @@ def _item_cat_for_scen(row):
 
 
 @lru_cache()
-def item_var_info(source, name, errors='both'):
+def _item_var_info(source, name, errors='both'):
     """Return iTEM variable info corresponding to *name* in *source*."""
     result = None
     for variable in VARIABLES:

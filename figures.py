@@ -21,8 +21,6 @@ from data import (
     apply_plot_meta,
     compute_descriptives,
     get_data,
-    get_data_item,
-    item_var_info,
 )
 
 
@@ -112,12 +110,13 @@ def fig_1(var_names):
         )
 
     # Info for corresponding iTEM variable
-    filters, scale = item_var_info('AR6', var_name)
-    filters['year'] = YEARS
-    item_data = get_data_item(filters, scale)
+    item_plot_data = get_data('iTEM MIP2', conform_to='AR6',
+                              variable=[var_name], year=YEARS) \
+        .pipe(compute_descriptives) \
+        .pipe(apply_plot_meta, 'iTEM MIP2')
 
     plot += geom_point(
-        mapping=aes(y='value', shape='model'), data=item_data,
+        mapping=aes(y='value', shape='model'), data=item_plot_data,
         color='black', size=2, fill=None)
 
     return plot
@@ -126,49 +125,32 @@ def fig_1(var_names):
 @figure
 def fig_2(var_names):
     source = 'AR6'
-
     data = get_data(source=source,
                     variable=var_names,
                     year=YEARS)
-    for var_name in var_names:
-        try:
-            item_filters, scale = item_var_info(source, var_name)
-        except KeyError:
-            continue
-        item_filters['year'] = YEARS
-        item_data = get_data_item(item_filters, scale)
+    item_data = get_data('iTEM MIP2', conform_to=source,
+                         variable=var_names, year=YEARS)
 
 
 @figure
 def fig_3(var_names):
     source = 'AR6'
-
     data = get_data(source=source,
                     variable=var_names,
                     year=YEARS)
-    for var_name in var_names:
-        try:
-            item_filters, scale = item_var_info(source, var_name)
-        except KeyError:
-            continue
-        item_filters['year'] = YEARS
-        item_data = get_data_item(item_filters, scale)
+    item_data = get_data('iTEM MIP2', conform_to=source,
+                         variable=var_names, year=YEARS)
+
 
 
 @figure
 def fig_4(var_names):
     source = 'AR6'
-
     data = get_data(source=source,
                     variable=var_names,
                     year=YEARS)
-    for var_name in var_names:
-        try:
-            item_filters, scale = item_var_info(source, var_name)
-        except KeyError:
-            continue
-        item_filters['year'] = YEARS
-        item_data = get_data_item(item_filters, scale)
+    item_data = get_data('iTEM MIP2', conform_to=source,
+                         variable=var_names, year=YEARS)
 
 
 @figure
@@ -177,10 +159,5 @@ def fig_5(var_names):
     data = get_data(source=source,
                     variable=var_names,
                     year=YEARS)
-    for var_name in var_names:
-        try:
-            item_filters, scale = item_var_info(source, var_name)
-        except KeyError:
-            continue
-        item_filters['year'] = YEARS
-        item_data = get_data_item(item_filters, scale)
+    item_data = get_data('iTEM MIP2', conform_to=source,
+                         variable=var_names, year=YEARS)
