@@ -72,48 +72,78 @@ FIG1_STATIC = [
 ]
 
 
-def figure(func):
-    """Decorator to handle common plot tasks."""
-    fig_name = func.__name__
+def figure(sources=('AR6', 'iTEM MIP2'), **filters):
+    """Decorator to handle common plot tasks.
 
-    fig_info = INFO[fig_name]
+    A method named NAME wrapped with this decorator:
 
-    def wrapped(options):
-        print('\n')
-        log.info(f'Plotting {fig_name}')
+    - Receives 2 arguments, *iam_data* and *item_data*, with pre-loaded data
+      given the corresponding variables in figures.yaml.
+    - Receives an argument *sources*, a 2-tuple indicating the original data
+      sources.
+    - Must return a plotnine.ggplot object, which is then saved to NAME.pdf.
 
-        # Generate the plot
-        plot = func(var_names=fig_info['variables'])
+    The decorated method can then be called with a different signature, taking
+    only an optional dict of *options*. These include:
 
-        if plot and not options.get('load_only', False):
-            plot.save(OUTPUT_PATH / f'{fig_name}.pdf')
+    - 'load_only': if True, then the plot is not written to file.
 
-    return wrapped
+    """
+    # Function that decorates the method
+    def figure_decorator(func):
+        # Information about the figure
+        fig_name = func.__name__
+        fig_info = INFO[fig_name]
+        var_names = fig_info['variables']
+
+        # Wrapped method with new signature
+        def wrapped(options={}):
+            # Log output
+            print('\n')
+            log.info(f'Plotting {fig_name}')
+
+            # Load IAM and iTEM data
+            iam_data = get_data(
+                source=sources[0],
+                variable=var_names,
+                year=YEARS,
+                **filters)
+            item_data = get_data(
+                source=sources[1],
+                conform_to=sources[0],
+                variable=var_names,
+                year=YEARS,
+                **filters)
+
+            # Generate the plot
+            plot = func(
+                iam_data=iam_data,
+                item_data=item_data,
+                sources=sources)
+
+            if plot:
+                # Add a title
+                plot += ggtitle(f'{fig_name} {sources!r}')
+
+            # Save to file by default
+            if plot and not options.get('load_only', False):
+                plot.save(OUTPUT_PATH / f'{fig_name}.pdf')
+
+        return wrapped
+    return figure_decorator
 
 
-@figure
-def fig_1(var_names):
-    var_name = var_names[0]
-    source = 'AR6'
-    data = get_data(source=source,
-                    variable=[var_name],
-                    region=['World'],
-                    year=YEARS) \
-        .pipe(apply_plot_meta, source)
-    plot_data = data.pipe(compute_descriptives) \
-                    .pipe(apply_plot_meta, source)
+@figure(region=['World'])
+def fig_1(iam_data, item_data, sources):
+    plot_data = iam_data.pipe(compute_descriptives) \
+                        .pipe(apply_plot_meta, sources[0])
 
-    plot = (
-        ggplot(aes(x='model'), plot_data)
-        + ggtitle(f'Figure 1 ({source} database)')
-        + FIG1_STATIC
-        )
+    plot = ggplot(aes(x='model'), plot_data) + FIG1_STATIC
 
     # Info for corresponding iTEM variable
-    item_plot_data = get_data('iTEM MIP2', conform_to='AR6',
-                              variable=[var_name], year=YEARS) \
+    item_plot_data = item_data \
         .pipe(compute_descriptives) \
-        .pipe(apply_plot_meta, 'iTEM MIP2')
+        .pipe(apply_plot_meta, sources[1])
 
     plot += geom_point(
         mapping=aes(y='value', shape='model'), data=item_plot_data,
@@ -122,42 +152,21 @@ def fig_1(var_names):
     return plot
 
 
-@figure
-def fig_2(var_names):
-    source = 'AR6'
-    data = get_data(source=source,
-                    variable=var_names,
-                    year=YEARS)
-    item_data = get_data('iTEM MIP2', conform_to=source,
-                         variable=var_names, year=YEARS)
+@figure()
+def fig_2(iam_data, item_data, sources):
+    pass
 
 
-@figure
-def fig_3(var_names):
-    source = 'AR6'
-    data = get_data(source=source,
-                    variable=var_names,
-                    year=YEARS)
-    item_data = get_data('iTEM MIP2', conform_to=source,
-                         variable=var_names, year=YEARS)
+@figure()
+def fig_3(iam_data, item_data, sources):
+    pass
 
 
-
-@figure
-def fig_4(var_names):
-    source = 'AR6'
-    data = get_data(source=source,
-                    variable=var_names,
-                    year=YEARS)
-    item_data = get_data('iTEM MIP2', conform_to=source,
-                         variable=var_names, year=YEARS)
+@figure()
+def fig_4(iam_data, item_data, sources):
+    pass
 
 
-@figure
-def fig_5(var_names):
-    source = 'AR6'
-    data = get_data(source=source,
-                    variable=var_names,
-                    year=YEARS)
-    item_data = get_data('iTEM MIP2', conform_to=source,
-                         variable=var_names, year=YEARS)
+@figure()
+def fig_5(iam_data, item_data, sources):
+    pass

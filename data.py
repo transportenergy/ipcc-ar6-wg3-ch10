@@ -135,6 +135,11 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
         filters.setdefault('region', ['Global'])
         filters.setdefault('technology', ['All'])
 
+        # Change name 'World' to 'Global'
+        if 'region' in filters:
+            filters['region'] = ['Global' if r == 'World' else r
+                                 for r in filters['region']]
+
         _filters, scale = _item_var_info(conform_to, filters['variable'])
         filters.update(_filters)
     else:

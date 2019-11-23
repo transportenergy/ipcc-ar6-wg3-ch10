@@ -6,6 +6,7 @@ config.json
 
 # Downloaded files
 data/*.zip
+data/20*_item_region_data.csv
 data/advance_*.csv
 data/ar5_*.csv
 data/ar6_metadata_indicators.xlsx
