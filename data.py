@@ -120,10 +120,8 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
 
         result = pd.read_csv(Path('data', LOCAL_DATA[source])) \
                    .rename(columns=lambda c: c.lower()) \
-                   .melt(id_vars=id_vars, var_name='year') \
-                   .astype({'year': int}) \
-                   .pipe(_filter, filters) \
-                   .dropna(subset=['value'])
+                   .melt(id_vars=id_vars, var_name='year')
+
     elif source in REMOTE_DATA:
         # Load data from cache
         cache_path = DATA_PATH / 'cache' / source / 'all.h5'
@@ -141,7 +139,10 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
 
     # - Drop unneeded columns,
     # - Read and apply category metadata, if any
-    return result.drop(list(d for d in drop if d in result.columns), axis=1) \
+    return result.astype({'year': int}) \
+                 .pipe(_filter, filters) \
+                 .dropna(subset=['value']) \
+                 .drop(list(d for d in drop if d in result.columns), axis=1) \
                  .pipe(apply_categories, source, drop_uncategorized=True)
 
 
