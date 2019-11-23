@@ -1,0 +1,70 @@
+# Configuration for figures
+
+fig_1:
+  variables:
+  - Emissions|CO2|Energy|Demand|Transportation
+
+fig_2:
+  variables:
+  - Energy Service|Transportation|Freight
+  - Energy Service|Transportation|Passenger
+
+
+fig_3:
+  variables:
+  - Energy Service|Transportation|Aviation
+  - Energy Service|Transportation|Freight
+  - Energy Service|Transportation|Freight|Aviation
+  - Energy Service|Transportation|Freight|International Shipping
+  - Energy Service|Transportation|Freight|Navigation
+  - Energy Service|Transportation|Freight|Other
+  - Energy Service|Transportation|Freight|Railways
+  - Energy Service|Transportation|Freight|Road
+  - Energy Service|Transportation|Navigation
+  - Energy Service|Transportation|Passenger
+  - Energy Service|Transportation|Passenger|Aviation
+  - Energy Service|Transportation|Passenger|Bicycling and Walking
+  - Energy Service|Transportation|Passenger|Navigation
+  - Energy Service|Transportation|Passenger|Other
+  - Energy Service|Transportation|Passenger|Railways
+  - Energy Service|Transportation|Passenger|Road
+  - Energy Service|Transportation|Passenger|Road|2W and 3W
+  - Energy Service|Transportation|Passenger|Road|Bus
+  - Energy Service|Transportation|Passenger|Road|LDV
+
+fig_4:
+  variables:
+  - Energy Service|Transportation|Freight
+  - Energy Service|Transportation|Passenger
+  - Final Energy|Transportation|Freight
+  - Final Energy|Transportation|Passenger
+
+
+fig_5:
+  variables:
+  - Final Energy|Transportation
+  - Final Energy|Transportation|Electricity
+  - Final Energy|Transportation|Fossil
+  - Final Energy|Transportation|Gases
+  - Final Energy|Transportation|Gases|Bioenergy
+  - Final Energy|Transportation|Gases|Fossil
+  - Final Energy|Transportation|Gases|Shipping
+  - Final Energy|Transportation|Geothermal
+  - Final Energy|Transportation|Heat
+  - Final Energy|Transportation|Hydrogen
+  - Final Energy|Transportation|Liquids
+  - Final Energy|Transportation|Liquids|Bioenergy
+  - Final Energy|Transportation|Liquids|Biomass
+  - Final Energy|Transportation|Liquids|Biomass|Shipping
+  - Final Energy|Transportation|Liquids|Coal
+  - Final Energy|Transportation|Liquids|Coal|Shipping
+  - Final Energy|Transportation|Liquids|Fossil synfuel
+  - Final Energy|Transportation|Liquids|Gas
+  - Final Energy|Transportation|Liquids|Natural Gas
+  - Final Energy|Transportation|Liquids|Oil
+  - Final Energy|Transportation|Liquids|Oil|Shipping
+  - Final Energy|Transportation|Liquids|Oil|Shipping|Fuel Oil
+  - Final Energy|Transportation|Liquids|Oil|Shipping|Light Oil
+  - Final Energy|Transportation|Solar
+  - Final Energy|Transportation|Solids|Biomass
+  - Final Energy|Transportation|Solids|Coal

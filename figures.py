@@ -15,6 +15,7 @@ from plotnine import (
     labs,
     theme,
 )
+import yaml
 
 from data import (
     apply_plot_meta,
@@ -32,6 +33,9 @@ YEARS = [2020, 2030, 2050, 2100]
 
 # Matplotlib style
 mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
+
+
+INFO = yaml.safe_load(open('figures.yaml'))
 
 
 # Components for individual figures
@@ -65,12 +69,14 @@ def figure(func):
     """Decorator to handle common plot tasks."""
     fig_name = func.__name__
 
+    fig_info = INFO[fig_name]
+
     def wrapped():
         print('\n')
         log.info(f'Plotting {fig_name}')
 
         # Generate the plot
-        plot = func()
+        plot = func(var_names=fig_info['variables'])
 
         if plot:
             plot.save(OUTPUT_PATH / f'{fig_name}.pdf')
@@ -79,8 +85,8 @@ def figure(func):
 
 
 @figure
-def fig_1():
-    var_name = 'Emissions|CO2|Energy|Demand|Transportation'
+def fig_1(var_names):
+    var_name = var_names[0]
     source = 'AR6'
     data = get_data(source=source,
                     variable=[var_name],
@@ -109,12 +115,8 @@ def fig_1():
 
 
 @figure
-def fig_2():
+def fig_2(var_names):
     source = 'AR6'
-    var_names = [
-        'Energy Service|Transportation|Freight',
-        'Energy Service|Transportation|Passenger'
-    ]
 
     data = get_data(source=source,
                     variable=var_names,
@@ -129,29 +131,8 @@ def fig_2():
 
 
 @figure
-def fig_3():
+def fig_3(var_names):
     source = 'AR6'
-    var_names = [
-        'Energy Service|Transportation|Aviation',
-        'Energy Service|Transportation|Freight',
-        'Energy Service|Transportation|Freight|Aviation',
-        'Energy Service|Transportation|Freight|International Shipping',
-        'Energy Service|Transportation|Freight|Navigation',
-        'Energy Service|Transportation|Freight|Other',
-        'Energy Service|Transportation|Freight|Railways',
-        'Energy Service|Transportation|Freight|Road',
-        'Energy Service|Transportation|Navigation',
-        'Energy Service|Transportation|Passenger',
-        'Energy Service|Transportation|Passenger|Aviation',
-        'Energy Service|Transportation|Passenger|Bicycling and Walking',
-        'Energy Service|Transportation|Passenger|Navigation',
-        'Energy Service|Transportation|Passenger|Other',
-        'Energy Service|Transportation|Passenger|Railways',
-        'Energy Service|Transportation|Passenger|Road',
-        'Energy Service|Transportation|Passenger|Road|2W and 3W',
-        'Energy Service|Transportation|Passenger|Road|Bus',
-        'Energy Service|Transportation|Passenger|Road|LDV',
-    ]
 
     data = get_data(source=source,
                     variable=var_names,
@@ -166,14 +147,8 @@ def fig_3():
 
 
 @figure
-def fig_4():
+def fig_4(var_names):
     source = 'AR6'
-    var_names = [
-        'Energy Service|Transportation|Freight',
-        'Energy Service|Transportation|Passenger',
-        'Final Energy|Transportation|Freight',
-        'Final Energy|Transportation|Passenger',
-    ]
 
     data = get_data(source=source,
                     variable=var_names,
@@ -188,37 +163,8 @@ def fig_4():
 
 
 @figure
-def fig_5():
+def fig_5(var_names):
     source = 'AR6'
-    var_names = [
-        'Final Energy|Transportation',
-        'Final Energy|Transportation|Electricity',
-        'Final Energy|Transportation|Fossil',
-        'Final Energy|Transportation|Gases',
-        'Final Energy|Transportation|Gases|Bioenergy',
-        'Final Energy|Transportation|Gases|Fossil',
-        'Final Energy|Transportation|Gases|Shipping',
-        'Final Energy|Transportation|Geothermal',
-        'Final Energy|Transportation|Heat',
-        'Final Energy|Transportation|Hydrogen',
-        'Final Energy|Transportation|Liquids',
-        'Final Energy|Transportation|Liquids|Bioenergy',
-        'Final Energy|Transportation|Liquids|Biomass',
-        'Final Energy|Transportation|Liquids|Biomass|Shipping',
-        'Final Energy|Transportation|Liquids|Coal',
-        'Final Energy|Transportation|Liquids|Coal|Shipping',
-        'Final Energy|Transportation|Liquids|Fossil synfuel',
-        'Final Energy|Transportation|Liquids|Gas',
-        'Final Energy|Transportation|Liquids|Natural Gas',
-        'Final Energy|Transportation|Liquids|Oil',
-        'Final Energy|Transportation|Liquids|Oil|Shipping',
-        'Final Energy|Transportation|Liquids|Oil|Shipping|Fuel Oil',
-        'Final Energy|Transportation|Liquids|Oil|Shipping|Light Oil',
-        'Final Energy|Transportation|Solar',
-        'Final Energy|Transportation|Solids|Biomass',
-        'Final Energy|Transportation|Solids|Coal',
-    ]
-
     data = get_data(source=source,
                     variable=var_names,
                     years=YEARS)
