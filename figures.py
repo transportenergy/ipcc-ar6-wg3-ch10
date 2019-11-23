@@ -187,8 +187,7 @@ def fig_1(iam_data, item_data, sources):
         sorted(item_data['unit'].unique())))
 
     # Transform from individual data points to descriptives
-    plot_data = iam_data.pipe(compute_descriptives) \
-                        .pipe(apply_plot_meta, sources[0])
+    plot_data = iam_data.pipe(compute_descriptives)
     item_range_data = item_data.pipe(compute_descriptives)
 
     plot = (
