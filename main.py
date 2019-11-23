@@ -17,16 +17,23 @@ from data import (
 import figures
 
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format='{levelname:7} {message}',
+    style='{',
+    )
 
 output_path = Path('output')
 now = datetime.now().isoformat(timespec='seconds')
 
 
 @click.group()
-def cli():
+@click.option('--verbose', is_flag=True,
+              help='Also print DEBUG log information.')
+def cli(verbose):
     """Command-line interface for IPCC AR6 WGIII Ch.10 figures."""
-    pass
+    if verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
 
 
 @cli.command(help=get_references.__doc__)
@@ -35,13 +42,17 @@ def refs():
 
 
 @cli.command()
-def plot():
+@click.option('--normalize', is_flag=True,
+              help='Normalize ordinate to 2020.')
+@click.option('--load-only', is_flag=True,
+              help='Only load and preprocess data; no output.')
+def plot(**options):
     """Plot data to output/."""
-    figures.fig_1()
-    figures.fig_2()
-    figures.fig_3()
-    figures.fig_4()
-    figures.fig_5()
+    figures.fig_1(options)
+    figures.fig_2(options)
+    figures.fig_3(options)
+    figures.fig_4(options)
+    figures.fig_5(options)
 
     # # Extra plots: Render and save
     # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')

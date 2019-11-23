@@ -11,7 +11,7 @@ import yaml
 from iiasa_se_client import AuthClient
 
 
-log = logging.getLogger(__name__)
+log = logging.getLogger('root.' + __name__)
 
 DATA_PATH = Path('.', 'data').resolve()
 

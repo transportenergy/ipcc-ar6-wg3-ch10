@@ -25,7 +25,7 @@ from data import (
     item_var_info,
 )
 
-log = logging.getLogger()
+log = logging.getLogger('root.' + __name__)
 
 OUTPUT_PATH = Path('output')
 
@@ -71,14 +71,14 @@ def figure(func):
 
     fig_info = INFO[fig_name]
 
-    def wrapped():
+    def wrapped(options):
         print('\n')
         log.info(f'Plotting {fig_name}')
 
         # Generate the plot
         plot = func(var_names=fig_info['variables'])
 
-        if plot:
+        if plot and not options.get('load_only', False):
             plot.save(OUTPUT_PATH / f'{fig_name}.pdf')
 
     return wrapped
