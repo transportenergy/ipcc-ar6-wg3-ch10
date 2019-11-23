@@ -1,4 +1,4 @@
-"""Command-line interface using 'click'"""
+"""Command-line interface using 'click'."""
 from datetime import datetime
 import logging
 from pathlib import Path
@@ -14,7 +14,6 @@ from data import (
     get_data,
     get_references,
 )
-import figures
 
 
 logging.basicConfig(
@@ -46,13 +45,27 @@ def refs():
               help='Normalize ordinate to 2020.')
 @click.option('--load-only', is_flag=True,
               help='Only load and preprocess data; no output.')
-def plot(**options):
-    """Plot data to output/."""
-    figures.fig_1(options)
-    figures.fig_2(options)
-    figures.fig_3(options)
-    figures.fig_4(options)
-    figures.fig_5(options)
+@click.argument('to_plot', metavar='FIGURES', type=int, nargs=-1)
+def plot(to_plot, **options):
+    """Plot data to output/.
+
+    FIGURES is a sequence of ints, e.g. 1 4 5 to plot figures 1, 4, and 5. If
+    omitted, all figures are plotted.
+
+    Option --normalize does not affect the appearance of all figures.
+    """
+    import figures
+
+    if len(to_plot) == 0:
+        # Plot all figures
+        to_plot = figures.__all__
+    else:
+        # Use integer indices to retrieve method names
+        to_plot = [figures.__all__[f - 1] for f in to_plot]
+
+    # Plot each figure
+    for f in to_plot:
+        getattr(figures, f)(options)
 
     # # Extra plots: Render and save
     # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')

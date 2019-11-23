@@ -25,17 +25,26 @@ from data import (
     item_var_info,
 )
 
+
+__all__ = [
+    'fig_1',
+    'fig_2',
+    'fig_3',
+    'fig_4',
+    'fig_5',
+]
+
 log = logging.getLogger('root.' + __name__)
 
 OUTPUT_PATH = Path('output')
 
 YEARS = [2020, 2030, 2050, 2100]
 
+INFO = yaml.safe_load(open('figures.yaml'))
+
+
 # Matplotlib style
 mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
-
-
-INFO = yaml.safe_load(open('figures.yaml'))
 
 
 # Components for individual figures
@@ -120,7 +129,7 @@ def fig_2(var_names):
 
     data = get_data(source=source,
                     variable=var_names,
-                    years=YEARS)
+                    year=YEARS)
     for var_name in var_names:
         try:
             item_filters, scale = item_var_info(source, var_name)
@@ -136,7 +145,7 @@ def fig_3(var_names):
 
     data = get_data(source=source,
                     variable=var_names,
-                    years=YEARS)
+                    year=YEARS)
     for var_name in var_names:
         try:
             item_filters, scale = item_var_info(source, var_name)
@@ -152,7 +161,7 @@ def fig_4(var_names):
 
     data = get_data(source=source,
                     variable=var_names,
-                    years=YEARS)
+                    year=YEARS)
     for var_name in var_names:
         try:
             item_filters, scale = item_var_info(source, var_name)
@@ -167,7 +176,7 @@ def fig_5(var_names):
     source = 'AR6'
     data = get_data(source=source,
                     variable=var_names,
-                    years=YEARS)
+                    year=YEARS)
     for var_name in var_names:
         try:
             item_filters, scale = item_var_info(source, var_name)

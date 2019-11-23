@@ -255,6 +255,14 @@ Then:
    # Run a particular command
    $ python3 main.py plot
 
+Generating all the plots
+------------------------
+
+.. code-block::
+
+   $ python3 main.py cache refresh AR6  # about 60 minutes
+   $ python3 main.py plot --normalize
+
 History
 =======
 
