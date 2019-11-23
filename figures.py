@@ -247,7 +247,6 @@ def fig_3(iam_data, item_data, sources):
     expr = (r'Energy Service\|Transportation\|(?P<type>Freight|Passenger)'
             r'(?:\|(?P<mode>.*))?')
     iam_data = restore_dims(iam_data, expr)
-    print(iam_data)
 
     # TODO mode shares from individual variables
     plot_data = iam_data.pipe(compute_descriptives) \
@@ -275,6 +274,12 @@ def fig_4(iam_data, item_data, sources):
 
 @figure()
 def fig_5(iam_data, item_data, sources):
+    # Restore the 'fuel' dimension to the IAM data
+    expr = (r'Final Energy\|Transportation'
+            r'(?:\|(?P<fuel>.*))?')
+    iam_data = restore_dims(iam_data, expr)
+    print(iam_data)
+
     # TODO compute fuel shares from individual variables
     plot_data = iam_data.pipe(compute_descriptives) \
                         .pipe(apply_plot_meta, sources[0])

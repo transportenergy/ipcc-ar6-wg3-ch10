@@ -175,7 +175,7 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
     # Finalize:
     # - Year column as integer,
     # - Apply filters,
-    # - Apply iTEM-specific cleaning (TODO and scaling)
+    # - Apply iTEM-specific cleaning and scaling
     # - Drop missing values,
     # - Drop undesired columns,
     # - Read and apply category metadata, if any.
@@ -236,6 +236,7 @@ def _item_clean_data(df, source, scale):
     df = df[~df.model.isin(['BP', 'ExxonMobil', 'Shell'])]
 
     # Apply scaling
+    # TODO silence pandas warning here
     df['value'] = df['value'] * scale
 
     return df
