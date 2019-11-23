@@ -278,7 +278,6 @@ def fig_5(iam_data, item_data, sources):
     expr = (r'Final Energy\|Transportation'
             r'(?:\|(?P<fuel>.*))?')
     iam_data = restore_dims(iam_data, expr)
-    print(iam_data)
 
     # TODO compute fuel shares from individual variables
     plot_data = iam_data.pipe(compute_descriptives) \
