@@ -7,10 +7,9 @@ import click
 import pandas as pd
 
 from data import (
+    DATA_PATH,
     LOCAL_DATA,
     REMOTE_DATA,
-    cache_data,
-    data_path,
     get_client,
     get_data,
     get_references,
@@ -67,13 +66,15 @@ def debug():
 def cache(action, source):
     """Cache data from the IIASA API in data/cache/SOURCE/.
 
-    A file named all.pkl is also created with the date concatenated.
+    An HDF5 file named all.h5 is also created.
 
     \b
     The download takes:
-    - AR6: approximately 60 minutes for 768 scenarios / 3.2 GiB.
+    - AR6: approximately 60 minutes for 895 scenarios / 3.3 GiB; all.h5 is 9.1
+           GiB.
     - SR15: approximately 15 minutes for 416 scenarios / 832 MiB.
     """
+    from .cache import cache_data
     if action == 'refresh':
         cache_data(source)
     else:
@@ -90,7 +91,7 @@ def variables():
     filter data imports
     """
     def write_vars(src, vars):
-        (data_path / f'variables-{source}-all.txt').write_text('\n'.join(vars))
+        (DATA_PATH / f'variables-{source}-all.txt').write_text('\n'.join(vars))
 
     for source in LOCAL_DATA.keys():
         print(f'Processing {source!r}')

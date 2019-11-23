@@ -5,9 +5,11 @@ __pycache__
 config.json
 
 # Downloaded files
+data/*.zip
 data/advance_*.csv
 data/ar5_*.csv
-data/*.zip
+data/ar6_metadata_indicators.xlsx
+data/iTEM-MIP2.csv
 ref/*.xls*
 
 # Generated and temporary files

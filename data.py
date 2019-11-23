@@ -1,5 +1,4 @@
 """Retrieve data from the AR6 WGIII Scenarios Database hosted by IIASA."""
-from datetime import datetime
 from functools import lru_cache
 import json
 import logging
@@ -7,7 +6,6 @@ from pathlib import Path
 
 import item.model
 import pandas as pd
-from tqdm import tqdm
 import yaml
 
 from iiasa_se_client import AuthClient
@@ -15,9 +13,9 @@ from iiasa_se_client import AuthClient
 
 log = logging.getLogger(__name__)
 
-DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
+DATA_PATH = Path('.', 'data').resolve()
 
-data_path = Path('.', 'data').resolve()
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
 
 LOCAL_DATA = {
     'ADVANCE':  'advance_compare_20171018-134445.csv',
@@ -35,7 +33,7 @@ config = json.load(open('config.json'))
 client = None
 
 
-VARIABLES = yaml.safe_load(open(data_path / 'variables-map.yaml'))
+VARIABLES = yaml.safe_load(open(DATA_PATH / 'variables-map.yaml'))
 
 
 def compute_descriptives(df):
@@ -108,7 +106,7 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
         Names of variables to retrieve.
     """
     if vars_from_file and 'variable' not in filters:
-        variables = (data_path / f'variables-{source}.txt').read_text() \
+        variables = (DATA_PATH / f'variables-{source}.txt').read_text() \
             .strip().split('\n')
         filters['variable'] = sorted(variables)
 
@@ -128,7 +126,7 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
                    .dropna(subset=['value'])
     elif source in REMOTE_DATA:
         # Load data from cache
-        cache_path = data_path / 'cache' / source / 'all.h5'
+        cache_path = DATA_PATH / 'cache' / source / 'all.h5'
         arg = dict(
             where=' | '.join(f'variable == {v!r}' for v in filters['variable'])
         )
@@ -151,11 +149,11 @@ def apply_categories(df, source, **options):
     """Modify *df* from *source* to add 'category' columns."""
     if source in ('SR15',):
         # Read a CSV file
-        cat_data = pd.read_csv(data_path / f'categories-{source}.csv')
+        cat_data = pd.read_csv(DATA_PATH / f'categories-{source}.csv')
         result = df.merge(cat_data, how='left', on=['model', 'scenario'])
     elif source == 'AR6':
         # Read an Excel file
-        cat_data = pd.read_excel(data_path / 'ar6_metadata_indicators.xlsx') \
+        cat_data = pd.read_excel(DATA_PATH / 'ar6_metadata_indicators.xlsx') \
                      .rename(columns={'Temperature-in-2100_bin': 'category'}) \
                      .loc[:, ['model', 'scenario', 'category']]
         result = df.merge(cat_data, how='left', on=['model', 'scenario'])
@@ -177,7 +175,7 @@ def apply_categories(df, source, **options):
 def apply_plot_meta(df, source):
     """Add plot metadata columns 'color' and 'label' *df* from *source*."""
     try:
-        meta = pd.read_csv(data_path / f'meta-{source}.csv')
+        meta = pd.read_csv(DATA_PATH / f'meta-{source}.csv')
     except FileNotFoundError:
         return df
     else:
@@ -258,66 +256,3 @@ def item_var_info(source, name, errors='both'):
             raise KeyError(name)
 
     return result
-
-
-def cache_data(source):
-    """Retrieve data from *source* and cache it locally."""
-    cache_path = data_path / 'cache' / source
-    cache_path.mkdir(parents=True, exist_ok=True)
-
-    # List of 'runs' (=scenarios)
-    client = get_client(source)
-    runs = client.runs()
-
-    # Display a progress bar while downloading
-    runs_iter = tqdm(runs)
-
-    for run in runs_iter:
-        # Modification date or creation date; whichever is more recent
-        try:
-            updated = datetime.strptime(run['upd_date'], DATE_FORMAT)
-        except TypeError:
-            # upd_date is None
-            updated = datetime.strptime(run['cre_date'], DATE_FORMAT)
-
-        # Cache target file
-        filename = cache_path / '{run_id:04}.csv'.format(**run)
-
-        # Update the progress bar
-        runs_iter.set_postfix_str('{model}/{scenario}'.format(**run))
-
-        try:
-            file_mtime = datetime.fromtimestamp(filename.stat().st_mtime)
-            if file_mtime > updated:
-                continue  # File on disk is newer; skip
-        except FileNotFoundError:
-            pass  # File doesn't exist
-
-        # Retrieve, convert to CSV, and write
-        pd.DataFrame.from_dict(
-            client.runs_bulk_ts(runs=[run['run_id']])) \
-            .to_csv(filename)
-
-    # Combine files into a single HDF5 file
-    h5_path = cache_path / 'all.h5'
-    log.info(f'Compiling {h5_path}')
-    store = pd.HDFStore(h5_path)
-
-    # Enforce types when reading from CSV
-    dtypes = {c: int for c in 'year meta runId version'.split()}
-    dtypes['time'] = float  # runID 1202 are empty -> NaN -> cannot use int
-    dtypes['scenario'] = str  # runID 0274 contains '1.0' -> float
-
-    # Minimum sizes for HDF5 columns; the longest appearing in the data
-    sizes = dict(model=44, region=94, scenario=54, unit=39, variable=88)
-
-    # Iterate over files
-    for f in tqdm(sorted(cache_path.glob('*.csv'))):
-        df = pd.read_csv(f, index_col=0, dtype=dtypes).reset_index(drop=True)
-        try:
-            store.append(source, df, min_itemsize=sizes)
-        except ValueError as e:
-            print(e, f)
-            raise
-
-    store.close()
