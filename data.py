@@ -109,10 +109,10 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
     """
     log.info(f'Get data for {source} with {filters}')
 
-    if vars_from_file:
+    if vars_from_file and 'variable' not in filters:
         variables = (data_path / f'variables-{source}.txt').read_text() \
             .strip().split('\n')
-        filters['variable'] = sorted(filters.get('variable', []) + variables)
+        filters['variable'] = sorted(variables)
 
     if source in LOCAL_DATA:
         id_vars = ['model', 'scenario', 'region', 'variable', 'unit']
@@ -128,9 +128,16 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
                    .dropna(subset=['value'])
     elif source in REMOTE_DATA:
         # Load data from cache
-        log.info('  from cache')
-        result = pd.read_hdf(data_path / 'cache' / source / 'all.h5')
-        log.info('  done.')
+        cache_path = data_path / 'cache' / source / 'all.h5'
+        arg = dict(
+            where=' | '.join(f'variable == {v!r}' for v in filters['variable'])
+        )
+        log.info(f'  from {cache_path}')
+        log.info(f"  where: {arg['where']}")
+
+        result = pd.read_hdf(cache_path, source, **arg)
+
+        log.info(f'  done; {len(result)} observations.')
     else:
         raise ValueError(source)
 
