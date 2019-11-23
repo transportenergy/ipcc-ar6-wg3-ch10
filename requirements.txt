@@ -1,4 +1,6 @@
 click
 pandas
 plotnine
+PyYAML
 requests
+tables
