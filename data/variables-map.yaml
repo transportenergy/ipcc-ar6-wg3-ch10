@@ -52,6 +52,19 @@
   iTEM MIP2:
     select: { variable: ['pkm'], mode: ['Road'] }
 
+- AR6:  Energy Service|Transportation|Passenger|Road|2W and 3W
+  iTEM MIP2:
+    select: { variable: ['pkm'], mode: ['2W and 3W'] }
+
+- AR6:  Energy Service|Transportation|Passenger|Road|Bus
+  iTEM MIP2:
+    select: { variable: ['pkm'], mode: ['Bus'] }
+
+- AR6:  Energy Service|Transportation|Passenger|Road|LDV
+  iTEM MIP2:
+    select: { variable: ['pkm'], mode: ['Bus'] }
+
+
 # Disabled
 - AR6:  Emissions|CO2
   SR15: Emissions|CO2

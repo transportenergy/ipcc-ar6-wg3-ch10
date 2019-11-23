@@ -224,6 +224,10 @@ def apply_plot_meta(df, source):
         return df.merge(meta, how='left', on=['category'])
 
 
+def restore_dims(df, expr):
+    return pd.concat([df, df['variable'].str.extract(expr)], axis=1)
+
+
 def _item_clean_data(df, source, scale):
     if 'iTEM' not in source:
         return df

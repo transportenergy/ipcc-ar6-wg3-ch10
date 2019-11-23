@@ -28,6 +28,7 @@ from data import (
     apply_plot_meta,
     compute_descriptives,
     get_data,
+    restore_dims,
 )
 
 
@@ -167,8 +168,9 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
 
             # Save to file by default
             if plot and not options.get('load_only', False):
-                plot.save(OUTPUT_PATH / f'{fig_id}.pdf', verbose=False,
-                          width=190, height=100, units='mm')
+                args = dict(verbose=False, width=190, height=100, units='mm')
+                plot.save(OUTPUT_PATH / f'{fig_id}.pdf', **args)
+                plot.save(OUTPUT_PATH / f'{fig_id}.png', **args, dpi=300)
 
         return wrapped
     return figure_decorator
@@ -208,7 +210,18 @@ def fig_1(iam_data, item_data, sources):
 
 @figure()
 def fig_2(iam_data, item_data, sources):
+    # Restore the 'type' dimension to each data set
+    expr = r'Energy Service\|Transportation\|(?P<type>Freight|Passenger)'
+    iam_data = restore_dims(iam_data, expr)
+    item_data['type'] = item_data['variable'].replace({'tkm': 'Freight',
+                                                       'pkm': 'Passenger'})
+
     # TODO handle optional normalization
+
+    # Not normalized: discard 2020 data
+    iam_data = iam_data[iam_data.year != 2020]
+    item_data = item_data[~item_data.year.isin([2020, 2100])]
+
     # Transform from individual data points to descriptives
     plot_data = iam_data.pipe(compute_descriptives) \
                         .pipe(apply_plot_meta, sources[0])
@@ -230,6 +243,12 @@ def fig_2(iam_data, item_data, sources):
 
 @figure()
 def fig_3(iam_data, item_data, sources):
+    # Restore the 'type' and 'mode' dimensions to the IAM data
+    expr = (r'Energy Service\|Transportation\|(?P<type>Freight|Passenger)'
+            r'(?:\|(?P<mode>.*))?')
+    iam_data = restore_dims(iam_data, expr)
+    print(iam_data)
+
     # TODO mode shares from individual variables
     plot_data = iam_data.pipe(compute_descriptives) \
                         .pipe(apply_plot_meta, sources[0])
