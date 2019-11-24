@@ -7,6 +7,7 @@ from pathlib import Path
 
 import item.model
 import pandas as pd
+import pint
 import yaml
 
 from iiasa_se_client import AuthClient
@@ -32,13 +33,18 @@ REMOTE_DATA = {
     'SR15': 'IXSE_SR15',
 }
 
-
 config = json.load(open('config.json'))
 client = None
 
-
 # Mapping between variable names in different data sources
 VARIABLES = yaml.safe_load(open(DATA_PATH / 'variables-map.yaml'))
+
+UNITS = pint.UnitRegistry()
+UNITS.define("""bn = 10**9
+person = [person]
+pkm = person * kilometer
+tkm = tonne * kilometre
+yr = year""")
 
 
 def compute_descriptives(df):
@@ -71,6 +77,48 @@ def compute_descriptives(df):
         dfs.append(supercat)
 
     return pd.concat(dfs)
+
+
+def compute_ratio(df, num, denom, groupby=[]):
+    log.info(f' Computing ratio: {num!r} / {denom!r} from {len(df)} obs')
+
+    id_cols = ['model', 'scenario', 'version', 'region', 'year']
+    results = []
+    for group, group_df in df.groupby(groupby):
+        tmp = {}
+        unit = {}
+        for n, query in ('num', num), ('denom', denom):
+            # Subset the data
+            tmp[n] = group_df.set_index(id_cols + groupby).query(query)
+
+            # Retrieve units
+            unit[n] = tmp[n]['unit'].unique()
+            assert len(unit[n]) == 1
+            unit[n] = UNITS(unit[n][0])
+
+        # Compute the ratio
+        log.info(f" ({len(tmp['num'])} obs) [{unit['num']}] / "
+                 f" ({len(tmp['denom'])} obs) [{unit['denom']}]")
+
+        result = (tmp['num']['value'] / tmp['denom']['value']).dropna()
+        result_unit = unit['num'] / unit['denom']
+
+        log.info(f' {len(result)} result obs [{result_unit}]')
+
+        results.append(
+            pd.merge(tmp['num'], result.rename('result'),
+                     left_index=True, right_index=True)
+              .drop(columns=['quantity', 'variable'] + ['value'])
+              .rename(columns={'result': 'value'})
+              .assign(unit=result_unit)
+              .reset_index()
+        )
+
+    return pd.concat(results)
+
+
+def compute_shares(df):
+    raise NotImplementedError
 
 
 def _filter(df, filters):
