@@ -11,6 +11,10 @@ fig_2:
   variables:
   - Energy Service|Transportation|Freight
   - Energy Service|Transportation|Passenger
+  # Regular expression. Captured groups '(?P<name>...)' are added as new
+  # columns in the loaded data.
+  restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)'
+
 
 fig_3:
   short title: Mode shares of transport activity
@@ -34,6 +38,9 @@ fig_3:
   - Energy Service|Transportation|Passenger|Road|2W and 3W
   - Energy Service|Transportation|Passenger|Road|Bus
   - Energy Service|Transportation|Passenger|Road|LDV
+  # Restore the 'type' and 'mode' dimensions to the IAM data
+  restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)(?:\|(?P<mode>.*))?'
+
 
 fig_4:
   short title: Energy intensity of transport
@@ -42,6 +49,7 @@ fig_4:
   - Energy Service|Transportation|Passenger
   - Final Energy|Transportation|Freight
   - Final Energy|Transportation|Passenger
+  restore dims: '(?P<quantity>[^\|]*)\|Transportation(?:\|(?P<type>.*))?'
 
 fig_5:
   short title: Fuel shares of transport final energy
@@ -72,3 +80,4 @@ fig_5:
   - Final Energy|Transportation|Solar
   - Final Energy|Transportation|Solids|Biomass
   - Final Energy|Transportation|Solids|Coal
+  restore dims: 'Final Energy\|Transportation(?:\|(?P<fuel>.*))?'
