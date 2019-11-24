@@ -54,6 +54,8 @@ mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
 
 
 # Common components
+
+# Scale for scenario categories
 SCALE_CAT = pd.DataFrame([
     ['Below 1.6C', 'green',   '<1.6°C'],
     ['1.6 - 2.0C', '#fca503', '1.6–2°C'],

@@ -232,12 +232,11 @@ def _item_clean_data(df, source, scale):
     if 'iTEM' not in source:
         return df
 
-    # Remove private companies' projections
-    df = df[~df.model.isin(['BP', 'ExxonMobil', 'Shell'])]
-
     # Apply scaling
-    # TODO silence pandas warning here
     df['value'] = df['value'] * scale
+
+    # Remove private companies' projections
+    df = df.loc[~df.model.isin(['BP', 'ExxonMobil', 'Shell']), :]
 
     return df
 
