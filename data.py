@@ -47,29 +47,27 @@ tkm = tonne * kilometre
 yr = year""")
 
 
-def compute_descriptives(df):
+def compute_descriptives(df, groupby=[]):
     """Compute descriptive statistics on *df*.
 
     Descriptives are returned for each ('variable', 'category', 'year') and
     ('variable', 'category+1', 'year').
     """
-    dfs = []
+    def _describe(df, col):
+        return df \
+            .groupby(['variable', 'year'] + [col] + groupby) \
+            .describe(percentiles=[0.05, 0.25, 0.5, 0.75, 0.95]) \
+            .loc[:, 'value'] \
+            .reset_index()
 
     # Compute descriptive statistics, by category
-    dfs.append(
-        df
-        .groupby(['variable', 'category', 'year'])
-        .apply(lambda g: g.describe()['value'])
-        .reset_index())
+    dfs = [df.pipe(_describe, 'category')]
 
     # by supercategory. The rename creates a new category named '2C' when
     # concat()'d below
     if 'category+1' in df.columns:
-        supercat = df \
-            .groupby(['variable', 'category+1', 'year']) \
-            .apply(lambda g: g.describe()['value']) \
-            .reset_index() \
-            .rename(columns={'category+1': 'category'})
+        supercat = df.pipe(_describe, 'category+1') \
+                     .rename(columns={'category+1': 'category'})
 
         # Discard the statistics for scenarios not part of either supercategory
         supercat = supercat[supercat.category != '']
