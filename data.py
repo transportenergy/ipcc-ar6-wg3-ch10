@@ -146,6 +146,11 @@ def compute_shares(df, on, groupby=[]):
     return pd.concat(results)
 
 
+def normalize(df, year):
+    # TODO implement
+    raise NotImplementedError
+
+
 def _filter(df, filters):
     """Filter *df*."""
     return df[df.isin(filters)[list(filters.keys())].all(axis=1)]
@@ -360,7 +365,7 @@ def _item_var_info(source, name, errors='both'):
 
     if not result:
         if errors in ('warn', 'both'):
-            log.warning(f'no iTEM variable info for {source}: {name!r}')
+            log.warning(f'No iTEM variable matching {source}: {name!r}')
             result = (dict(variable=[]), 1)
         if errors in ('raise', 'both'):
             raise KeyError(name)

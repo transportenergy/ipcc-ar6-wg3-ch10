@@ -25,11 +25,11 @@ from plotnine import (
 import yaml
 
 from data import (
-    apply_plot_meta,
     compute_descriptives,
     compute_ratio,
     compute_shares,
     get_data,
+    normalize,
     restore_dims,
 )
 
@@ -121,10 +121,12 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                 variable=var_names, year=YEARS, **filters)
 
             # Generate the plot
-            plot = func(
+            args = dict(
                 iam_data=iam_data,
                 item_data=item_data,
                 sources=sources)
+            args['normalize'] = options.pop('normalize')
+            plot = func(**args)
 
             if plot:
                 # Add a title
@@ -141,6 +143,7 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
     return figure_decorator
 
 
+# Non-dynamic features of fig_1
 FIG1_STATIC = [
     # Aesthetic mappings
     aes(x='category', color='category'),
@@ -187,10 +190,11 @@ FIG1_STATIC = [
 
 
 @figure(region=['World'])
-def fig_1(iam_data, item_data, sources):
-    # TODO handle optional normalization
+def fig_1(iam_data, item_data, sources, **kwargs):
+    if kwargs['normalize']:
+        iam_data = normalize(iam_data, year=2020)
 
-    # Not normalized: discard 2020 data
+    # Discard 2020 data
     iam_data = iam_data[iam_data.year != 2020]
     item_data = item_data[~item_data.year.isin([2020, 2100])]
 
@@ -218,29 +222,32 @@ def fig_1(iam_data, item_data, sources):
     return plot
 
 
+# Non-dynamic features of fig_2
+FIG2_STATIC = []
+
+
 @figure()
-def fig_2(iam_data, item_data, sources):
+def fig_2(iam_data, item_data, sources, **kwargs):
     # Restore the 'type' dimension to each data set
-    item_data['type'] = item_data['variable'].replace({'tkm': 'Freight',
-                                                       'pkm': 'Passenger'})
+    item_data['type'] = item_data['variable'] \
+        .replace({'tkm': 'Freight', 'pkm': 'Passenger'})
 
-    # TODO handle optional normalization
+    if kwargs['normalize']:
+        iam_data = normalize(iam_data, year=2020)
 
-    # Not normalized: discard 2020 data
+    # Discard 2020 data
     iam_data = iam_data[iam_data.year != 2020]
     item_data = item_data[~item_data.year.isin([2020, 2100])]
 
     # Transform from individual data points to descriptives
-    plot_data = iam_data.pipe(compute_descriptives) \
-                        .pipe(apply_plot_meta, sources[0])
-    item_plot_data = item_data.pipe(apply_plot_meta, sources[1])
+    plot_data = iam_data.pipe(compute_descriptives)
 
     plot = (
         ggplot(aes(x='model'), plot_data)
         + FIG1_STATIC
         + geom_point(
             mapping=aes(y='value', shape='model'),
-            data=item_plot_data,
+            data=item_data,
             color='black', size=2, fill=None)
     )
 
@@ -249,8 +256,12 @@ def fig_2(iam_data, item_data, sources):
     return plot
 
 
+# Non-dynamic features of fig_3
+FIG3_STATIC = []
+
+
 @figure()
-def fig_3(iam_data, item_data, sources):
+def fig_3(iam_data, item_data, sources, **kwargs):
     # Compute mode shares by type for IAM scenarios
     plot_data = iam_data \
         .pipe(compute_shares, on='mode', groupby=['type'])
@@ -264,6 +275,7 @@ def fig_3(iam_data, item_data, sources):
     return plot
 
 
+# Non-dynamic features of fig_4
 FIG4_STATIC = [
     aes(x='category + year', color='category'),
 
@@ -290,7 +302,7 @@ FIG4_STATIC = [
 
 
 @figure()
-def fig_4(iam_data, item_data, sources):
+def fig_4(iam_data, item_data, sources, **kwargs):
     # Compute energy intensity for IAM scenarios
     plot_data = iam_data \
         .pipe(compute_ratio, groupby=['type'],
@@ -300,8 +312,7 @@ def fig_4(iam_data, item_data, sources):
     # TODO compute carbon intensity of energy
     # TODO compute energy intensity for sectoral scenarios
 
-    plot_data = iam_data.pipe(compute_descriptives) \
-                        .pipe(apply_plot_meta, sources[0])
+    plot_data = iam_data.pipe(compute_descriptives)
 
     plot = ggplot(aes(x='model'), plot_data) + FIG4_STATIC
 
@@ -310,15 +321,18 @@ def fig_4(iam_data, item_data, sources):
     return plot
 
 
+# Non-dynamic features of fig_5
+FIG5_STATIC = []
+
+
 @figure()
-def fig_5(iam_data, item_data, sources):
+def fig_5(iam_data, item_data, sources, **kwargs):
     # Compute fuel shares for IAM scenarios
     iam_data.pipe(compute_shares, 'fuel')
 
     # TODO compute fuel shares for sectoral scenarios
 
-    plot_data = iam_data.pipe(compute_descriptives) \
-                        .pipe(apply_plot_meta, sources[0])
+    plot_data = iam_data.pipe(compute_descriptives)
 
     plot = ggplot(aes(x='model'), plot_data)
 
