@@ -19,7 +19,7 @@ fig_2:
 fig_3:
   short title: Mode shares of transport activity
   variables:
-  - Energy Service|Transportation|Aviation
+  # - Energy Service|Transportation|Aviation
   - Energy Service|Transportation|Freight
   - Energy Service|Transportation|Freight|Aviation
   - Energy Service|Transportation|Freight|International Shipping
@@ -27,7 +27,7 @@ fig_3:
   - Energy Service|Transportation|Freight|Other
   - Energy Service|Transportation|Freight|Railways
   - Energy Service|Transportation|Freight|Road
-  - Energy Service|Transportation|Navigation
+  # - Energy Service|Transportation|Navigation
   - Energy Service|Transportation|Passenger
   - Energy Service|Transportation|Passenger|Aviation
   - Energy Service|Transportation|Passenger|Bicycling and Walking

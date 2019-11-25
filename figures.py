@@ -251,12 +251,11 @@ def fig_2(iam_data, item_data, sources):
 
 @figure()
 def fig_3(iam_data, item_data, sources):
-    iam_data = iam_data \
-        .pipe(compute_shares, 'mode')
+    # Compute mode shares by type for IAM scenarios
+    plot_data = iam_data \
+        .pipe(compute_shares, on='mode', groupby=['type'])
 
-    # TODO mode shares from individual variables
-    plot_data = iam_data.pipe(compute_descriptives) \
-                        .pipe(apply_plot_meta, sources[0])
+    # TODO compute mode shares for sectoral scenarios
 
     plot = ggplot(aes(x='model'), plot_data)
 
@@ -292,14 +291,15 @@ FIG4_STATIC = [
 
 @figure()
 def fig_4(iam_data, item_data, sources):
-    # Compute energy intensity
+    # Compute energy intensity for IAM scenarios
     plot_data = iam_data \
         .pipe(compute_ratio, groupby=['type'],
               num="quantity == 'Final Energy'",
               denom="quantity == 'Energy Service'")
 
     # TODO compute carbon intensity of energy
-    # TODO compute energy intensity of sectoral models
+    # TODO compute energy intensity for sectoral scenarios
+
     plot_data = iam_data.pipe(compute_descriptives) \
                         .pipe(apply_plot_meta, sources[0])
 
@@ -312,12 +312,11 @@ def fig_4(iam_data, item_data, sources):
 
 @figure()
 def fig_5(iam_data, item_data, sources):
-    # Restore the 'fuel' dimension to the IAM data
-    expr = (r'Final Energy\|Transportation'
-            r'(?:\|(?P<fuel>.*))?')
-    iam_data = restore_dims(iam_data, expr)
+    # Compute fuel shares for IAM scenarios
+    iam_data.pipe(compute_shares, 'fuel')
 
-    # TODO compute fuel shares from individual variables
+    # TODO compute fuel shares for sectoral scenarios
+
     plot_data = iam_data.pipe(compute_descriptives) \
                         .pipe(apply_plot_meta, sources[0])
 

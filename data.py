@@ -80,7 +80,7 @@ def compute_descriptives(df):
 
 
 def compute_ratio(df, num, denom, groupby=[]):
-    log.info(f' Computing ratio: {num!r} / {denom!r} from {len(df)} obs')
+    log.info(f'Compute ratio of {num!r} / {denom!r} from {len(df)} obs')
 
     id_cols = ['model', 'scenario', 'version', 'region', 'year']
     results = []
@@ -97,13 +97,13 @@ def compute_ratio(df, num, denom, groupby=[]):
             unit[n] = UNITS(unit[n][0])
 
         # Compute the ratio
-        log.info(f" ({len(tmp['num'])} obs) [{unit['num']}] / "
-                 f" ({len(tmp['denom'])} obs) [{unit['denom']}]")
+        log.info(f"  ({len(tmp['num'])} obs) [{unit['num']}] / "
+                 f"  ({len(tmp['denom'])} obs) [{unit['denom']}]")
 
         result = (tmp['num']['value'] / tmp['denom']['value']).dropna()
         result_unit = unit['num'] / unit['denom']
 
-        log.info(f' {len(result)} result obs [{result_unit}]')
+        log.info(f'  {len(result)} result obs [{result_unit}]')
 
         results.append(
             pd.merge(tmp['num'], result.rename('result'),
@@ -117,8 +117,33 @@ def compute_ratio(df, num, denom, groupby=[]):
     return pd.concat(results)
 
 
-def compute_shares(df):
-    raise NotImplementedError
+def compute_shares(df, on, groupby=[]):
+    log.info(f'Compute {on} shares from {len(df)} obs')
+
+    id_cols = ['model', 'scenario', 'version', 'region', 'year']
+    results = []
+    grouped = df.groupby(groupby) if len(groupby) else ((None, df),)
+    for group, group_df in grouped:
+        tmp = group_df.set_index(id_cols + groupby)
+        num = tmp[~tmp[on].isna()]
+        denom = tmp[tmp[on].isna()]
+
+        # Compute the ratio
+        log.info(f"  ({len(num)} obs) / ({len(denom)} obs)")
+
+        result = (num['value'] / denom['value']).dropna()
+
+        log.info(f'  {len(result)} result obs')
+
+        results.append(
+            pd.merge(num, result.rename('result'),
+                     left_index=True, right_index=True)
+              .drop(columns=['value', 'variable'])
+              .rename(columns={'result': 'value'})
+              .reset_index()
+        )
+
+    return pd.concat(results)
 
 
 def _filter(df, filters):
