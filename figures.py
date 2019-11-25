@@ -8,6 +8,7 @@ from plotnine import (
     element_blank,
     element_rect,
     element_text,
+    facet_grid,
     facet_wrap,
     geom_crossbar,
     # geom_linerange,
@@ -135,7 +136,11 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
 
             # Save to file by default
             if plot and not options.get('load_only', False):
-                args = dict(verbose=False, width=190, height=100, units='mm')
+                args = dict(
+                    verbose=False,
+                    width=190,
+                    height=190 * fig_info.get('aspect ratio', 190 / 100),
+                    units='mm')
                 plot.save(OUTPUT_PATH / f'{fig_id}.pdf', **args)
                 plot.save(OUTPUT_PATH / f'{fig_id}.png', **args, dpi=300)
 
@@ -170,8 +175,7 @@ FIG1_STATIC = [
     scale_color_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
 
     # Axis labels
-    labs(x='', y='', fill='IAM range', shape='Sectoral'),
-    theme(axis_text_x=element_text(rotation=90)),
+    labs(x='', y='', fill='IAM/sectoral scenarios'),
 
     # Appearance
     theme(
@@ -207,8 +211,9 @@ def fig_1(iam_data, item_data, sources, **kwargs):
     item_range_data = item_data.pipe(compute_descriptives)
 
     plot = (
-        ggplot(aes(x='model'), plot_data)
-        + FIG1_STATIC
+        ggplot(data=plot_data) + FIG1_STATIC
+
+        # Points and bar for sectoral models
         + geom_crossbar(
             aes(ymin='min', y='50%', ymax='max', fill='category'),
             item_range_data,
@@ -223,7 +228,48 @@ def fig_1(iam_data, item_data, sources, **kwargs):
 
 
 # Non-dynamic features of fig_2
-FIG2_STATIC = []
+FIG2_STATIC = [
+    # Aesthetic mappings
+    aes(x='category', color='category'),
+
+    # Horizontal panels by the years shown
+    facet_grid('type ~ year', scales='free_x'),
+
+    # Ranges of data as vertical bars
+    geom_crossbar(aes(ymin='min', y='50%', ymax='max'),
+                  color='black', fill='white', width=None),
+    geom_crossbar(aes(ymin='25%', y='50%', ymax='75%', fill='category'),
+                  color='black', width=None),
+
+    # Labels with group counts
+    geom_text(
+        aes(label='count', y='max', color='category'),
+        format_string='{:.0f}',
+        va='bottom',
+        size=7),
+
+    # Scales
+    scale_x_discrete(limits=SCALE_CAT['limit'], labels=SCALE_CAT['label']),
+    scale_fill_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
+    scale_color_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
+
+    # Axis labels
+    labs(x='', y='', fill='IAM/sectoral scenarios'),
+
+    # Appearance
+    theme(
+        plot_background=element_rect(alpha=0),
+        panel_background=element_rect(fill='#fef6e6'),
+        strip_background=element_rect(fill='#fef6e6'),
+
+        panel_grid_major_x=element_blank(),
+
+        axis_text_x=element_blank(),
+        strip_text=element_text(weight='bold'),
+    ),
+
+    guides(color=None),
+]
 
 
 @figure()
@@ -240,15 +286,20 @@ def fig_2(iam_data, item_data, sources, **kwargs):
     item_data = item_data[~item_data.year.isin([2020, 2100])]
 
     # Transform from individual data points to descriptives
-    plot_data = iam_data.pipe(compute_descriptives)
+    plot_data = iam_data.pipe(compute_descriptives, groupby=['type'])
+    item_range_data = item_data.pipe(compute_descriptives, groupby=['type'])
 
     plot = (
-        ggplot(aes(x='model'), plot_data)
-        + FIG1_STATIC
+        ggplot(data=plot_data) + FIG2_STATIC
+
+        # Points and bar for sectoral models
+        + geom_crossbar(
+            aes(ymin='min', y='50%', ymax='max', fill='category'),
+            item_range_data,
+            color='black', fatten=0, width=None)
         + geom_point(
-            mapping=aes(y='value', shape='model'),
-            data=item_data,
-            color='black', size=2, fill=None)
+            aes(y='value'), item_data,
+            color='black', size=1, shape='x', fill=None)
     )
 
     plot.units = '—'
