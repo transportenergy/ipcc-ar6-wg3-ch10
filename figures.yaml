@@ -14,6 +14,8 @@ fig_2:
   # Regular expression. Captured groups '(?P<name>...)' are added as new
   # columns in the loaded data.
   restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)'
+  # Width / height
+  aspect ratio: 1
 
 
 fig_3:
