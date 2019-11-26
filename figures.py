@@ -76,7 +76,7 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
     Example:
 
       @figure()
-      def fig_N(iam_data, item_data, sources)
+      def fig_N(data, sources)
           # Generate plot...
           plot.units = 'kg'
           return plot
@@ -85,11 +85,10 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
 
     A method (here 'fig_N') wrapped with this decorator:
 
-    - Receives 2 arguments, *iam_data* and *item_data*, with pre-loaded data
-      for the variables under 'fig_N' in figures.yaml. See inline comments in
-      that file.
-    - Receives an argument *sources*, a 2-tuple indicating the original data
-      sources for IAM and sectoral models.
+    - Receives a dict *data*, with pre-loaded data for the variables under
+      'fig_N' in figures.yaml. See inline comments in that file.
+    - Receives a 2-tuple *sources*,  indicating the original data sources for
+      IAM and sectoral models.
     - Must return a plotnine.ggplot object with a 'units' attribute.
 
     The decorated method is then called with a *different* signature, taking
@@ -109,30 +108,30 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
         # Wrapped method with new signature
         def wrapped(options={}):
             # Log output
-            print('-------')
+            log.info('-' * 10)
             log.info(f'{fig_id}')
 
             # Load IAM and iTEM data
-            iam_data = get_data(
-                source=sources[0],
-                variable=var_names, year=YEARS, **filters) \
+            data = {}
+            data['iam'] = get_data(source=sources[0],
+                                   variable=var_names, year=YEARS, **filters) \
                 .pipe(restore_dims, fig_info.get('restore dims', None))
-            item_data = get_data(
-                source=sources[1], conform_to=sources[0],
-                variable=var_names, year=YEARS, **filters)
+            data['item'] = get_data(source=sources[1], conform_to=sources[0],
+                                    variable=var_names, year=YEARS, **filters)
 
             # Generate the plot
             args = dict(
-                iam_data=iam_data,
-                item_data=item_data,
+                data=data,
                 sources=sources)
-            args['normalize'] = options.pop('normalize')
+            args['normalize'] = options['normalize']
             plot = func(**args)
 
             if plot:
                 # Add a title
                 plot += ggtitle(f"{fig_info['short title']} [{plot.units}] "
                                 f"({fig_id}/{'/'.join(sources)})")
+
+            base_fn = OUTPUT_PATH / f'{fig_id}'
 
             # Save to file by default
             if plot and not options.get('load_only', False):
@@ -141,8 +140,12 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                     width=190,
                     height=190 * fig_info.get('aspect ratio', 190 / 100),
                     units='mm')
-                plot.save(OUTPUT_PATH / f'{fig_id}.pdf', **args)
-                plot.save(OUTPUT_PATH / f'{fig_id}.png', **args, dpi=300)
+                plot.save(base_fn.with_suffix('.pdf'), **args)
+                plot.save(base_fn.with_suffix('.png'), **args, dpi=300)
+
+            # Save data to file
+            for label, df in data.items():
+                df.to_csv(OUTPUT_PATH / 'data' / f'{fig_id}-{label}.csv')
 
         return wrapped
     return figure_decorator
@@ -194,35 +197,35 @@ FIG1_STATIC = [
 
 
 @figure(region=['World'])
-def fig_1(iam_data, item_data, sources, **kwargs):
+def fig_1(data, sources, **kwargs):
     if kwargs['normalize']:
-        iam_data = normalize(iam_data, year=2020)
+        data['iam'] = normalize(data['iam'], year=2020)
 
     # Discard 2020 data
-    iam_data = iam_data[iam_data.year != 2020]
-    item_data = item_data[~item_data.year.isin([2020, 2100])]
+    data['iam'] = data['iam'][data['iam'].year != 2020]
+    data['item'] = data['item'][~data['item'].year.isin([2020, 2100])]
 
     log.info('Units: {} {}'.format(
-        sorted(iam_data['unit'].unique()),
-        sorted(item_data['unit'].unique())))
+        sorted(data['iam']['unit'].unique()),
+        sorted(data['item']['unit'].unique())))
 
     # Transform from individual data points to descriptives
-    plot_data = iam_data.pipe(compute_descriptives)
-    item_range_data = item_data.pipe(compute_descriptives)
+    data['plot'] = data['iam'].pipe(compute_descriptives)
+    data['plot-item'] = data['item'].pipe(compute_descriptives)
 
     plot = (
-        ggplot(data=plot_data) + FIG1_STATIC
+        ggplot(data=data['plot']) + FIG1_STATIC
 
         # Points and bar for sectoral models
         + geom_crossbar(
             aes(ymin='min', y='50%', ymax='max', fill='category'),
-            item_range_data,
+            data['plot-item'],
             color='black', fatten=0, width=None)
         + geom_point(
-            aes(y='value'), item_data,
+            aes(y='value'), data['item'],
             color='black', size=1, shape='x', fill=None)
     )
-    plot.units = sorted(iam_data['unit'].unique())[0]
+    plot.units = sorted(data['iam']['unit'].unique())[0]
 
     return plot
 
@@ -273,32 +276,33 @@ FIG2_STATIC = [
 
 
 @figure()
-def fig_2(iam_data, item_data, sources, **kwargs):
+def fig_2(data, sources, **kwargs):
     # Restore the 'type' dimension to each data set
-    item_data['type'] = item_data['variable'] \
+    data['item']['type'] = data['item']['variable'] \
         .replace({'tkm': 'Freight', 'pkm': 'Passenger'})
 
     if kwargs['normalize']:
-        iam_data = normalize(iam_data, year=2020)
+        data['iam'] = normalize(data['iam'], year=2020)
 
     # Discard 2020 data
-    iam_data = iam_data[iam_data.year != 2020]
-    item_data = item_data[~item_data.year.isin([2020, 2100])]
+    data['iam'] = data['iam'][data['iam'].year != 2020]
+    data['item'] = data['item'][~data['item'].year.isin([2020, 2100])]
 
     # Transform from individual data points to descriptives
-    plot_data = iam_data.pipe(compute_descriptives, groupby=['type'])
-    item_range_data = item_data.pipe(compute_descriptives, groupby=['type'])
+    data['plot'] = data['iam'].pipe(compute_descriptives, groupby=['type'])
+    data['plot-item'] = data['item'].pipe(compute_descriptives,
+                                          groupby=['type'])
 
     plot = (
-        ggplot(data=plot_data) + FIG2_STATIC
+        ggplot(data=data['plot']) + FIG2_STATIC
 
         # Points and bar for sectoral models
         + geom_crossbar(
             aes(ymin='min', y='50%', ymax='max', fill='category'),
-            item_range_data,
+            data['plot-item'],
             color='black', fatten=0, width=None)
         + geom_point(
-            aes(y='value'), item_data,
+            aes(y='value'), data['item'],
             color='black', size=1, shape='x', fill=None)
     )
 
@@ -312,14 +316,14 @@ FIG3_STATIC = []
 
 
 @figure()
-def fig_3(iam_data, item_data, sources, **kwargs):
+def fig_3(data, sources, **kwargs):
     # Compute mode shares by type for IAM scenarios
-    plot_data = iam_data \
+    data['plot'] = data['iam'] \
         .pipe(compute_shares, on='mode', groupby=['type'])
 
     # TODO compute mode shares for sectoral scenarios
 
-    plot = ggplot(aes(x='model'), plot_data)
+    plot = ggplot(data=data['plot'])
 
     plot.units = '—'
 
@@ -353,9 +357,9 @@ FIG4_STATIC = [
 
 
 @figure()
-def fig_4(iam_data, item_data, sources, **kwargs):
+def fig_4(data, sources, **kwargs):
     # Compute energy intensity for IAM scenarios
-    plot_data = iam_data \
+    data['plot'] = data['iam'] \
         .pipe(compute_ratio, groupby=['type'],
               num="quantity == 'Final Energy'",
               denom="quantity == 'Energy Service'")
@@ -363,9 +367,9 @@ def fig_4(iam_data, item_data, sources, **kwargs):
     # TODO compute carbon intensity of energy
     # TODO compute energy intensity for sectoral scenarios
 
-    plot_data = iam_data.pipe(compute_descriptives)
+    data['plot'] = data['iam'].pipe(compute_descriptives)
 
-    plot = ggplot(aes(x='model'), plot_data) + FIG4_STATIC
+    plot = ggplot(data=data['plot'])  # + FIG4_STATIC
 
     plot.units = '—'
 
@@ -377,15 +381,15 @@ FIG5_STATIC = []
 
 
 @figure()
-def fig_5(iam_data, item_data, sources, **kwargs):
+def fig_5(data, sources, **kwargs):
     # Compute fuel shares for IAM scenarios
-    iam_data.pipe(compute_shares, 'fuel')
+    data['iam'].pipe(compute_shares, 'fuel')
 
     # TODO compute fuel shares for sectoral scenarios
 
-    plot_data = iam_data.pipe(compute_descriptives)
+    data['plot'] = data['iam'].pipe(compute_descriptives)
 
-    plot = ggplot(aes(x='model'), plot_data)
+    plot = ggplot(data=data['plot'])
 
     plot.units = '—'
 

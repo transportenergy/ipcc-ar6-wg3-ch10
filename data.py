@@ -301,7 +301,10 @@ def apply_plot_meta(df, source):
 
 
 def restore_dims(df, expr):
-    return pd.concat([df, df['variable'].str.extract(expr)], axis=1)
+    if expr:
+        return pd.concat([df, df['variable'].str.extract(expr)], axis=1)
+    else:
+        return df
 
 
 def _item_clean_data(df, source, scale):

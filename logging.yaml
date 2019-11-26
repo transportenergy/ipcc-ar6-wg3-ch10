@@ -1,0 +1,24 @@
+formatters:
+  default:
+    format: '{levelname:7} {message}'
+    style: '{'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: default
+    stream: ext://sys.stdout
+    level: INFO
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+
+root:
+  level: NOTSET
+  handlers: [console, file]
+
+loggers:
+  root.data:
+    level: NOTSET
+
+version: 1

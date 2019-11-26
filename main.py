@@ -1,10 +1,12 @@
 """Command-line interface using 'click'."""
 from datetime import datetime
 import logging
+import logging.config
 from pathlib import Path
 
 import click
 import pandas as pd
+import yaml
 
 from data import (
     DATA_PATH,
@@ -16,14 +18,8 @@ from data import (
 )
 
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='{levelname:7} {message}',
-    style='{',
-    )
-
-output_path = Path('output')
-now = datetime.now().isoformat(timespec='seconds')
+OUTPUT_PATH = Path('output')
+NOW = datetime.now().isoformat(timespec='seconds')
 
 
 @click.group()
@@ -31,8 +27,13 @@ now = datetime.now().isoformat(timespec='seconds')
               help='Also print DEBUG log information.')
 def cli(verbose):
     """Command-line interface for IPCC AR6 WGIII Ch.10 figures."""
+    log_config = yaml.safe_load(open('logging.yaml'))
+    log_config['handlers']['file']['filename'] = OUTPUT_PATH / f'{NOW}.log'
+
     if verbose:
-        logging.getLogger().setLevel(logging.DEBUG)
+        log_config['handlers']['console']['level'] = 'DEBUG'
+
+    logging.config.dictConfig(log_config)
 
 
 @cli.command(help=get_references.__doc__)
@@ -41,9 +42,9 @@ def refs():
 
 
 @cli.command()
-@click.option('--normalize', is_flag=True,
+@click.option('--normalize', is_flag=True, default=False,
               help='Normalize ordinate to 2020.')
-@click.option('--load-only', is_flag=True,
+@click.option('--load-only', is_flag=True, default=False,
               help='Only load and preprocess data; no output.')
 @click.argument('to_plot', metavar='FIGURES', type=int, nargs=-1)
 def plot(to_plot, **options):
