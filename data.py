@@ -33,7 +33,7 @@ REMOTE_DATA = {
     'SR15': 'IXSE_SR15',
 }
 
-config = json.load(open('config.json'))
+CONFIG = json.load(open('config.json'))
 client = None
 
 # Mapping between variable names in different data sources
@@ -161,7 +161,7 @@ def get_client(source):
     if client:
         return client
 
-    auth_client = AuthClient(**config['credentials'])
+    auth_client = AuthClient(**CONFIG['credentials'])
     client = auth_client.get_app(REMOTE_DATA[source])
     return client
 

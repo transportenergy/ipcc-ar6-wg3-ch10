@@ -246,10 +246,11 @@ Then:
      --help  Show this message and exit.
 
    Commands:
-     cache      Cache data from the IIASA API in data/cache/.
+     cache      Cache data from the IIASA API in data/cache/SOURCE/.
      debug      Demo or debug code.
      plot       Plot data to output/.
      refs       Retrieve reference files listed in ref/urls.txt to ref/.
+     upload     Upload outputs to Box using rclone.
      variables  Write lists of variables for each data source.
 
    # Run a particular command

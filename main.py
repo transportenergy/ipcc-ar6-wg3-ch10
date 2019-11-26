@@ -9,11 +9,7 @@ import pandas as pd
 import yaml
 
 from data import (
-    DATA_PATH,
-    LOCAL_DATA,
     REMOTE_DATA,
-    get_client,
-    get_data,
     get_references,
 )
 
@@ -21,19 +17,23 @@ from data import (
 OUTPUT_PATH = Path('output')
 NOW = datetime.now().isoformat(timespec='seconds')
 
+# Log configuration
+_LC = yaml.safe_load(open('logging.yaml'))
+
+
+def _start_log():
+    logging.config.dictConfig(_LC)
+
 
 @click.group()
 @click.option('--verbose', is_flag=True,
               help='Also print DEBUG log information.')
 def cli(verbose):
     """Command-line interface for IPCC AR6 WGIII Ch.10 figures."""
-    log_config = yaml.safe_load(open('logging.yaml'))
-    log_config['handlers']['file']['filename'] = OUTPUT_PATH / f'{NOW}.log'
+    _LC['handlers']['file']['filename'] = OUTPUT_PATH / f'{NOW}.log'
 
     if verbose:
-        log_config['handlers']['console']['level'] = 'DEBUG'
-
-    logging.config.dictConfig(log_config)
+        _LC['handlers']['console']['level'] = 'DEBUG'
 
 
 @cli.command(help=get_references.__doc__)
@@ -55,6 +55,8 @@ def plot(to_plot, **options):
 
     Option --normalize does not affect the appearance of all figures.
     """
+    _start_log()
+
     import figures
 
     if len(to_plot) == 0:
@@ -74,8 +76,23 @@ def plot(to_plot, **options):
 
 
 @cli.command()
+@click.option('--go', is_flag=True)
+def upload(go):
+    """Upload outputs to Box using rclone."""
+    from subprocess import check_call
+    from data import CONFIG
+
+    check_call(['rclone', '--progress' if go else '--dry-run',
+                'sync',  'output', CONFIG['rclone']['output']])
+
+
+@cli.command()
 def debug():
     """Demo or debug code."""
+    _start_log()
+
+    from data import get_client, get_data
+
     client = get_client()
 
     # List of all scenarios
@@ -99,7 +116,10 @@ def cache(action, source):
            GiB.
     - SR15: approximately 15 minutes for 416 scenarios / 832 MiB.
     """
+    _start_log()
+
     from .cache import cache_data
+
     if action == 'refresh':
         cache_data(source)
     else:
@@ -115,6 +135,10 @@ def variables():
     *manually* trimmed to variables-SOURCE.txt, which in turn are used to
     filter data imports
     """
+    _start_log()
+
+    from data import DATA_PATH, LOCAL_DATA, get_data
+
     def write_vars(src, vars):
         (DATA_PATH / f'variables-{source}-all.txt').write_text('\n'.join(vars))
 

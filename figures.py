@@ -138,7 +138,7 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                 args = dict(
                     verbose=False,
                     width=190,
-                    height=190 * fig_info.get('aspect ratio', 190 / 100),
+                    height=190 * fig_info.get('aspect ratio', 100 / 190),
                     units='mm')
                 plot.save(base_fn.with_suffix('.pdf'), **args)
                 plot.save(base_fn.with_suffix('.png'), **args, dpi=300)
