@@ -167,8 +167,8 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
             data['iam'] = get_data(source=sources[0],
                                    variable=var_names, **filters) \
                 .pipe(restore_dims, fig_info.get('restore dims', None))
-            # data['item'] = get_data(source=sources[1], conform_to=sources[0],
-            #                         variable=var_names, **filters)
+            data['item'] = get_data(source=sources[1], conform_to=sources[0],
+                                    variable=var_names, **filters)
 
             # Generate the plot
             args = dict(
