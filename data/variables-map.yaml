@@ -5,28 +5,6 @@
   iTEM MIP2:
     select: { variable: ['ttw_co2'] }
 
-- AR6:  Final Energy|Transportation
-  SR15: Final Energy|Transportation
-  iTEM MIP2:
-    select: { variable: ['energy'] }
-    scale: 1e-3
-
-- AR6:  Final Energy|Transportation|Electricity
-  SR15: Final Energy|Transportation|Electricity
-  iTEM MIP2:
-    select: { variable: ['energy'], fuel: ['Electricity']}
-    scale: 1e-3  # PJ/year → EJ/year
-
-- AR6:  Final Energy|Transportation|Liquids
-  iTEM MIP2:
-    select: { variable: ['energy'], fuel: ['Total Liquids']}
-    scale: 1e-3  # PJ/year → EJ/year
-
-- AR6:  Final Energy|Transportation|Natural Gas
-  iTEM MIP2:
-    select: { variable: ['energy'], fuel: ['Natural Gas']}
-    scale: 1e-3  # PJ/year → EJ/year
-
 - AR6:  Energy Service|Transportation|Freight
   SR15: Energy Service|Transportation|Freight
   iTEM MIP2:
@@ -73,6 +51,33 @@
 - AR6:  Energy Service|Transportation|Passenger|Road|LDV
   iTEM MIP2:
     select: { variable: ['pkm'], mode: ['Bus'] }
+
+- AR6:  Final Energy|Transportation
+  SR15: Final Energy|Transportation
+  iTEM MIP2:
+    select: { variable: ['energy'] }
+    scale: 1e-3
+
+- AR6:  Final Energy|Transportation|Electricity
+  SR15: Final Energy|Transportation|Electricity
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Electricity']}
+    scale: 1e-3  # PJ/year → EJ/year
+
+- AR6:  Final Energy|Transportation|Liquids
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Total Liquids']}
+    scale: 1e-3  # PJ/year → EJ/year
+
+- AR6:  Final Energy|Transportation|Passenger
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Total Liquids']}
+    scale: 1e-3  # PJ/year → EJ/year
+
+- AR6:  Final Energy|Transportation|Natural Gas
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Natural Gas']}
+    scale: 1e-3  # PJ/year → EJ/year
 
 
 # Disabled

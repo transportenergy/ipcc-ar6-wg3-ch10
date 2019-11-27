@@ -175,7 +175,7 @@ def _raw_local_data(path, id_vars):
 
 
 def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
-             conform_to=None, **filters):
+             conform_to=None, default_item_filters=True, **filters):
     """Retrieve and return data as a pandas.DataFrame.
 
     Parameters
@@ -213,19 +213,20 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
                 dfs.append(get_data(source, conform_to=conform_to, **_filters))
             except KeyError:
                 continue
-        return pd.concat(dfs)
+        return pd.concat(dfs) if len(dfs) else pd.DataFrame()
     elif 'iTEM' in source:
         # Single iTEM variable
 
         # Default filters for iTEM data
-        filters.setdefault('mode', ['All'])
-        filters.setdefault('fuel', ['All'])
-        filters.setdefault('region', ['Global'])
-        filters.setdefault('technology', ['All'])
+        if default_item_filters:
+            filters.setdefault('mode', ['All'])
+            filters.setdefault('fuel', ['All'])
+            filters.setdefault('region', ['Global'])
+            filters.setdefault('technology', ['All'])
 
         # Change name 'World' to 'Global'
         if 'region' in filters:
-            filters['region'] = ['Global' if r == 'World' else r
+            filters['region'] = [('Global' if r == 'World' else r)
                                  for r in filters['region']]
 
         # Combine additional filters for the particular iTEM variable; also

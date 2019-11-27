@@ -128,6 +128,38 @@ def cache(action, source):
 
 
 @cli.command()
+def coverage():
+    """Report coverage for filters in coverage-checks.yaml."""
+    _start_log()
+
+    from data import DATA_PATH, get_data
+
+    for info in yaml.safe_load(open(DATA_PATH / 'coverage-checks.yaml')):
+        note = info.pop('_note')
+        iam_data = get_data('AR6', **info)
+        item_data = get_data('iTEM MIP2', conform_to='AR6',
+                             default_item_filters=False, **info)
+
+        lines = [
+            f'\nCoverage of {info!r}',
+            f'Note: {note}',
+            '  AR6:',
+            f'    {len(iam_data)} observations',
+            '    {} (model, scenario) combinations'.format(
+                len(iam_data.groupby(['model', 'scenario']))),
+            '  iTEM MIP2:',
+            f'    {len(item_data)} observations',
+        ]
+
+        if len(item_data):
+            lines.append(
+                '    {} (model, scenario) combinations'
+                .format(len(item_data.groupby(['model', 'scenario']))))
+
+        print('\n'.join(lines), end='\n\n')
+
+
+@cli.command()
 def variables():
     """Write lists of variables for each data source.
 

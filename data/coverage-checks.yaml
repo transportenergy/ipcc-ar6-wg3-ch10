@@ -1,0 +1,5 @@
+- variable: [Final Energy|Transportation|Freight]
+  _note: for fig_4 energy intensity
+
+- variable: [Final Energy|Transportation|Passenger]
+  _note: for fig_4 energy intensity
