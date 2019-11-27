@@ -9,6 +9,7 @@ fig_1:
 fig_2:
   short title: Passenger and freight transport activity
   variables:
+  # - Population  # for per-capita calculation
   - Energy Service|Transportation|Freight
   - Energy Service|Transportation|Passenger
   # Regular expression. Captured groups '(?P<name>...)' are added as new
@@ -20,6 +21,7 @@ fig_2:
 
 fig_3:
   short title: Mode shares of transport activity
+  all years: true
   variables:
   # - Energy Service|Transportation|Aviation
   - Energy Service|Transportation|Freight

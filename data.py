@@ -166,6 +166,14 @@ def get_client(source):
     return client
 
 
+@lru_cache()
+def _raw_local_data(path, id_vars):
+    """Cache loaded CSV files in memory for performance."""
+    return pd.read_csv(path) \
+             .rename(columns=lambda c: c.lower()) \
+             .melt(id_vars=id_vars, var_name='year')
+
+
 def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
              conform_to=None, **filters):
     """Retrieve and return data as a pandas.DataFrame.
@@ -185,8 +193,10 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
     runs : list of int
         For remote sources, ID numbers of particular model runs (~scenarios) to
         retrieve.
-    variables : list of str
-        Names of variables to retrieve.
+    variables : list of str or str
+        Names of variables to retrieve. When *source* includes 'iTEM', a bare
+        str for *variables* is used to retrieve *filters* from
+        data/variables-map.yaml.
     """
     if vars_from_file and 'variable' not in filters:
         variables = (DATA_PATH / f'variables-{source}.txt').read_text() \
@@ -205,6 +215,8 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
                 continue
         return pd.concat(dfs)
     elif 'iTEM' in source:
+        # Single iTEM variable
+
         # Default filters for iTEM data
         filters.setdefault('mode', ['All'])
         filters.setdefault('fuel', ['All'])
@@ -216,6 +228,8 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
             filters['region'] = ['Global' if r == 'World' else r
                                  for r in filters['region']]
 
+        # Combine additional filters for the particular iTEM variable; also
+        # retrieve a scaling factor
         _filters, scale = _item_var_info(conform_to, filters['variable'])
         filters.update(_filters)
     else:
@@ -229,10 +243,8 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
         if 'iTEM' in source:
             id_vars.extend(['mode', 'technology', 'fuel'])
 
-        result = pd.read_csv(DATA_PATH / LOCAL_DATA[source]) \
-                   .rename(columns=lambda c: c.lower()) \
-                   .melt(id_vars=id_vars, var_name='year')
-
+        result = _raw_local_data(DATA_PATH / LOCAL_DATA[source],
+                                 tuple(id_vars))
     elif source in REMOTE_DATA:
         # Load data from cache
         cache_path = DATA_PATH / 'cache' / source / 'all.h5'

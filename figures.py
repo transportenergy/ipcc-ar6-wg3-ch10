@@ -11,8 +11,10 @@ from plotnine import (
     facet_grid,
     facet_wrap,
     geom_crossbar,
+    geom_line,
     # geom_linerange,
     geom_point,
+    geom_ribbon,
     geom_text,
     ggplot,
     ggtitle,
@@ -21,6 +23,7 @@ from plotnine import (
     scale_color_manual,
     scale_fill_manual,
     scale_x_discrete,
+    scale_x_continuous,
     theme,
 )
 import yaml
@@ -56,8 +59,6 @@ INFO = yaml.safe_load(open('figures.yaml'))
 mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
 
 
-# Common components
-
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame([
     ['Below 1.6C', 'green',   '<1.6°C'],
@@ -68,6 +69,50 @@ SCALE_CAT = pd.DataFrame([
     ['policy',     '#eeeeee', 'Policy'],
     ['reference',  '#999999', 'Reference'],
     ], columns=['limit', 'fill', 'label'])
+
+
+# Common plot components.
+
+COMMON = {
+    # Ranges of data as vertical bars
+    'ranges': [
+        geom_crossbar(
+            aes(ymin='min', y='50%', ymax='max'),
+            color='black', fill='white', width=None),
+        geom_crossbar(
+            aes(ymin='25%', y='50%', ymax='75%', fill='category'),
+            color='black', width=None),
+        ],
+
+    # Background colours
+    'theme': theme(
+        panel_background=element_rect(fill='#fef6e6'),
+        strip_background=element_rect(fill='#fef6e6'),
+        strip_text=element_text(weight='bold'),
+        ),
+
+    # Labels with group counts
+    'counts': geom_text(
+        aes(label='count', y='max', color='category'),
+        format_string='{:.0f}',
+        va='bottom',
+        size=7),
+
+    # Scales
+    'x category': [
+        aes(x='category'),
+        scale_x_discrete(limits=SCALE_CAT['limit'], labels=SCALE_CAT['label']),
+        labs(x=''),
+        theme(axis_text_x=element_blank()),
+        ],
+    'fill category': scale_fill_manual(
+        limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
+    'color category': [
+        aes(color='category'),
+        scale_color_manual(limits=SCALE_CAT['limit'],
+                           values=SCALE_CAT['fill']),
+        ],
+}
 
 
 def figure(sources=('AR6', 'iTEM MIP2'), **filters):
@@ -100,13 +145,19 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
     """
     # Function that decorates the method
     def figure_decorator(func):
-        # Information about the figure
+        # Information about the figure.
+        # NB this code is run at the moment that the function is decorated.
         fig_id = func.__name__
         fig_info = INFO[fig_id]
         var_names = fig_info['variables']
 
+        if not fig_info.get('all years', False):
+            filters['year'] = YEARS
+
         # Wrapped method with new signature
         def wrapped(options={}):
+            # NB this code not run until the figure is plotted.
+
             # Log output
             log.info('-' * 10)
             log.info(f'{fig_id}')
@@ -114,10 +165,10 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
             # Load IAM and iTEM data
             data = {}
             data['iam'] = get_data(source=sources[0],
-                                   variable=var_names, year=YEARS, **filters) \
+                                   variable=var_names, **filters) \
                 .pipe(restore_dims, fig_info.get('restore dims', None))
-            data['item'] = get_data(source=sources[1], conform_to=sources[0],
-                                    variable=var_names, year=YEARS, **filters)
+            # data['item'] = get_data(source=sources[1], conform_to=sources[0],
+            #                         variable=var_names, **filters)
 
             # Generate the plot
             args = dict(
@@ -133,6 +184,14 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
 
             base_fn = OUTPUT_PATH / f'{fig_id}'
 
+            # Save data to file.
+            # Do this before plotting, so the data can be inspected even if the
+            # plot is not constructed properly and fails
+            for label, df in data.items():
+                path = OUTPUT_PATH / 'data' / f'{fig_id}-{label}.csv'
+                log.info(f'Dump {len(df):5} obs to {path}')
+                df.to_csv(path)
+
             # Save to file by default
             if plot and not options.get('load_only', False):
                 args = dict(
@@ -143,55 +202,31 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                 plot.save(base_fn.with_suffix('.pdf'), **args)
                 plot.save(base_fn.with_suffix('.png'), **args, dpi=300)
 
-            # Save data to file
-            for label, df in data.items():
-                df.to_csv(OUTPUT_PATH / 'data' / f'{fig_id}-{label}.csv')
-
         return wrapped
     return figure_decorator
 
 
 # Non-dynamic features of fig_1
 FIG1_STATIC = [
-    # Aesthetic mappings
-    aes(x='category', color='category'),
-
     # Horizontal panels by the years shown
     facet_wrap('year', ncol=4, scales='free_x'),
 
-    # Ranges of data as vertical bars
-    geom_crossbar(aes(ymin='min', y='50%', ymax='max'),
-                  color='black', fill='white', width=None),
-    geom_crossbar(aes(ymin='25%', y='50%', ymax='75%', fill='category'),
-                  color='black', width=None),
+    # Aesthetics and scales
+    ] + COMMON['x category'] + COMMON['color category'] + [
+    COMMON['fill category'],
 
-    # Labels with group counts
-    geom_text(
-        aes(label='count', y='max', color='category'),
-        format_string='{:.0f}',
-        va='bottom',
-        size=7),
-
-    # Scales
-    scale_x_discrete(limits=SCALE_CAT['limit'], labels=SCALE_CAT['label']),
-    scale_fill_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
-    scale_color_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
+    # Geoms
+    ] + COMMON['ranges'] + [
+    COMMON['counts'],
 
     # Axis labels
-    labs(x='', y='', fill='IAM/sectoral scenarios'),
+    labs(y='', fill='IAM/sectoral scenarios'),
 
     # Appearance
+    COMMON['theme'],
     theme(
-        plot_background=element_rect(alpha=0),
-        panel_background=element_rect(fill='#fef6e6'),
-        strip_background=element_rect(fill='#fef6e6'),
-
         panel_grid_major_x=element_blank(),
-
-        axis_text_x=element_blank(),
-        strip_text=element_text(weight='bold'),
     ),
-
     guides(color=None),
 ]
 
@@ -232,51 +267,34 @@ def fig_1(data, sources, **kwargs):
 
 # Non-dynamic features of fig_2
 FIG2_STATIC = [
-    # Aesthetic mappings
-    aes(x='category', color='category'),
-
-    # Horizontal panels by the years shown
+    # Horizontal panels by type; vertical panels by years
     facet_grid('type ~ year', scales='free_x'),
 
-    # Ranges of data as vertical bars
-    geom_crossbar(aes(ymin='min', y='50%', ymax='max'),
-                  color='black', fill='white', width=None),
-    geom_crossbar(aes(ymin='25%', y='50%', ymax='75%', fill='category'),
-                  color='black', width=None),
+    # Aesthetics and scales
+    ] + COMMON['x category'] + COMMON['color category'] + [
+    COMMON['fill category'],
 
-    # Labels with group counts
-    geom_text(
-        aes(label='count', y='max', color='category'),
-        format_string='{:.0f}',
-        va='bottom',
-        size=7),
-
-    # Scales
-    scale_x_discrete(limits=SCALE_CAT['limit'], labels=SCALE_CAT['label']),
-    scale_fill_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
-    scale_color_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
+    # Geoms
+    ] + COMMON['ranges'] + [
+    COMMON['counts'],
 
     # Axis labels
-    labs(x='', y='', fill='IAM/sectoral scenarios'),
+    labs(y='', fill='IAM/sectoral scenarios'),
 
     # Appearance
+    COMMON['theme'],
     theme(
-        plot_background=element_rect(alpha=0),
-        panel_background=element_rect(fill='#fef6e6'),
-        strip_background=element_rect(fill='#fef6e6'),
-
         panel_grid_major_x=element_blank(),
-
-        axis_text_x=element_blank(),
-        strip_text=element_text(weight='bold'),
     ),
-
     guides(color=None),
 ]
 
 
 @figure()
 def fig_2(data, sources, **kwargs):
+    # TODO compute per-capita quantity
+    # TODO handle 'normalize' option
+
     # Restore the 'type' dimension to each data set
     data['item']['type'] = data['item']['variable'] \
         .replace({'tkm': 'Freight', 'pkm': 'Passenger'})
@@ -306,26 +324,43 @@ def fig_2(data, sources, **kwargs):
             color='black', size=1, shape='x', fill=None)
     )
 
-    plot.units = '—'
+    plot.units = 'p·km / t·km'
 
     return plot
 
 
 # Non-dynamic features of fig_3
-FIG3_STATIC = []
+FIG3_STATIC = [
+    # Horizontal panels by type; vertical panels by modes
+    facet_grid('type ~ category', scales='free_x'),
+
+    # Aesthetics and scales
+    aes(x='year', color='mode'),
+    scale_x_continuous(breaks=YEARS),
+    # ] + COMMON['color category'] + [
+
+    # Geoms
+    geom_ribbon(aes(ymin='25%', ymax='75%', fill='mode'), alpha=0.25),
+    geom_line(aes(y='50%')),
+
+    # Axis labels
+    labs(y='', fill='IAM/sectoral scenarios'),
+]
 
 
 @figure()
 def fig_3(data, sources, **kwargs):
     # Compute mode shares by type for IAM scenarios
     data['plot'] = data['iam'] \
-        .pipe(compute_shares, on='mode', groupby=['type'])
+        .pipe(compute_shares, on='mode', groupby=['type']) \
+        .assign(variable='Mode share') \
+        .pipe(compute_descriptives, groupby=['type', 'mode'])
 
     # TODO compute mode shares for sectoral scenarios
 
-    plot = ggplot(data=data['plot'])
+    plot = ggplot(data=data['plot']) + FIG3_STATIC
 
-    plot.units = '—'
+    plot.units = '%'
 
     return plot
 
