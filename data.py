@@ -91,7 +91,7 @@ def compute_ratio(df, num, denom, groupby=[]):
 
             # Retrieve units
             unit[n] = tmp[n]['unit'].unique()
-            assert len(unit[n]) == 1
+            assert len(unit[n]) == 1, f'Units {unit[n]} in {tmp[n]}'
             unit[n] = UNITS(unit[n][0])
 
         # Compute the ratio

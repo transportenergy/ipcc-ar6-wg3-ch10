@@ -44,7 +44,7 @@ def refs():
 @cli.command()
 @click.option('--normalize', is_flag=True, default=False,
               help='Normalize ordinate to 2020.')
-@click.option('--load-only', is_flag=True, default=False,
+@click.option('--load-only', type=str, default='',
               help='Only load and preprocess data; no output.')
 @click.argument('to_plot', metavar='FIGURES', type=int, nargs=-1)
 def plot(to_plot, **options):

@@ -162,13 +162,20 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
             log.info('-' * 10)
             log.info(f'{fig_id}')
 
+            load_only = options['load_only']
+            to_load = load_only or 'iam item'
+
             # Load IAM and iTEM data
             data = {}
-            data['iam'] = get_data(source=sources[0],
-                                   variable=var_names, **filters) \
-                .pipe(restore_dims, fig_info.get('restore dims', None))
-            data['item'] = get_data(source=sources[1], conform_to=sources[0],
-                                    variable=var_names, **filters)
+            if 'iam' in to_load:
+                data['iam'] = get_data(source=sources[0],
+                                       variable=var_names, **filters) \
+                    .pipe(restore_dims, fig_info.get('restore dims', None))
+            if 'item' in to_load:
+                data['item'] = get_data(source=sources[1],
+                                        conform_to=sources[0],
+                                        variable=var_names,
+                                        **filters)
 
             # Generate the plot
             args = dict(
@@ -186,17 +193,18 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
 
             # Save data to file.
             # Do this before plotting, so the data can be inspected even if the
-            # plot is not constructed properly and fails
+            # plot is not constructed properly and fails.
             for label, df in data.items():
                 path = OUTPUT_PATH / 'data' / f'{fig_id}-{label}.csv'
                 log.info(f'Dump {len(df):5} obs to {path}')
                 df.to_csv(path)
 
-            # Save to file by default
-            if plot and not options.get('load_only', False):
+            # Save to file unless --load-only was given.
+            if plot and not load_only:
                 args = dict(
                     verbose=False,
                     width=190,
+                    # Aspect ratio from figures.yaml
                     height=190 * fig_info.get('aspect ratio', 100 / 190),
                     units='mm')
                 plot.save(base_fn.with_suffix('.pdf'), **args)
@@ -348,7 +356,7 @@ FIG3_STATIC = [
 ]
 
 
-@figure()
+@figure(region=['World'])
 def fig_3(data, sources, **kwargs):
     # Compute mode shares by type for IAM scenarios
     data['plot'] = data['iam'] \
@@ -367,46 +375,64 @@ def fig_3(data, sources, **kwargs):
 
 # Non-dynamic features of fig_4
 FIG4_STATIC = [
-    aes(x='category + year', color='category'),
+    # Horizontal panels by freight/passenger
+    facet_grid('type ~ year'),
 
-    facet_wrap('type'),
+    # Aesthetics and scales
+    ] + COMMON['x category'] + COMMON['color category'] + [
+    COMMON['fill category'],
 
-    # Ranges of data as vertical bars
-    geom_crossbar(aes(ymin='min', y='50%', ymax='max'),
-                  color='black', fill='white', width=None),
-    geom_crossbar(aes(ymin='25%', y='50%', ymax='75%', fill='category'),
-                  color='black', width=None),
+    # Geoms
+    ] + COMMON['ranges'] + [
+    COMMON['counts'],
 
-    # Labels with group counts
-    geom_text(
-        aes(label='count', y='max', color='category'),
-        format_string='{:.0f}',
-        va='bottom',
-        size=7),
+    # Axis labels
+    labs(y='', fill='IAM/sectoral scenarios'),
 
-    # Scales
-    scale_x_discrete(limits=SCALE_CAT['limit'], labels=SCALE_CAT['label']),
-    scale_fill_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
-    scale_color_manual(limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
+    # Appearance
+    COMMON['theme'],
+    theme(
+        panel_grid_major_x=element_blank(),
+    ),
+    guides(color=None),
 ]
 
 
-@figure()
+@figure(region=['World'])
 def fig_4(data, sources, **kwargs):
     # Compute energy intensity for IAM scenarios
-    data['plot'] = data['iam'] \
+    data['iam'] = data['iam'] \
+        .pipe(compute_ratio, groupby=['type'],
+              num="quantity == 'Final Energy'",
+              denom="quantity == 'Energy Service'") \
+        .assign(variable='Energy intensity of transport')
+
+    units = sorted(map(str, data['iam']['unit'].unique()))
+
+    data['plot'] = data['iam'].pipe(compute_descriptives, groupby=['type'])
+
+    # Compute energy intensity for sectoral scenarios
+    data['item'] = data['item'] \
         .pipe(compute_ratio, groupby=['type'],
               num="quantity == 'Final Energy'",
               denom="quantity == 'Energy Service'")
+    data['plot-item'] = data['item'].pipe(compute_descriptives,
+                                          groupby=['type'])
 
     # TODO compute carbon intensity of energy
-    # TODO compute energy intensity for sectoral scenarios
 
-    data['plot'] = data['iam'].pipe(compute_descriptives)
+    plot = ggplot(data=data['plot']) + FIG4_STATIC + [
+        # Points and bar for sectoral models
+        + geom_crossbar(
+            aes(ymin='min', y='50%', ymax='max', fill='category'),
+            data['plot-item'],
+            color='black', fatten=0, width=None)
+        + geom_point(
+            aes(y='value'), data['item'],
+            color='black', size=1, shape='x', fill=None)
+    ]
 
-    plot = ggplot(data=data['plot'])  # + FIG4_STATIC
-
-    plot.units = '—'
+    plot.units = units
 
     return plot
 
@@ -415,7 +441,7 @@ def fig_4(data, sources, **kwargs):
 FIG5_STATIC = []
 
 
-@figure()
+@figure(region=['World'])
 def fig_5(data, sources, **kwargs):
     # Compute fuel shares for IAM scenarios
     data['iam'].pipe(compute_shares, 'fuel')

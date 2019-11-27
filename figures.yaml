@@ -54,6 +54,9 @@ fig_4:
   - Final Energy|Transportation|Freight
   - Final Energy|Transportation|Passenger
   restore dims: '(?P<quantity>[^\|]*)\|Transportation(?:\|(?P<type>.*))?'
+  # Width / height
+  aspect ratio: 1.33
+
 
 fig_5:
   short title: Fuel shares of transport final energy

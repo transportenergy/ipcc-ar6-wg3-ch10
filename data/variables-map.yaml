@@ -15,7 +15,17 @@
   SR15: Final Energy|Transportation|Electricity
   iTEM MIP2:
     select: { variable: ['energy'], fuel: ['Electricity']}
-    scale: 1e-3
+    scale: 1e-3  # PJ/year → EJ/year
+
+- AR6:  Final Energy|Transportation|Liquids
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Total Liquids']}
+    scale: 1e-3  # PJ/year → EJ/year
+
+- AR6:  Final Energy|Transportation|Natural Gas
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Natural Gas']}
+    scale: 1e-3  # PJ/year → EJ/year
 
 - AR6:  Energy Service|Transportation|Freight
   SR15: Energy Service|Transportation|Freight
