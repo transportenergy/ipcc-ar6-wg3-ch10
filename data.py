@@ -290,7 +290,8 @@ def apply_categories(df, source, **options):
         result = df.merge(cat_data, how='left', on=['model', 'scenario'])
     elif source in ('iTEM MIP2',):
         # From the iTEM database metadata
-        df['category'] = df.apply(_item_cat_for_scen, axis=1)
+        df['category'] = df.apply(_item_cat_for_scen, axis=1) \
+            .replace('policy-extra', 'policy')
         # Directly
         df['category+1'] = 'item'
         result = df
