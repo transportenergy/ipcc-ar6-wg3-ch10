@@ -118,7 +118,7 @@ def compute_ratio(df, num, denom, groupby=[]):
 def compute_shares(df, on, groupby=[]):
     log.info(f'Compute {on} shares from {len(df)} obs')
 
-    id_cols = ['model', 'scenario', 'version', 'region', 'year']
+    id_cols = ['model', 'scenario', 'region', 'year']
     results = []
     grouped = df.groupby(groupby) if len(groupby) else ((None, df),)
     for group, group_df in grouped:
