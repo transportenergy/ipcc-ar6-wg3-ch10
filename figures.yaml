@@ -61,30 +61,25 @@ fig_4:
 fig_5:
   short title: Fuel shares of transport final energy
   variables:
-  - Final Energy|Transportation
+  # See data/variables-AR6.txt for a fuller list
+  - Final Energy|Transportation  # denominator in shares
   - Final Energy|Transportation|Electricity
-  - Final Energy|Transportation|Fossil
+  # - Final Energy|Transportation|Fossil
   - Final Energy|Transportation|Gases
   # - Final Energy|Transportation|Gases|Bioenergy
   # - Final Energy|Transportation|Gases|Fossil
-  # - Final Energy|Transportation|Gases|Shipping
-  - Final Energy|Transportation|Geothermal
-  - Final Energy|Transportation|Heat
+  # - Final Energy|Transportation|Geothermal
+  # - Final Energy|Transportation|Heat
   - Final Energy|Transportation|Hydrogen
-  - Final Energy|Transportation|Liquids
+  # - Final Energy|Transportation|Liquids
   # - Final Energy|Transportation|Liquids|Bioenergy
-  # - Final Energy|Transportation|Liquids|Biomass
-  # - Final Energy|Transportation|Liquids|Biomass|Shipping
+  - Final Energy|Transportation|Liquids|Biomass
   # - Final Energy|Transportation|Liquids|Coal
-  # - Final Energy|Transportation|Liquids|Coal|Shipping
   # - Final Energy|Transportation|Liquids|Fossil synfuel
   # - Final Energy|Transportation|Liquids|Gas
   # - Final Energy|Transportation|Liquids|Natural Gas
-  # - Final Energy|Transportation|Liquids|Oil
-  # - Final Energy|Transportation|Liquids|Oil|Shipping
-  # - Final Energy|Transportation|Liquids|Oil|Shipping|Fuel Oil
-  # - Final Energy|Transportation|Liquids|Oil|Shipping|Light Oil
-  - Final Energy|Transportation|Solar
-  - Final Energy|Transportation|Solids|Biomass
-  - Final Energy|Transportation|Solids|Coal
+  - Final Energy|Transportation|Liquids|Oil
+  # - Final Energy|Transportation|Solar
+  # - Final Energy|Transportation|Solids|Biomass
+  # - Final Energy|Transportation|Solids|Coal
   restore dims: 'Final Energy\|Transportation(?:\|(?P<fuel>.*))?'
