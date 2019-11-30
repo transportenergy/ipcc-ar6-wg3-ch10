@@ -2,6 +2,7 @@ import logging
 from pathlib import Path
 
 import matplotlib as mpl
+import numpy as np
 import pandas as pd
 from plotnine import (
     aes,
@@ -20,10 +21,12 @@ from plotnine import (
     ggtitle,
     guides,
     labs,
+    position_dodge,
     scale_color_manual,
     scale_fill_manual,
     scale_x_discrete,
     scale_x_continuous,
+    scale_y_continuous,
     theme,
 )
 import yaml
@@ -298,7 +301,7 @@ FIG2_STATIC = [
 ]
 
 
-@figure()
+@figure(region=['World'])
 def fig_2(data, sources, **kwargs):
     # TODO compute per-capita quantity
     # TODO handle 'normalize' option
@@ -359,10 +362,13 @@ FIG3_STATIC = [
 @figure(region=['World'])
 def fig_3(data, sources, **kwargs):
     # Compute mode shares by type for IAM scenarios
-    data['plot'] = data['iam'] \
+    data['iam'] = data['iam'] \
         .pipe(compute_shares, on='mode', groupby=['type']) \
-        .assign(variable='Mode share') \
-        .pipe(compute_descriptives, groupby=['type', 'mode'])
+        .assign(variable='Mode share')
+
+    # Plot descriptives
+    data['plot'] = data['iam'].pipe(compute_descriptives,
+                                    groupby=['type', 'mode'])
 
     # TODO compute mode shares for sectoral scenarios
 
@@ -438,20 +444,82 @@ def fig_4(data, sources, **kwargs):
 
 
 # Non-dynamic features of fig_5
-FIG5_STATIC = []
+SCALE_FUEL = pd.DataFrame([
+    ['Liquids', '#f7a800', ''],
+    # ['Biofuels', '#de4911', ''],
+    ['Gases', '#9e2b18', ''],
+    ['Electricity', '#9fca71', ''],
+    ['Hydrogen', '#59a431', ''],
+    ], columns=['limit', 'fill', 'label'])
+
+
+FIG5_STATIC = [
+    # Horizontal panels by 'facet', combining 'year' and 'category'
+    facet_wrap('year', ncol=3, scales='free_x'),
+
+    # Aesthetics and scales
+    aes(x='category', color='fuel'),
+    scale_x_discrete(limits=SCALE_CAT['limit'].iloc[:-2],
+                     labels=SCALE_CAT['label'].iloc[:-2]),
+    scale_y_continuous(limits=(0, 1.05), breaks=np.linspace(0, 100, 6)),
+    scale_color_manual(limits=SCALE_FUEL['limit'],
+                       values=SCALE_FUEL['fill']),
+    scale_fill_manual(limits=SCALE_FUEL['limit'],
+                      values=SCALE_FUEL['fill']),
+
+    # Geoms
+    # Like COMMON['ranges'], with fill='fuel', position='dodge' and no width=
+    geom_crossbar(
+        aes(ymin='min', y='50%', ymax='max', group='fuel'), position='dodge',
+        color='black', fill='white'),
+    geom_crossbar(
+        aes(ymin='25%', y='50%', ymax='75%', fill='fuel'), position='dodge',
+        color='black'),
+    # Like COMMON['counts'], except color is 'fuel'
+    geom_text(
+        aes(label='count', y='max', color='fuel'),
+        position=position_dodge(width=0.9),
+        format_string='{:.0f}',
+        va='bottom',
+        size=7),
+
+    # Axis labels
+    labs(x='', y='', fill='Energy carrier'),
+    # theme(axis_text_x=element_blank()),
+
+    # Hide legend for 'color'
+    guides(color=None),
+
+    # Appearance
+    COMMON['theme'],
+    theme(
+        axis_text_x=element_text(rotation=45),
+        panel_grid_major_x=element_blank(),
+    ),
+]
 
 
 @figure(region=['World'])
 def fig_5(data, sources, **kwargs):
-    # Compute fuel shares for IAM scenarios
-    data['iam'].pipe(compute_shares, 'fuel')
+    # Compute fuel shares by type for IAM scenarios
+    data['iam'] = data['iam'] \
+        .pipe(compute_shares, on='fuel') \
+        .assign(variable='Fuel share')
+
+    # Discard 2020 data
+    data['iam'] = data['iam'][data['iam'].year != 2020]
+
+    # Plot descriptives
+    data['plot'] = data['iam'].pipe(compute_descriptives, groupby=['fuel'])
+
+    # Add a column for faceting on two variables
+    data['plot']['facet'] = data['plot']['year'].astype('str') + ' ' \
+        + data['plot']['category']
 
     # TODO compute fuel shares for sectoral scenarios
 
-    data['plot'] = data['iam'].pipe(compute_descriptives)
+    plot = ggplot(data=data['plot']) + FIG5_STATIC
 
-    plot = ggplot(data=data['plot'])
-
-    plot.units = '—'
+    plot.units = 'share'
 
     return plot
