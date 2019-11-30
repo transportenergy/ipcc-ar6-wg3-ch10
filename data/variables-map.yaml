@@ -69,6 +69,16 @@
     select: { variable: ['energy'], fuel: ['Total Liquids']}
     scale: 1e-3  # PJ/year → EJ/year
 
+- AR6:  Final Energy|Transportation|Liquids|Biomass
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Biomass Liquids']}
+    scale: 1e-3  # PJ/year → EJ/year
+
+- AR6:  Final Energy|Transportation|Liquids|Oil
+  iTEM MIP2:
+    select: { variable: ['energy'], fuel: ['Fossil Liquids']}
+    scale: 1e-3  # PJ/year → EJ/year
+
 - AR6:  Final Energy|Transportation|Passenger
   iTEM MIP2:
     select: { variable: ['energy'], fuel: ['Total Liquids']}
