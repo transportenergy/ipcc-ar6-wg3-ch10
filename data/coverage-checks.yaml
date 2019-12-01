@@ -1,3 +1,11 @@
+- variable: [Energy Service|Transportation|Freight]
+  region: [World]
+  _note: for fig_3 mode shares
+
+- variable: [Energy Service|Transportation|Freight|Road]
+  region: [World]
+  _note: for fig_3 mode shares
+
 - variable: [Final Energy|Transportation|Freight]
   _note: for fig_4 energy intensity
 

@@ -145,6 +145,7 @@ def compute_shares(df, on, groupby=[]):
 
 
 def normalize(df, year):
+    """Normalize *df* values against *year*."""
     # TODO implement
     raise NotImplementedError
 
@@ -168,7 +169,7 @@ def get_client(source):
 
 @lru_cache()
 def _raw_local_data(path, id_vars):
-    """Cache loaded CSV files in memory for performance."""
+    """Cache loaded CSV files in memory, for performance."""
     return pd.read_csv(path) \
              .rename(columns=lambda c: c.lower()) \
              .melt(id_vars=id_vars, var_name='year')
@@ -273,10 +274,10 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
                  .pipe(_item_clean_data, source, scale) \
                  .dropna(subset=['value']) \
                  .drop(list(d for d in drop if d in result.columns), axis=1) \
-                 .pipe(apply_categories, source, drop_uncategorized=True)
+                 .pipe(categorize, source, drop_uncategorized=True)
 
 
-def apply_categories(df, source, **options):
+def categorize(df, source, **options):
     """Modify *df* from *source* to add 'category' columns."""
     if source in ('SR15',):
         # Read a CSV file
@@ -304,24 +305,27 @@ def apply_categories(df, source, **options):
     return result
 
 
-def apply_plot_meta(df, source):
-    """Add plot metadata columns 'color' and 'label' *df* from *source*."""
-    try:
-        meta = pd.read_csv(DATA_PATH / f'meta-{source}.csv')
-    except FileNotFoundError:
+def restore_dims(df, expr=None):
+    """Restore dimensions of *df* from its 'variable' column.
+
+    *expr* is a regular expression with one or more named groups. It is applied
+    to the 'variable' column, and *df* is returned with one additional column
+    for each named group. The 'variable' column is not modified.
+    """
+    if not expr:
+        # No-op
         return df
-    else:
-        return df.merge(meta, how='left', on=['category'])
+
+    return pd.concat([df, df['variable'].str.extract(expr)], axis=1)
 
 
-def restore_dims(df, expr):
-    if expr:
-        return pd.concat([df, df['variable'].str.extract(expr)], axis=1)
-    else:
-        return df
+def _item_cat_for_scen(row):
+    """Return the iTEM scenario category for model & scenario info."""
+    return _item_scen_info(row['model'])[row['scenario']]['category']
 
 
 def _item_clean_data(df, source, scale):
+    """Clean iTEM data by removing commercial projections and scaling."""
     if 'iTEM' not in source:
         return df
 
@@ -329,32 +333,7 @@ def _item_clean_data(df, source, scale):
     df['value'] = df['value'] * scale
 
     # Remove private companies' projections
-    df = df.loc[~df.model.isin(['BP', 'ExxonMobil', 'Shell']), :]
-
-    return df
-
-
-def get_references():
-    """Retrieve reference files listed in ref/urls.txt to ref/."""
-    from pathlib import Path
-    from urllib.parse import urlparse
-
-    import requests
-
-    ref_dir = Path('ref')
-
-    for url in open(ref_dir / 'urls.txt'):
-        # Strip trailing newline
-        url = url.strip()
-
-        # Name of the file to be written
-        name = Path(urlparse(url).path).name
-        log.info(name)
-
-        # Retrieve the content from the web and write its contents to a new
-        # file in ref/
-        with open(ref_dir / name, 'wb') as f:
-            f.write(requests.get(url, timeout=3).content)
+    return df.loc[~df.model.isin(['BP', 'ExxonMobil', 'Shell']), :]
 
 
 @lru_cache()
@@ -362,11 +341,6 @@ def _item_scen_info(name):
     """Return iTEM metadata for model *name*."""
     name = {'WEPS+': 'EIA'}.get(name, name)
     return item.model.load_model_scenarios(name.lower(), 2)
-
-
-def _item_cat_for_scen(row):
-    """Return the iTEM scenario category for model & scenario info."""
-    return _item_scen_info(row['model'])[row['scenario']]['category']
 
 
 @lru_cache()

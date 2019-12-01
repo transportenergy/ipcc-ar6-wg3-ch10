@@ -1,0 +1,10 @@
+{
+  "scenario explorer credentials": {
+    "username": "example",
+    "password": "ssya5QJj6ONkfBgYe8BA"
+  },
+  "rclone": {
+    "input": "ipcc:IPCC CH10/7 Scenarios/data",
+    "output": "ipcc:IPCC CH10/7 Scenarios/plots"
+  }
+}

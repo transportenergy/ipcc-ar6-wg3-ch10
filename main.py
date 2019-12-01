@@ -10,7 +10,6 @@ import yaml
 
 from data import (
     REMOTE_DATA,
-    get_references,
 )
 
 
@@ -27,18 +26,99 @@ def _start_log():
 
 @click.group()
 @click.option('--verbose', is_flag=True,
-              help='Also print DEBUG log information.')
+              help='Also print DEBUG log messages to stdout.')
 def cli(verbose):
-    """Command-line interface for IPCC AR6 WGIII Ch.10 figures."""
+    """Command-line interface for IPCC AR6 WGIII Ch.10 figures.
+
+    Reads a file config.json in the current directory. See config-example.json.
+
+    Verbose log information for certain commands is written to a timestamped
+    .log file in output/.
+    """
     _LC['handlers']['file']['filename'] = OUTPUT_PATH / f'{NOW}.log'
 
     if verbose:
         _LC['handlers']['console']['level'] = 'DEBUG'
 
 
-@cli.command(help=get_references.__doc__)
-def refs():
-    get_references()
+@cli.command()
+@click.argument('action', type=click.Choice(['refresh', 'clear']))
+@click.argument('source', type=click.Choice(REMOTE_DATA.keys()))
+def cache(action, source):
+    """Retrive data from remote databases to data/cache/SOURCE/.
+
+    An HDF5 file named all.h5 is also created to speed retrieval.
+
+    \b
+    The download takes:
+    - AR6: ~60 minutes for 895 scenarios / 3.3 GiB.
+      all.h5 is 9.1 GiB.
+    - SR15: ~15 minutes for 416 scenarios / 832 MiB.
+    """
+    _start_log()
+
+    from .cache import cache_data
+
+    if action == 'refresh':
+        cache_data(source)
+    else:
+        print('Please clear the cache manually.')
+        raise NotImplementedError
+
+
+@cli.command()
+def coverage():
+    """Report coverage per data/coverage-checks.yaml."""
+    _start_log()
+
+    from data import DATA_PATH, get_data
+
+    for info in yaml.safe_load(open(DATA_PATH / 'coverage-checks.yaml')):
+        note = info.pop('_note')
+        lines = [
+            f'\nCoverage of {info!r}',
+            f'Note: {note}',
+        ]
+
+        for source in 'AR6', 'iTEM MIP2':
+            args = info.copy()
+            if 'iTEM' in source:
+                args.update(dict(conform_to='AR6', default_item_filters=False))
+            data = get_data(source, **args)
+
+            lines.extend([
+                f'  {source}:',
+                f'    {len(data)} observations',
+            ])
+
+            if len(data) == 0:
+                continue
+
+            lines.extend([
+                '    {} (model, scenario) combinations'.format(
+                    len(data.groupby(['model', 'scenario']))),
+                '    {} scenario categories'.format(
+                    len(data['category'].unique())),
+                '    {} models'.format(len(data['model'].unique())),
+            ])
+
+        print('\n'.join(lines), end='\n\n')
+
+
+@cli.command()
+def debug():
+    """Demo or debug code."""
+    _start_log()
+
+    from data import get_client, get_data
+
+    client = get_client()
+
+    # List of all scenarios
+    print(pd.DataFrame.from_dict(client.runs()))
+
+    # Data for particular runs
+    print(get_data(runs=[746, 791]))
 
 
 @cli.command()
@@ -48,7 +128,7 @@ def refs():
               help='Only load and preprocess data; no output.')
 @click.argument('to_plot', metavar='FIGURES', type=int, nargs=-1)
 def plot(to_plot, **options):
-    """Plot data to output/.
+    """Plot figures, writing to output/.
 
     FIGURES is a sequence of ints, e.g. 1 4 5 to plot figures 1, 4, and 5. If
     omitted, all figures are plotted.
@@ -76,87 +156,30 @@ def plot(to_plot, **options):
 
 
 @cli.command()
+def refs():
+    """Retrieve reference files to ref/."""
+    from .cache import get_references
+
+    get_references()
+
+
+@cli.command()
 @click.option('--go', is_flag=True)
 def upload(go):
-    """Upload outputs to Box using rclone."""
+    """Sync output/ to a remote directory using rclone.
+
+    \b
+    Requires the following configuration:
+    - Rclone installed from https://rclone.org.
+    - At least one remote configured.
+    - In config.json, a key 'rclone' and sub-key
+      'output' with a destination ("remote:path").
+    """
     from subprocess import check_call
     from data import CONFIG
 
     check_call(['rclone', '--progress' if go else '--dry-run',
                 'sync',  'output', CONFIG['rclone']['output']])
-
-
-@cli.command()
-def debug():
-    """Demo or debug code."""
-    _start_log()
-
-    from data import get_client, get_data
-
-    client = get_client()
-
-    # List of all scenarios
-    print(pd.DataFrame.from_dict(client.runs()))
-
-    # Data for particular runs
-    print(get_data(runs=[746, 791]))
-
-
-@cli.command()
-@click.argument('action', type=click.Choice(['refresh', 'clear']))
-@click.argument('source', type=click.Choice(REMOTE_DATA.keys()))
-def cache(action, source):
-    """Cache data from the IIASA API in data/cache/SOURCE/.
-
-    An HDF5 file named all.h5 is also created.
-
-    \b
-    The download takes:
-    - AR6: approximately 60 minutes for 895 scenarios / 3.3 GiB; all.h5 is 9.1
-           GiB.
-    - SR15: approximately 15 minutes for 416 scenarios / 832 MiB.
-    """
-    _start_log()
-
-    from .cache import cache_data
-
-    if action == 'refresh':
-        cache_data(source)
-    else:
-        print('Please clear the cache manually.')
-        raise NotImplementedError
-
-
-@cli.command()
-def coverage():
-    """Report coverage for filters in coverage-checks.yaml."""
-    _start_log()
-
-    from data import DATA_PATH, get_data
-
-    for info in yaml.safe_load(open(DATA_PATH / 'coverage-checks.yaml')):
-        note = info.pop('_note')
-        iam_data = get_data('AR6', **info)
-        item_data = get_data('iTEM MIP2', conform_to='AR6',
-                             default_item_filters=False, **info)
-
-        lines = [
-            f'\nCoverage of {info!r}',
-            f'Note: {note}',
-            '  AR6:',
-            f'    {len(iam_data)} observations',
-            '    {} (model, scenario) combinations'.format(
-                len(iam_data.groupby(['model', 'scenario']))),
-            '  iTEM MIP2:',
-            f'    {len(item_data)} observations',
-        ]
-
-        if len(item_data):
-            lines.append(
-                '    {} (model, scenario) combinations'
-                .format(len(item_data.groupby(['model', 'scenario']))))
-
-        print('\n'.join(lines), end='\n\n')
 
 
 @cli.command()
