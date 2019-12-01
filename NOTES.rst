@@ -1,6 +1,11 @@
 Notes
 *****
 
+2019-12-01
+----------
+
+3. Global freight mode shares are only available for one model (IMAGE).
+
 2019-11-27
 ----------
 
@@ -15,8 +20,8 @@ Notes
    LDV-specific variables are provided for *activity* and *emissions* quantities, but not for *energy*.
    This prevents calculation of the energy-intensity of LDV activity.
 
-2. IAM coverage of “Final Energy|Transportation|Freight” is good, while “|Passenger”
-   has only 1 series::
+2. IAM coverage of “Final Energy|Transportation|Freight” is good, while
+   “|Passenger” has only 1 series::
 
      $ python3 main.py coverage
      INFO    Get AR6 data for 1 variable(s)

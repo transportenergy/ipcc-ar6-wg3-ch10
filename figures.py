@@ -22,6 +22,7 @@ from plotnine import (
     guides,
     labs,
     position_dodge,
+    scale_color_brewer,
     scale_color_manual,
     scale_fill_manual,
     scale_x_discrete,
@@ -342,20 +343,28 @@ def fig_2(data, sources, **kwargs):
 
 # Non-dynamic features of fig_3
 FIG3_STATIC = [
-    # Horizontal panels by type; vertical panels by modes
+    # Horizontal panels by scenario category; vertical panels by pax./freight
     facet_grid('type ~ category', scales='free_x'),
 
     # Aesthetics and scales
     aes(x='year', color='mode'),
-    scale_x_continuous(breaks=YEARS),
+    scale_x_continuous(limits=(2020, 2100), breaks=np.linspace(2020, 2100, 5),
+                       labels=['', 2040, '', 2080, '']),
+    scale_y_continuous(limits=(0, 1), breaks=np.linspace(0, 1, 6)),
+    scale_color_brewer(type='qual', palette='Dark2'),
     # ] + COMMON['color category'] + [
 
     # Geoms
-    geom_ribbon(aes(ymin='25%', ymax='75%', fill='mode'), alpha=0.25),
-    geom_line(aes(y='50%')),
+    # geom_ribbon(aes(ymin='25%', ymax='75%', fill='mode'), alpha=0.25),
+    # geom_line(aes(y='50%')),
+    geom_line(aes(y='value', group='model + scenario + mode'), alpha=0.6),
 
     # Axis labels
-    labs(y='', fill='IAM/sectoral scenarios'),
+    labs(x='', y='', color='Mode'),
+
+    # Appearance
+    COMMON['theme'],
+    guides(group=None),
 ]
 
 
@@ -366,15 +375,36 @@ def fig_3(data, sources, **kwargs):
         .pipe(compute_shares, on='mode', groupby=['type']) \
         .assign(variable='Mode share')
 
-    # Plot descriptives
-    data['plot'] = data['iam'].pipe(compute_descriptives,
-                                    groupby=['type', 'mode'])
+    # Compute fuel shares for sectoral scenarios
+    # - Modify labels to match IAM format
+    data['item'] = data['item'] \
+        .assign(type=data['item']['variable'].replace(
+            {'pkm': 'Passenger', 'tkm': 'Freight'})) \
+        .replace({'mode': {
+            'All': None,
+            'Passenger Rail': 'Railways',
+            'Freight Rail': 'Railways',
+            '2W and 3W': 'Road|2-/3W',
+            'Bus': 'Road|Bus',
+            'HDT': 'Road|HDT',
+            }}) \
+        .pipe(compute_shares, on='mode', groupby=['type']) \
+        .assign(variable='Mode share')
 
-    # TODO compute mode shares for sectoral scenarios
+    # # Separate the IAM and sectoral modes so they can be coloured differently
+    # for k in data.keys():
+    #     data[k]['mode'] = k + '|' + data[k]['mode']
 
-    plot = ggplot(data=data['plot']) + FIG3_STATIC
+    plot = (
+        ggplot(data=data['iam']) + FIG3_STATIC
 
-    plot.units = '%'
+        + geom_line(
+            aes(y='value', group='model + scenario + mode'),
+            data['item'],
+            alpha=0.6)
+    )
+
+    plot.units = '0̸'
 
     return plot
 
@@ -510,6 +540,7 @@ def fig_5(data, sources, **kwargs):
     data['iam'] = data['iam'] \
         .pipe(compute_shares, on='fuel') \
         .assign(variable='Fuel share')
+
     # Compute fuel shares for sectoral scenarios
     # - Modify labels to match IAM format
     data['item'] = data['item'] \
