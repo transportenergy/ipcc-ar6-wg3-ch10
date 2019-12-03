@@ -11,3 +11,36 @@
 
 - variable: [Final Energy|Transportation|Passenger]
   _note: for fig_4 energy intensity
+
+- variable: [Emissions|CO2|Energy|Demand|Transportation|Road Rail and Domestic Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Emissions|CO2|Energy|Demand|Transportation|Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Emissions|CO2|Energy|Demand|Transportation|Shipping|International]
+  _note: per AHS query 2019-12-03
+- variable: [Energy Service|Transportation|Freight|International Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Energy Service|Transportation|Freight|Navigation]
+  _note: per AHS query 2019-12-03
+- variable: [Energy Service|Transportation|Navigation]
+  _note: per AHS query 2019-12-03
+- variable: [Energy Service|Transportation|Passenger|Navigation]
+  _note: per AHS query 2019-12-03
+- variable: [Final Energy|Transportation|Gases|Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Final Energy|Transportation|Hydrogen|Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Final Energy|Transportation|Liquids|Biomass|Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Final Energy|Transportation|Liquids|Coal|Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Final Energy|Transportation|Liquids|Oil|Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Final Energy|Transportation|Liquids|Oil|Shipping|Fuel Oil]
+  _note: per AHS query 2019-12-03
+- variable: [Final Energy|Transportation|Liquids|Oil|Shipping|Light Oil]
+  _note: per AHS query 2019-12-03
+- variable: [Useful Energy|Input|Shipping]
+  _note: per AHS query 2019-12-03
+- variable: [Useful Energy|Shipping]
+  _note: per AHS query 2019-12-03

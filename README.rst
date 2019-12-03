@@ -216,17 +216,18 @@ These would be for author reference, annexes, or potential inclusion in the draf
 
 Running the code
 ================
-Create a file named ``config.json`` with content like:
+Modify ``config-example.json`` to create a file named ``config.json`` with
+content like::
 
-.. code-block:: json
-
-   {
-     "credentials": {
-       "username": "your-user-name",
-       "password": "your-password"
-     },
-     "application": "IXSE_AR6"
-   }
+    {
+      "credentials": {
+        "username": "your-user-name",
+        "password": "your-password"
+      },
+      "remote": {
+        "upload": "ipcc:IPCC CH10/7 Scenarios/plots"
+      }
+    }
 
 (NB. do **not** commit this file to the git repository; your password will become a permanent part of the history, and you will need to change it.)
 

@@ -182,9 +182,12 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
     Parameters
     ----------
     source : str
-        Data to load. ADVANCE and AR5 are from local files; see README.
+        Source of data; one of the keys in LOCAL_DATA or REMOTE_DATA. In the
+        latter case, the data must have first been cached using ``$ python
+        main.py cache SOURCE``; they are read from the corresponding file
+        all.h5.
     drop : list of str
-        Columns to drop when loading from web API.
+        Columns to drop.
     vars_from_file : bool, optional
         Use the list from "data/variables-*source*.txt" if no variables are
         given with *filters*.
