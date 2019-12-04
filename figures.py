@@ -28,6 +28,7 @@ from plotnine import (
     scale_x_continuous,
     scale_y_continuous,
     theme,
+    ylim,
 )
 import yaml
 
@@ -250,7 +251,6 @@ FIG1_STATIC = [
 
 @figure(region=['World'])
 def fig_1(data, sources, **kwargs):
-
     # Transform from individual data points to descriptives
     data['plot'] = data['iam'] \
         .pipe(normalize_if, kwargs['normalize'], year=2020) \
@@ -316,22 +316,25 @@ FIG2_STATIC = [
 
 @figure(region=['World'])
 def fig_2(data, sources, **kwargs):
-    # TODO compute per-capita quantity
-    # TODO handle 'normalize' option
-
     # Restore the 'type' dimension to each data set
     data['item']['type'] = data['item']['variable'] \
         .replace({'tkm': 'Freight', 'pkm': 'Passenger'})
 
-    if kwargs['normalize']:
-        data['iam'] = normalize(data['iam'], year=2020)
-
-    # Discard 2020 data
-    data['iam'] = data['iam'][data['iam'].year != 2020]
-    data['item'] = data['item'][~data['item'].year.isin([2020, 2100])]
-
     # Transform from individual data points to descriptives
-    data['plot'] = data['iam'].pipe(compute_descriptives, groupby=['type'])
+    data['plot'] = data['iam'] \
+        .pipe(normalize_if, kwargs['normalize'], year=2020) \
+        .pipe(compute_descriptives, groupby=['type'])
+
+    # Discard 2100 sectoral data
+    data['item'] = data['item'][data['item'].year != 2100]
+
+    if kwargs['normalize']:
+        # Store the absolute data
+        data['item-absolute'] = data['item']
+        # Replace with the normalized data
+        data['item'] = data['item'] \
+            .pipe(normalize_if, kwargs['normalize'], year=2020)
+
     data['plot-item'] = data['item'].pipe(compute_descriptives,
                                           groupby=['type'])
 
@@ -348,8 +351,12 @@ def fig_2(data, sources, **kwargs):
             color='black', size=1, shape='x', fill=None)
     )
 
-    units = data['iam']['unit'].str.replace('bn', '10⁹')
-    plot.units = '; '.join(units.unique())
+    if kwargs['normalize']:
+        plot += ylim(0, 4)
+        plot.units = 'Index, 2020 level = 1.0'
+    else:
+        units = data['iam']['unit'].str.replace('bn', '10⁹')
+        plot.units = '; '.join(units.unique())
 
     return plot
 
