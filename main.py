@@ -67,11 +67,15 @@ def cache(action, source):
 
 
 @cli.command()
-def coverage():
+@click.option('--dump', is_flag=True,
+              help='Also dump all data to output/coverage.csv.')
+def coverage(dump):
     """Report coverage per data/coverage-checks.yaml."""
     _start_log()
 
     from data import DATA_PATH, get_data
+
+    dfs = []
 
     for info in yaml.safe_load(open(DATA_PATH / 'coverage-checks.yaml')):
         note = info.pop('_note')
@@ -84,7 +88,7 @@ def coverage():
             args = info.copy()
             if 'iTEM' in source:
                 args.update(dict(conform_to='AR6', default_item_filters=False))
-            data = get_data(source, **args)
+            data = get_data(source, **args).assign(source=source)
 
             lines.extend([
                 f'  {source}:',
@@ -102,7 +106,13 @@ def coverage():
                 '    {} models'.format(len(data['model'].unique())),
             ])
 
+            if dump:
+                dfs.append(data)
+
         print('\n'.join(lines), end='\n\n')
+
+        if dump:
+            pd.concat(dfs).to_csv(OUTPUT_PATH / 'coverage.csv')
 
 
 @cli.command()
