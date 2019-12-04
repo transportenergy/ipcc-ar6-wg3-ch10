@@ -202,6 +202,12 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                 log.info(f'Dump {len(df):5} obs to {path}')
                 df.to_csv(path)
 
+            if fig_info.get('normalized version', False):
+                # Distinguish normalized and absolute versions in file name
+                base_fn = base_fn.with_name(
+                    base_fn.name
+                    + ('-normalized' if args['normalize'] else '-absolute'))
+
             # Save to file unless --load-only was given.
             if plot and not load_only:
                 args = dict(

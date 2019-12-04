@@ -2,12 +2,13 @@
 
 fig_1:
   short title: Direct transport CO₂ emissions
-  units: Gt CO2/year
+  normalized version: true
   variables:
   - Emissions|CO2|Energy|Demand|Transportation
 
 fig_2:
   short title: Passenger and freight transport activity
+  normalized version: true
   variables:
   # - Population  # for per-capita calculation
   - Energy Service|Transportation|Freight
