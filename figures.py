@@ -335,7 +335,8 @@ def fig_2(data, sources, **kwargs):
             color='black', size=1, shape='x', fill=None)
     )
 
-    plot.units = 'p·km / t·km'
+    units = data['iam']['unit'].str.replace('bn', '10⁹')
+    plot.units = '; '.join(units.unique())
 
     return plot
 
