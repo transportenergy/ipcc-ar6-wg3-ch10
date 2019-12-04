@@ -36,7 +36,7 @@ from data import (
     compute_ratio,
     compute_shares,
     get_data,
-    normalize,
+    normalize_if,
     restore_dims,
 )
 
@@ -244,19 +244,22 @@ FIG1_STATIC = [
 
 @figure(region=['World'])
 def fig_1(data, sources, **kwargs):
-    if kwargs['normalize']:
-        data['iam'] = normalize(data['iam'], year=2020)
-
-    # Discard 2020 data
-    data['iam'] = data['iam'][data['iam'].year != 2020]
-    data['item'] = data['item'][~data['item'].year.isin([2020, 2100])]
-
-    log.info('Units: {} {}'.format(
-        sorted(data['iam']['unit'].unique()),
-        sorted(data['item']['unit'].unique())))
 
     # Transform from individual data points to descriptives
-    data['plot'] = data['iam'].pipe(compute_descriptives)
+    data['plot'] = data['iam'] \
+        .pipe(normalize_if, kwargs['normalize'], year=2020) \
+        .pipe(compute_descriptives)
+
+    # Discard 2100 sectoral data
+    data['item'] = data['item'][data['item'].year != 2100]
+
+    if kwargs['normalize']:
+        # Store the absolute data
+        data['item-absolute'] = data['item']
+        # Replace with the normalized data
+        data['item'] = data['item'] \
+            .pipe(normalize_if, kwargs['normalize'], year=2020)
+
     data['plot-item'] = data['item'].pipe(compute_descriptives)
 
     plot = (
@@ -271,7 +274,11 @@ def fig_1(data, sources, **kwargs):
             aes(y='value'), data['item'],
             color='black', size=1, shape='x', fill=None)
     )
-    plot.units = sorted(data['iam']['unit'].unique())[0]
+
+    if kwargs['normalize']:
+        plot.units = 'Index, 2020 level = 1.0'
+    else:
+        plot.units = sorted(data['iam']['unit'].unique())[0]
 
     return plot
 

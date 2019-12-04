@@ -144,10 +144,28 @@ def compute_shares(df, on, groupby=[]):
     return pd.concat(results)
 
 
-def normalize(df, year):
-    """Normalize *df* values against *year*."""
-    # TODO implement
-    raise NotImplementedError
+def normalize_if(df, condition, year):
+    """Normalize *df* values against *year* if *condition* is True.
+
+    Otherwise, simply discard the data for *year*.
+    """
+    if not condition:
+        log.info(f'Discard data for {year}')
+        return df[df['year'] != year]
+
+    log.info(f'Normalize {len(df)} obs')
+
+    # Move all but 'value' columns to index
+    id_cols = list(filter(lambda c: c != 'value', df.columns))
+    tmp = df.set_index(id_cols)
+
+    # bool mask for numerator/denominator
+    mask = tmp.index.isin([year], level='year')
+
+    # Remove 'year' index from denominator so it divides all values; compute;
+    # return with all data as columns
+    return (tmp[~mask] / tmp[mask].droplevel('year')) \
+        .reset_index()
 
 
 def _filter(df, filters):
