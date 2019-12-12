@@ -117,6 +117,15 @@ COMMON = {
         scale_color_manual(limits=SCALE_CAT['limit'],
                            values=SCALE_CAT['fill']),
         ],
+
+    'x year': [
+        aes(x='year'),
+        scale_x_continuous(
+            limits=(2020, 2100),
+            breaks=np.linspace(2020, 2100, 5),
+            labels=['', 2040, '', 2080, '']),
+        labs(x=''),
+        ],
 }
 
 
@@ -317,7 +326,7 @@ FIG2_STATIC = [
 
 @figure(region=['World'])
 def fig_2(data, sources, **kwargs):
-    # Restore the 'type' dimension to each data set
+    # Restore the 'type' dimension to sectoral data
     data['item']['type'] = data['item']['variable'] \
         .replace({'tkm': 'Freight', 'pkm': 'Passenger'})
 
@@ -368,12 +377,10 @@ FIG3_STATIC = [
     facet_grid('type ~ category', scales='free_x'),
 
     # Aesthetics and scales
-    aes(x='year', color='mode'),
-    scale_x_continuous(limits=(2020, 2100), breaks=np.linspace(2020, 2100, 5),
-                       labels=['', 2040, '', 2080, '']),
+    ] + COMMON['x year'] + [
+    aes(color='mode'),
     scale_y_continuous(limits=(0, 1), breaks=np.linspace(0, 1, 6)),
     scale_color_brewer(type='qual', palette='Dark2'),
-    # ] + COMMON['color category'] + [
 
     # Geoms
     # geom_ribbon(aes(ymin='25%', ymax='75%', fill='mode'), alpha=0.25),
@@ -381,7 +388,7 @@ FIG3_STATIC = [
     geom_line(aes(y='value', group='model + scenario + mode'), alpha=0.6),
 
     # Axis labels
-    labs(x='', y='', color='Mode'),
+    labs(y='', color='Mode'),
 
     # Appearance
     COMMON['theme'],
@@ -607,48 +614,22 @@ def fig_5(data, sources, **kwargs):
 # Non-dynamic features of fig_6
 FIG6_STATIC = [
     # Horizontal panels by 'year'
-    facet_wrap('year', ncol=3, scales='free_x'),
+    facet_wrap("type + ' ' + mode", ncol=3, scales='free_y'),
 
     # Aesthetics and scales
-    aes(x='category', color='mode'),
-    scale_x_discrete(limits=SCALE_CAT['limit'],
-                     labels=SCALE_CAT['label']),
-    # scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
-    # scale_color_manual(limits=SCALE_FUEL['limit'],
-    #                    values=SCALE_FUEL['fill'],
-    #                    labels=SCALE_FUEL['label']),
-    # scale_fill_manual(limits=SCALE_FUEL['limit'],
-    #                   values=SCALE_FUEL['fill'],
-    #                   labels=SCALE_FUEL['label']),
+    aes(y='value'),
+    ] + COMMON['x year'] + COMMON['color category'] + [
 
     # Geoms
-    # Like COMMON['ranges'], with fill='fuel', position='dodge' and no width=
-    geom_crossbar(
-        aes(ymin='min', y='50%', ymax='max', group='mode'), position='dodge',
-        color='black', fill='white', width=0.9),
-    geom_crossbar(
-        aes(ymin='25%', y='50%', ymax='75%', fill='mode'), position='dodge',
-        color='black', width=0.9),
-    # Like COMMON['counts'], except color is 'fuel'
-    geom_text(
-        aes(label='count', y=-0.01, angle=45, color='mode'),
-        position=position_dodge(width=0.9),
-        # commented: this step is extremely slow
-        # adjust_text=dict(autoalign=True),
-        format_string='{:.0f}',
-        va='top', size=3),
+    geom_line(aes(group='model + scenario + category'), alpha=0.6),
 
     # Axis labels
-    labs(x='', y='', fill='Mode'),
+    labs(x='', y=''),
     # theme(axis_text_x=element_blank()),
-
-    # Hide legend for 'color'
-    guides(color=None),
 
     # Appearance
     COMMON['theme'],
     theme(
-        axis_text_x=element_text(rotation=45),
         panel_grid_major_x=element_blank(),
     ),
 ]
@@ -656,34 +637,35 @@ FIG6_STATIC = [
 
 @figure(region=['World'])
 def fig_6(data, sources, **kwargs):
-    # Discard 2020 data
-    data['iam'] = data['iam'][data['iam'].year != 2020]
-    data['item'] = data['item'][data['item'].year != 2020]
+    # Add 'All' to the 'mode' column for IAM data
+    data['iam']['mode'] = data['iam']['mode'] \
+        .where(~data['iam']['mode'].isna(), 'All')
 
-    # Plot descriptives
-    data['plot'] = data['iam'].pipe(compute_descriptives, groupby=['mode'])
-    # Omit supercategories ('category+1') from iTEM descriptives
-    data['plot-item'] = data['item'] \
-        .drop('category+1', axis=1) \
-        .pipe(compute_descriptives, groupby=['mode'])
+    # Restore the 'type' dimension to sectoral data
+    data['item']['type'] = data['item']['variable'] \
+        .replace({'tkm': 'Freight', 'pkm': 'Passenger'})
+    # Convert sectoral 'mode' data to common label
+    data['item'] = data['item'].replace({
+        'mode': {'Freight Rail': 'Railways', 'Passenger Rail': 'Railways'}})
 
-    plot = (
-        ggplot(data=data['plot']) + FIG6_STATIC +
+    # Optionally normalize
+    if kwargs['normalize']:
+        # Store the absolute data
+        data['iam-absolute'] = data['iam']
+        data['item-absolute'] = data['item']
 
-        # Points and bar for sectoral models
-        geom_crossbar(
-            aes(ymin='min', y='50%', ymax='max', fill='mode'),
-            data['plot-item'],
-            position='dodge',
-            color='black', fatten=0, width=0.9)
-        + geom_point(
-            aes(y='value', group='mode'), data['item'],
-            position=position_dodge(width=0.9),
-            color='black', size=1, shape='x', fill=None)
-    )
+        data['iam'] = data['iam'] \
+            .pipe(normalize_if, kwargs['normalize'], year=2020)
+        # Replace with the normalized data
+        data['item'] = data['item'] \
+            .pipe(normalize_if, kwargs['normalize'], year=2020)
+
+    # Combine all data to a single data frame
+    data['plot'] = pd.concat([data['iam'], data['item']], sort=False)
+
+    plot = ggplot(data=data['plot']) + FIG6_STATIC
 
     if kwargs['normalize']:
-        # plot += ylim(0, 4)
         plot.units = 'Index, 2020 level = 1.0'
     else:
         units = data['iam']['unit'].str.replace('bn', '10⁹')

@@ -111,4 +111,5 @@ fig_6:
   - Energy Service|Transportation|Passenger|Road|2W and 3W
   - Energy Service|Transportation|Passenger|Road|Bus
   - Energy Service|Transportation|Passenger|Road|LDV
+  aspect ratio: 1
   restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)(?:\|(?P<mode>.*))?'
