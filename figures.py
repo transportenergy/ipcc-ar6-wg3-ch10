@@ -203,24 +203,24 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                 plot += ggtitle(f"{fig_info['short title']} [{plot.units}] "
                                 f"({fig_id}/{'/'.join(sources)})")
 
-            base_fn = OUTPUT_PATH / f'{fig_id}'
+            base_fn = f'{fig_id}'
+
+            if fig_info.get('normalized version', False):
+                # Distinguish normalized and absolute versions in file name
+                base_fn += '-normalized' if args['normalize'] else '-absolute'
 
             # Save data to file.
             # Do this before plotting, so the data can be inspected even if the
             # plot is not constructed properly and fails.
+
             for label, df in data.items():
-                path = OUTPUT_PATH / 'data' / f'{fig_id}-{label}.csv'
+                path = OUTPUT_PATH / 'data' / (base_fn + f'-{label}.csv')
                 log.info(f'Dump {len(df):5} obs to {path}')
                 df.to_csv(path)
 
-            if fig_info.get('normalized version', False):
-                # Distinguish normalized and absolute versions in file name
-                base_fn = base_fn.with_name(
-                    base_fn.name
-                    + ('-normalized' if args['normalize'] else '-absolute'))
-
             # Save to file unless --load-only was given.
             if plot and not load_only:
+                base_fn = OUTPUT_PATH / base_fn
                 args = dict(
                     verbose=False,
                     width=190,
