@@ -144,10 +144,22 @@ def compute_shares(df, on, groupby=[]):
     return pd.concat(results)
 
 
-def normalize_if(df, condition, year):
-    """Normalize *df* values against *year* if *condition* is True.
+def normalize_if(df, condition, year, drop=True):
+    """Normalize if *condition* is True.
 
-    Otherwise, simply discard the data for *year*.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Data to normalize.
+    condition : bool
+        If True, return *df* normalized as of *year*.
+        If False, simply discard observations for *year*.
+    year : int
+        Year to normalize against.
+    drop : bool, optional
+        If True and *condition* is True, discard the observations from the
+        normalization year; otherwise, retain these observations (all equal to
+        1.0).
     """
     if not condition:
         log.info(f'Discard data for {year}')
@@ -162,10 +174,14 @@ def normalize_if(df, condition, year):
     # bool mask for numerator/denominator
     mask = tmp.index.isin([year], level='year')
 
+    if drop:
+        num = tmp[~mask]
+    else:
+        num = tmp
+
     # Remove 'year' index from denominator so it divides all values; compute;
     # return with all data as columns
-    return (tmp[~mask] / tmp[mask].droplevel('year')) \
-        .reset_index()
+    return (num / tmp[mask].droplevel('year')).reset_index()
 
 
 def _filter(df, filters):

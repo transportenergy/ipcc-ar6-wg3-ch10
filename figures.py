@@ -657,10 +657,10 @@ def fig_6(data, sources, **kwargs):
         data['item-absolute'] = data['item']
 
         data['iam'] = data['iam'] \
-            .pipe(normalize_if, kwargs['normalize'], year=2020)
+            .pipe(normalize_if, kwargs['normalize'], year=2020, drop=False)
         # Replace with the normalized data
         data['item'] = data['item'] \
-            .pipe(normalize_if, kwargs['normalize'], year=2020)
+            .pipe(normalize_if, kwargs['normalize'], year=2020, drop=False)
 
     # Combine all data to a single data frame
     data['plot'] = pd.concat([data['iam'], data['item']], sort=False)
