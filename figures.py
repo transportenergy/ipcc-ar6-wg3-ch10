@@ -66,14 +66,14 @@ mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
 
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame([
-    ['Below 1.6C', 'green',   '<1.6°C'],
-    ['1.6 - 2.0C', '#fca503', '1.6–2°C'],
-    ['2.0 - 2.5C', '#ca34de', '2–2.5°C'],
-    ['2.5 - 3.5C', 'red',     '2.5–3.5°C'],
-    ['Above 3.5C', 'brown',   '>3.5°C'],
-    ['policy',     '#eeeeee', 'Policy'],
-    ['reference',  '#999999', 'Reference'],
-    ], columns=['limit', 'fill', 'label'])
+    ['Below 1.6C', 'green',   'green',   '<1.6°C'],
+    ['1.6 - 2.0C', '#fca503', '#fca503', '1.6–2°C'],
+    ['2.0 - 2.5C', '#ca34de', '#ca34de', '2–2.5°C'],
+    ['2.5 - 3.5C', 'red',     'red',     '2.5–3.5°C'],
+    ['Above 3.5C', 'brown',   'brown',   '>3.5°C'],
+    ['policy',     '#eeeeee', '#999999', 'Policy'],
+    ['reference',  '#999999', '#111111', 'Reference'],
+    ], columns=['limit', 'fill', 'color', 'label'])
 
 
 # Common plot components.
@@ -115,7 +115,7 @@ COMMON = {
     'color category': [
         aes(color='category'),
         scale_color_manual(limits=SCALE_CAT['limit'],
-                           values=SCALE_CAT['fill']),
+                           values=SCALE_CAT['color']),
         ],
 
     'x year': [
