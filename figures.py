@@ -48,6 +48,7 @@ __all__ = [
     'fig_3',
     'fig_4',
     'fig_5',
+    'fig_6',
 ]
 
 log = logging.getLogger('root.' + __name__)
@@ -504,7 +505,7 @@ SCALE_FUEL = pd.DataFrame([
 
 
 FIG5_STATIC = [
-    # Horizontal panels by 'facet', combining 'year' and 'category'
+    # Horizontal panels by 'year'
     facet_wrap('year', ncol=3, scales='free_x'),
 
     # Aesthetics and scales
@@ -599,5 +600,93 @@ def fig_5(data, sources, **kwargs):
     )
 
     plot.units = '0̸'
+
+    return plot
+
+
+# Non-dynamic features of fig_6
+FIG6_STATIC = [
+    # Horizontal panels by 'year'
+    facet_wrap('year', ncol=3, scales='free_x'),
+
+    # Aesthetics and scales
+    aes(x='category', color='mode'),
+    scale_x_discrete(limits=SCALE_CAT['limit'],
+                     labels=SCALE_CAT['label']),
+    # scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
+    # scale_color_manual(limits=SCALE_FUEL['limit'],
+    #                    values=SCALE_FUEL['fill'],
+    #                    labels=SCALE_FUEL['label']),
+    # scale_fill_manual(limits=SCALE_FUEL['limit'],
+    #                   values=SCALE_FUEL['fill'],
+    #                   labels=SCALE_FUEL['label']),
+
+    # Geoms
+    # Like COMMON['ranges'], with fill='fuel', position='dodge' and no width=
+    geom_crossbar(
+        aes(ymin='min', y='50%', ymax='max', group='mode'), position='dodge',
+        color='black', fill='white', width=0.9),
+    geom_crossbar(
+        aes(ymin='25%', y='50%', ymax='75%', fill='mode'), position='dodge',
+        color='black', width=0.9),
+    # Like COMMON['counts'], except color is 'fuel'
+    geom_text(
+        aes(label='count', y=-0.01, angle=45, color='mode'),
+        position=position_dodge(width=0.9),
+        # commented: this step is extremely slow
+        # adjust_text=dict(autoalign=True),
+        format_string='{:.0f}',
+        va='top', size=3),
+
+    # Axis labels
+    labs(x='', y='', fill='Mode'),
+    # theme(axis_text_x=element_blank()),
+
+    # Hide legend for 'color'
+    guides(color=None),
+
+    # Appearance
+    COMMON['theme'],
+    theme(
+        axis_text_x=element_text(rotation=45),
+        panel_grid_major_x=element_blank(),
+    ),
+]
+
+
+@figure(region=['World'])
+def fig_6(data, sources, **kwargs):
+    # Discard 2020 data
+    data['iam'] = data['iam'][data['iam'].year != 2020]
+    data['item'] = data['item'][data['item'].year != 2020]
+
+    # Plot descriptives
+    data['plot'] = data['iam'].pipe(compute_descriptives, groupby=['mode'])
+    # Omit supercategories ('category+1') from iTEM descriptives
+    data['plot-item'] = data['item'] \
+        .drop('category+1', axis=1) \
+        .pipe(compute_descriptives, groupby=['mode'])
+
+    plot = (
+        ggplot(data=data['plot']) + FIG6_STATIC +
+
+        # Points and bar for sectoral models
+        geom_crossbar(
+            aes(ymin='min', y='50%', ymax='max', fill='mode'),
+            data['plot-item'],
+            position='dodge',
+            color='black', fatten=0, width=0.9)
+        + geom_point(
+            aes(y='value', group='mode'), data['item'],
+            position=position_dodge(width=0.9),
+            color='black', size=1, shape='x', fill=None)
+    )
+
+    if kwargs['normalize']:
+        # plot += ylim(0, 4)
+        plot.units = 'Index, 2020 level = 1.0'
+    else:
+        units = data['iam']['unit'].str.replace('bn', '10⁹')
+        plot.units = '; '.join(units.unique())
 
     return plot
