@@ -47,7 +47,7 @@ tkm = tonne * kilometre
 yr = year""")
 
 
-def compute_descriptives(df, groupby=[]):
+def compute_descriptives(df, on=['variable'], groupby=[]):
     """Compute descriptive statistics on *df*.
 
     Descriptives are returned for each ('variable', 'category', 'year') and
@@ -55,7 +55,7 @@ def compute_descriptives(df, groupby=[]):
     """
     def _describe(df, col):
         return df \
-            .groupby(['variable', 'year'] + [col] + groupby) \
+            .groupby(on + ['year', col] + groupby) \
             .describe(percentiles=[0.05, 0.25, 0.5, 0.75, 0.95]) \
             .loc[:, 'value'] \
             .reset_index()

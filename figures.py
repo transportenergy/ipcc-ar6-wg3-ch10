@@ -14,7 +14,7 @@ from plotnine import (
     geom_crossbar,
     geom_line,
     geom_point,
-    # geom_ribbon,
+    geom_ribbon,
     geom_text,
     ggplot,
     ggtitle,
@@ -617,11 +617,18 @@ FIG6_STATIC = [
     facet_wrap("type + ' ' + mode", ncol=3, scales='free_y'),
 
     # Aesthetics and scales
-    aes(y='value'),
     ] + COMMON['x year'] + COMMON['color category'] + [
 
     # Geoms
-    geom_line(aes(group='model + scenario + category'), alpha=0.6),
+    # # 1 lines per scenario
+    # geom_line(aes(y='value', group='model + scenario + category'),
+    #           alpha=0.6),
+
+    # Variant: 1 band per category
+    geom_ribbon(aes(ymin='5%', ymax='95%', fill='category'),
+                alpha=0.25, color=None),
+    geom_line(aes(y='50%', color='category'), alpha=0.5),
+    COMMON['fill category'],
 
     # Axis labels
     labs(x='', y='', color='IAM/sectoral scenarios'),
@@ -664,6 +671,9 @@ def fig_6(data, sources, **kwargs):
 
     # Combine all data to a single data frame
     data['plot'] = pd.concat([data['iam'], data['item']], sort=False)
+
+    # Variant: bands per category
+    data['plot'] = compute_descriptives(data['plot'], on=['type', 'mode'])
 
     plot = ggplot(data=data['plot']) + FIG6_STATIC
 
