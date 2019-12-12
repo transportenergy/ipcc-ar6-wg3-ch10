@@ -624,13 +624,15 @@ FIG6_STATIC = [
     geom_line(aes(group='model + scenario + category'), alpha=0.6),
 
     # Axis labels
-    labs(x='', y=''),
+    labs(x='', y='', color='IAM/sectoral scenarios'),
     # theme(axis_text_x=element_blank()),
 
     # Appearance
     COMMON['theme'],
     theme(
         panel_grid_major_x=element_blank(),
+        panel_spacing_x=0.4,
+        panel_spacing_y=0.05,
     ),
 ]
 
