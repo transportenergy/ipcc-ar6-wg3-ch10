@@ -5,6 +5,7 @@ fig_1:
   normalized version: true
   variables:
   - Emissions|CO2|Energy|Demand|Transportation
+  aspect ratio: 0.75
 
 fig_2:
   short title: Passenger and freight transport activity

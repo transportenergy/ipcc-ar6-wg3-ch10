@@ -7,6 +7,7 @@ import pandas as pd
 from plotnine import (
     aes,
     element_blank,
+    element_line,
     element_rect,
     element_text,
     facet_grid,
@@ -259,6 +260,8 @@ FIG1_STATIC = [
     # Appearance
     COMMON['theme'],
     theme(
+        panel_grid_major_y=element_line(color='#bbbbbb'),
+        panel_grid_minor_y=element_line(color='#eeeeee', size=0.1),
         panel_grid_major_x=element_blank(),
     ),
     guides(color=None),
@@ -284,8 +287,22 @@ def fig_1(data, sources, **kwargs):
 
     data['plot-item'] = data['item'].pipe(compute_descriptives)
 
+    # Set the y scale
+    if kwargs['normalize']:
+        scale_y = scale_y_continuous(
+            limits=(-0.5, 2.5),
+            minor_breaks=4,
+            expand=(0, 0, 0, 0.08),
+            # Clip out-of-bounds data to the scale limits
+            oob=lambda s, lim: s.clip(*lim))
+    else:
+        # NB if this figure is re-added to the text, re-check this scale
+        scale_y = scale_y_continuous(
+            limits=(-5000, 20000),
+            oob=lambda s, lim: s.clip(*lim))
+
     plot = (
-        ggplot(data=data['plot']) + FIG1_STATIC
+        ggplot(data=data['plot']) + FIG1_STATIC + scale_y
 
         # Points and bar for sectoral models
         + geom_crossbar(
