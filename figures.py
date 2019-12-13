@@ -1,3 +1,4 @@
+from functools import partial
 import logging
 from pathlib import Path
 
@@ -10,6 +11,7 @@ from plotnine import (
     element_line,
     element_rect,
     element_text,
+    expand_limits,
     facet_grid,
     facet_wrap,
     geom_crossbar,
@@ -29,7 +31,6 @@ from plotnine import (
     scale_x_continuous,
     scale_y_continuous,
     theme,
-    ylim,
 )
 import yaml
 
@@ -68,7 +69,6 @@ mpl.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame([
     ['Below 1.6C',    'green',   'green',   '<1.6°C'],
-    ['Below 1.6C OS', 'green',   'green',   '<1.6°C*'],
     ['1.6 - 2.0C',    '#fca503', '#fca503', '1.6–2°C'],
     ['2.0 - 2.5C',    '#ca34de', '#ca34de', '2–2.5°C'],
     ['2.5 - 3.5C',    'red',     'red',     '2.5–3.5°C'],
@@ -76,6 +76,14 @@ SCALE_CAT = pd.DataFrame([
     ['policy',        '#eeeeee', '#999999', 'Policy'],
     ['reference',     '#999999', '#111111', 'Reference'],
     ], columns=['limit', 'fill', 'color', 'label'])
+
+# Same, with overshoot
+SCALE_CAT_OS = pd.concat([
+    SCALE_CAT.loc[:0, :],
+    pd.DataFrame([['Below 1.6C OS', 'green',   'green',   '<1.6°C*']],
+                 columns=['limit', 'fill', 'color', 'label']),
+    SCALE_CAT.loc[1:, :],
+    ], ignore_index=True)
 
 
 # Common plot components.
@@ -91,11 +99,15 @@ COMMON = {
             color='black', width=None),
         ],
 
-    # Background colours
     'theme': theme(
+        # Background colours
         panel_background=element_rect(fill='#fef6e6'),
         strip_background=element_rect(fill='#fef6e6'),
         strip_text=element_text(weight='bold'),
+
+        # Y-axis grid lines
+        panel_grid_major_y=element_line(color='#bbbbbb'),
+        panel_grid_minor_y=element_line(color='#eeeeee', size=0.1),
         ),
 
     # Labels with group counts
@@ -106,18 +118,25 @@ COMMON = {
         size=7),
 
     # Scales
-    'x category': [
+    'x category': lambda os: [
         aes(x='category'),
-        scale_x_discrete(limits=SCALE_CAT['limit'], labels=SCALE_CAT['label']),
+        scale_x_discrete(
+            limits=(SCALE_CAT_OS if os else SCALE_CAT)['limit'],
+            labels=(SCALE_CAT_OS if os else SCALE_CAT)['label'],
+            drop=True),
         labs(x=''),
         theme(axis_text_x=element_blank()),
         ],
-    'fill category': scale_fill_manual(
-        limits=SCALE_CAT['limit'], values=SCALE_CAT['fill']),
-    'color category': [
+    'fill category': lambda os: scale_fill_manual(
+        limits=(SCALE_CAT_OS if os else SCALE_CAT)['limit'],
+        values=(SCALE_CAT_OS if os else SCALE_CAT)['fill'],
+        drop=True),
+    'color category': lambda os: [
         aes(color='category'),
-        scale_color_manual(limits=SCALE_CAT['limit'],
-                           values=SCALE_CAT['color']),
+        scale_color_manual(
+            limits=(SCALE_CAT_OS if os else SCALE_CAT)['limit'],
+            values=(SCALE_CAT_OS if os else SCALE_CAT)['color'],
+            drop=True),
         ],
 
     'x year': [
@@ -203,6 +222,7 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                 data=data,
                 sources=sources)
             args['normalize'] = options['normalize']
+            args['overshoot'] = options['categories'] == 'T+os'
             plot = func(**args)
 
             if plot:
@@ -246,10 +266,6 @@ FIG1_STATIC = [
     # Horizontal panels by the years shown
     facet_wrap('year', ncol=4, scales='free_x'),
 
-    # Aesthetics and scales
-    ] + COMMON['x category'] + COMMON['color category'] + [
-    COMMON['fill category'],
-
     # Geoms
     ] + COMMON['ranges'] + [
     COMMON['counts'],
@@ -260,8 +276,6 @@ FIG1_STATIC = [
     # Appearance
     COMMON['theme'],
     theme(
-        panel_grid_major_y=element_line(color='#bbbbbb'),
-        panel_grid_minor_y=element_line(color='#eeeeee', size=0.1),
         panel_grid_major_x=element_blank(),
     ),
     guides(color=None),
@@ -269,40 +283,43 @@ FIG1_STATIC = [
 
 
 @figure(region=['World'])
-def fig_1(data, sources, **kwargs):
+def fig_1(data, sources, normalize, overshoot, **kwargs):
     # Transform from individual data points to descriptives
     data['plot'] = data['iam'] \
-        .pipe(normalize_if, kwargs['normalize'], year=2020) \
+        .pipe(normalize_if, normalize, year=2020) \
         .pipe(compute_descriptives)
 
     # Discard 2100 sectoral data
     data['item'] = data['item'][data['item'].year != 2100]
 
-    if kwargs['normalize']:
+    if normalize:
         # Store the absolute data
         data['item-absolute'] = data['item']
         # Replace with the normalized data
-        data['item'] = data['item'] \
-            .pipe(normalize_if, kwargs['normalize'], year=2020)
+        data['item'] = data['item'].pipe(normalize_if, normalize, year=2020)
 
     data['plot-item'] = data['item'].pipe(compute_descriptives)
 
     # Set the y scale
-    if kwargs['normalize']:
-        scale_y = scale_y_continuous(
+    # Clip out-of-bounds data to the scale limits
+    scale_y = partial(scale_y_continuous, oob=lambda s, lim: s.clip(*lim))
+    if normalize:
+        scale_y = scale_y(
             limits=(-0.5, 2.5),
             minor_breaks=4,
-            expand=(0, 0, 0, 0.08),
-            # Clip out-of-bounds data to the scale limits
-            oob=lambda s, lim: s.clip(*lim))
+            expand=(0, 0, 0, 0.08))
     else:
         # NB if this figure is re-added to the text, re-check this scale
-        scale_y = scale_y_continuous(
-            limits=(-5000, 20000),
-            oob=lambda s, lim: s.clip(*lim))
+        scale_y = scale_y(limits=(-5000, 20000))
 
     plot = (
-        ggplot(data=data['plot']) + FIG1_STATIC + scale_y
+        ggplot(data=data['plot']) + FIG1_STATIC
+
+        # Aesthetics and scales
+        + scale_y
+        + COMMON['x category'](overshoot)
+        + COMMON['color category'](overshoot)
+        + COMMON['fill category'](overshoot)
 
         # Points and bar for sectoral models
         + geom_crossbar(
@@ -314,7 +331,7 @@ def fig_1(data, sources, **kwargs):
             color='black', size=1, shape='x', fill=None)
     )
 
-    if kwargs['normalize']:
+    if normalize:
         plot.units = 'Index, 2020 level = 1.0'
     else:
         plot.units = sorted(data['iam']['unit'].unique())[0]
@@ -325,11 +342,7 @@ def fig_1(data, sources, **kwargs):
 # Non-dynamic features of fig_2
 FIG2_STATIC = [
     # Horizontal panels by type; vertical panels by years
-    facet_grid('type ~ year', scales='free_x'),
-
-    # Aesthetics and scales
-    ] + COMMON['x category'] + COMMON['color category'] + [
-    COMMON['fill category'],
+    facet_grid('type ~ year', scales='free_y'),
 
     # Geoms
     ] + COMMON['ranges'] + [
@@ -348,31 +361,43 @@ FIG2_STATIC = [
 
 
 @figure(region=['World'])
-def fig_2(data, sources, **kwargs):
+def fig_2(data, sources, normalize, overshoot, **kwargs):
     # Restore the 'type' dimension to sectoral data
     data['item']['type'] = data['item']['variable'] \
         .replace({'tkm': 'Freight', 'pkm': 'Passenger'})
 
     # Transform from individual data points to descriptives
     data['plot'] = data['iam'] \
-        .pipe(normalize_if, kwargs['normalize'], year=2020) \
+        .pipe(normalize_if, normalize, year=2020) \
         .pipe(compute_descriptives, groupby=['type'])
 
     # Discard 2100 sectoral data
     data['item'] = data['item'][data['item'].year != 2100]
 
-    if kwargs['normalize']:
+    if normalize:
         # Store the absolute data
         data['item-absolute'] = data['item']
         # Replace with the normalized data
-        data['item'] = data['item'] \
-            .pipe(normalize_if, kwargs['normalize'], year=2020)
+        data['item'] = data['item'].pipe(normalize_if, normalize, year=2020)
 
     data['plot-item'] = data['item'].pipe(compute_descriptives,
                                           groupby=['type'])
 
+    if normalize:
+        scale_y = [
+            scale_y_continuous(minor_breaks=4),
+            expand_limits(y=[0])]
+    else:
+        scale_y = []
+
     plot = (
         ggplot(data=data['plot']) + FIG2_STATIC
+
+        # Aesthetics and scales
+        + scale_y
+        + COMMON['x category'](overshoot)
+        + COMMON['color category'](overshoot)
+        + COMMON['fill category'](overshoot)
 
         # Points and bar for sectoral models
         + geom_crossbar(
@@ -384,8 +409,8 @@ def fig_2(data, sources, **kwargs):
             color='black', size=1, shape='x', fill=None)
     )
 
-    if kwargs['normalize']:
-        plot += ylim(0, 4)
+    if normalize:
+        # plot += ylim(0, 4)
         plot.units = 'Index, 2020 level = 1.0'
     else:
         units = data['iam']['unit'].str.replace('bn', '10⁹')
@@ -465,10 +490,6 @@ FIG4_STATIC = [
     # Horizontal panels by freight/passenger
     facet_grid('type ~ year'),
 
-    # Aesthetics and scales
-    ] + COMMON['x category'] + COMMON['color category'] + [
-    COMMON['fill category'],
-
     # Geoms
     ] + COMMON['ranges'] + [
     COMMON['counts'],
@@ -486,7 +507,7 @@ FIG4_STATIC = [
 
 
 @figure(region=['World'])
-def fig_4(data, sources, **kwargs):
+def fig_4(data, sources, overshoot, **kwargs):
     # Compute energy intensity for IAM scenarios
     data['iam'] = data['iam'] \
         .pipe(compute_ratio, groupby=['type'],
@@ -508,7 +529,14 @@ def fig_4(data, sources, **kwargs):
 
     # TODO compute carbon intensity of energy
 
-    plot = ggplot(data=data['plot']) + FIG4_STATIC + [
+    plot = (
+        ggplot(data=data['plot']) + FIG4_STATIC +
+
+        # Aesthetics and scales
+        + COMMON['x category'](overshoot)
+        + COMMON['color category'](overshoot)
+        + COMMON['fill category'](overshoot)
+
         # Points and bar for sectoral models
         + geom_crossbar(
             aes(ymin='min', y='50%', ymax='max', fill='category'),
@@ -517,7 +545,7 @@ def fig_4(data, sources, **kwargs):
         + geom_point(
             aes(y='value'), data['item'],
             color='black', size=1, shape='x', fill=None)
-    ]
+    )
 
     plot.units = units
 
@@ -640,7 +668,7 @@ FIG6_STATIC = [
     facet_wrap("type + ' ' + mode", ncol=3, scales='free_y'),
 
     # Aesthetics and scales
-    ] + COMMON['x year'] + COMMON['color category'] + [
+    ] + COMMON['x year'] + [
 
     # Geoms
     # # 1 lines per scenario
@@ -651,7 +679,6 @@ FIG6_STATIC = [
     geom_ribbon(aes(ymin='5%', ymax='95%', fill='category'),
                 alpha=0.25, color=None),
     geom_line(aes(y='50%', color='category'), alpha=0.5),
-    COMMON['fill category'],
 
     # Axis labels
     labs(x='', y='', color='IAM/sectoral scenarios'),
@@ -668,7 +695,7 @@ FIG6_STATIC = [
 
 
 @figure(region=['World'])
-def fig_6(data, sources, **kwargs):
+def fig_6(data, sources, normalize, overshoot, **kwargs):
     # Add 'All' to the 'mode' column for IAM data
     data['iam']['mode'] = data['iam']['mode'] \
         .where(~data['iam']['mode'].isna(), 'All')
@@ -680,27 +707,27 @@ def fig_6(data, sources, **kwargs):
     data['item'] = data['item'].replace({
         'mode': {'Freight Rail': 'Railways', 'Passenger Rail': 'Railways'}})
 
-    # Optionally normalize
-    if kwargs['normalize']:
+    if normalize:
         # Store the absolute data
         data['iam-absolute'] = data['iam']
         data['item-absolute'] = data['item']
 
-        data['iam'] = data['iam'] \
-            .pipe(normalize_if, kwargs['normalize'], year=2020, drop=False)
-        # Replace with the normalized data
-        data['item'] = data['item'] \
-            .pipe(normalize_if, kwargs['normalize'], year=2020, drop=False)
-
-    # Combine all data to a single data frame
-    data['plot'] = pd.concat([data['iam'], data['item']], sort=False)
+    # Combine all data to a single data frame; optionally normalize
+    data['plot'] = pd.concat([data['iam'], data['item']], sort=False) \
+                     .pipe(normalize_if, normalize, year=2020, drop=False)
 
     # Variant: bands per category
     data['plot'] = compute_descriptives(data['plot'], on=['type', 'mode'])
 
-    plot = ggplot(data=data['plot']) + FIG6_STATIC
+    plot = (
+        ggplot(data=data['plot'])
+        + FIG6_STATIC
+        + COMMON['color category'](overshoot)
+        # Variant:
+        + COMMON['fill category'](overshoot),
+    )
 
-    if kwargs['normalize']:
+    if normalize:
         plot.units = 'Index, 2020 level = 1.0'
     else:
         units = data['iam']['unit'].str.replace('bn', '10⁹')
