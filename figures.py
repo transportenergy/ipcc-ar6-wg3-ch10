@@ -144,10 +144,12 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
 
     A method (here 'fig_N') wrapped with this decorator:
 
-    - Receives a dict *data*, with pre-loaded data for the variables under
-      'fig_N' in figures.yaml. See inline comments in that file.
-    - Receives a 2-tuple *sources*,  indicating the original data sources for
-      IAM and sectoral models.
+    - Receives ≥2 arguments:
+      - a dict *data*, with pre-loaded data for the variables under
+        'fig_N' in figures.yaml. See inline comments in that file.
+      - a 2-tuple *sources*, indicating the original data sources for
+        IAM and sectoral models.
+      - additional keyword arguments from *options*, such as 'normalize'.
     - Must return a plotnine.ggplot object with a 'units' attribute.
 
     The decorated method is then called with a *different* signature, taking
@@ -181,15 +183,18 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
 
             # Load IAM and iTEM data
             data = {}
+            args = dict(
+                variable=var_names,
+                categories=options['categories']
+                )
+            args.update(filters)
             if 'iam' in to_load:
-                data['iam'] = get_data(source=sources[0],
-                                       variable=var_names, **filters) \
+                data['iam'] = get_data(source=sources[0], **args) \
                     .pipe(restore_dims, fig_info.get('restore dims', None))
             if 'item' in to_load:
                 data['item'] = get_data(source=sources[1],
                                         conform_to=sources[0],
-                                        variable=var_names,
-                                        **filters)
+                                        **args)
 
             # Generate the plot
             args = dict(
@@ -218,7 +223,7 @@ def figure(sources=('AR6', 'iTEM MIP2'), **filters):
                 log.info(f'Dump {len(df):5} obs to {path}')
                 df.to_csv(path)
 
-            # Save to file unless --load-only was given.
+            # Save to file unless --load-only was given
             if plot and not load_only:
                 base_fn = OUTPUT_PATH / base_fn
                 args = dict(

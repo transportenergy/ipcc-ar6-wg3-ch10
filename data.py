@@ -210,7 +210,8 @@ def _raw_local_data(path, id_vars):
 
 
 def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
-             conform_to=None, default_item_filters=True, **filters):
+             conform_to=None, default_item_filters=True, categories=None,
+             **filters):
     """Retrieve and return data as a pandas.DataFrame.
 
     Parameters
@@ -311,7 +312,8 @@ def get_data(source='AR6', vars_from_file=True, drop=('meta', 'runId', 'time'),
                  .pipe(_item_clean_data, source, scale) \
                  .dropna(subset=['value']) \
                  .drop(list(d for d in drop if d in result.columns), axis=1) \
-                 .pipe(categorize, source, drop_uncategorized=True)
+                 .pipe(categorize, source, categories=categories,
+                       drop_uncategorized=True)
 
 
 def categorize(df, source, **options):
@@ -320,12 +322,29 @@ def categorize(df, source, **options):
         # Read a CSV file
         cat_data = pd.read_csv(DATA_PATH / f'categories-{source}.csv')
         result = df.merge(cat_data, how='left', on=['model', 'scenario'])
+
     elif source == 'AR6':
         # Read an Excel file
         cat_data = pd.read_excel(DATA_PATH / 'ar6_metadata_indicators.xlsx') \
-                     .rename(columns={'Temperature-in-2100_bin': 'category'}) \
-                     .loc[:, ['model', 'scenario', 'category']]
-        result = df.merge(cat_data, how='left', on=['model', 'scenario'])
+                     .rename(columns={
+                        'Temperature-in-2100_bin': 'category',
+                        'overshoot years|1.5°C': 'os15',
+                        'overshoot years|2.0°C': 'os2'})
+
+        if options['categories'] == 'T+os':
+            # Use overshoot columns to adjust categories
+
+            # Criterion
+            os = (~cat_data.os15.isna() | ~cat_data.os2.isna()) \
+                & cat_data.category.isin(['Below 1.6C', '1.6 - 2.0C'])
+
+            cat_data['category'] = cat_data['category'].mask(
+                cond=os,
+                other=cat_data['category'] + ' OS')
+
+        result = df.merge(cat_data[['model', 'scenario', 'category']],
+                          how='left', on=['model', 'scenario'])
+
     elif source in ('iTEM MIP2',):
         # From the iTEM database metadata
         df['category'] = df.apply(_item_cat_for_scen, axis=1) \
@@ -333,6 +352,7 @@ def categorize(df, source, **options):
         # Directly
         df['category+1'] = 'item'
         result = df
+
     else:
         pass
 

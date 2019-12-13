@@ -134,6 +134,7 @@ def debug():
 @cli.command()
 @click.option('--normalize', is_flag=True, default=False,
               help='Normalize ordinate to 2020.')
+@click.option('--categories', type=click.Choice(['T', 'T+os']), default='T')
 @click.option('--load-only', type=str, default='',
               help='Only load and preprocess data; no output.')
 @click.argument('to_plot', metavar='FIGURES', type=int, nargs=-1)
@@ -143,7 +144,18 @@ def plot(to_plot, **options):
     FIGURES is a sequence of ints, e.g. 1 4 5 to plot figures 1, 4, and 5. If
     omitted, all figures are plotted.
 
-    Option --normalize does not affect the appearance of all figures.
+    \b
+    --categories controls the grouping of IAM scenarios:
+    - 'T': five categories by temperature in 2100, using the WGIII-wide
+           indicator 'Temperature-in-2100_bin'
+    - 'T+os': seven categories by two criteria: temperature in 2100, as above;
+              and, for *only* the lowest two bins ('Below 1.6C' and '1.6 -
+              2.0C'), additional subdivision based on whether temperature
+              overshoot occurs, i.e. a value in 'overshoot years|1.5°C' or
+              'overshoot years|2.0°C'.
+
+    Options --normalize and --categories do not affect the appearance of every
+    figure.
     """
     _start_log()
 
