@@ -335,8 +335,10 @@ def categorize(df, source, **options):
             # Use overshoot columns to adjust categories
 
             # Criterion
+            # NB one can add '2.0 - 2.5C' to this list. There are no overshoot
+            #    scenarios in the '1.6 - 2.0C' category, by construction
             os = (~cat_data.os15.isna() | ~cat_data.os2.isna()) \
-                & cat_data.category.isin(['Below 1.6C', '1.6 - 2.0C'])
+                & cat_data.category.isin(['Below 1.6C'])
 
             cat_data['category'] = cat_data['category'].mask(
                 cond=os,

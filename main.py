@@ -148,11 +148,10 @@ def plot(to_plot, **options):
     --categories controls the grouping of IAM scenarios:
     - 'T': five categories by temperature in 2100, using the WGIII-wide
            indicator 'Temperature-in-2100_bin'
-    - 'T+os': seven categories by two criteria: temperature in 2100, as above;
-              and, for *only* the lowest two bins ('Below 1.6C' and '1.6 -
-              2.0C'), additional subdivision based on whether temperature
-              overshoot occurs, i.e. a value in 'overshoot years|1.5°C' or
-              'overshoot years|2.0°C'.
+    - 'T+os': six categories by two criteria: temperature in 2100, as above;
+              and, for *only* the lowest bin ('Below 1.6C'), additional
+              subdivision based on whether temperature overshoot occurs, i.e. a
+              value in 'overshoot years|1.5°C'.
 
     Options --normalize and --categories do not affect the appearance of every
     figure.
