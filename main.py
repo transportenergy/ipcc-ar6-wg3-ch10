@@ -163,16 +163,12 @@ def plot(to_plot, **options):
 
     import figures
 
-    if len(to_plot) == 0:
-        # Plot all figures
-        to_plot = figures.__all__
-    else:
-        # Use integer indices to retrieve method names
-        to_plot = [figures.__all__[f - 1] for f in to_plot]
+    # Plot all figures unless specific indices given
+    to_plot = to_plot or range(len(figures.__all__))
 
-    # Plot each figure
-    for f in to_plot:
-        getattr(figures, f)(options)
+    # Plot each figure; use integer indices to retrieve method names
+    for name in [figures.__all__[f - 1] for f in to_plot]:
+        getattr(figures, name).plot(options)
 
     # # Extra plots: Render and save
     # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')
