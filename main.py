@@ -88,7 +88,7 @@ def coverage(dump):
             data = get_data(source, **args).assign(source=source)
 
             lines.extend(
-                [f"  {source}:", f"    {len(data)} observations",]
+                [f"  {source}:", f"    {len(data)} observations"]
             )
 
             if len(data) == 0:
