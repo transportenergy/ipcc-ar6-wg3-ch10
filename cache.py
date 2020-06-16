@@ -30,7 +30,7 @@ def cache_data(source):
             updated = datetime.strptime(run["cre_date"], DATE_FORMAT)
 
         # Cache target file
-        filename = cache_path / "{run_id:04}.csv".format(**run)
+        filename = cache_path / "{run_id:04}.csv.gz".format(**run)
 
         # Update the progress bar
         runs_iter.set_postfix_str("{model}/{scenario}".format(**run))
@@ -46,6 +46,11 @@ def cache_data(source):
         pd.DataFrame.from_dict(client.runs_bulk_ts(runs=[run["run_id"]])).to_csv(
             filename
         )
+
+
+def compile_h5(source):
+    cache_path = DATA_PATH / "cache" / source
+    cache_path.mkdir(parents=True, exist_ok=True)
 
     # Combine files into a single HDF5 file
     h5_path = cache_path / "all.h5"
