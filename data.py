@@ -196,7 +196,7 @@ def get_client(source):
     if client:
         return client
 
-    auth_client = AuthClient(**CONFIG['credentials'])
+    auth_client = AuthClient(**CONFIG["scenario explorer credentials"])
     client = auth_client.get_app(REMOTE_DATA[source])
     return client
 
