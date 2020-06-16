@@ -4,7 +4,7 @@ import logging
 import pandas as pd
 from tqdm import tqdm
 
-from .data import DATA_PATH, DATE_FORMAT, get_client
+from data import DATA_PATH, DATE_FORMAT, get_client
 
 
 log = logging.getLogger(__name__)

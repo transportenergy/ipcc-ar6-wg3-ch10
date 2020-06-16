@@ -57,7 +57,7 @@ def cache(action, source):
     """
     _start_log()
 
-    from .cache import cache_data
+    from cache import cache_data
 
     if action == 'refresh':
         cache_data(source)
@@ -179,7 +179,7 @@ def plot(to_plot, **options):
 @cli.command()
 def refs():
     """Retrieve reference files to ref/."""
-    from .cache import get_references
+    from cache import get_references
 
     get_references()
 
