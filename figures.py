@@ -5,34 +5,8 @@ from pathlib import Path
 import matplotlib as mpl
 import numpy as np
 import pandas as pd
+import plotnine as p9
 import yaml
-from plotnine import (
-    aes,
-    element_blank,
-    element_line,
-    element_rect,
-    element_text,
-    expand_limits,
-    facet_grid,
-    facet_wrap,
-    geom_crossbar,
-    geom_line,
-    geom_point,
-    geom_ribbon,
-    geom_text,
-    ggplot,
-    ggtitle,
-    guides,
-    labs,
-    position_dodge,
-    scale_color_brewer,
-    scale_color_manual,
-    scale_fill_manual,
-    scale_x_continuous,
-    scale_x_discrete,
-    scale_y_continuous,
-    theme,
-)
 
 from data import (
     compute_descriptives,
@@ -98,66 +72,66 @@ SCALE_CAT_OS = pd.concat(
 COMMON = {
     # Ranges of data as vertical bars
     "ranges": [
-        geom_crossbar(
-            aes(ymin="min", y="50%", ymax="max"),
+        p9.geom_crossbar(
+            p9.aes(ymin="min", y="50%", ymax="max"),
             color="black",
             fill="white",
             width=None,
         ),
-        geom_crossbar(
-            aes(ymin="25%", y="50%", ymax="75%", fill="category"),
+        p9.geom_crossbar(
+            p9.aes(ymin="25%", y="50%", ymax="75%", fill="category"),
             color="black",
             width=None,
         ),
     ],
-    "theme": theme(
+    "theme": p9.theme(
         # Background colours
-        panel_background=element_rect(fill="#fef6e6"),
-        strip_background=element_rect(fill="#fef6e6"),
-        strip_text=element_text(weight="bold"),
+        panel_background=p9.element_rect(fill="#fef6e6"),
+        strip_background=p9.element_rect(fill="#fef6e6"),
+        strip_text=p9.element_text(weight="bold"),
         # Y-axis grid lines
-        panel_grid_major_y=element_line(color="#bbbbbb"),
-        panel_grid_minor_y=element_line(color="#eeeeee", size=0.1),
+        panel_grid_major_y=p9.element_line(color="#bbbbbb"),
+        panel_grid_minor_y=p9.element_line(color="#eeeeee", size=0.1),
     ),
     # Labels with group counts
-    "counts": geom_text(
-        aes(label="count", y="max", color="category"),
+    "counts": p9.geom_text(
+        p9.aes(label="count", y="max", color="category"),
         format_string="{:.0f}",
         va="bottom",
         size=7,
     ),
     # Scales
     "x category": lambda os: [
-        aes(x="category"),
-        scale_x_discrete(
+        p9.aes(x="category"),
+        p9.scale_x_discrete(
             limits=(SCALE_CAT_OS if os else SCALE_CAT)["limit"],
             labels=(SCALE_CAT_OS if os else SCALE_CAT)["label"],
             drop=True,
         ),
-        labs(x=""),
-        theme(axis_text_x=element_blank()),
+        p9.labs(x=""),
+        p9.theme(axis_text_x=p9.element_blank()),
     ],
-    "fill category": lambda os: scale_fill_manual(
+    "fill category": lambda os: p9.scale_fill_manual(
         limits=(SCALE_CAT_OS if os else SCALE_CAT)["limit"],
         values=(SCALE_CAT_OS if os else SCALE_CAT)["fill"],
         drop=True,
     ),
     "color category": lambda os: [
-        aes(color="category"),
-        scale_color_manual(
+        p9.aes(color="category"),
+        p9.scale_color_manual(
             limits=(SCALE_CAT_OS if os else SCALE_CAT)["limit"],
             values=(SCALE_CAT_OS if os else SCALE_CAT)["color"],
             drop=True,
         ),
     ],
     "x year": [
-        aes(x="year"),
-        scale_x_continuous(
+        p9.aes(x="year"),
+        p9.scale_x_continuous(
             limits=(2020, 2100),
             breaks=np.linspace(2020, 2100, 5),
             labels=["", 2040, "", 2080, ""],
         ),
-        labs(x=""),
+        p9.labs(x=""),
     ],
 }
 
@@ -235,7 +209,7 @@ def figure(sources=("AR6", "iTEM MIP2"), **filters):
 
             if plot:
                 # Add a title
-                plot += ggtitle(
+                plot += p9.ggtitle(
                     f"{fig_info['short title']} [{plot.units}] "
                     f"({fig_id}/{'/'.join(sources)})"
                 )
@@ -277,18 +251,18 @@ def figure(sources=("AR6", "iTEM MIP2"), **filters):
 FIG1_STATIC = (
     [
         # Horizontal panels by the years shown
-        facet_wrap("year", ncol=4, scales="free_x"),
+        p9.facet_wrap("year", ncol=4, scales="free_x"),
         # Geoms
     ]
     + COMMON["ranges"]
     + [
         COMMON["counts"],
         # Axis labels
-        labs(y="", fill="IAM/sectoral scenarios"),
+        p9.labs(y="", fill="IAM/sectoral scenarios"),
         # Appearance
         COMMON["theme"],
-        theme(panel_grid_major_x=element_blank(),),
-        guides(color=None),
+        p9.theme(panel_grid_major_x=p9.element_blank(),),
+        p9.guides(color=None),
     ]
 )
 
@@ -313,7 +287,7 @@ def fig_1(data, sources, normalize, overshoot, **kwargs):
 
     # Set the y scale
     # Clip out-of-bounds data to the scale limits
-    scale_y = partial(scale_y_continuous, oob=lambda s, lim: s.clip(*lim))
+    scale_y = partial(p9.scale_y_continuous, oob=lambda s, lim: s.clip(*lim))
     if normalize:
         scale_y = scale_y(limits=(-0.5, 2.5), minor_breaks=4, expand=(0, 0, 0, 0.08))
     else:
@@ -321,7 +295,7 @@ def fig_1(data, sources, normalize, overshoot, **kwargs):
         scale_y = scale_y(limits=(-5000, 20000))
 
     plot = (
-        ggplot(data=data["plot"])
+        p9.ggplot(data=data["plot"])
         + FIG1_STATIC
         # Aesthetics and scales
         + scale_y
@@ -329,15 +303,15 @@ def fig_1(data, sources, normalize, overshoot, **kwargs):
         + COMMON["color category"](overshoot)
         + COMMON["fill category"](overshoot)
         # Points and bar for sectoral models
-        + geom_crossbar(
-            aes(ymin="min", y="50%", ymax="max", fill="category"),
+        + p9.geom_crossbar(
+            p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
             data["plot-item"],
             color="black",
             fatten=0,
             width=None,
         )
-        + geom_point(
-            aes(y="value"), data["item"], color="black", size=1, shape="x", fill=None
+        + p9.geom_point(
+            p9.aes(y="value"), data["item"], color="black", size=1, shape="x", fill=None
         )
     )
 
@@ -353,18 +327,18 @@ def fig_1(data, sources, normalize, overshoot, **kwargs):
 FIG2_STATIC = (
     [
         # Horizontal panels by type; vertical panels by years
-        facet_grid("type ~ year", scales="free_y"),
+        p9.facet_grid("type ~ year", scales="free_y"),
         # Geoms
     ]
     + COMMON["ranges"]
     + [
         COMMON["counts"],
         # Axis labels
-        labs(y="", fill="IAM/sectoral scenarios"),
+        p9.labs(y="", fill="IAM/sectoral scenarios"),
         # Appearance
         COMMON["theme"],
-        theme(panel_grid_major_x=element_blank(),),
-        guides(color=None),
+        p9.theme(panel_grid_major_x=p9.element_blank(),),
+        p9.guides(color=None),
     ]
 )
 
@@ -395,12 +369,12 @@ def fig_2(data, sources, normalize, overshoot, **kwargs):
     data["plot-item"] = data["item"].pipe(compute_descriptives, groupby=["type"])
 
     if normalize:
-        scale_y = [scale_y_continuous(minor_breaks=4), expand_limits(y=[0])]
+        scale_y = [p9.scale_y_continuous(minor_breaks=4), p9.expand_limits(y=[0])]
     else:
         scale_y = []
 
     plot = (
-        ggplot(data=data["plot"])
+        p9.ggplot(data=data["plot"])
         + FIG2_STATIC
         # Aesthetics and scales
         + scale_y
@@ -408,15 +382,15 @@ def fig_2(data, sources, normalize, overshoot, **kwargs):
         + COMMON["color category"](overshoot)
         + COMMON["fill category"](overshoot)
         # Points and bar for sectoral models
-        + geom_crossbar(
-            aes(ymin="min", y="50%", ymax="max", fill="category"),
+        + p9.geom_crossbar(
+            p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
             data["plot-item"],
             color="black",
             fatten=0,
             width=None,
         )
-        + geom_point(
-            aes(y="value"), data["item"], color="black", size=1, shape="x", fill=None
+        + p9.geom_point(
+            p9.aes(y="value"), data["item"], color="black", size=1, shape="x", fill=None
         )
     )
 
@@ -434,23 +408,23 @@ def fig_2(data, sources, normalize, overshoot, **kwargs):
 FIG3_STATIC = (
     [
         # Horizontal panels by scenario category; vertical panels by pax./freight
-        facet_grid("type ~ category", scales="free_x"),
+        p9.facet_grid("type ~ category", scales="free_x"),
         # Aesthetics and scales
     ]
     + COMMON["x year"]
     + [
-        aes(color="mode"),
-        scale_y_continuous(limits=(0, 1), breaks=np.linspace(0, 1, 6)),
-        scale_color_brewer(type="qual", palette="Dark2"),
+        p9.aes(color="mode"),
+        p9.scale_y_continuous(limits=(0, 1), breaks=np.linspace(0, 1, 6)),
+        p9.scale_color_brewer(type="qual", palette="Dark2"),
         # Geoms
-        # geom_ribbon(aes(ymin='25%', ymax='75%', fill='mode'), alpha=0.25),
-        # geom_line(aes(y='50%')),
-        geom_line(aes(y="value", group="model + scenario + mode"), alpha=0.6),
+        # p9.geom_ribbon(p9.aes(ymin='25%', ymax='75%', fill='mode'), alpha=0.25),
+        # p9.geom_line(p9.aes(y='50%')),
+        p9.geom_line(p9.aes(y="value", group="model + scenario + mode"), alpha=0.6),
         # Axis labels
-        labs(y="", color="Mode"),
+        p9.labs(y="", color="Mode"),
         # Appearance
         COMMON["theme"],
-        guides(group=None),
+        p9.guides(group=None),
     ]
 )
 
@@ -494,10 +468,10 @@ def fig_3(data, sources, **kwargs):
     #     data[k]['mode'] = k + '|' + data[k]['mode']
 
     plot = (
-        ggplot(data=data["iam"])
+        p9.ggplot(data=data["iam"])
         + FIG3_STATIC
-        + geom_line(
-            aes(y="value", group="model + scenario + mode"), data["item"], alpha=0.6
+        + p9.geom_line(
+            p9.aes(y="value", group="model + scenario + mode"), data["item"], alpha=0.6
         )
     )
 
@@ -510,18 +484,18 @@ def fig_3(data, sources, **kwargs):
 FIG4_STATIC = (
     [
         # Horizontal panels by freight/passenger
-        facet_grid("type ~ year"),
+        p9.facet_grid("type ~ year"),
         # Geoms
     ]
     + COMMON["ranges"]
     + [
         COMMON["counts"],
         # Axis labels
-        labs(y="", fill="IAM/sectoral scenarios"),
+        p9.labs(y="", fill="IAM/sectoral scenarios"),
         # Appearance
         COMMON["theme"],
-        theme(panel_grid_major_x=element_blank(),),
-        guides(color=None),
+        p9.theme(panel_grid_major_x=p9.element_blank(),),
+        p9.guides(color=None),
     ]
 )
 
@@ -556,7 +530,7 @@ def fig_4(data, sources, overshoot, **kwargs):
     # TODO compute carbon intensity of energy
 
     plot = (
-        ggplot(data=data["plot"])
+        p9.ggplot(data=data["plot"])
         + FIG4_STATIC
         +
         # Aesthetics and scales
@@ -564,15 +538,15 @@ def fig_4(data, sources, overshoot, **kwargs):
         + COMMON["color category"](overshoot)
         + COMMON["fill category"](overshoot)
         # Points and bar for sectoral models
-        + geom_crossbar(
-            aes(ymin="min", y="50%", ymax="max", fill="category"),
+        + p9.geom_crossbar(
+            p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
             data["plot-item"],
             color="black",
             fatten=0,
             width=None,
         )
-        + geom_point(
-            aes(y="value"), data["item"], color="black", size=1, shape="x", fill=None
+        + p9.geom_point(
+            p9.aes(y="value"), data["item"], color="black", size=1, shape="x", fill=None
         )
     )
 
@@ -596,40 +570,40 @@ SCALE_FUEL = pd.DataFrame(
 
 FIG5_STATIC = [
     # Horizontal panels by 'year'
-    facet_wrap("year", ncol=3, scales="free_x"),
+    p9.facet_wrap("year", ncol=3, scales="free_x"),
     # Aesthetics and scales
-    aes(x="category", color="fuel"),
-    scale_x_discrete(limits=SCALE_CAT["limit"], labels=SCALE_CAT["label"]),
-    scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
-    scale_color_manual(
+    p9.aes(x="category", color="fuel"),
+    p9.scale_x_discrete(limits=SCALE_CAT["limit"], labels=SCALE_CAT["label"]),
+    p9.scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
+    p9.scale_color_manual(
         limits=SCALE_FUEL["limit"],
         values=SCALE_FUEL["fill"],
         labels=SCALE_FUEL["label"],
     ),
-    scale_fill_manual(
+    p9.scale_fill_manual(
         limits=SCALE_FUEL["limit"],
         values=SCALE_FUEL["fill"],
         labels=SCALE_FUEL["label"],
     ),
     # Geoms
     # Like COMMON['ranges'], with fill='fuel', position='dodge' and no width=
-    geom_crossbar(
-        aes(ymin="min", y="50%", ymax="max", group="fuel"),
+    p9.geom_crossbar(
+        p9.aes(ymin="min", y="50%", ymax="max", group="fuel"),
         position="dodge",
         color="black",
         fill="white",
         width=0.9,
     ),
-    geom_crossbar(
-        aes(ymin="25%", y="50%", ymax="75%", fill="fuel"),
+    p9.geom_crossbar(
+        p9.aes(ymin="25%", y="50%", ymax="75%", fill="fuel"),
         position="dodge",
         color="black",
         width=0.9,
     ),
     # Like COMMON['counts'], except color is 'fuel'
-    geom_text(
-        aes(label="count", y=-0.01, angle=45, color="fuel"),
-        position=position_dodge(width=0.9),
+    p9.geom_text(
+        p9.aes(label="count", y=-0.01, angle=45, color="fuel"),
+        position=p9.position_dodge(width=0.9),
         # commented: this step is extremely slow
         # adjust_text=dict(autoalign=True),
         format_string="{:.0f}",
@@ -637,13 +611,16 @@ FIG5_STATIC = [
         size=3,
     ),
     # Axis labels
-    labs(x="", y="", fill="Energy carrier"),
-    # theme(axis_text_x=element_blank()),
+    p9.labs(x="", y="", fill="Energy carrier"),
+    # p9.theme(axis_text_x=p9.element_blank()),
     # Hide legend for 'color'
-    guides(color=None),
+    p9.guides(color=None),
     # Appearance
     COMMON["theme"],
-    theme(axis_text_x=element_text(rotation=45), panel_grid_major_x=element_blank(),),
+    p9.theme(
+        axis_text_x=p9.element_text(rotation=45),
+        panel_grid_major_x=p9.element_blank(),
+    ),
 ]
 
 
@@ -687,22 +664,22 @@ def fig_5(data, sources, **kwargs):
     )
 
     plot = (
-        ggplot(data=data["plot"])
+        p9.ggplot(data=data["plot"])
         + FIG5_STATIC
         +
         # Points and bar for sectoral models
-        geom_crossbar(
-            aes(ymin="min", y="50%", ymax="max", fill="fuel"),
+        p9.geom_crossbar(
+            p9.aes(ymin="min", y="50%", ymax="max", fill="fuel"),
             data["plot-item"],
             position="dodge",
             color="black",
             fatten=0,
             width=0.9,
         )
-        + geom_point(
-            aes(y="value", group="fuel"),
+        + p9.geom_point(
+            p9.aes(y="value", group="fuel"),
             data["item"],
-            position=position_dodge(width=0.9),
+            position=p9.position_dodge(width=0.9),
             color="black",
             size=1,
             shape="x",
@@ -719,27 +696,27 @@ def fig_5(data, sources, **kwargs):
 FIG6_STATIC = (
     [
         # Horizontal panels by 'year'
-        facet_wrap("type + ' ' + mode", ncol=3, scales="free_y"),
+        p9.facet_wrap("type + ' ' + mode", ncol=3, scales="free_y"),
         # Aesthetics and scales
     ]
     + COMMON["x year"]
     + [
         # Geoms
         # # 1 lines per scenario
-        # geom_line(aes(y='value', group='model + scenario + category'),
+        # p9.geom_line(p9.aes(y='value', group='model + scenario + category'),
         #           alpha=0.6),
         # Variant: 1 band per category
-        geom_ribbon(
-            aes(ymin="5%", ymax="95%", fill="category"), alpha=0.25, color=None
+        p9.geom_ribbon(
+            p9.aes(ymin="5%", ymax="95%", fill="category"), alpha=0.25, color=None
         ),
-        geom_line(aes(y="50%", color="category"), alpha=0.5),
+        p9.geom_line(p9.aes(y="50%", color="category"), alpha=0.5),
         # Axis labels
-        labs(x="", y="", color="IAM/sectoral scenarios"),
-        # theme(axis_text_x=element_blank()),
+        p9.labs(x="", y="", color="IAM/sectoral scenarios"),
+        # p9.theme(axis_text_x=p9.element_blank()),
         # Appearance
         COMMON["theme"],
-        theme(
-            panel_grid_major_x=element_blank(),
+        p9.theme(
+            panel_grid_major_x=p9.element_blank(),
             panel_spacing_x=0.4,
             panel_spacing_y=0.05,
         ),
@@ -775,7 +752,7 @@ def fig_6(data, sources, normalize, overshoot, **kwargs):
     data["plot"] = compute_descriptives(data["plot"], on=["type", "mode"])
 
     plot = (
-        ggplot(data=data["plot"])
+        p9.ggplot(data=data["plot"])
         + FIG6_STATIC
         + COMMON["color category"](overshoot)
         # Variant:
