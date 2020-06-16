@@ -1,23 +1,20 @@
 """Command-line interface using 'click'."""
-from datetime import datetime
 import logging
 import logging.config
+from datetime import datetime
 from pathlib import Path
 
 import click
 import pandas as pd
 import yaml
 
-from data import (
-    REMOTE_DATA,
-)
+from data import REMOTE_DATA
 
-
-OUTPUT_PATH = Path('output')
-NOW = datetime.now().isoformat(timespec='seconds')
+OUTPUT_PATH = Path("output")
+NOW = datetime.now().isoformat(timespec="seconds")
 
 # Log configuration
-_LC = yaml.safe_load(open('logging.yaml'))
+_LC = yaml.safe_load(open("logging.yaml"))
 
 
 def _start_log():
@@ -25,8 +22,9 @@ def _start_log():
 
 
 @click.group()
-@click.option('--verbose', is_flag=True,
-              help='Also print DEBUG log messages to stdout.')
+@click.option(
+    "--verbose", is_flag=True, help="Also print DEBUG log messages to stdout."
+)
 def cli(verbose):
     """Command-line interface for IPCC AR6 WGIII Ch.10 figures.
 
@@ -35,15 +33,15 @@ def cli(verbose):
     Verbose log information for certain commands is written to a timestamped
     .log file in output/.
     """
-    _LC['handlers']['file']['filename'] = OUTPUT_PATH / f'{NOW}.log'
+    _LC["handlers"]["file"]["filename"] = OUTPUT_PATH / f"{NOW}.log"
 
     if verbose:
-        _LC['handlers']['console']['level'] = 'DEBUG'
+        _LC["handlers"]["console"]["level"] = "DEBUG"
 
 
 @cli.command()
-@click.argument('action', type=click.Choice(['refresh', 'clear']))
-@click.argument('source', type=click.Choice(REMOTE_DATA.keys()))
+@click.argument("action", type=click.Choice(["refresh", "clear"]))
+@click.argument("source", type=click.Choice(REMOTE_DATA.keys()))
 def cache(action, source):
     """Retrive data from remote databases to data/cache/SOURCE/.
 
@@ -59,16 +57,15 @@ def cache(action, source):
 
     from cache import cache_data
 
-    if action == 'refresh':
+    if action == "refresh":
         cache_data(source)
     else:
-        print('Please clear the cache manually.')
+        print("Please clear the cache manually.")
         raise NotImplementedError
 
 
 @cli.command()
-@click.option('--dump', is_flag=True,
-              help='Also dump all data to output/coverage.csv.')
+@click.option("--dump", is_flag=True, help="Also dump all data to output/coverage.csv.")
 def coverage(dump):
     """Report coverage per data/coverage-checks.yaml."""
     _start_log()
@@ -77,42 +74,43 @@ def coverage(dump):
 
     dfs = []
 
-    for info in yaml.safe_load(open(DATA_PATH / 'coverage-checks.yaml')):
-        note = info.pop('_note')
+    for info in yaml.safe_load(open(DATA_PATH / "coverage-checks.yaml")):
+        note = info.pop("_note")
         lines = [
-            f'\nCoverage of {info!r}',
-            f'Note: {note}',
+            f"\nCoverage of {info!r}",
+            f"Note: {note}",
         ]
 
-        for source in 'AR6', 'iTEM MIP2':
+        for source in "AR6", "iTEM MIP2":
             args = info.copy()
-            if 'iTEM' in source:
-                args.update(dict(conform_to='AR6', default_item_filters=False))
+            if "iTEM" in source:
+                args.update(dict(conform_to="AR6", default_item_filters=False))
             data = get_data(source, **args).assign(source=source)
 
-            lines.extend([
-                f'  {source}:',
-                f'    {len(data)} observations',
-            ])
+            lines.extend(
+                [f"  {source}:", f"    {len(data)} observations",]
+            )
 
             if len(data) == 0:
                 continue
 
-            lines.extend([
-                '    {} (model, scenario) combinations'.format(
-                    len(data.groupby(['model', 'scenario']))),
-                '    {} scenario categories'.format(
-                    len(data['category'].unique())),
-                '    {} models'.format(len(data['model'].unique())),
-            ])
+            lines.extend(
+                [
+                    "    {} (model, scenario) combinations".format(
+                        len(data.groupby(["model", "scenario"]))
+                    ),
+                    "    {} scenario categories".format(len(data["category"].unique())),
+                    "    {} models".format(len(data["model"].unique())),
+                ]
+            )
 
             if dump:
                 dfs.append(data)
 
-        print('\n'.join(lines), end='\n\n')
+        print("\n".join(lines), end="\n\n")
 
         if dump:
-            pd.concat(dfs).to_csv(OUTPUT_PATH / 'coverage.csv')
+            pd.concat(dfs).to_csv(OUTPUT_PATH / "coverage.csv")
 
 
 @cli.command()
@@ -132,12 +130,17 @@ def debug():
 
 
 @cli.command()
-@click.option('--normalize', is_flag=True, default=False,
-              help='Normalize ordinate to 2020.')
-@click.option('--categories', type=click.Choice(['T', 'T+os']), default='T')
-@click.option('--load-only', type=str, default='',
-              help='Only load and preprocess data; no output.')
-@click.argument('to_plot', metavar='FIGURES', type=int, nargs=-1)
+@click.option(
+    "--normalize", is_flag=True, default=False, help="Normalize ordinate to 2020."
+)
+@click.option("--categories", type=click.Choice(["T", "T+os"]), default="T")
+@click.option(
+    "--load-only",
+    type=str,
+    default="",
+    help="Only load and preprocess data; no output.",
+)
+@click.argument("to_plot", metavar="FIGURES", type=int, nargs=-1)
 def plot(to_plot, **options):
     """Plot figures, writing to output/.
 
@@ -185,7 +188,7 @@ def refs():
 
 
 @cli.command()
-@click.option('--go', is_flag=True)
+@click.option("--go", is_flag=True)
 def upload(go):
     """Sync output/ to a remote directory using rclone.
 
@@ -199,8 +202,15 @@ def upload(go):
     from subprocess import check_call
     from data import CONFIG
 
-    check_call(['rclone', '--progress' if go else '--dry-run',
-                'sync',  'output', CONFIG['rclone']['output']])
+    check_call(
+        [
+            "rclone",
+            "--progress" if go else "--dry-run",
+            "sync",
+            "output",
+            CONFIG["rclone"]["output"],
+        ]
+    )
 
 
 @cli.command()
@@ -216,23 +226,23 @@ def variables():
     from data import DATA_PATH, LOCAL_DATA, get_data
 
     def write_vars(src, vars):
-        (DATA_PATH / f'variables-{source}-all.txt').write_text('\n'.join(vars))
+        (DATA_PATH / f"variables-{source}-all.txt").write_text("\n".join(vars))
 
     for source in LOCAL_DATA.keys():
-        print(f'Processing {source!r}')
+        print(f"Processing {source!r}")
         df = get_data(source)
-        write_vars(source, sorted(df['variable'].unique()))
+        write_vars(source, sorted(df["variable"].unique()))
 
     for source in REMOTE_DATA.keys():
-        print(f'Processing {source!r}')
+        print(f"Processing {source!r}")
         try:
             df = get_data(source, use_cache=True)
         except ValueError as e:
-            if e.args[0] == 'No objects to concatenate':
+            if e.args[0] == "No objects to concatenate":
                 continue
             else:
                 raise
-        write_vars(source, sorted(df['variable'].unique()))
+        write_vars(source, sorted(df["variable"].unique()))
 
 
 # Start the CLI
