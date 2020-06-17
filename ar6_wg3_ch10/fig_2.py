@@ -1,16 +1,13 @@
-from functools import partial
-
 import plotnine as p9
 
-from ..data import compute_descriptives, normalize_if
+from .data import compute_descriptives, normalize_if
 from .common import COMMON, figure
 
-
-# Non-dynamic features of fig_1
+# Non-dynamic features of fig_2
 STATIC = (
     [
-        # Horizontal panels by the years shown
-        p9.facet_wrap("year", ncol=4, scales="free_x"),
+        # Horizontal panels by type; vertical panels by years
+        p9.facet_grid("type ~ year", scales="free_y"),
         # Geoms
     ]
     + COMMON["ranges"]
@@ -28,9 +25,16 @@ STATIC = (
 
 @figure(region=["World"])
 def plot(data, sources, normalize, overshoot, **kwargs):
+    # Restore the 'type' dimension to sectoral data
+    data["item"]["type"] = data["item"]["variable"].replace(
+        {"tkm": "Freight", "pkm": "Passenger"}
+    )
+
     # Transform from individual data points to descriptives
     data["plot"] = (
-        data["iam"].pipe(normalize_if, normalize, year=2020).pipe(compute_descriptives)
+        data["iam"]
+        .pipe(normalize_if, normalize, year=2020)
+        .pipe(compute_descriptives, groupby=["type"])
     )
 
     # Discard 2100 sectoral data
@@ -42,16 +46,12 @@ def plot(data, sources, normalize, overshoot, **kwargs):
         # Replace with the normalized data
         data["item"] = data["item"].pipe(normalize_if, normalize, year=2020)
 
-    data["plot-item"] = data["item"].pipe(compute_descriptives)
+    data["plot-item"] = data["item"].pipe(compute_descriptives, groupby=["type"])
 
-    # Set the y scale
-    # Clip out-of-bounds data to the scale limits
-    scale_y = partial(p9.scale_y_continuous, oob=lambda s, lim: s.clip(*lim))
     if normalize:
-        scale_y = scale_y(limits=(-0.5, 2.5), minor_breaks=4, expand=(0, 0, 0, 0.08))
+        scale_y = [p9.scale_y_continuous(minor_breaks=4), p9.expand_limits(y=[0])]
     else:
-        # NB if this figure is re-added to the text, re-check this scale
-        scale_y = scale_y(limits=(-5000, 20000))
+        scale_y = []
 
     plot = (
         p9.ggplot(data=data["plot"])
@@ -75,8 +75,10 @@ def plot(data, sources, normalize, overshoot, **kwargs):
     )
 
     if normalize:
+        # plot += ylim(0, 4)
         plot.units = "Index, 2020 level = 1.0"
     else:
-        plot.units = sorted(data["iam"]["unit"].unique())[0]
+        units = data["iam"]["unit"].str.replace("bn", "10⁹")
+        plot.units = "; ".join(units.unique())
 
     return plot

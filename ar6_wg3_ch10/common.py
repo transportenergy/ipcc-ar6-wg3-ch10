@@ -1,21 +1,25 @@
 import logging
 from pathlib import Path
 
+import matplotlib as mpl
+import numpy as np
 import pandas as pd
 import plotnine as p9
 import yaml
 
-from ..data import get_data, restore_dims
+from .data import get_data, restore_dims
 
 log = logging.getLogger(f"root.{__name__}")
+
+# Matplotlib style
+mpl.rc("font", **{"family": "sans-serif", "sans-serif": ["Helvetica"]})
 
 
 OUTPUT_PATH = Path("output")
 
 YEARS = [2020, 2030, 2050, 2100]
 
-INFO = yaml.safe_load(open("../figures.yaml"))
-
+INFO = yaml.safe_load(open(Path(__file__).parents[1] / "data" / "figures.yaml"))
 
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame(
@@ -160,7 +164,7 @@ def figure(sources=("AR6", "iTEM MIP2"), **filters):
     def figure_decorator(func):
         # Information about the figure.
         # NB this code is run at the moment that the function is decorated.
-        fig_id = func.__name__
+        fig_id = func.__module__.split(".")[-1]
         fig_info = INFO[fig_id]
         var_names = fig_info["variables"]
 

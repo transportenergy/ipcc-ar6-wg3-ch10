@@ -1,9 +1,9 @@
 import numpy as np
 import plotnine as p9
 
-from ..data import compute_descriptives, compute_shares
 from common import COMMON, SCALE_CAT, SCALE_FUEL, figure
 
+from .data import compute_descriptives, compute_shares
 
 # Non-dynamic features of fig_5
 STATIC = [
@@ -56,8 +56,7 @@ STATIC = [
     # Appearance
     COMMON["theme"],
     p9.theme(
-        axis_text_x=p9.element_text(rotation=45),
-        panel_grid_major_x=p9.element_blank(),
+        axis_text_x=p9.element_text(rotation=45), panel_grid_major_x=p9.element_blank(),
     ),
 ]
 

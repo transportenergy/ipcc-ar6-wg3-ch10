@@ -1,9 +1,8 @@
 import numpy as np
 import plotnine as p9
 
-from ..data import compute_shares
+from .data import compute_shares
 from .common import COMMON, figure
-
 
 # Non-dynamic features of fig_3
 STATIC = (

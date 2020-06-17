@@ -14,7 +14,7 @@ from iiasa_se_client import AuthClient
 
 log = logging.getLogger("root." + __name__)
 
-DATA_PATH = Path(".", "data").resolve()
+DATA_PATH = (Path(__file__).parents[1] / "data").resolve()
 
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
@@ -301,14 +301,9 @@ def get_data(
 
         result = _raw_local_data(DATA_PATH / LOCAL_DATA[source], tuple(id_vars))
     elif source in REMOTE_DATA:
+        from cache import load_csv
         # Load data from cache
-        cache_path = DATA_PATH / "cache" / source / "all.h5"
-        arg = dict(where=" | ".join(f"variable == {v!r}" for v in filters["variable"]))
-        log.debug(f"  from {cache_path}")
-        log.debug(f"  where: {arg['where']}")
-
-        result = pd.read_hdf(cache_path, source, **arg)
-
+        result = load_csv(source, filters)
         log.info(f"  done; {len(result)} observations.")
     else:
         raise ValueError(source)
@@ -339,7 +334,8 @@ def categorize(df, source, **options):
 
     elif source == "AR6":
         # Read an Excel file
-        cat_data = pd.read_excel(DATA_PATH / "ar6_metadata_indicators.xlsx").rename(
+        path = DATA_PATH / "raw" / "ar6_metadata_indicators.xlsx"
+        cat_data = pd.read_excel(path).rename(
             columns={
                 "Temperature-in-2100_bin": "category",
                 "overshoot years|1.5°C": "os15",

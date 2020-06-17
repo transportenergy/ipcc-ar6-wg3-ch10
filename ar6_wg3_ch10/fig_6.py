@@ -1,9 +1,8 @@
 import pandas as pd
 import plotnine as p9
 
-from ..data import compute_descriptives, normalize_if
+from .data import compute_descriptives, normalize_if
 from .common import COMMON, figure
-
 
 # Non-dynamic features of fig_6
 STATIC = (

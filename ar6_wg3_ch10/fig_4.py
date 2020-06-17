@@ -1,8 +1,7 @@
 import plotnine as p9
 
-from ..data import compute_descriptives, compute_ratio
+from .data import compute_descriptives, compute_ratio
 from .common import COMMON, figure
-
 
 # Non-dynamic features of fig_4
 STATIC = (

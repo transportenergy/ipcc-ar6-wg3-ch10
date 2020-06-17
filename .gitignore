@@ -15,6 +15,7 @@ ref/*.xls*
 
 # Generated and temporary files
 data/cache
+data/raw
 output/
 
 # LibreOffice lockfiles

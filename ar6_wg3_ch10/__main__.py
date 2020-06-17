@@ -2,6 +2,7 @@
 import logging
 import logging.config
 from datetime import datetime
+from importlib import import_module
 from pathlib import Path
 
 import click
@@ -14,7 +15,7 @@ OUTPUT_PATH = Path("output")
 NOW = datetime.now().isoformat(timespec="seconds")
 
 # Log configuration
-_LC = yaml.safe_load(open("logging.yaml"))
+_LC = yaml.safe_load(open(Path(__file__).parents[1] / "data" / "logging.yaml"))
 
 
 def _start_log():
@@ -40,7 +41,7 @@ def cli(verbose):
 
 
 @cli.command()
-@click.argument("action", type=click.Choice(["refresh", "clear"]))
+@click.argument("action", type=click.Choice(["refresh", "clear", "compile"]))
 @click.argument("source", type=click.Choice(REMOTE_DATA.keys()))
 def cache(action, source):
     """Retrive data from remote databases to data/cache/SOURCE/.
@@ -55,10 +56,12 @@ def cache(action, source):
     """
     _start_log()
 
-    from cache import cache_data
+    from cache import cache_data, compile_h5
 
     if action == "refresh":
         cache_data(source)
+    elif action == "compile":
+        compile_h5(source)
     else:
         print("Please clear the cache manually.")
         raise NotImplementedError
@@ -87,9 +90,7 @@ def coverage(dump):
                 args.update(dict(conform_to="AR6", default_item_filters=False))
             data = get_data(source, **args).assign(source=source)
 
-            lines.extend(
-                [f"  {source}:", f"    {len(data)} observations"]
-            )
+            lines.extend([f"  {source}:", f"    {len(data)} observations"])
 
             if len(data) == 0:
                 continue
@@ -161,14 +162,10 @@ def plot(to_plot, **options):
     """
     _start_log()
 
-    import figures
-
-    # Plot all figures unless specific indices given
-    to_plot = to_plot or range(len(figures.__all__))
-
-    # Plot each figure; use integer indices to retrieve method names
-    for name in [figures.__all__[f - 1] for f in to_plot]:
-        getattr(figures, name).plot(options)
+    # Plot each figure
+    for fig_id in to_plot or range(1, 6 + 1):
+        mod = import_module(f".fig_{fig_id}", package="ar6_wg3_ch10")
+        mod.plot(options)
 
     # # Extra plots: Render and save
     # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')
