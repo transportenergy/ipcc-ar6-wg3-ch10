@@ -73,45 +73,12 @@ def coverage(dump):
     """Report coverage per data/coverage-checks.yaml."""
     _start_log()
 
-    from data import DATA_PATH, get_data
+    from coverage import checks_from_file, regions
 
-    dfs = []
+    dump_path = OUTPUT_PATH if dump else None
 
-    for info in yaml.safe_load(open(DATA_PATH / "coverage-checks.yaml")):
-        note = info.pop("_note")
-        lines = [
-            f"\nCoverage of {info!r}",
-            f"Note: {note}",
-        ]
-
-        for source in "AR6", "iTEM MIP2":
-            args = info.copy()
-            if "iTEM" in source:
-                args.update(dict(conform_to="AR6", default_item_filters=False))
-            data = get_data(source, **args).assign(source=source)
-
-            lines.extend([f"  {source}:", f"    {len(data)} observations"])
-
-            if len(data) == 0:
-                continue
-
-            lines.extend(
-                [
-                    "    {} (model, scenario) combinations".format(
-                        len(data.groupby(["model", "scenario"]))
-                    ),
-                    "    {} scenario categories".format(len(data["category"].unique())),
-                    "    {} models".format(len(data["model"].unique())),
-                ]
-            )
-
-            if dump:
-                dfs.append(data)
-
-        print("\n".join(lines), end="\n\n")
-
-        if dump:
-            pd.concat(dfs).to_csv(OUTPUT_PATH / "coverage.csv")
+    checks_from_file(dump_path)
+    regions(dump_path)
 
 
 @cli.command()

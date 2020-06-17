@@ -106,8 +106,14 @@ def cached():
     return wrap
 
 
+def load_csv(source, *args, **kwargs):
+    # Inline the run_info into the arguments so that it is used for the cache key
+    run_info = json.load(open(DATA_PATH / "cache" / source / "runs.json"))
+    return _load_csv(source, run_info, *args, **kwargs)
+
+
 @cached()
-def load_csv(source, filters, default_only=True):
+def _load_csv(source, run_info, filters, default_only=True, **kwargs):
     cache_path = DATA_PATH / "cache" / source
 
     runs = json.load(open(cache_path / "runs.json"))
