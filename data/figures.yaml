@@ -6,6 +6,15 @@ fig_1:
   variables:
   - Emissions|CO2|Energy|Demand|Transportation
   aspect ratio: 0.75
+  caption: |
+    IAM results are grouped by temperature targets.
+    Sectoral studies are grouped by baseline and policy categories because they don’t track global emissions so cannot solve for achieving temperature targets.
+    Numbers above the bars indicate the number of scenarios.
+
+    Sources: IAMs —IPCC WGIII AR6 Scenario Database (Annex II.10).
+    Sectoral models: MoMo (IEA), EPPA5 (MIT), Roadmap (ICCT), GCAM (PNNL), and MESSAGE (IIASA).
+    The policy scenarios in global transport models (GTMs) cover a wide range of “non-BAU” scenarios (to be defined) that are not necessarily designed to achieve the targets set in the Paris Agreements.
+
 
 fig_2:
   short title: Passenger and freight transport activity
@@ -19,6 +28,9 @@ fig_2:
   restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)'
   # Width / height
   aspect ratio: 1
+  caption: |
+    Global passenger (billion p-km/yr) and freight (billion t-km/yr) demand projections, 2020 index, based on integrated models for selected stabilization temperatures by 2100.
+    Also included are global transport models Ref and Policy scenarios.
 
 
 fig_3:
@@ -46,6 +58,9 @@ fig_3:
   - Energy Service|Transportation|Passenger|Road|LDV
   # Restore the 'type' and 'mode' dimensions to the IAM data
   restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)(?:\|(?P<mode>.*))?'
+  caption: |
+    Global passenger (billion p-km/yr) and freight (billion t-km/yr) demand projections, 2020 index, based on IAM for selected stabilization temperatures by 2100.
+    Also included are global transport models Ref and Policy scenarios.
 
 
 fig_4:
@@ -85,6 +100,10 @@ fig_5:
   # - Final Energy|Transportation|Solids|Biomass
   # - Final Energy|Transportation|Solids|Coal
   restore dims: 'Final Energy\|Transportation(?:\|(?P<fuel>.*))?'
+  caption: |
+    Based on integrated models grouped by CO2eq concentration levels by 2100 and compared with sectoral models (grouped by baseline and policies) in 2050.
+    Box plots show minimum/maximum, 25th/75th percentile and median.
+    Numbers above each bar represent the # of scenarios.
 
 
 # Data similar to fig_3; appearance similar to fig_5
