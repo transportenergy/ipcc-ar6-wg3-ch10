@@ -1,0 +1,10 @@
+- model: REMIND-MAgPIE 1.7-3.0
+  scenario: PEP_2C_red_netzero
+- model: IMAGE 3.0.1
+  scenario: IMA15-TOT
+- model: MESSAGEix-GLOBIOM 1.0
+  scenario: CD-LINKS_NPi
+- model: MESSAGEix-GLOBIOM 1.0
+  scenario: CD-LINKS_NPi2020_1000
+- model: MESSAGEix-GLOBIOM 1.0
+  scenario: CD-LINKS_NPi2020_400

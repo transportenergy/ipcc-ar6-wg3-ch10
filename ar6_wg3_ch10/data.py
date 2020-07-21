@@ -395,6 +395,16 @@ def restore_dims(df, expr=None):
     return pd.concat([df, df["variable"].str.extract(expr)], axis=1)
 
 
+def select_indicator_scenarios(df):
+    info = _ar6_scen_info()
+    return df.pipe(
+        _filter,
+        dict(
+            model=[s["model"] for s in info], scenario=[s["scenario"] for s in info],
+        )
+    )
+
+
 def _item_cat_for_scen(row):
     """Return the iTEM scenario category for model & scenario info."""
     return _item_scen_info(row["model"])[row["scenario"]]["category"]
@@ -417,6 +427,12 @@ def _item_scen_info(name):
     """Return iTEM metadata for model *name*."""
     name = {"WEPS+": "EIA"}.get(name, name)
     return item.model.load_model_scenarios(name.lower(), 2)
+
+
+@lru_cache()
+def _ar6_scen_info():
+    """Return the list of AR6 indicators scenarios."""
+    return yaml.safe_load(open(DATA_PATH / "indicator-scenarios.yaml"))
 
 
 @lru_cache()
