@@ -56,12 +56,10 @@ def cache(action, source):
     """
     _start_log()
 
-    from cache import cache_data, compile_h5
+    from cache import cache_data
 
     if action == "refresh":
         cache_data(source)
-    elif action == "compile":
-        compile_h5(source)
     else:
         print("Please clear the cache manually.")
         raise NotImplementedError
@@ -73,12 +71,11 @@ def coverage(dump):
     """Report coverage per data/coverage-checks.yaml."""
     _start_log()
 
-    from coverage import checks_from_file, regions
+    from coverage import checks_from_file
 
     dump_path = OUTPUT_PATH if dump else None
 
     checks_from_file(dump_path)
-    regions(dump_path)
 
 
 @cli.command()
