@@ -8,8 +8,9 @@ def checks_from_file(dump_path=None):
     dfs = []
 
     for info in yaml.safe_load(open(DATA_PATH / "coverage-checks.yaml")):
-        note = info.pop("_note")
+        note = info.pop("_note", "(none)")
         lines = [
+            "---"
             f"\nCoverage of {info!r}",
             f"Note: {note}",
         ]
@@ -32,8 +33,11 @@ def checks_from_file(dump_path=None):
                     ),
                     "    {} scenario categories".format(len(data["category"].unique())),
                     "    {} models".format(len(data["model"].unique())),
+                    "    {} regions:".format(len(data["region"].unique())),
                 ]
             )
+
+            lines.extend(sorted(data["region"].unique()))
 
             if dump_path:
                 dfs.append(data)
@@ -42,7 +46,3 @@ def checks_from_file(dump_path=None):
 
         if dump_path:
             pd.concat(dfs).to_csv(dump_path / "coverage.csv")
-
-
-def regions(dump_path):
-    pass
