@@ -1,6 +1,6 @@
 import plotnine as p9
 
-from .data import compute_descriptives, normalize_if
+from .data import compute_descriptives, normalize_if, select_indicator_scenarios
 from .common import COMMON, figure
 
 # Non-dynamic features of fig_2
@@ -30,12 +30,14 @@ def plot(data, sources, normalize, overshoot, **kwargs):
         {"tkm": "Freight", "pkm": "Passenger"}
     )
 
+    # Normalize
+    data["iam"] = data["iam"].pipe(normalize_if, normalize, year=2020)
+
+    # Select indicator scenarios
+    data["indicator"] = data["iam"].pipe(select_indicator_scenarios)
+
     # Transform from individual data points to descriptives
-    data["plot"] = (
-        data["iam"]
-        .pipe(normalize_if, normalize, year=2020)
-        .pipe(compute_descriptives, groupby=["type"])
-    )
+    data["plot"] = data["iam"].pipe(compute_descriptives, groupby=["type"])
 
     # Discard 2100 sectoral data
     data["item"] = data["item"][data["item"].year != 2100]
@@ -61,6 +63,15 @@ def plot(data, sources, normalize, overshoot, **kwargs):
         + COMMON["x category"](overshoot)
         + COMMON["color category"](overshoot)
         + COMMON["fill category"](overshoot)
+        # Points for indicator scenarios
+        + p9.geom_point(
+            p9.aes(y="value", shape="scenario"),
+            data["indicator"],
+            color="yellow",
+            size=1,
+            # shape="x",
+            fill=None,
+        )
         # Points and bar for sectoral models
         + p9.geom_crossbar(
             p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
