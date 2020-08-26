@@ -152,7 +152,10 @@ def _load_csv(source, run_info, filters, default_only=True, **kwargs):
 
         dfs.append(df)
 
-    return pd.concat(dfs, copy=False, ignore_index=True)
+    if len(dfs):
+        return pd.concat(dfs, copy=False, ignore_index=True)
+    else:
+        return pd.DataFrame()
 
 
 def get_references():
