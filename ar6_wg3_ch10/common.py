@@ -24,11 +24,22 @@ INFO = yaml.safe_load(open(Path(__file__).parents[1] / "data" / "figures.yaml"))
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame(
     [
-        ["Below 1.6C", "green", "green", "<1.6°C"],
-        ["1.6 - 2.0C", "#fca503", "#fca503", "1.6–2°C"],
-        ["2.0 - 2.5C", "#ca34de", "#ca34de", "2–2.5°C"],
-        ["2.5 - 3.5C", "red", "red", "2.5–3.5°C"],
-        ["Above 3.5C", "brown", "brown", ">3.5°C"],
+        # # Earlier categorization
+        # ["Below 1.6C", "green", "green", "<1.6°C"],
+        # ["1.6 - 2.0C", "#fca503", "#fca503", "1.6–2°C"],
+        # ["2.0 - 2.5C", "#ca34de", "#ca34de", "2–2.5°C"],
+        # ["2.5 - 3.5C", "red", "red", "2.5–3.5°C"],
+        # ["Above 3.5C", "brown", "brown", ">3.5°C"],
+
+        # Current categorization
+        ["C2: 1.5°C with high OS", "green", "green", "1.5°C"],
+        ["C3: lower 2°C", "#fca503", "#fca503", "low 2°C"],
+        ["C4: higher 2°C", "#fe5302", "#fe5302", "hi 2°C"],
+        ["C5: below 2.5°C", "red", "red", "<2.5°C"],
+        ["C6: below 3.0°C", "brown", "brown", "<3.0°C"],
+        ["C7: above 3.0°C", "purple", "purple", ">3.0°C"],
+
+        # Sectoral scenarios
         ["policy", "#eeeeee", "#999999", "Policy"],
         ["reference", "#999999", "#111111", "Reference"],
     ],
