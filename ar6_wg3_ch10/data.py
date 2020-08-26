@@ -333,11 +333,14 @@ def categorize(df, source, **options):
         result = df.merge(cat_data, how="left", on=["model", "scenario"])
 
     elif source == "AR6":
-        # Read an Excel file
-        path = DATA_PATH / "raw" / "ar6_metadata_indicators.xlsx"
+        # Read an Excel file; the most recent available
+        path = DATA_PATH / "raw" / "1587047839051-ar6_metadata_indicators.xlsx"
         cat_data = pd.read_excel(path).rename(
             columns={
+                # Appears in older file
                 "Temperature-in-2100_bin": "category",
+                # Appears in newer file (1587047839051…)
+                "Category_name": "category",
                 "overshoot years|1.5°C": "os15",
                 "overshoot years|2.0°C": "os2",
             }
