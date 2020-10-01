@@ -14,7 +14,7 @@ from common import DATA_PATH
 from iiasa_se_client import AuthClient
 from util import cached
 
-log = logging.getLogger("root." + __name__)
+log = logging.getLogger(__name__)
 
 
 # Filenames for local data

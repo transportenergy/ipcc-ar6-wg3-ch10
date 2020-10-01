@@ -26,6 +26,9 @@ def _arg_hash(*args, **kwargs):
     else:
         unique = json.dumps(args, cls=PathEncoder) + json.dumps(kwargs, cls=PathEncoder)
 
+    # Uncomment for debugging
+    # log.debug(f"Cache key hashed from: {unique}")
+
     return sha1(unique.encode()).hexdigest()
 
 
@@ -37,7 +40,7 @@ def cached(load_func):
     it is used instead of calling the (possibly slow) method; *unless* the *skip_cache*
     configuration option is given, in which case it is loaded again.
     """
-    log.info(f"Wrapping {load_func.__name__}")
+    log.debug(f"Wrapping {load_func.__name__} in cached()")
 
     # Wrap the call to load_func
     def cached_load(*args, **kwargs):
@@ -50,14 +53,14 @@ def cached(load_func):
         short_name = f"{name_parts[0]}(<{name_parts[1][:8]}…>)"
 
         if not skip_cache and cache_path.exists():
-            log.info(f"load {short_name} from cache")
+            log.info(f"Load {short_name} from cache")
             # return pd.read_hdf(cache_path, "cached_data")
             return pd.read_pickle(cache_path)
         else:
-            log.info(f"load {short_name} from source")
+            log.info(f"Load {short_name} from source")
             data = load_func(*args, **kwargs)
 
-            log.debug(f"store {short_name}")
+            log.debug(f"Store {short_name}")
             data.to_pickle(cache_path)
             # data.to_hdf(
             #     cache_path,
