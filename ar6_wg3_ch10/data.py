@@ -3,25 +3,28 @@ import json
 import logging
 from copy import copy
 from functools import lru_cache
-from pathlib import Path
 
 import pandas as pd
 import pint
 import yaml
 
 import item.model
+
+from common import DATA_PATH
 from iiasa_se_client import AuthClient
+from util import cached
 
 log = logging.getLogger("root." + __name__)
 
-DATA_PATH = (Path(__file__).parents[1] / "data").resolve()
-
-DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
 # Filenames for local data
 LOCAL_DATA = {
     "ADVANCE": "advance_compare_20171018-134445.csv",
     "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv",
+    "AR6 snapshot": "raw/snapshot_world_with_fullclimate_iamc_ar6_2020_08_27.csv",
+    "AR6 snapshot country": "raw/snapshot_ISOs_iamc_ar6_2020_08_27.csv",
+    "AR6 snapshot R5": "raw/snapshot_R5_regions_iamc_ar6_2020_08_27.csv",
+    "AR6 snapshot R10": "raw/snapshot_R10_regions_iamc_ar6_2020_08_27.csv",
     "iTEM MIP2": "iTEM-MIP2.csv",
     "iTEM MIP3": "2019_11_19_item_region_data.csv",
 }
@@ -207,16 +210,19 @@ def get_client(source):
     return client
 
 
-@lru_cache()
+@cached
 def _raw_local_data(path, id_vars):
     """Cache loaded CSV files in memory, for performance."""
     return (
         pd.read_csv(path)
         .rename(columns=lambda c: c.lower())
+        .astype({c: "category" for c in id_vars})
         .melt(id_vars=id_vars, var_name="year")
+        .dropna(subset=["value"])
     )
 
 
+@cached
 def get_data(
     source="AR6",
     vars_from_file=True,
@@ -332,14 +338,14 @@ def categorize(df, source, **options):
         cat_data = pd.read_csv(DATA_PATH / f"categories-{source}.csv")
         result = df.merge(cat_data, how="left", on=["model", "scenario"])
 
-    elif source == "AR6":
+    elif source.startswith("AR6"):
         # Read an Excel file; the most recent available
-        path = DATA_PATH / "raw" / "1587047839051-ar6_metadata_indicators.xlsx"
+        path = DATA_PATH / "raw" / "ar6_full_metadata_indicators2020_08_27.xlsx"
         cat_data = pd.read_excel(path).rename(
             columns={
                 # Appears in older file
                 "Temperature-in-2100_bin": "category",
-                # Appears in newer file (1587047839051…)
+                # Appears in newer file(s) (1587047839051 and later)
                 "Category_name": "category",
                 "overshoot years|1.5°C": "os15",
                 "overshoot years|2.0°C": "os2",
@@ -366,7 +372,7 @@ def categorize(df, source, **options):
             on=["model", "scenario"],
         )
 
-    elif source in ("iTEM MIP2",):
+    elif source.startswith("iTEM"):
         # From the iTEM database metadata
         df["category"] = df.apply(_item_cat_for_scen, axis=1).replace(
             "policy-extra", "policy"
@@ -420,6 +426,7 @@ def _item_clean_data(df, source, scale):
 
     # Apply scaling
     df["value"] = df["value"] * scale
+    df["region"] = df["region"].replace({"Global": "World"})
 
     # Remove private companies' projections
     return df.loc[~df.model.isin(["BP", "ExxonMobil", "Shell"]), :]

@@ -100,17 +100,26 @@ def debug():
 )
 @click.option("--categories", type=click.Choice(["T", "T+os"]), default="T")
 @click.option(
+    "--ar6-data",
+    type=click.Choice(["", "snapshot", "snapshot R5", "snapshot R10"]),
+    help="Source or snapshot of AR6 data.",
+)
+@click.option(
+    "--item-data",
+    type=click.Choice(["MIP2", "MIP3"]),
+    default="MIP2",
+    help="Source or snapshot of iTEM data.",
+)
+@click.option(
     "--load-only",
-    type=str,
-    default="",
+    is_flag=True,
     help="Only load and preprocess data; no output.",
 )
 @click.argument("to_plot", metavar="FIGURES", type=int, nargs=-1)
 def plot(to_plot, **options):
     """Plot figures, writing to output/.
 
-    FIGURES is a sequence of ints, e.g. 1 4 5 to plot figures 1, 4, and 5. If
-    omitted, all figures are plotted.
+    FIGURES is a sequence of ints, e.g. 1 4 5 to plot figures 1, 4, and 5.
 
     \b
     --categories controls the grouping of IAM scenarios:
@@ -126,8 +135,13 @@ def plot(to_plot, **options):
     """
     _start_log()
 
+    options["sources"] = (
+        " ".join(filter(None, ["AR6", options.pop("ar6_data")])),
+        f"iTEM {options.pop('item_data')}",
+    )
+
     # Plot each figure
-    for fig_id in to_plot or range(1, 6 + 1):
+    for fig_id in to_plot:
         mod = import_module(f".fig_{fig_id}", package="ar6_wg3_ch10")
         mod.plot(options)
 

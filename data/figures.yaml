@@ -1,7 +1,7 @@
 # Configuration for figures
 
 fig_1:
-  short title: Direct transport CO₂ emissions
+  short title: Direct transport CO₂ emissions — {{group}}
   normalized version: true
   variables:
   - Emissions|CO2|Energy|Demand|Transportation

@@ -1,13 +1,13 @@
 import json
 import logging
 from datetime import datetime
-from hashlib import sha1
-
 
 import pandas as pd
 from tqdm import tqdm
 
-from data import DATA_PATH, DATE_FORMAT, _filter, get_client
+from common import DATA_PATH, DATE_FORMAT
+from data import _filter, get_client
+from util import cached
 
 log = logging.getLogger(__name__)
 
@@ -61,58 +61,13 @@ def cache_data(source):
         )
 
 
-def _arg_hash(*args, **kwargs):
-    """Return a unique hash for *args, **kwargs."""
-    if len(args) + len(kwargs) == 0:
-        unique = ''
-    else:
-        unique = json.dumps(args) + json.dumps(kwargs)
-
-    return sha1(unique.encode()).hexdigest()
-
-
-def cached():
-    """Decorator to cache selected data.
-
-    See for instance load_h5(), below. On a first call, the data requested is
-    returned, but also cached in data/cache/. On subsequent calls, if the cache
-    exists, it is used instead of calling the (possibly slow) method; *unless*
-    the *skip_cache* configuration option is given, in which case it is loaded
-    again.
-    """
-    def wrap(load_func):
-        # Wrap the call to load_func
-        def cached_load(*args, **kwargs):
-            # Path to the cache file
-            name_parts = [load_func.__name__, _arg_hash(*args, **kwargs)]
-            cache_path = DATA_PATH / "cache" / ("-".join(name_parts) + ".h5")
-            skip_cache = False
-
-            # Shorter name for logging
-            short_name = f"{name_parts[0]}(<{name_parts[1][:8]}…>)"
-
-            if not skip_cache and cache_path.exists():
-                log.info(f"load {short_name} from cache")
-                return pd.read_hdf(cache_path, "cached_data")
-            else:
-                log.info(f"load {short_name} from source")
-                data = load_func(*args, **kwargs)
-
-                log.debug(f"store {short_name}")
-                data.to_hdf(cache_path, "cached_data", complib="blosc", complevel=9)
-
-                return data
-        return cached_load
-    return wrap
-
-
 def load_csv(source, *args, **kwargs):
     # Inline the run_info into the arguments so that it is used for the cache key
     run_info = json.load(open(DATA_PATH / "cache" / source / "runs.json"))
     return _load_csv(source, run_info, *args, **kwargs)
 
 
-@cached()
+@cached
 def _load_csv(source, run_info, filters, default_only=True, **kwargs):
     cache_path = DATA_PATH / "cache" / source
 
