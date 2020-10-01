@@ -61,10 +61,8 @@ STATIC = [
 ]
 
 
-@figure(region=["World"])
+@figure
 def plot(data, sources, **kwargs):
-    # TODO reorder colours from Oil -> Hydrogen per AR6
-
     # Compute fuel shares by type for IAM scenarios
     data["iam"] = (
         data["iam"].pipe(compute_shares, on="fuel").assign(variable="Fuel share")

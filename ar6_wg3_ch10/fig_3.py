@@ -29,7 +29,7 @@ STATIC = (
 )
 
 
-@figure(region=["World"])
+@figure
 def plot(data, sources, **kwargs):
     # Compute mode shares by type for IAM scenarios
     data["iam"] = (

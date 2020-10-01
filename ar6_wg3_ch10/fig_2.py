@@ -23,7 +23,7 @@ STATIC = (
 )
 
 
-@figure(region=["World"])
+@figure
 def plot(data, sources, normalize, overshoot, **kwargs):
     # Restore the 'type' dimension to sectoral data
     data["item"]["type"] = data["item"]["variable"].replace(

@@ -36,7 +36,7 @@ STATIC = (
 )
 
 
-@figure(region=["World"])
+@figure
 def plot(data, sources, normalize, overshoot, **kwargs):
     # Add 'All' to the 'mode' column for IAM data
     data["iam"]["mode"] = data["iam"]["mode"].where(~data["iam"]["mode"].isna(), "All")

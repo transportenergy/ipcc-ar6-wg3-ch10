@@ -23,7 +23,7 @@ STATIC = (
 )
 
 
-@figure(region=["World"])
+@figure
 def plot(data, sources, overshoot, **kwargs):
     # Compute energy intensity for IAM scenarios
     data["iam"] = (
