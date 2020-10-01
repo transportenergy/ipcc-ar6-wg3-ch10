@@ -43,7 +43,7 @@ def plot(data, sources, normalize, overshoot, **kwargs):
 
     # Discard 2100 sectoral data
     data["item"] = data["item"].query(
-        "year in [2030, 2050] and category in ['policy', 'reference']"
+        "year in [2020, 2030, 2050] and category in ['policy', 'reference']"
     )
 
     if normalize:
@@ -87,7 +87,6 @@ def plot(data, sources, normalize, overshoot, **kwargs):
             + COMMON["fill category"](overshoot)
             + p9.ggtitle(title.format(group=group))
         )
-        plots.append(p)
 
         if len(d[1]):
             # Points for indicator scenarios
@@ -96,7 +95,7 @@ def plot(data, sources, normalize, overshoot, **kwargs):
                 + p9.geom_point(
                     p9.aes(y="value", shape="scenario"),
                     d[1],
-                    color="yellow",
+                    color="cyan",
                     size=1,
                     fill=None,
                 )
@@ -123,5 +122,7 @@ def plot(data, sources, normalize, overshoot, **kwargs):
                     fill=None,
                 )
             )
+
+        plots.append(p)
 
     return plots
