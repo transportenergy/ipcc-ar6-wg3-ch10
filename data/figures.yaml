@@ -17,7 +17,7 @@ fig_1:
 
 
 fig_2:
-  short title: Passenger and freight transport activity
+  short title: Transport activity — {{group}}
   normalized version: true
   variables:
   # - Population  # for per-capita calculation

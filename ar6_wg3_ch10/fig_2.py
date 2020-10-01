@@ -1,7 +1,13 @@
+import logging
+
 import plotnine as p9
 
 from .data import compute_descriptives, normalize_if, select_indicator_scenarios
 from .common import COMMON, figure
+from .util import groupby_multi
+
+log = logging.getLogger(__name__)
+
 
 # Non-dynamic features of fig_2
 STATIC = (
@@ -14,7 +20,7 @@ STATIC = (
     + [
         COMMON["counts"],
         # Axis labels
-        p9.labs(y="", fill="IAM/sectoral scenarios"),
+        p9.labs(y="", fill="IAM/sectoral scenarios", shape="Indicator scenario"),
         # Appearance
         COMMON["theme"],
         p9.theme(panel_grid_major_x=p9.element_blank(),),
@@ -37,7 +43,7 @@ def plot(data, sources, normalize, overshoot, **kwargs):
     data["indicator"] = data["iam"].pipe(select_indicator_scenarios)
 
     # Transform from individual data points to descriptives
-    data["plot"] = data["iam"].pipe(compute_descriptives, groupby=["type"])
+    data["plot"] = data["iam"].pipe(compute_descriptives, groupby=["type", "region"])
 
     # Discard 2100 sectoral data
     data["item"] = data["item"][data["item"].year != 2100]
@@ -48,48 +54,72 @@ def plot(data, sources, normalize, overshoot, **kwargs):
         # Replace with the normalized data
         data["item"] = data["item"].pipe(normalize_if, normalize, year=2020)
 
-    data["plot-item"] = data["item"].pipe(compute_descriptives, groupby=["type"])
-
-    if normalize:
-        scale_y = [p9.scale_y_continuous(minor_breaks=4), p9.expand_limits(y=[0])]
-    else:
-        scale_y = []
-
-    plot = (
-        p9.ggplot(data=data["plot"])
-        + STATIC
-        # Aesthetics and scales
-        + scale_y
-        + COMMON["x category"](overshoot)
-        + COMMON["color category"](overshoot)
-        + COMMON["fill category"](overshoot)
-        # Points for indicator scenarios
-        + p9.geom_point(
-            p9.aes(y="value", shape="scenario"),
-            data["indicator"],
-            color="yellow",
-            size=1,
-            # shape="x",
-            fill=None,
-        )
-        # Points and bar for sectoral models
-        + p9.geom_crossbar(
-            p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
-            data["plot-item"],
-            color="black",
-            fatten=0,
-            width=None,
-        )
-        + p9.geom_point(
-            p9.aes(y="value"), data["item"], color="black", size=1, shape="x", fill=None
-        )
+    data["plot-item"] = data["item"].pipe(
+        compute_descriptives, groupby=["type", "region"]
     )
 
     if normalize:
-        # plot += ylim(0, 4)
-        plot.units = "Index, 2020 level = 1.0"
+        scale_y = [
+            p9.scale_y_continuous(limits=(-0.2, 4.8), minor_breaks=4),
+            p9.expand_limits(y=[0])
+        ]
+        title = kwargs["title"].format(units="Index, 2020 level = 1.0")
     else:
+        scale_y = []
         units = data["iam"]["unit"].str.replace("bn", "10⁹")
-        plot.units = "; ".join(units.unique())
+        title = kwargs["title"].format(units="; ".join(units.unique()))
 
-    return plot
+    plots = []
+
+    for group, d in groupby_multi(
+        (data["plot"], data["indicator"], data["plot-item"], data["item"]), "region"
+    ):
+        if len(d[0]) == 0:
+            log.info(f"Skip {group}; no IAM data")
+            continue
+
+        log.info(f"Generate plot for {group}")
+
+        p = (
+            p9.ggplot(data=d[0])
+            + STATIC
+            # Aesthetics and scales
+            + scale_y
+            + COMMON["x category"](overshoot)
+            + COMMON["color category"](overshoot)
+            + COMMON["fill category"](overshoot)
+            # Points for indicator scenarios
+            + p9.geom_point(
+                p9.aes(y="value", shape="scenario"),
+                d[1],
+                color="cyan",
+                size=1,
+                fill=None,
+            )
+            + p9.ggtitle(title.format(group=group))
+        )
+
+        if len(d[2]):
+            p = (
+                p
+                # Points and bar for sectoral models
+                + p9.geom_crossbar(
+                    p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
+                    d[2],
+                    color="black",
+                    fatten=0,
+                    width=None,
+                )
+                + p9.geom_point(
+                    p9.aes(y="value"),
+                    d[3],
+                    color="black",
+                    size=1,
+                    shape="x",
+                    fill=None,
+                )
+            )
+
+        plots.append(p)
+
+    return plots
