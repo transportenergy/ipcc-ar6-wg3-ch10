@@ -1,9 +1,8 @@
 import numpy as np
 import plotnine as p9
 
-from common import COMMON, SCALE_CAT, SCALE_FUEL, figure
-
-from .data import compute_descriptives, compute_shares
+from .common import COMMON, SCALE_CAT, SCALE_FUEL, figure
+from .data import compute_descriptives, compute_shares, select_indicator_scenarios
 
 # Non-dynamic features of fig_5
 STATIC = [
@@ -89,8 +88,12 @@ def plot(data, sources, **kwargs):
     data["iam"] = data["iam"][data["iam"].year != 2020]
     data["item"] = data["item"][data["item"].year != 2020]
 
-    # Plot descriptives
+    # Select indicator scenarios
+    data["indicator"] = data["iam"].pipe(select_indicator_scenarios)
+
+    # Transform from individual data points to descriptives
     data["plot"] = data["iam"].pipe(compute_descriptives, groupby=["fuel"])
+
     # Omit supercategories ('category+1') from iTEM descriptives
     data["plot-item"] = (
         data["item"]
@@ -101,6 +104,16 @@ def plot(data, sources, **kwargs):
     plot = (
         p9.ggplot(data=data["plot"])
         + STATIC
+        # Points for indicator scenarios
+        + p9.geom_point(
+            p9.aes(y="value", shape="scenario"),
+            data["indicator"],
+            position=p9.position_dodge(width=0.9),
+            color="yellow",
+            size=1,
+            # shape="x",
+            fill=None,
+        )
         # Points and bar for sectoral models
         + p9.geom_crossbar(
             p9.aes(ymin="min", y="50%", ymax="max", fill="fuel"),

@@ -1,7 +1,7 @@
 import pandas as pd
 import plotnine as p9
 
-from .data import compute_descriptives, normalize_if
+from .data import compute_descriptives, normalize_if, select_indicator_scenarios
 from .common import COMMON, figure
 
 # Non-dynamic features of fig_6
@@ -60,15 +60,21 @@ def plot(data, sources, normalize, overshoot, **kwargs):
         normalize_if, normalize, year=2020, drop=False
     )
 
-    # Variant: bands per category
-    data["plot"] = compute_descriptives(data["plot"], on=["type", "mode"])
+    # Select indicator scenarios
+    data["indicator"] = select_indicator_scenarios(data["plot"])
+
+    data["descriptives"] = compute_descriptives(data["plot"], on=["type", "mode"])
 
     plot = (
-        p9.ggplot(data=data["plot"])
+        p9.ggplot(data=data["descriptives"])
         + STATIC
         + COMMON["color category"](overshoot)
-        # Variant:
-        + COMMON["fill category"](overshoot),
+        + COMMON["fill category"](overshoot)
+        + p9.geom_line(
+            p9.aes(x="year", y="value"),
+            data["indicator"],
+            color="yellow",
+        )
     )
 
     if normalize:
