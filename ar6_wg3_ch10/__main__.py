@@ -24,9 +24,12 @@ def _start_log():
 
 @click.group()
 @click.option(
+    "--skip-cache", is_flag=True, help="Don't use cached intermediate data."
+)
+@click.option(
     "--verbose", is_flag=True, help="Also print DEBUG log messages to stdout."
 )
-def cli(verbose):
+def cli(skip_cache, verbose):
     """Command-line interface for IPCC AR6 WGIII Ch.10 figures.
 
     Reads a file config.json in the current directory. See config-example.json.
@@ -38,6 +41,10 @@ def cli(verbose):
 
     if verbose:
         _LC["handlers"]["console"]["level"] = "DEBUG"
+
+    if skip_cache:
+        import util
+        util.SKIP_CACHE = True
 
 
 @cli.command()

@@ -10,6 +10,9 @@ from data import DATA_PATH
 log = logging.getLogger(__name__)
 
 
+SKIP_CACHE = False
+
+
 class PathEncoder(json.JSONEncoder):
     """JSON Encoder that handles pathlib.Path; used by _arg_hash."""
     def default(self, o):
@@ -47,12 +50,11 @@ def cached(load_func):
         # Path to the cache file
         name_parts = [load_func.__name__, _arg_hash(*args, **kwargs)]
         cache_path = DATA_PATH / "cache" / ("-".join(name_parts) + ".pkl")
-        skip_cache = False
 
         # Shorter name for logging
         short_name = f"{name_parts[0]}(<{name_parts[1][:8]}…>)"
 
-        if not skip_cache and cache_path.exists():
+        if not SKIP_CACHE and cache_path.exists():
             log.info(f"Load {short_name} from cache")
             # return pd.read_hdf(cache_path, "cached_data")
             return pd.read_pickle(cache_path)
@@ -60,7 +62,7 @@ def cached(load_func):
             log.info(f"Load {short_name} from source")
             data = load_func(*args, **kwargs)
 
-            log.debug(f"Store {short_name}")
+            log.info(f"Store {short_name}")
             data.to_pickle(cache_path)
             # data.to_hdf(
             #     cache_path,
