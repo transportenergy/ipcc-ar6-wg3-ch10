@@ -108,7 +108,9 @@ def debug():
 @click.option("--categories", type=click.Choice(["T", "T+os"]), default="T")
 @click.option(
     "--ar6-data",
-    type=click.Choice(["", "snapshot", "snapshot R5", "snapshot R10"]),
+    type=click.Choice([
+        "", "snapshot", "snapshot R5", "snapshot R10", "snapshot country",
+    ]),
     help="Source or snapshot of AR6 data.",
 )
 @click.option(
