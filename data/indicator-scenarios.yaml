@@ -1,10 +1,53 @@
-- model: REMIND-MAgPIE 1.7-3.0
-  scenario: PEP_2C_red_netzero
-- model: IMAGE 3.0.1
-  scenario: IMA15-TOT
+# Set as of 2020-10-21
+
+# This scenario will likely be added, but is not in the database
+# - model: GCAM
+#   scenario: NGFS
+#   # id: IP1
+
+- model: AIM/CGE 2.2
+  scenario: EN_NPi2020_600
+  # The IDs for the other indicator scenarios are currently unknown
+  # id: IP?
+- model: AIM/CGE 2.2
+  scenario: EN_NPi2020_600f
+  # id: IP?
+- model: COFFEE 1.1
+  scenario: EN_NPi2020_500
+  # id: IP?
+- model: COFFEE 1.1
+  scenario: EN_NPi2020_500f
+  # id: IP?
+- model: REMIND 2.1
+  # The space here is *not* a typo
+  scenario: "DeepElec_SSP2_ HighRE_Budg900"
+  # id: IP?
+- model: REMIND-MAgPIE 2.1-4.2
+  scenario: SusDev_SDP-PkBudg1000
+  # id: IP?
+- model: MESSAGEix-GLOBIOM_GEI 1.0
+  scenario: SSP2_openres_lc_50
+  # id: IP?
+- model: WITCH 5.0
+  scenario: CO_Bridge
+  # id: IP?
 - model: MESSAGEix-GLOBIOM 1.0
-  scenario: CD-LINKS_NPi
-- model: MESSAGEix-GLOBIOM 1.0
-  scenario: CD-LINKS_NPi2020_1000
-- model: MESSAGEix-GLOBIOM 1.0
-  scenario: CD-LINKS_NPi2020_400
+  scenario: LowEnergyDemand_1.3_IPCC
+  # id: IP?
+- model: IMAGE 3.0
+  scenario: EN_INDCi2030_3000f
+  # version: 3
+  # id: IP?
+
+# Set prior to 2020-10-21
+
+# - model: REMIND-MAgPIE 1.7-3.0
+#   scenario: PEP_2C_red_netzero
+# - model: IMAGE 3.0.1
+#   scenario: IMA15-TOT
+# - model: MESSAGEix-GLOBIOM 1.0
+#   scenario: CD-LINKS_NPi
+# - model: MESSAGEix-GLOBIOM 1.0
+#   scenario: CD-LINKS_NPi2020_1000
+# - model: MESSAGEix-GLOBIOM 1.0
+#   scenario: CD-LINKS_NPi2020_400
