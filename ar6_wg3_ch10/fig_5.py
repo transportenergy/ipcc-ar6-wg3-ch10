@@ -3,6 +3,7 @@ import plotnine as p9
 
 from .common import COMMON, SCALE_CAT, SCALE_FUEL, figure
 from .data import compute_descriptives, compute_shares, select_indicator_scenarios
+from .util import groupby_multi
 
 # Non-dynamic features of fig_5
 STATIC = [
@@ -64,7 +65,8 @@ STATIC = [
 def plot(data, sources, **kwargs):
     # Compute fuel shares by type for IAM scenarios
     data["iam"] = (
-        data["iam"].pipe(compute_shares, on="fuel").assign(variable="Fuel share")
+        data["iam"].pipe(compute_shares, on="fuel", groupby=["region"])
+        .assign(variable="Fuel share")
     )
 
     # Compute fuel shares for sectoral scenarios
@@ -80,7 +82,7 @@ def plot(data, sources, **kwargs):
                 }
             }
         )
-        .pipe(compute_shares, on="fuel")
+        .pipe(compute_shares, on="fuel", groupby=["region"])
         .assign(variable="Fuel share")
     )
 
@@ -92,48 +94,56 @@ def plot(data, sources, **kwargs):
     data["indicator"] = data["iam"].pipe(select_indicator_scenarios)
 
     # Transform from individual data points to descriptives
-    data["plot"] = data["iam"].pipe(compute_descriptives, groupby=["fuel"])
+    data["plot"] = data["iam"].pipe(compute_descriptives, groupby=["fuel", "region"])
 
     # Omit supercategories ('category+1') from iTEM descriptives
     data["plot-item"] = (
         data["item"]
         .drop("category+1", axis=1)
-        .pipe(compute_descriptives, groupby=["fuel"])
+        .pipe(compute_descriptives, groupby=["fuel", "region"])
     )
 
-    plot = (
-        p9.ggplot(data=data["plot"])
-        + STATIC
-        # Points for indicator scenarios
-        + p9.geom_point(
-            p9.aes(y="value", shape="scenario"),
-            data["indicator"],
-            position=p9.position_dodge(width=0.9),
-            color="yellow",
-            size=1,
-            # shape="x",
-            fill=None,
-        )
-        # Points and bar for sectoral models
-        + p9.geom_crossbar(
-            p9.aes(ymin="min", y="50%", ymax="max", fill="fuel"),
-            data["plot-item"],
-            position="dodge",
-            color="black",
-            fatten=0,
-            width=0.9,
-        )
-        + p9.geom_point(
-            p9.aes(y="value", group="fuel"),
-            data["item"],
-            position=p9.position_dodge(width=0.9),
-            color="black",
-            size=1,
-            shape="x",
-            fill=None,
-        )
-    )
+    title = kwargs["title"].format(units=sorted(data["iam"]["unit"].unique())[0])
 
-    plot.units = "0̸"
+    plots = []
 
-    return plot
+    for group, d in groupby_multi(
+        (data["plot"], data["indicator"], data["plot-item"], data["item"]), "region"
+    ):
+        p = (
+            p9.ggplot(data=d[0])
+            + STATIC
+            + p9.ggtitle(title)
+            # Points for indicator scenarios
+            + p9.geom_point(
+                p9.aes(y="value", shape="scenario"),
+                d[1],
+                position=p9.position_dodge(width=0.9),
+                color="yellow",
+                size=1,
+                # shape="x",
+                fill=None,
+            )
+            # Points and bar for sectoral models
+            + p9.geom_crossbar(
+                p9.aes(ymin="min", y="50%", ymax="max", fill="fuel"),
+                d[2],
+                position="dodge",
+                color="black",
+                fatten=0,
+                width=0.9,
+            )
+            + p9.geom_point(
+                p9.aes(y="value", group="fuel"),
+                d[3],
+                position=p9.position_dodge(width=0.9),
+                color="black",
+                size=1,
+                shape="x",
+                fill=None,
+            )
+        )
+
+        plots.append(p)
+
+    return plots
