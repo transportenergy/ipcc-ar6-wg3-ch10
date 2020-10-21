@@ -76,7 +76,7 @@ fig_4:
 
 
 fig_5:
-  short title: Fuel shares of transport final energy
+  short title: Fuel shares of transport final energy — {{group}}
   variables:
   # See data/variables-AR6.txt for a fuller list
   - Final Energy|Transportation  # denominator in shares
@@ -108,7 +108,7 @@ fig_5:
 
 # Data similar to fig_3; appearance similar to fig_5
 fig_6:
-  short title: Transport activity by mode
+  short title: Transport activity by mode — {{group}}
   all years: true
   normalized version: true
   variables:
