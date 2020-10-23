@@ -21,6 +21,7 @@ log = logging.getLogger(__name__)
 LOCAL_DATA = {
     "ADVANCE": "advance_compare_20171018-134445.csv",
     "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv",
+    "AR6 metadata": "raw/ar6_full_metadata_indicators2020_08_27.xlsx",
     "AR6 snapshot": "raw/snapshot_world_with_globalmeantemps_iamc_ar6_12020_10_03.csv",
     "AR6 snapshot country": "raw/snapshot_ISOs_iamc_ar6_2020_10_03.csv",
     "AR6 snapshot R5": "raw/snapshot_R5_regions_iamc_ar6_2020_10_03.csv",
@@ -340,7 +341,7 @@ def categorize(df, source, **options):
 
     elif source.startswith("AR6"):
         # Read an Excel file; the most recent available
-        path = DATA_PATH / "raw" / "ar6_full_metadata_indicators2020_08_27.xlsx"
+        path = DATA_PATH / LOCAL_DATA["AR6 metadata"]
         cat_data = pd.read_excel(path).rename(
             columns={
                 # Appears in older file

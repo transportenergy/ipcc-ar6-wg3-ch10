@@ -1,9 +1,14 @@
+import logging
+
 import pandas as pd
 import plotnine as p9
 
 from .data import compute_descriptives, normalize_if, select_indicator_scenarios
 from .common import COMMON, figure
 from .util import groupby_multi
+
+log = logging.getLogger(__name__)
+
 
 # Non-dynamic features of fig_6
 STATIC = (
@@ -22,8 +27,8 @@ STATIC = (
         # p9.geom_ribbon(
         #     p9.aes(ymin="5%", ymax="95%", fill="category"), alpha=0.25, color=None
         # ),
-        p9.geom_line(p9.aes(y="5%", color="category"), alpha=0.5, size=0.5),
-        p9.geom_line(p9.aes(y="95%", color="category"), alpha=0.5, size=0.5),
+        p9.geom_line(p9.aes(y="5%", color="category"), alpha=1, size=0.1),
+        p9.geom_line(p9.aes(y="95%", color="category"), alpha=1, size=0.1),
         p9.geom_line(p9.aes(y="50%", color="category"), alpha=0.5),
         # Axis labels
         p9.labs(x="", y="", color="IAM/sectoral scenarios"),
@@ -31,9 +36,11 @@ STATIC = (
         # Appearance
         COMMON["theme"],
         p9.theme(
-            panel_grid_major_x=p9.element_blank(),
+            axis_text=p9.element_text(size=7),
+            panel_grid=p9.element_line(color="#dddddd", size=0.2),
             panel_spacing_x=0.4,
             panel_spacing_y=0.05,
+            strip_text=p9.element_text(size=7),
         ),
     ]
 )
@@ -41,6 +48,13 @@ STATIC = (
 
 @figure
 def plot(data, sources, normalize, overshoot, **kwargs):
+    # Drop years 2095, 2085, etc. for which only a subset of scenarios include data
+    years_to_drop = [y for y in data["iam"]["year"].unique() if y % 10 != 0]
+    data["iam"] = data["iam"][~data["iam"]["year"].isin(years_to_drop)]
+
+    # Drop data with no climate assessment; these contain erroneous high values
+    data["iam"] = data["iam"][~(data["iam"]["category"] == "no-climate-assessment")]
+
     # Add 'All' to the 'mode' column for IAM data
     data["iam"]["mode"] = data["iam"]["mode"].where(~data["iam"]["mode"].isna(), "All")
 
@@ -87,11 +101,11 @@ def plot(data, sources, normalize, overshoot, **kwargs):
             + STATIC
             + COMMON["color category"](overshoot)
             + COMMON["fill category"](overshoot)
-            + p9.geom_line(
-                p9.aes(x="year", y="value"),
-                d[1],
-                color="yellow",
-            )
+            # + p9.geom_line(
+            #     p9.aes(x="year", y="value"),
+            #     d[1],
+            #     color="yellow",
+            # )
             + p9.ggtitle(title.format(group=group))
         )
 
