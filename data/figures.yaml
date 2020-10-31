@@ -40,31 +40,3 @@ fig_4:
   restore dims: '(?P<quantity>[^\|]*)\|Transportation(?:\|(?P<type>.*))?'
   # Width / height
   aspect ratio: 1.33
-
-# Data similar to fig_3; appearance similar to fig_5
-fig_6:
-  short title: Transport activity by mode — {{group}}
-  all years: true
-  normalized version: true
-  variables:
-  - Energy Service|Transportation|Aviation
-  - Energy Service|Transportation|Freight
-  - Energy Service|Transportation|Freight|Aviation
-  - Energy Service|Transportation|Freight|International Shipping
-  - Energy Service|Transportation|Freight|Navigation
-  - Energy Service|Transportation|Freight|Other
-  - Energy Service|Transportation|Freight|Railways
-  - Energy Service|Transportation|Freight|Road
-  - Energy Service|Transportation|Navigation
-  - Energy Service|Transportation|Passenger
-  - Energy Service|Transportation|Passenger|Aviation
-  - Energy Service|Transportation|Passenger|Bicycling and Walking
-  - Energy Service|Transportation|Passenger|Navigation
-  - Energy Service|Transportation|Passenger|Other
-  - Energy Service|Transportation|Passenger|Railways
-  - Energy Service|Transportation|Passenger|Road
-  - Energy Service|Transportation|Passenger|Road|2W and 3W
-  - Energy Service|Transportation|Passenger|Road|Bus
-  - Energy Service|Transportation|Passenger|Road|LDV
-  aspect ratio: 1
-  restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)(?:\|(?P<mode>.*))?'
