@@ -3,7 +3,7 @@ import logging
 import numpy as np
 import plotnine as p9
 
-from .common import COMMON, SCALE_FUEL, figure
+from .common import COMMON, SCALE_FUEL, Figure
 from .data import compute_descriptives, compute_shares, select_indicator_scenarios
 from .util import groupby_multi
 
@@ -66,76 +66,113 @@ STATIC = [
 ]
 
 
-@figure
-def plot(data, sources, **kwargs):
-    # Compute fuel shares by type for IAM scenarios
-    data["iam"] = (
-        data["iam"].pipe(compute_shares, on="fuel", groupby=["region"])
-        .assign(variable="Fuel share")
-    )
+class Fig5(Figure):
+    id = "fig_5"
+    title = "Fuel shares of transport final energy — {{group}}"
+    caption = """
+        Based on integrated models grouped by CO2eq concentration levels by 2100 and
+        compared with sectoral models (grouped by baseline and policies) in 2050.
+        Box plots show minimum/maximum, 25th/75th percentile and median.
+        Numbers above each bar represent the # of scenarios."""
 
-    # Compute fuel shares for sectoral scenarios
-    # - Modify labels to match IAM format
-    data["item"] = (
-        data["item"]
-        .replace(
-            {
-                "fuel": {
-                    "All": None,
-                    "Biomass Liquids": "Liquids|Biomass",
-                    "Fossil Liquids": "Liquids|Oil",
-                }
-            }
+    # Data preparation
+    variables = [
+        # See data/variables-AR6.txt for a fuller list
+        "Final Energy|Transportation",  # denominator in shares
+        "Final Energy|Transportation|Electricity",
+        # "Final Energy|Transportation|Fossil",
+        "Final Energy|Transportation|Gases",
+        # "Final Energy|Transportation|Gases|Bioenergy",
+        # "Final Energy|Transportation|Gases|Fossil",
+        # "Final Energy|Transportation|Geothermal",
+        # "Final Energy|Transportation|Heat",
+        "Final Energy|Transportation|Hydrogen",
+        # "Final Energy|Transportation|Liquids",
+        # "Final Energy|Transportation|Liquids|Bioenergy",
+        "Final Energy|Transportation|Liquids|Biomass",
+        # "Final Energy|Transportation|Liquids|Coal",
+        # "Final Energy|Transportation|Liquids|Fossil synfuel",
+        # "Final Energy|Transportation|Liquids|Gas",
+        # "Final Energy|Transportation|Liquids|Natural Gas",
+        "Final Energy|Transportation|Liquids|Oil",
+        # "Final Energy|Transportation|Solar",
+        # "Final Energy|Transportation|Solids|Biomass",
+        # "Final Energy|Transportation|Solids|Coal",
+    ]
+    restore_dims = r"Final Energy\|Transportation(?:\|(?P<fuel>.*))?"
+
+    # Plotting
+    geoms = STATIC
+    aspect_ratio = 2
+
+    def prepare_data(self, data):
+        # Compute fuel shares by type for IAM scenarios
+        data["iam"] = (
+            data["iam"].pipe(compute_shares, on="fuel", groupby=["region"])
+            .assign(variable="Fuel share")
         )
-        .pipe(compute_shares, on="fuel", groupby=["region"])
-        .assign(variable="Fuel share")
-    )
 
-    # Discard 2020 data
-    data["iam"] = data["iam"][data["iam"].year != 2020]
-    data["item"] = data["item"][data["item"].year != 2020]
+        # Compute fuel shares for sectoral scenarios
+        # - Modify labels to match IAM format
+        data["item"] = (
+            data["item"]
+            .replace(
+                {
+                    "fuel": {
+                        "All": None,
+                        "Biomass Liquids": "Liquids|Biomass",
+                        "Fossil Liquids": "Liquids|Oil",
+                    }
+                }
+            )
+            .pipe(compute_shares, on="fuel", groupby=["region"])
+            .assign(variable="Fuel share")
+        )
 
-    # Select indicator scenarios
-    data["indicator"] = data["iam"].pipe(select_indicator_scenarios)
+        # Discard 2020 data
+        data["iam"] = data["iam"][data["iam"].year != 2020]
+        data["item"] = data["item"][data["item"].year != 2020]
 
-    # Transform from individual data points to descriptives
-    data["plot"] = data["iam"].pipe(compute_descriptives, groupby=["fuel", "region"])
+        # Select indicator scenarios
+        data["indicator"] = select_indicator_scenarios(data["iam"])
 
-    # Omit supercategories ('category+1') from iTEM descriptives
-    data["plot-item"] = (
-        data["item"]
-        .drop("category+1", axis=1)
-        .pipe(compute_descriptives, groupby=["fuel", "region"])
-    )
+        # Transform from individual data points to descriptives
+        data["plot"] = compute_descriptives(data["iam"], groupby=["fuel", "region"])
 
-    title = kwargs["title"].format(units="share")
+        # Omit supercategories ('category+1') from iTEM descriptives
+        data["plot-item"] = (
+            data["item"]
+            .drop("category+1", axis=1)
+            .pipe(compute_descriptives, groupby=["fuel", "region"])
+        )
 
-    plots = []
+        self.formatted_title = self.formatted_title.format(units="share")
 
-    for group, d in groupby_multi(
-        (data["plot"], data["indicator"], data["plot-item"], data["item"]), "region"
-    ):
-        if len(d[0]) == 0:
-            log.info(f"Skip {group}; no IAM data")
-            continue
+        return data
 
-        print(list(
-            f"{k} {len(v)}" for k, v
-            in zip(["plot", "indicator", "plot-item", "item"], d)
-        ))
+    def generate(self):
+        keys = ["plot", "indicator", "plot-item", "item"]
+        for group, d in groupby_multi([self.data[k] for k in keys], "region"):
+            if len(d[0]) == 0:
+                log.info(f"Skip {group}; no IAM data")
+                continue
+
+            yield self.plot_single(group, d)
+
+    def plot_single(self, group, data):
+        # Base plot
         p = (
-            p9.ggplot(data=d[0])
-            + STATIC
-            + p9.ggtitle(title.format(group=group))
-            + kwargs["figure size"]
+            p9.ggplot(data=data[0])
+            + self.geoms
+            + p9.ggtitle(self.formatted_title.format(group=group))
             + p9.labs(shape="Indicator scenario")
         )
 
-        if len(d[1]):
+        if len(data[1]):
             # Points for indicator scenarios
-            p = p + p9.geom_point(
+            p += p9.geom_point(
                 p9.aes(y="value", shape="scenario", group="fuel"),
-                d[1],
+                data[1],
                 position=p9.position_dodge(width=0.9),
                 color="cyan",
                 size=1,
@@ -143,29 +180,30 @@ def plot(data, sources, **kwargs):
                 fill=None,
             )
 
-        if len(d[2]):
+        if len(data[2]):
             # Points and bar for sectoral models
-            p = (
-                p
-                + p9.geom_crossbar(
+            p = p + [
+                p9.geom_crossbar(
                     p9.aes(ymin="min", y="50%", ymax="max", fill="fuel"),
-                    d[2],
+                    data[2],
                     position="dodge",
                     color="black",
                     fatten=0,
                     width=0.9,
-                )
-                + p9.geom_point(
+                ),
+                p9.geom_point(
                     p9.aes(y="value", group="fuel"),
-                    d[3],
+                    data[3],
                     position=p9.position_dodge(width=0.9),
                     color="black",
                     size=1,
                     shape="x",
                     fill=None,
-                )
-            )
+                ),
+            ]
 
-        plots.append(p)
+        return p
 
-    return plots
+
+def save(options):
+    return Fig5(options).save()

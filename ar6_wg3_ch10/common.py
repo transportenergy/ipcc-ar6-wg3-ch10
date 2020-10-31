@@ -1,5 +1,7 @@
 import logging
+from abc import abstractmethod
 from pathlib import Path
+from typing import Dict, List, Sequence
 
 import matplotlib as mpl
 import numpy as np
@@ -272,3 +274,114 @@ def figure(func):
                 p9.save_as_pdf_pages(plot, base_fn.with_suffix(".pdf"), verbose=False)
 
     return wrapped
+
+
+class Figure:
+    # Required
+    id: str
+    title: str
+    aspect_ratio: float
+    variables: List[str]
+
+    #: Names of sources for IAM and sectoral model data. Length 2.
+    sources: Sequence[str]
+
+    # Optional
+    #: :obj:`True` if the figure respects a "normalize" option.
+    normalized_version = False
+    #: Filters for loading data
+    filters = dict()
+    #: :obj:`True` to load data for all years, not merely :data:`YEARS`.
+    all_years = False
+    #: Regular expression to unpack dimensions from variable names.
+    restore_dims = None
+    #: :mod:`plotnine` geoms/layers to add to all plots.
+    geoms = []
+    #: Aspect ratio for output
+    aspect_ratio = 1. / 1.9
+
+    def __init__(self, options: Dict):
+        # Log output
+        log.info("-" * 10)
+        log.info(f"{self.id}: {self.title}")
+
+        # Update properties from options
+        self.__dict__.update(options)
+
+        # Base filename
+        self.base_fn = f"{self.id}-{self.sources[0].replace(' ', '_')}"
+        if self.normalized_version:
+            # Distinguish normalized and absolute versions in file name
+            self.base_fn += "-norm" if options.get("normalize", True) else "-abs"
+
+        # Set filters based on all years property.
+        if not self.all_years:
+            self.filters["year"] = YEARS
+
+        # Store figure size: 190 mm in inches, aspect ratio from a property
+        self.geoms.append(p9.theme(figure_size=(7.48, 7.48 * self.aspect_ratio)))
+
+        # Title template
+        self.formatted_title = f"{self.title} [{{units}}] ({self.base_fn})"
+
+    def _prepare_data(self):
+        from .data import get_data, restore_dims
+
+        # Temporary storage for data
+        data = {}
+
+        # Arguments for get_data()
+        args = dict(variable=self.variables, categories=self.categories)
+        args.update(self.filters)
+
+        # Load IAM data
+        data["iam"] = (
+            get_data(source=self.sources[0], **args)
+            .pipe(restore_dims, self.restore_dims)
+            .pipe(remove_categoricals)
+        )
+        # Load iTEM data
+        data["item"] = (
+            get_data(source=self.sources[1], conform_to="AR6", **args)
+            .pipe(remove_categoricals)
+        )
+
+        # Use a subclass method to further prepare data
+        self.data = self.prepare_data(data)
+
+        # Dump data for reference
+        for label, df in self.data.items():
+            path = OUTPUT_PATH / "data" / f"{self.base_fn}-{label}.csv"
+            log.info(f"Dump {len(df):5} obs to {path}")
+            df.to_csv(path)
+
+    @staticmethod
+    @abstractmethod
+    def prepare_data(data):
+        """Must be implemented by subclasses."""
+
+    @abstractmethod
+    def generate(self):
+        """Must be implemented by subclasses."""
+
+    def save(self):
+        self._prepare_data()
+
+        if self.load_only:
+            return
+
+        # Generate 1 or more plots
+        plot = list(self.generate())
+
+        # Save to file
+        base_fn = OUTPUT_PATH / self.base_fn
+
+        log.info(f"Save {base_fn.with_suffix('.pdf')}")
+
+        try:
+            # Single plot
+            plot.save(base_fn.with_suffix(".pdf"), verbose=False)
+            plot.save(base_fn.with_suffix(".png"), verbose=False, dpi=300)
+        except AttributeError:
+            # Iterator containing multiple plots
+            p9.save_as_pdf_pages(plot, base_fn.with_suffix(".pdf"), verbose=False)
