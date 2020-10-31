@@ -77,6 +77,7 @@ fig_4:
 
 fig_5:
   short title: Fuel shares of transport final energy — {{group}}
+  aspect ratio: 2
   variables:
   # See data/variables-AR6.txt for a fuller list
   - Final Energy|Transportation  # denominator in shares
