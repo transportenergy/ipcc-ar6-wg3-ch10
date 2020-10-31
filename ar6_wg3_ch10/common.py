@@ -318,6 +318,8 @@ class Figure:
         if not self.all_years:
             self.filters["year"] = YEARS
 
+        self.overshoot = self.categories == "T+os"
+
         # Store figure size: 190 mm in inches, aspect ratio from a property
         self.geoms.append(p9.theme(figure_size=(7.48, 7.48 * self.aspect_ratio)))
 

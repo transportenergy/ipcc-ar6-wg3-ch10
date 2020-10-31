@@ -1,21 +1,5 @@
 # Configuration for figures
 
-fig_1:
-  short title: Direct transport CO₂ emissions — {{group}}
-  normalized version: true
-  variables:
-  - Emissions|CO2|Energy|Demand|Transportation
-  aspect ratio: 0.75
-  caption: |
-    IAM results are grouped by temperature targets.
-    Sectoral studies are grouped by baseline and policy categories because they don’t track global emissions so cannot solve for achieving temperature targets.
-    Numbers above the bars indicate the number of scenarios.
-
-    Sources: IAMs —IPCC WGIII AR6 Scenario Database (Annex II.10).
-    Sectoral models: MoMo (IEA), EPPA5 (MIT), Roadmap (ICCT), GCAM (PNNL), and MESSAGE (IIASA).
-    The policy scenarios in global transport models (GTMs) cover a wide range of “non-BAU” scenarios (to be defined) that are not necessarily designed to achieve the targets set in the Paris Agreements.
-
-
 fig_2:
   short title: Transport activity — {{group}}
   normalized version: true

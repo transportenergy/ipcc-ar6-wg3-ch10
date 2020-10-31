@@ -157,6 +157,8 @@ class Fig5(Figure):
                 log.info(f"Skip {group}; no IAM data")
                 continue
 
+            log.info(f"Plot: {group}")
+
             yield self.plot_single(group, d)
 
     def plot_single(self, group, data):
