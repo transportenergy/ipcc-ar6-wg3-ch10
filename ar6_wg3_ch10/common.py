@@ -36,21 +36,21 @@ SCALE_CAT = pd.DataFrame(
         # ["Above 3.5C", "brown", "brown", ">3.5°C"],
 
         # Current categorization
-        ["C0: 1.5°C with no OS", "green", "green", "1.5°C no OS"],
-        ["C1: 1.5°C with no or low OS1.6", "green", "green", "1.5°C lo OS"],
-        ["C2: 1.5°C with high OS_1.6", "green", "green", "1.5°C hi OS"],
-        ["C3: likely 2°C", "#fca503", "#fca503", "lo 2°C"],
-        ["C4: below 2°C", "#fe5302", "#fe5302", "hi 2°C"],
-        ["C5: below 2.5°C", "red", "red", "<2.5°C"],
-        ["C6: below 3.0°C", "brown", "brown", "<3.0°C"],
-        ["C7: above 3.0°C", "purple", "purple", ">3.0°C"],
-        ["no-climate-assessment", "#eeeeee", "#999999", "nca"],
+        ["C0: 1.5°C with no OS", "green", "green", "1.5°C no OS", "C0"],
+        ["C1: 1.5°C with no or low OS1.6", "green", "green", "1.5°C lo OS", "C1"],
+        ["C2: 1.5°C with high OS_1.6", "green", "green", "1.5°C hi OS", "C2"],
+        ["C3: likely 2°C", "#fca503", "#fca503", "lo 2°C", "C3"],
+        ["C4: below 2°C", "#fe5302", "#fe5302", "hi 2°C", "C4"],
+        ["C5: below 2.5°C", "red", "red", "<2.5°C", "C5"],
+        ["C6: below 3.0°C", "brown", "brown", "<3.0°C", "C6"],
+        ["C7: above 3.0°C", "purple", "purple", ">3.0°C", "C7"],
+        ["no-climate-assessment", "#eeeeee", "#999999", "nca", "NCA"],
 
         # Sectoral scenarios
-        ["policy", "#eeeeee", "#999999", "Sectoral/policy"],
-        ["reference", "#999999", "#111111", "Sectoral/ref"],
+        ["policy", "#eeeeee", "#999999", "Sectoral/policy", "P"],
+        ["reference", "#999999", "#111111", "Sectoral/ref", "R"],
     ],
-    columns=["limit", "fill", "color", "label"],
+    columns=["limit", "fill", "color", "label", "short"],
 )
 
 # Same, with overshoot
@@ -123,6 +123,12 @@ COMMON = {
         ),
         p9.labs(x=""),
         p9.theme(axis_text_x=p9.element_blank(), axis_ticks_major_x=p9.element_blank()),
+    ],
+    "x category short": [
+        p9.aes(x="category"),
+        p9.scale_x_discrete(limits=SCALE_CAT["limit"], labels=SCALE_CAT["short"]),
+        p9.labs(x=""),
+        p9.theme(axis_ticks_major_x=p9.element_blank()),
     ],
     "fill category": lambda os: p9.scale_fill_manual(
         limits=(SCALE_CAT_OS if os else SCALE_CAT)["limit"],
