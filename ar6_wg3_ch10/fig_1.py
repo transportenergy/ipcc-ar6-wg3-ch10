@@ -150,7 +150,3 @@ class Fig1(Figure):
             ]
 
         return p
-
-
-def save(options):
-    return Fig1(options).save()

@@ -145,7 +145,3 @@ class Fig6(Figure):
                 #     color="yellow",
                 # )
             )
-
-
-def save(options):
-    return Fig6(options).save()

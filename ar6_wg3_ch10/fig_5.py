@@ -205,7 +205,3 @@ class Fig5(Figure):
             ]
 
         return p
-
-
-def save(options):
-    return Fig5(options).save()

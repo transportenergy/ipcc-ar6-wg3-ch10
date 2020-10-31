@@ -117,7 +117,3 @@ class Fig3(Figure):
                 alpha=0.6,
             )
         )
-
-
-def save(options):
-    return Fig3(options).save()

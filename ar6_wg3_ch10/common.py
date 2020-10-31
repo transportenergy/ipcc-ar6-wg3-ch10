@@ -7,7 +7,6 @@ import matplotlib as mpl
 import numpy as np
 import pandas as pd
 import plotnine as p9
-import yaml
 
 log = logging.getLogger(f"root.{__name__}")
 
@@ -23,9 +22,6 @@ OUTPUT_PATH = Path("output")
 YEARS = [2020, 2030, 2050, 2100]
 
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
-
-with open(DATA_PATH / "figures.yaml") as f:
-    INFO = yaml.safe_load(f)
 
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame(
@@ -117,6 +113,7 @@ COMMON = {
         size=7,
     ),
     # Scales
+    # TODO replace these with a function that generates the desired geoms
     "x category": lambda os: [
         p9.aes(x="category"),
         p9.scale_x_discrete(
@@ -162,121 +159,8 @@ def remove_categoricals(df):
     return df.astype({c: str for c in cols})
 
 
-def figure(func):
-    """Decorator to handle common plot tasks.
-
-    Example:
-
-      @figure
-      def fig_N(data, sources)
-          # Generate plot...
-          plot.units = 'kg'
-          return plot
-
-      fig_N(options)
-
-    A method (here 'fig_N') wrapped with this decorator:
-
-    - Receives ≥2 arguments:
-      - a dict *data*, with pre-loaded data for the variables under
-        'fig_N' in figures.yaml. See inline comments in that file.
-      - a 2-tuple *sources*, indicating the original data sources for
-        IAM and sectoral models.
-      - additional keyword arguments from *options*, such as 'normalize'.
-    - Must return a plotnine.ggplot object with a 'units' attribute.
-
-    The decorated method is then called with a *different* signature, taking
-    only one argument: an optional dict of *options*. These include:
-
-    - 'load_only': if True, then the plot is not written to file. Otherwise,
-      the returned plot object is saved to 'fig_N.pdf'.
-
-    """
-    filters = dict()
-    # filters = dict(region=["World"])
-
-    # Information about the figure.
-    # NB this code is run at the moment that the function is decorated.
-    fig_id = func.__module__.split(".")[-1]
-    fig_info = INFO[fig_id]
-    var_names = fig_info["variables"]
-
-    if not fig_info.get("all years", False):
-        filters["year"] = YEARS
-
-    # Wrapped method with new signature
-    def wrapped(options={}):
-        # NB this code not run until the figure is plotted.
-        from .data import get_data, restore_dims
-
-        sources = options.pop("sources")
-
-        # Log output
-        log.info("-" * 10)
-        log.info(f"{fig_id}")
-
-        # Load IAM and iTEM data
-        data = {}
-        args = dict(variable=var_names, categories=options["categories"])
-        args.update(filters)
-        data["iam"] = (
-            get_data(source=sources[0], **args)
-            .pipe(restore_dims, fig_info.get("restore dims", None))
-            .pipe(remove_categoricals)
-        )
-        data["item"] = (
-            get_data(source=sources[1], conform_to="AR6", **args)
-            .pipe(remove_categoricals)
-        )
-
-        # Base filename
-        base_fn = f"{fig_id}-{sources[0].replace(' ', '_')}"
-
-        if fig_info.get("normalized version", False):
-            # Distinguish normalized and absolute versions in file name
-            base_fn += "-norm" if options["normalize"] else "-abs"
-
-        # Generate the plot
-        args = dict(data=data, sources=sources)
-        args["normalize"] = options["normalize"]
-        args["overshoot"] = options["categories"] == "T+os"
-        args["figure size"] = p9.theme(
-            # 190 mm, in inches; aspect ratio from figures.yaml
-            figure_size=(7.48, 7.48 * fig_info.get("aspect ratio", 1. / 1.9))
-        )
-        args["title"] = (
-            f"{fig_info['short title']} [{{units}}] ({base_fn})"
-        )
-
-        plot = func(**args)
-
-        # Save data to file.
-        # Do this before plotting, so the data can be inspected even if the
-        # plot is not constructed properly and fails.
-
-        for label, df in data.items():
-            path = OUTPUT_PATH / "data" / (base_fn + f"-{label}.csv")
-            log.info(f"Dump {len(df):5} obs to {path}")
-            df.to_csv(path)
-
-        # Save to file unless --load-only was given
-        if plot and not options["load_only"]:
-            base_fn = OUTPUT_PATH / base_fn
-
-            log.info(f"Save {base_fn.with_suffix('.pdf')}")
-
-            try:
-                # Single plot
-                plot.save(base_fn.with_suffix(".pdf"), verbose=False)
-                plot.save(base_fn.with_suffix(".png"), verbose=False, dpi=300)
-            except AttributeError:
-                # Iterator containing multiple plots
-                p9.save_as_pdf_pages(plot, base_fn.with_suffix(".pdf"), verbose=False)
-
-    return wrapped
-
-
 class Figure:
+    """Class to automate common figure/plot steps."""
     # Required
     id: str
     title: str

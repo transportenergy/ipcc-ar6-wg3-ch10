@@ -152,8 +152,7 @@ def plot(to_plot, **options):
     # Plot each figure
     for fig_id in to_plot:
         mod = import_module(f".fig_{fig_id}", package="ar6_wg3_ch10")
-        # mod.plot(options)
-        mod.save(options)
+        getattr(mod, f"Fig{fig_id}")(options).save()
 
     # # Extra plots: Render and save
     # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')

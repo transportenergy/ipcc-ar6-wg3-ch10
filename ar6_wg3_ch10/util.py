@@ -56,7 +56,6 @@ def cached(load_func):
 
         if not SKIP_CACHE and cache_path.exists():
             log.info(f"Load {short_name} from cache")
-            # return pd.read_hdf(cache_path, "cached_data")
             return pd.read_pickle(cache_path)
         else:
             log.info(f"Load {short_name} from source")
@@ -64,13 +63,6 @@ def cached(load_func):
 
             log.info(f"Store {short_name}")
             data.to_pickle(cache_path)
-            # data.to_hdf(
-            #     cache_path,
-            #     "cached_data",
-            #     complib="blosc",
-            #     complevel=9,
-            #     format="table",
-            # )
 
             return data
     return cached_load
