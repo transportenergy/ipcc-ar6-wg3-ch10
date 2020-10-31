@@ -238,6 +238,10 @@ def figure(func):
         args = dict(data=data, sources=sources)
         args["normalize"] = options["normalize"]
         args["overshoot"] = options["categories"] == "T+os"
+        args["figure size"] = p9.theme(
+            # 190 mm, in inches; aspect ratio from figures.yaml
+            figure_size=(7.48, 7.48 * fig_info.get("aspect ratio", 1. / 1.9))
+        )
         args["title"] = (
             f"{fig_info['short title']} [{{units}}] ({base_fn})"
         )
@@ -256,21 +260,13 @@ def figure(func):
         # Save to file unless --load-only was given
         if plot and not options["load_only"]:
             base_fn = OUTPUT_PATH / base_fn
-            args = dict(
-                verbose=False,
-                # TODO move dimensions to p9.theme()
-                width=190,
-                # Aspect ratio from figures.yaml
-                height=190 * fig_info.get("aspect ratio", 100 / 190),
-                units="mm",
-            )
 
             log.info(f"Save {base_fn.with_suffix('.pdf')}")
 
             try:
                 # Single plot
-                plot.save(base_fn.with_suffix(".pdf"), **args)
-                plot.save(base_fn.with_suffix(".png"), **args, dpi=300)
+                plot.save(base_fn.with_suffix(".pdf"), verbose=False)
+                plot.save(base_fn.with_suffix(".png"), verbose=False, dpi=300)
             except AttributeError:
                 # Iterator containing multiple plots
                 p9.save_as_pdf_pages(plot, base_fn.with_suffix(".pdf"), verbose=False)
