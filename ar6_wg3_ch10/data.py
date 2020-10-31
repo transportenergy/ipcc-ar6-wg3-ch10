@@ -133,7 +133,7 @@ def compute_shares(df, on, groupby=[]):
     results = []
     grouped = df.groupby(groupby) if len(groupby) else ((None, df),)
     for group, group_df in grouped:
-        tmp = group_df.set_index(id_cols + groupby)
+        tmp = group_df.set_index(id_cols)
         num = tmp[~tmp[on].isna()].set_index(on, append=True)
         denom = tmp[tmp[on].isna()]
 
