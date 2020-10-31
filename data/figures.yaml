@@ -1,22 +1,5 @@
 # Configuration for figures
 
-fig_2:
-  short title: Transport activity — {{group}}
-  normalized version: true
-  variables:
-  # - Population  # for per-capita calculation
-  - Energy Service|Transportation|Freight
-  - Energy Service|Transportation|Passenger
-  # Regular expression. Captured groups '(?P<name>...)' are added as new
-  # columns in the loaded data.
-  restore dims: 'Energy Service\|Transportation\|(?P<type>Freight|Passenger)'
-  # Width / height
-  aspect ratio: 1
-  caption: |
-    Global passenger (billion p-km/yr) and freight (billion t-km/yr) demand projections, 2020 index, based on integrated models for selected stabilization temperatures by 2100.
-    Also included are global transport models Ref and Policy scenarios.
-
-
 fig_3:
   short title: Mode shares of transport activity
   all years: true

@@ -293,7 +293,8 @@ class Figure:
     filters = dict()
     #: :obj:`True` to load data for all years, not merely :data:`YEARS`.
     all_years = False
-    #: Regular expression to unpack dimensions from variable names.
+    #: Regular expression to unpack dimensions from variable names. Captured groups
+    #: '(?P<name>...)' are added as new columns in the loaded data.
     restore_dims = None
     #: :mod:`plotnine` geoms/layers to add to all plots.
     geoms = []
