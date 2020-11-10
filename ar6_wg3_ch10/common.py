@@ -1,3 +1,4 @@
+"""Common codes for plotting."""
 import logging
 from abc import abstractmethod
 from pathlib import Path
@@ -25,30 +26,28 @@ DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame(
-    [
+    columns=["short", "limit", "fill", "color", "label"],
+    data=[
         # # Earlier categorization
         # ["Below 1.6C", "green", "green", "<1.6°C"],
         # ["1.6 - 2.0C", "#fca503", "#fca503", "1.6–2°C"],
         # ["2.0 - 2.5C", "#ca34de", "#ca34de", "2–2.5°C"],
         # ["2.5 - 3.5C", "red", "red", "2.5–3.5°C"],
         # ["Above 3.5C", "brown", "brown", ">3.5°C"],
-
         # Current categorization
-        ["C0: 1.5°C with no OS", "green", "green", "1.5°C no OS", "C0"],
-        ["C1: 1.5°C with no or low OS1.6", "green", "green", "1.5°C lo OS", "C1"],
-        ["C2: 1.5°C with high OS_1.6", "green", "green", "1.5°C hi OS", "C2"],
-        ["C3: likely 2°C", "#fca503", "#fca503", "lo 2°C", "C3"],
-        ["C4: below 2°C", "#fe5302", "#fe5302", "hi 2°C", "C4"],
-        ["C5: below 2.5°C", "red", "red", "<2.5°C", "C5"],
-        ["C6: below 3.0°C", "brown", "brown", "<3.0°C", "C6"],
-        ["C7: above 3.0°C", "purple", "purple", ">3.0°C", "C7"],
-        ["no-climate-assessment", "#eeeeee", "#999999", "nca", "NCA"],
-
+        ["C0", "C0: 1.5°C with no OS", "green", "green", "1.5°C no OS"],
+        ["C1", "C1: 1.5°C with no or low OS1.6", "green", "green", "1.5°C lo OS"],
+        ["C2", "C2: 1.5°C with high OS_1.6", "green", "green", "1.5°C hi OS"],
+        ["C3", "C3: likely 2°C", "#fca503", "#fca503", "lo 2°C"],
+        ["C4", "C4: below 2°C", "#fe5302", "#fe5302", "hi 2°C"],
+        ["C5", "C5: below 2.5°C", "red", "red", "<2.5°C"],
+        ["C6", "C6: below 3.0°C", "brown", "brown", "<3.0°C"],
+        ["C7", "C7: above 3.0°C", "purple", "purple", ">3.0°C"],
+        ["NCA", "no-climate-assessment", "#eeeeee", "#999999", "nca"],
         # Sectoral scenarios
-        ["policy", "#eeeeee", "#999999", "Sectoral/policy", "P"],
-        ["reference", "#999999", "#111111", "Sectoral/ref", "R"],
+        ["P", "policy", "#eeeeee", "#999999", "Sectoral/policy"],
+        ["R", "reference", "#999999", "#111111", "Sectoral/ref"],
     ],
-    columns=["limit", "fill", "color", "label", "short"],
 )
 
 # Same, with overshoot
@@ -56,8 +55,8 @@ SCALE_CAT_OS = pd.concat(
     [
         SCALE_CAT.loc[:0, :],
         pd.DataFrame(
-            [["Below 1.6C OS", "green", "green", "<1.6°C*"]],
-            columns=["limit", "fill", "color", "label"],
+            [["CX", "Below 1.6C OS", "green", "green", "<1.6°C*"]],
+            columns=["short", "limit", "fill", "color", "label"],
         ),
         SCALE_CAT.loc[1:, :],
     ],
@@ -66,14 +65,14 @@ SCALE_CAT_OS = pd.concat(
 
 
 SCALE_FUEL = pd.DataFrame(
-    [
+    columns=["limit", "fill", "label"],
+    data=[
         ["Liquids|Oil", "#f7a800", "Oil"],
         ["Liquids|Biomass", "#de4911", "Biofuels"],
         ["Gases", "#9e2b18", "Gas"],
         ["Electricity", "#9fca71", "Electricity"],
         ["Hydrogen", "#59a431", "Hydrogen"],
     ],
-    columns=["limit", "fill", "label"],
 )
 
 
@@ -113,34 +112,6 @@ COMMON = {
         size=7,
     ),
     # Scales
-    # TODO replace these with a function that generates the desired geoms
-    "x category": lambda os: [
-        p9.aes(x="category"),
-        p9.scale_x_discrete(
-            limits=(SCALE_CAT_OS if os else SCALE_CAT)["limit"],
-            labels=(SCALE_CAT_OS if os else SCALE_CAT)["label"],
-        ),
-        p9.labs(x=""),
-        p9.theme(axis_text_x=p9.element_blank(), axis_ticks_major_x=p9.element_blank()),
-    ],
-    "x category short": [
-        p9.aes(x="category"),
-        p9.scale_x_discrete(limits=SCALE_CAT["limit"], labels=SCALE_CAT["short"]),
-        p9.labs(x=""),
-        p9.theme(axis_ticks_major_x=p9.element_blank()),
-    ],
-    "fill category": lambda os: p9.scale_fill_manual(
-        limits=(SCALE_CAT_OS if os else SCALE_CAT)["limit"],
-        values=(SCALE_CAT_OS if os else SCALE_CAT)["fill"],
-        labels=(SCALE_CAT_OS if os else SCALE_CAT)["label"],
-    ),
-    "color category": lambda os: [
-        p9.aes(color="category"),
-        p9.scale_color_manual(
-            limits=(SCALE_CAT_OS if os else SCALE_CAT)["limit"],
-            values=(SCALE_CAT_OS if os else SCALE_CAT)["color"],
-        ),
-    ],
     "x year": [
         p9.aes(x="year"),
         p9.scale_x_continuous(
@@ -159,8 +130,38 @@ def remove_categoricals(df):
     return df.astype({c: str for c in cols})
 
 
+def scale_category(aesthetic, overshoot=False, short_label=False):
+    """Generate scales based on the AR6 categories, with options."""
+    data = SCALE_CAT_OS if overshoot else SCALE_CAT
+
+    label_col = "short" if short_label else "label"
+
+    if aesthetic == "x":
+        theme_kwarg = dict() if short_label else dict(axis_text_x=p9.element_blank())
+        return [
+            p9.aes(x="category"),
+            p9.scale_x_discrete(limits=data["limit"], labels=data[label_col]),
+            p9.labs(x=""),
+            p9.theme(axis_ticks_major_x=p9.element_blank(), **theme_kwarg),
+        ]
+    elif aesthetic == "fill":
+        return [
+            p9.scale_fill_manual(
+                limits=data["limit"], values=data["fill"], labels=data["label"]
+            )
+        ]
+    elif aesthetic == "color":
+        return [
+            p9.aes(color="category"),
+            p9.scale_color_manual(limits=data["limit"], values=data["color"]),
+        ]
+    else:
+        raise ValueError(aesthetic)
+
+
 class Figure:
     """Class to automate common figure/plot steps."""
+
     # Required
     id: str
     title: str
@@ -183,7 +184,7 @@ class Figure:
     #: :mod:`plotnine` geoms/layers to add to all plots.
     geoms = []
     #: Aspect ratio for output
-    aspect_ratio = 1. / 1.9
+    aspect_ratio = 1.0 / 1.9
 
     def __init__(self, options: Dict):
         # Log output
@@ -228,9 +229,8 @@ class Figure:
             .pipe(remove_categoricals)
         )
         # Load iTEM data
-        data["item"] = (
-            get_data(source=self.sources[1], conform_to="AR6", **args)
-            .pipe(remove_categoricals)
+        data["item"] = get_data(source=self.sources[1], conform_to="AR6", **args).pipe(
+            remove_categoricals
         )
 
         # Use a subclass method to further prepare data
