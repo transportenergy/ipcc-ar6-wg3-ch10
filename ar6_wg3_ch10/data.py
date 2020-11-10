@@ -88,7 +88,7 @@ def compute_descriptives(df, on=["variable"], groupby=[]):
 def compute_ratio(df, num, denom, groupby=[]):
     log.info(f"Compute ratio of {num!r} / {denom!r} from {len(df)} obs")
 
-    id_cols = ["model", "scenario", "version", "region", "year"]
+    id_cols = ["model", "scenario", "region", "year"]
     results = []
     for group, group_df in df.groupby(groupby):
         tmp = {}

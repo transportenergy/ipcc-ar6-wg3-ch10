@@ -81,7 +81,7 @@
 
 - AR6:  Final Energy|Transportation|Passenger
   iTEM MIP2:
-    select: { variable: ['energy'], fuel: ['Total Liquids']}
+    select: { variable: ['energy'] }
     scale: 1e-3  # PJ/year → EJ/year
 
 - AR6:  Final Energy|Transportation|Natural Gas
