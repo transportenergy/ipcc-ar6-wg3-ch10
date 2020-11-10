@@ -142,9 +142,9 @@ def remove_categoricals(df):
     return df.astype({c: str for c in cols})
 
 
-def scale_category(aesthetic, plot=object(), **options):
+def scale_category(aesthetic, plot=None, **options):
     """Generate scales based on the AR6 categories, with options."""
-    options = ChainMap(plot.__dict__, options)
+    options = ChainMap(getattr(plot, "__dict__", {}), options)
 
     data = SCALE_CAT_OS if options.get("overshoot", False) else SCALE_CAT
 
@@ -209,20 +209,20 @@ class Figure:
     def __init__(self, options: Dict):
         # Log output
         log.info("-" * 10)
-        log.info(f"{self.id}: {self.title}")
+        log.info(f"{self.__class__.__name__}: {self.title}")
 
         # Update properties from options
         self.__dict__.update(options)
 
         # Base filename
-        self.base_fn = "_".join([
-            self.id.replace('_', '-'),
+        self.base_fn = "-".join([
+            self.__class__.__name__.lower(),
             self.sources[0].replace(' ', '-'),
             self.sources[1].replace(' ', '-'),
         ])
         if self.normalized_version and not self.normalize:
             # Distinguish normalized and absolute versions in file name
-            self.base_fn += "_absolute"
+            self.base_fn += "-absolute"
 
         # Set filters based on all years property.
         if not self.all_years:

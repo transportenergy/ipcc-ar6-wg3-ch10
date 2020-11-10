@@ -30,7 +30,6 @@ STATIC = (
 
 
 class Fig3(Figure):
-    id = "fig_3"
     title = "Mode shares of transport activity"
     caption = """
       Global passenger (billion p-km/yr) and freight (billion t-km/yr) demand

@@ -62,16 +62,12 @@ STATIC = (
         p9.guides(color=None),
         # Appearance
         COMMON["theme"],
-        p9.theme(
-            axis_text_x=p9.element_text(size=7),
-            panel_grid_major_x=p9.element_blank(),
-        ),
+        p9.theme(panel_grid_major_x=p9.element_blank()),
     ]
 )
 
 
 class Fig5(Figure):
-    id = "fig_5"
     title = "Fuel shares of transport final energy — {{group}}"
     caption = """
         Based on integrated models grouped by CO2eq concentration levels by 2100 and

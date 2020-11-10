@@ -31,7 +31,6 @@ STATIC = (
 
 
 class Fig1(Figure):
-    id = "fig_1"
     title = "Direct transport CO₂ emissions — {{group}}"
     caption = """
       IAM results are grouped by temperature targets. Sectoral studies are grouped by

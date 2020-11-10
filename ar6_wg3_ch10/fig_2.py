@@ -30,7 +30,6 @@ STATIC = (
 
 
 class Fig2(Figure):
-    id = "fig_2"
     title = "Transport activity — {{group}}"
     caption = """
       Global passenger (billion p-km/yr) and freight (billion t-km/yr) demand
@@ -113,9 +112,9 @@ class Fig2(Figure):
             + p9.ggtitle(self.formatted_title.format(group=group))
             + self.geoms
             # Aesthetics and scales
-            + scale_category("x", overshoot=self.overshoot)
-            + scale_category("color", overshoot=self.overshoot)
-            + scale_category("fill", overshoot=self.overshoot)
+            + scale_category("x", self, short_label=True)
+            + scale_category("color", self)
+            + scale_category("fill", self)
             # Points for indicator scenarios
             + p9.geom_point(
                 p9.aes(y="value", shape="scenario"),

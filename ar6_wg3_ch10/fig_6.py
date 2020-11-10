@@ -47,7 +47,6 @@ STATIC = (
 
 
 class Fig6(Figure):
-    id = "fig_6"
     title = "Transport activity by mode — {{group}}"
     normalized_version = True
 

@@ -34,7 +34,6 @@ STATIC = (
 
 
 class Fig4(Figure):
-    id = "fig_4"
     title = "Energy intensity of transport — {{group}}"
 
     # Data preparation
