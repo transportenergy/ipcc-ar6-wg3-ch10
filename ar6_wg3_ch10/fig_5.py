@@ -11,59 +11,63 @@ log = logging.getLogger(__name__)
 
 
 # Non-dynamic features of fig_5
-STATIC = [
-    # Horizontal panels by 'year'
-    p9.facet_wrap("year", nrow=3),
-    # Aesthetics and scales
-    ] + COMMON["x category short"] + [
-    p9.aes(color="fuel"),
-    p9.scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
-    p9.scale_color_manual(
-        limits=SCALE_FUEL["limit"],
-        values=SCALE_FUEL["fill"],
-        labels=SCALE_FUEL["label"],
-    ),
-    p9.scale_fill_manual(
-        limits=SCALE_FUEL["limit"],
-        values=SCALE_FUEL["fill"],
-        labels=SCALE_FUEL["label"],
-    ),
-    # Geoms
-    # Like COMMON['ranges'], with fill='fuel', position='dodge' and no width=
-    p9.geom_crossbar(
-        p9.aes(ymin="min", y="50%", ymax="max", group="fuel"),
-        position="dodge",
-        color="black",
-        fill="white",
-        width=0.9,
-    ),
-    p9.geom_crossbar(
-        p9.aes(ymin="25%", y="50%", ymax="75%", fill="fuel"),
-        position="dodge",
-        color="black",
-        width=0.9,
-    ),
-    # # Like COMMON['counts'], except color is 'fuel'
-    # p9.geom_text(
-    #     p9.aes(label="count", y=-0.01, angle=45, color="fuel"),
-    #     position=p9.position_dodge(width=0.9),
-    #     # commented: this step is extremely slow
-    #     # adjust_text=dict(autoalign=True),
-    #     format_string="{:.0f}",
-    #     va="top",
-    #     size=3,
-    # ),
-    # Axis labels
-    p9.labs(y="", fill="Energy carrier"),
-    # Hide legend for 'color'
-    p9.guides(color=None),
-    # Appearance
-    COMMON["theme"],
-    p9.theme(
-        axis_text_x=p9.element_text(size=7),
-        panel_grid_major_x=p9.element_blank(),
-    ),
-]
+STATIC = (
+    [
+        # Horizontal panels by 'year'
+        p9.facet_wrap("year", nrow=3),
+        # Aesthetics and scales
+    ]
+    + COMMON["x category short"]
+    + [
+        p9.aes(color="fuel"),
+        p9.scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
+        p9.scale_color_manual(
+            limits=SCALE_FUEL["limit"],
+            values=SCALE_FUEL["fill"],
+            labels=SCALE_FUEL["label"],
+        ),
+        p9.scale_fill_manual(
+            limits=SCALE_FUEL["limit"],
+            values=SCALE_FUEL["fill"],
+            labels=SCALE_FUEL["label"],
+        ),
+        # Geoms
+        # Like COMMON['ranges'], with fill='fuel', position='dodge' and no width=
+        p9.geom_crossbar(
+            p9.aes(ymin="min", y="50%", ymax="max", group="fuel"),
+            position="dodge",
+            color="black",
+            fill="white",
+            width=0.9,
+        ),
+        p9.geom_crossbar(
+            p9.aes(ymin="25%", y="50%", ymax="75%", fill="fuel"),
+            position="dodge",
+            color="black",
+            width=0.9,
+        ),
+        # # Like COMMON['counts'], except color is 'fuel'
+        # p9.geom_text(
+        #     p9.aes(label="count", y=-0.01, angle=45, color="fuel"),
+        #     position=p9.position_dodge(width=0.9),
+        #     # commented: this step is extremely slow
+        #     # adjust_text=dict(autoalign=True),
+        #     format_string="{:.0f}",
+        #     va="top",
+        #     size=3,
+        # ),
+        # Axis labels
+        p9.labs(y="", fill="Energy carrier"),
+        # Hide legend for 'color'
+        p9.guides(color=None),
+        # Appearance
+        COMMON["theme"],
+        p9.theme(
+            axis_text_x=p9.element_text(size=7),
+            panel_grid_major_x=p9.element_blank(),
+        ),
+    ]
+)
 
 
 class Fig5(Figure):
@@ -108,7 +112,8 @@ class Fig5(Figure):
     def prepare_data(self, data):
         # Compute fuel shares by type for IAM scenarios
         data["iam"] = (
-            data["iam"].pipe(compute_shares, on="fuel", groupby=["region"])
+            data["iam"]
+            .pipe(compute_shares, on="fuel", groupby=["region"])
             .assign(variable="Fuel share")
         )
 

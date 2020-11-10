@@ -23,9 +23,7 @@ def _start_log():
 
 
 @click.group()
-@click.option(
-    "--skip-cache", is_flag=True, help="Don't use cached intermediate data."
-)
+@click.option("--skip-cache", is_flag=True, help="Don't use cached intermediate data.")
 @click.option(
     "--verbose", is_flag=True, help="Also print DEBUG log messages to stdout."
 )
@@ -44,6 +42,7 @@ def cli(skip_cache, verbose):
 
     if skip_cache:
         import util
+
         util.SKIP_CACHE = True
 
 
@@ -108,9 +107,9 @@ def debug():
 @click.option("--categories", type=click.Choice(["T", "T+os"]), default="T")
 @click.option(
     "--ar6-data",
-    type=click.Choice([
-        "", "snapshot", "snapshot R5", "snapshot R10", "snapshot country",
-    ]),
+    type=click.Choice(
+        ["", "snapshot", "snapshot R5", "snapshot R10", "snapshot country"]
+    ),
     help="Source or snapshot of AR6 data.",
 )
 @click.option(

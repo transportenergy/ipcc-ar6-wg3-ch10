@@ -33,7 +33,9 @@ class BaseClient(ABC):
     def get(self, *endpoint, params={}, headers={}):
         """Execute a GET request against *endpoint*, with auth."""
         response = requests.get(
-            url=self.url(*endpoint), params=params, headers=self.with_token(headers),
+            url=self.url(*endpoint),
+            params=params,
+            headers=self.with_token(headers),
         )
         response.raise_for_status()
         return response.json()
@@ -104,7 +106,8 @@ class AppClient(BaseClient):
     def runs(self, get_only_default_runs=True):
         """List of model runs."""
         return self.get(
-            "runs", params={"getOnlyDefaultRuns": str(get_only_default_runs).lower()},
+            "runs",
+            params={"getOnlyDefaultRuns": str(get_only_default_runs).lower()},
         )
 
     def runs_bulk_ts(self, **filters):

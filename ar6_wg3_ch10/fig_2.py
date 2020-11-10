@@ -23,7 +23,7 @@ STATIC = (
         p9.labs(y="", fill="IAM/sectoral scenarios", shape="Indicator scenario"),
         # Appearance
         COMMON["theme"],
-        p9.theme(panel_grid_major_x=p9.element_blank(),),
+        p9.theme(panel_grid_major_x=p9.element_blank()),
         p9.guides(color=None),
     ]
 )
@@ -83,7 +83,7 @@ class Fig2(Figure):
         if self.normalize:
             scale_y = [
                 p9.scale_y_continuous(limits=(-0.2, 4.8), minor_breaks=4),
-                p9.expand_limits(y=[0])
+                p9.expand_limits(y=[0]),
             ]
             units = "Index, 2020 level = 1.0"
         else:
@@ -143,7 +143,7 @@ class Fig2(Figure):
                     size=1,
                     shape="x",
                     fill=None,
-                )
+                ),
             ]
 
         return p

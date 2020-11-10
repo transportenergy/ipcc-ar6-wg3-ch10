@@ -15,6 +15,7 @@ SKIP_CACHE = False
 
 class PathEncoder(json.JSONEncoder):
     """JSON Encoder that handles pathlib.Path; used by _arg_hash."""
+
     def default(self, o):
         if isinstance(o, pathlib.Path):
             return str(o)
@@ -25,7 +26,7 @@ class PathEncoder(json.JSONEncoder):
 def _arg_hash(*args, **kwargs):
     """Return a unique hash for *args, **kwargs; used by cached."""
     if len(args) + len(kwargs) == 0:
-        unique = ''
+        unique = ""
     else:
         unique = json.dumps(args, cls=PathEncoder) + json.dumps(kwargs, cls=PathEncoder)
 
@@ -65,6 +66,7 @@ def cached(load_func):
             data.to_pickle(cache_path)
 
             return data
+
     return cached_load
 
 

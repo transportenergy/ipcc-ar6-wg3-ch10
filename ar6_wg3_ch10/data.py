@@ -309,6 +309,7 @@ def get_data(
         result = _raw_local_data(DATA_PATH / LOCAL_DATA[source], tuple(id_vars))
     elif source in REMOTE_DATA:
         from cache import load_csv
+
         # Load data from cache
         result = load_csv(source, filters)
         log.info(f"  done; {len(result)} observations.")
@@ -409,9 +410,7 @@ def select_indicator_scenarios(df):
     info = _ar6_scen_info()
     return df.pipe(
         _filter,
-        dict(
-            model=[s["model"] for s in info], scenario=[s["scenario"] for s in info],
-        )
+        dict(model=[s["model"] for s in info], scenario=[s["scenario"] for s in info]),
     )
 
 

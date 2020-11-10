@@ -77,7 +77,7 @@ plot_common = [
     p9.geom_vline(xintercept=7.5, color="#bbbbbb"),
     p9.geom_vline(xintercept=8.5, color="#999999"),
     # Counts of number of scenarios included
-    p9.geom_text(p9.aes(label="count", y="max"), format_string="{:.0f}", va="bottom",),
+    p9.geom_text(p9.aes(label="count", y="max"), format_string="{:.0f}", va="bottom"),
     # x-scale order and labels. Use 'expand' to leave room on right for iTEM2
     p9.scale_x_discrete(
         limits=cat_meta["category"], labels=cat_meta["label"], expand=(0, 0.5, 0, 1)

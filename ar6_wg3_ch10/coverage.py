@@ -10,8 +10,7 @@ def checks_from_file(dump_path=None):
     for info in yaml.safe_load(open(DATA_PATH / "coverage-checks.yaml")):
         note = info.pop("_note", "(none)")
         lines = [
-            "---"
-            f"\nCoverage of {info!r}",
+            "---" f"\nCoverage of {info!r}",
             f"Note: {note}",
         ]
 

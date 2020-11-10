@@ -24,7 +24,7 @@ STATIC = (
         p9.labs(y="", fill="IAM/sectoral scenarios"),
         # Appearance
         COMMON["theme"],
-        p9.theme(panel_grid_major_x=p9.element_blank(),),
+        p9.theme(panel_grid_major_x=p9.element_blank()),
         p9.guides(color=None),
     ]
 )
@@ -126,7 +126,7 @@ class Fig1(Figure):
                     size=1,
                     fill=None,
                 ),
-                p9.labs(shape="Indicator scenario")
+                p9.labs(shape="Indicator scenario"),
             ]
 
         if len(data[2]):
@@ -146,7 +146,7 @@ class Fig1(Figure):
                     size=1,
                     shape="x",
                     fill=None,
-                )
+                ),
             ]
 
         return p
