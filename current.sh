@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 
 python3 ar6_wg3_ch10 plot --ar6-data="world" 1
 python3 ar6_wg3_ch10 plot --ar6-data="R5" 1
