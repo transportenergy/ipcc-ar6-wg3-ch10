@@ -1,6 +1,7 @@
 """Common codes for plotting."""
 import logging
 from abc import abstractmethod
+from collections import ChainMap
 from pathlib import Path
 from typing import Dict, List, Sequence
 
@@ -26,7 +27,7 @@ DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
 # Scale for scenario categories
 SCALE_CAT = pd.DataFrame(
-    columns=["short", "limit", "fill", "color", "label"],
+    columns=["short", "limit", "label", "fill", "color"],
     data=[
         # # Earlier categorization
         # ["Below 1.6C", "green", "green", "<1.6°C"],
@@ -35,18 +36,24 @@ SCALE_CAT = pd.DataFrame(
         # ["2.5 - 3.5C", "red", "red", "2.5–3.5°C"],
         # ["Above 3.5C", "brown", "brown", ">3.5°C"],
         # Current categorization
-        ["C0", "C0: 1.5°C with no OS", "green", "green", "1.5°C no OS"],
-        ["C1", "C1: 1.5°C with no or low OS1.6", "green", "green", "1.5°C lo OS"],
-        ["C2", "C2: 1.5°C with high OS_1.6", "green", "green", "1.5°C hi OS"],
-        ["C3", "C3: likely 2°C", "#fca503", "#fca503", "lo 2°C"],
-        ["C4", "C4: below 2°C", "#fe5302", "#fe5302", "hi 2°C"],
-        ["C5", "C5: below 2.5°C", "red", "red", "<2.5°C"],
-        ["C6", "C6: below 3.0°C", "brown", "brown", "<3.0°C"],
-        ["C7", "C7: above 3.0°C", "purple", "purple", ">3.0°C"],
-        ["NCA", "no-climate-assessment", "#eeeeee", "#999999", "nca"],
+        ["C0", "C0: 1.5°C with no OS", "C0: 1.5°C no OS", "darkgreen", "darkgreen"],
+        ["C1", "C1: 1.5°C with no or low OS1.6", "C1: 1.5°C lo OS", "green", "green"],
+        [
+            "C2",
+            "C2: 1.5°C with high OS_1.6",
+            "C2: 1.5°C hi OS",
+            "yellowgreen",
+            "yellowgreen",
+        ],
+        ["C3", "C3: likely 2°C", "C3: lo 2°C", "#fca503", "#fca503"],
+        ["C4", "C4: below 2°C", "C4: hi 2°C", "#fe5302", "#fe5302"],
+        ["C5", "C5: below 2.5°C", "C5: <2.5°C", "red", "red"],
+        ["C6", "C6: below 3.0°C", "C6: <3.0°C", "brown", "brown"],
+        ["C7", "C7: above 3.0°C", "C7: >3.0°C", "purple", "purple"],
+        ["NCA", "no-climate-assessment", "No assessment", "#eeeeee", "#999999"],
         # Sectoral scenarios
-        ["P", "policy", "#eeeeee", "#999999", "Sectoral/policy"],
-        ["R", "reference", "#999999", "#111111", "Sectoral/ref"],
+        ["P", "policy", "Sectoral/policy", "#eeeeee", "#999999"],
+        ["R", "reference", "Sectoral/ref", "#999999", "#111111"],
     ],
 )
 
@@ -55,8 +62,8 @@ SCALE_CAT_OS = pd.concat(
     [
         SCALE_CAT.loc[:0, :],
         pd.DataFrame(
-            [["CX", "Below 1.6C OS", "green", "green", "<1.6°C*"]],
-            columns=["short", "limit", "fill", "color", "label"],
+            [["CX", "CX: Below 1.6C OS", "CX: <1.6°C*", "green", "green"]],
+            columns=["short", "limit", "label", "fill", "color"],
         ),
         SCALE_CAT.loc[1:, :],
     ],
@@ -124,16 +131,28 @@ COMMON = {
 }
 
 
+def maybe_drop_nca(df, include_nca):
+    """Remove data with no climate assessment from `df`."""
+    return df if include_nca else df.query("category != 'no-climate-assessment'")
+
+
 def remove_categoricals(df):
     """Convert categorical columns in `df` to string."""
     cols = [n for n, dt in df.dtypes.items() if isinstance(dt, pd.CategoricalDtype)]
     return df.astype({c: str for c in cols})
 
 
-def scale_category(aesthetic, overshoot=False, short_label=False):
+def scale_category(aesthetic, plot=object(), **options):
     """Generate scales based on the AR6 categories, with options."""
-    data = SCALE_CAT_OS if overshoot else SCALE_CAT
+    options = ChainMap(plot.__dict__, options)
 
+    data = SCALE_CAT_OS if options.get("overshoot", False) else SCALE_CAT
+
+    if not options.get("include_nca", False):
+        # Remove no-climate-assessment point on scale
+        data = data.query("short != 'NCA'").reset_index(drop=True)
+
+    short_label = options.get("short_label", False)
     label_col = "short" if short_label else "label"
 
     if aesthetic == "x":
@@ -147,7 +166,7 @@ def scale_category(aesthetic, overshoot=False, short_label=False):
     elif aesthetic == "fill":
         return [
             p9.scale_fill_manual(
-                limits=data["limit"], values=data["fill"], labels=data["label"]
+                limits=data["limit"], values=data["fill"], labels=data[label_col]
             )
         ]
     elif aesthetic == "color":
@@ -174,6 +193,7 @@ class Figure:
     # Optional
     #: :obj:`True` if the figure respects a "normalize" option.
     normalized_version = False
+    normalize = True
     #: Filters for loading data
     filters = dict()
     #: :obj:`True` to load data for all years, not merely :data:`YEARS`.
@@ -195,10 +215,14 @@ class Figure:
         self.__dict__.update(options)
 
         # Base filename
-        self.base_fn = f"{self.id}-{self.sources[0].replace(' ', '_')}"
-        if self.normalized_version:
+        self.base_fn = "_".join([
+            self.id.replace('_', '-'),
+            self.sources[0].replace(' ', '-'),
+            self.sources[1].replace(' ', '-'),
+        ])
+        if self.normalized_version and not self.normalize:
             # Distinguish normalized and absolute versions in file name
-            self.base_fn += "-norm" if options.get("normalize", True) else "-abs"
+            self.base_fn += "_absolute"
 
         # Set filters based on all years property.
         if not self.all_years:
@@ -222,11 +246,15 @@ class Figure:
         args = dict(variable=self.variables, categories=self.categories)
         args.update(self.filters)
 
-        # Load IAM data
+        # - Load IAM data.
+        # - Restore additional dimensions, according to class properties.
+        # - Remove categorical columns.
+        # - Drop NCA data, according to (command-line) option.
         data["iam"] = (
             get_data(source=self.sources[0], **args)
             .pipe(restore_dims, self.restore_dims)
             .pipe(remove_categoricals)
+            .pipe(maybe_drop_nca, self.include_nca)
         )
         # Load iTEM data
         data["item"] = get_data(source=self.sources[1], conform_to="AR6", **args).pipe(
@@ -238,7 +266,7 @@ class Figure:
 
         # Dump data for reference
         for label, df in self.data.items():
-            path = OUTPUT_PATH / "data" / f"{self.base_fn}-{label}.csv"
+            path = OUTPUT_PATH / "data" / f"{self.base_fn}_{label}.csv"
             log.info(f"Dump {len(df):5} obs to {path}")
             df.to_csv(path)
 

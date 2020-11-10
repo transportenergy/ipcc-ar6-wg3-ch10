@@ -3,7 +3,7 @@ import logging
 import numpy as np
 import plotnine as p9
 
-from .common import COMMON, SCALE_FUEL, Figure
+from .common import COMMON, SCALE_FUEL, Figure, scale_category
 from .data import compute_descriptives, compute_shares, select_indicator_scenarios
 from .util import groupby_multi
 
@@ -17,7 +17,7 @@ STATIC = (
         p9.facet_wrap("year", nrow=3),
         # Aesthetics and scales
     ]
-    + COMMON["x category short"]
+    + scale_category("x", short_label=True)
     + [
         p9.aes(color="fuel"),
         p9.scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),

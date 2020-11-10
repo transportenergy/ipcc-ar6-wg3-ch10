@@ -111,9 +111,9 @@ class Fig1(Figure):
             + p9.ggtitle(self.formatted_title.format(group=group))
             + self.geoms
             # Aesthetics and scales
-            + scale_category("x", overshoot=self.overshoot)
-            + scale_category("color", overshoot=self.overshoot)
-            + scale_category("fill", overshoot=self.overshoot)
+            + scale_category("x", self, short_label=True)
+            + scale_category("color", self)
+            + scale_category("fill", self)
         )
 
         if len(data[1]):

@@ -102,15 +102,20 @@ def debug():
 
 @cli.command()
 @click.option(
-    "--normalize", is_flag=True, default=False, help="Normalize ordinate to 2020."
+    "--normalize", is_flag=True, default=True, help="Normalize ordinate to 2020."
 )
 @click.option("--categories", type=click.Choice(["T", "T+os"]), default="T")
 @click.option(
+    "--include-nca",
+    is_flag=True,
+    default=False,
+    help="Include scenarios with no climate assessment (default: False)",
+)
+@click.option(
     "--ar6-data",
-    type=click.Choice(
-        ["", "snapshot", "snapshot R5", "snapshot R10", "snapshot country"]
-    ),
-    help="Source or snapshot of AR6 data.",
+    type=click.Choice(["world", "R5", "R10", "country", "raw"]),
+    default="world",
+    help="Source for IPCC AR6 data.",
 )
 @click.option(
     "--item-data",
@@ -127,16 +132,7 @@ def debug():
 def plot(to_plot, **options):
     """Plot figures, writing to output/.
 
-    FIGURES is a sequence of ints, e.g. 1 4 5 to plot figures 1, 4, and 5.
-
-    \b
-    --categories controls the grouping of IAM scenarios:
-    - 'T': five categories by temperature in 2100, using the WGIII-wide
-           indicator 'Temperature-in-2100_bin'
-    - 'T+os': six categories by two criteria: temperature in 2100, as above;
-              and, for *only* the lowest bin ('Below 1.6C'), additional
-              subdivision based on whether temperature overshoot occurs, i.e. a
-              value in 'overshoot years|1.5°C'.
+    FIGURES is a sequence of ints, e.g. "1 4 5" to plot figures 1, 4, and 5.
 
     Options --normalize and --categories do not affect the appearance of every
     figure.
@@ -144,8 +140,7 @@ def plot(to_plot, **options):
     _start_log()
 
     options["sources"] = (
-        " ".join(filter(None, ["AR6", options.pop("ar6_data")])),
-        f"iTEM {options.pop('item_data')}",
+        f"AR6 {options.pop('ar6_data')}", f"iTEM {options.pop('item_data')}"
     )
 
     # Plot each figure
