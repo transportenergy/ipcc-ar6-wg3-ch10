@@ -3,7 +3,7 @@ import logging
 import plotnine as p9
 
 from .data import compute_descriptives, normalize_if, select_indicator_scenarios
-from .common import COMMON, Figure
+from .common import COMMON, Figure, scale_category
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
@@ -113,9 +113,9 @@ class Fig2(Figure):
             + p9.ggtitle(self.formatted_title.format(group=group))
             + self.geoms
             # Aesthetics and scales
-            + COMMON["x category"](self.overshoot)
-            + COMMON["color category"](self.overshoot)
-            + COMMON["fill category"](self.overshoot)
+            + scale_category("x", overshoot=self.overshoot)
+            + scale_category("color", overshoot=self.overshoot)
+            + scale_category("fill", overshoot=self.overshoot)
             # Points for indicator scenarios
             + p9.geom_point(
                 p9.aes(y="value", shape="scenario"),

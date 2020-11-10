@@ -4,7 +4,7 @@ import pandas as pd
 import plotnine as p9
 
 from .data import compute_descriptives, normalize_if, select_indicator_scenarios
-from .common import COMMON, Figure
+from .common import COMMON, Figure, scale_category
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
@@ -137,8 +137,8 @@ class Fig6(Figure):
                 p9.ggplot(data=d[0])
                 + p9.ggtitle(self.formatted_title.format(group=group))
                 + STATIC
-                + COMMON["color category"](self.overshoot)
-                + COMMON["fill category"](self.overshoot)
+                + scale_category("color", overshoot=self.overshoot)
+                + scale_category("fill", overshoot=self.overshoot)
                 # + p9.geom_line(
                 #     p9.aes(x="year", y="value"),
                 #     d[1],
