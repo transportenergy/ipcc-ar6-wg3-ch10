@@ -1,20 +1,28 @@
-import pandas as pd
 import yaml
 
 from data import DATA_PATH, get_data
 
 
-def checks_from_file(dump_path=None):
-    dfs = []
+def run_checks(from_file=True, dump_path=None):
+    # Determine variables to check
+    if from_file:
+        checks = yaml.safe_load(open(DATA_PATH / "coverage-checks.yaml"))
+    else:
+        variables = (DATA_PATH / "variables-AR6.txt").read_text().split("\n")
+        checks = list(map(lambda v: dict(variable=[v]), variables))
 
-    for info in yaml.safe_load(open(DATA_PATH / "coverage-checks.yaml")):
-        note = info.pop("_note", "(none)")
-        lines = [
-            "---" f"\nCoverage of {info!r}",
-            f"Note: {note}",
-        ]
+    N = len(checks)
 
-        for source in "AR6", "iTEM MIP2":
+    for i, info in enumerate(checks):
+        lines = [f"--- {i:03d} of {N}", "", f"Coverage of {info!r}"]
+        note = info.pop("_note", None)
+        if dump_path is not None:
+            dump_fn = f"{i:03}.csv"
+            lines.append(f"Dumped to {dump_fn}")
+        if note:
+            lines.append(f"Note: {note}")
+
+        for source in "AR6 world", "AR6 R5", "AR6 R10", "AR6 country", "iTEM MIP2":
             args = info.copy()
             if "iTEM" in source:
                 args.update(dict(conform_to="AR6", default_item_filters=False))
@@ -25,23 +33,29 @@ def checks_from_file(dump_path=None):
             if len(data) == 0:
                 continue
 
+            cats = data["category"].unique()
             lines.extend(
                 [
-                    "    {} (model, scenario) combinations".format(
+                    " {:4d} models".format(len(data["model"].unique())),
+                    " {:4d} (model, scenario) combinations".format(
                         len(data.groupby(["model", "scenario"]))
                     ),
-                    "    {} scenario categories".format(len(data["category"].unique())),
-                    "    {} models".format(len(data["model"].unique())),
-                    "    {} regions:".format(len(data["region"].unique())),
+                    " {:4d} scenario categories:".format(len(cats)),
                 ]
             )
+            lines.extend(cats + [""])
 
-            lines.extend(sorted(data["region"].unique()))
+            if any(s in source for s in ("R5", "R10", "country")):
+                # Give number of regions for non-global data
+                regions = data["region"].unique()
+                lines.append(" {:4d} regions".format(len(regions)))
 
-            if dump_path:
-                dfs.append(data)
+                if "country" in source:
+                    # Give specific list of countries for country-level data
+                    lines[-1] += ":"
+                    lines.extend(sorted(regions))
 
-        print("\n".join(lines), end="\n\n")
+            if dump_path is not None:
+                data.to_csv(dump_path / dump_fn)
 
-        if dump_path:
-            pd.concat(dfs).to_csv(dump_path / "coverage.csv")
+        print("\n".join(lines), end="\n\n", flush=True)

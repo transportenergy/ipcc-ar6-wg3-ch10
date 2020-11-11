@@ -72,16 +72,28 @@ def cache(action, source):
 
 
 @cli.command()
-@click.option("--dump", is_flag=True, help="Also dump all data to output/coverage.csv.")
-def coverage(dump):
-    """Report coverage per data/coverage-checks.yaml."""
-    _start_log()
+@click.option("--all-vars", is_flag=True, default=False, help="Check all variables.")
+@click.option(
+    "--dump",
+    is_flag=True,
+    default=False,
+    help="Also dump data to output/coverage/[...].csv.",
+)
+def coverage(all_vars, dump):
+    """Report coverage of transport variables.
 
-    from coverage import checks_from_file
+    If --all-vars is not given, checks are read from `data/coverage-checks.yaml`.
+    """
+    # Hide debug information about data loading etc.
+    # _start_log()
 
-    dump_path = OUTPUT_PATH if dump else None
+    from coverage import run_checks
 
-    checks_from_file(dump_path)
+    if all_vars:
+        # Don't dump when running checks on all data
+        dump = False
+
+    run_checks(from_file=not all_vars, dump_path=OUTPUT_PATH if dump else None)
 
 
 @cli.command()
