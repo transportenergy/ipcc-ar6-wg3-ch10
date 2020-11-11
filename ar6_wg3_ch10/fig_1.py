@@ -3,7 +3,13 @@ import logging
 
 import plotnine as p9
 
-from .data import compute_descriptives, normalize_if, select_indicator_scenarios
+from .data import (
+    compute_descriptives,
+    normalize_if,
+    per_capita_if,
+    select_indicator_scenarios,
+    unique_units,
+)
 from .common import COMMON, Figure, scale_category
 from .util import groupby_multi
 
@@ -43,7 +49,7 @@ class Fig1(Figure):
       policy scenarios in global transport models (GTMs) cover a wide range of
       “non-BAU” scenarios (to be defined) that are not necessarily designed to achieve
       the targets set in the Paris Agreements."""
-    normalized_version = True
+    has_option = dict(normalize=True, per_capita=True)
 
     # Data preparation
     variables = ["Emissions|CO2|Energy|Demand|Transportation"]
@@ -53,7 +59,11 @@ class Fig1(Figure):
     geoms = STATIC
 
     def prepare_data(self, data):
-        data["iam"] = data["iam"].pipe(normalize_if, self.normalize, year=2020)
+        data["iam"] = (
+            data["iam"]
+            .pipe(per_capita_if, data["population"], self.per_capita)
+            .pipe(normalize_if, self.normalize, year=2020)
+        )
 
         # Select indicator scenarios
         data["indicator"] = select_indicator_scenarios(data["iam"])
@@ -69,8 +79,12 @@ class Fig1(Figure):
         if self.normalize:
             # Store the absolute data
             data["item-absolute"] = data["item"]
-            # Replace with the normalized data
-            data["item"] = data["item"].pipe(normalize_if, self.normalize, year=2020)
+
+        data["item"] = (
+            data["item"]
+            .pipe(per_capita_if, data["population"], self.per_capita)
+            .pipe(normalize_if, self.normalize, year=2020)
+        )
 
         data["plot-item"] = compute_descriptives(data["item"], groupby=["region"])
 
@@ -82,10 +96,13 @@ class Fig1(Figure):
                 limits=(-0.5, 2.5), minor_breaks=4, expand=(0, 0, 0, 0.08)
             )
             units = "Index, 2020 level = 1.0"
+        elif self.per_capita:
+            scale_y = scale_y(limits=(-1, 5), minor_breaks=3)
+            units = unique_units(data["iam"])
         else:
             # NB if this figure is re-added to the text, re-check this scale
             scale_y = scale_y(limits=(-5000, 20000))
-            units = sorted(data["iam"]["unit"].unique())[0]
+            units = unique_units(data["iam"])
 
         self.geoms.append(scale_y)
         self.formatted_title = self.formatted_title.format(units=units)

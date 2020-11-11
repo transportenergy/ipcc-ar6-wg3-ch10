@@ -4,6 +4,7 @@ import logging
 from copy import copy
 from functools import lru_cache
 
+from iam_units import registry as UNITS
 import pandas as pd
 import pint
 import yaml
@@ -42,14 +43,14 @@ client = None
 # Mapping between variable names in different data sources
 VARIABLES = yaml.safe_load(open(DATA_PATH / "variables-map.yaml"))
 
-UNITS = pint.UnitRegistry()
-UNITS.define(
-    """bn = 10**9
-person = [person]
-pkm = person * kilometer
-tkm = tonne * kilometre
-yr = year"""
-)
+for definition in [
+    "bn = 10**9",
+    # "person = [person]",
+    # "pkm = person * kilometer",
+    # "tkm = tonne * kilometre",
+    # "yr = year",
+]:
+    UNITS.define(definition)
 
 
 def compute_descriptives(df, on=["variable"], groupby=[]):
@@ -85,7 +86,74 @@ def compute_descriptives(df, on=["variable"], groupby=[]):
     return pd.concat(dfs)
 
 
-def compute_ratio(df, num, denom, groupby=[]):
+def unique_units(df):
+    units = df["unit"].unique()
+    assert len(units) == 1, f"Units {units} in {df}"
+    try:
+        return UNITS(units[0])
+    except pint.UndefinedUnitError:
+        return units[0]
+
+
+def per_capita_if(data, population, condition):
+    """
+
+    Parameters
+    ----------
+    condition : bool
+        If True, return `data` divided by `population`.
+        If False, simply return `data`.
+    """
+    if not condition:
+        return data
+
+    id_cols = ["model", "scenario", "region", "year"]
+
+    num = data.set_index(id_cols)
+    unit_num = unique_units(num)
+
+    denom = population.set_index(id_cols)
+    unit_denom = unique_units(denom)
+
+    log.info(
+        f"  ({len(num)} obs) [{unit_num}] / "
+        f"  ({len(denom)} obs) [{unit_denom}]"
+    )
+
+    result = num["value"] / denom["value"]
+
+    assert (
+        unit_num == "Mt CO2/yr" and unit_denom == UNITS("1 million")
+    ), (unit_num, unit_denom)
+    unit_result = "t / person / year"
+
+    log.info(f"  {len(result)} result obs [{unit_result}]")
+
+    result = (
+        pd.merge(
+            num, result.rename("result"), left_index=True, right_index=True
+        )
+        .drop(columns=["value"])
+        .rename(columns={"result": "value"})
+        .assign(unit=unit_result)
+        .reset_index()
+    )
+
+    return result
+
+
+def compute_ratio(df: pd.DataFrame, num: str, denom: str, groupby=[]) -> pd.DataFrame:
+    """Compute ratio of data in `df`
+
+    Parameters
+    ----------
+    df
+        Data frame containing both the numerator and denominator.
+    num
+        Argument to :meth:`pandas.DataFrame.query` the numerator.
+    denom
+        Argument to :meth:`pandas.DataFrame.query` the denominator.
+    """
     log.info(f"Compute ratio of {num!r} / {denom!r} from {len(df)} obs")
 
     id_cols = ["model", "scenario", "region", "year"]
@@ -98,9 +166,7 @@ def compute_ratio(df, num, denom, groupby=[]):
             tmp[n] = group_df.set_index(id_cols + groupby).query(query)
 
             # Retrieve units
-            unit[n] = tmp[n]["unit"].unique()
-            assert len(unit[n]) == 1, f"Units {unit[n]} in {tmp[n]}"
-            unit[n] = UNITS(unit[n][0])
+            unit[n] = unique_units(tmp[n])
 
         # Compute the ratio
         log.info(

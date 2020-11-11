@@ -114,7 +114,10 @@ def debug():
 
 @cli.command()
 @click.option(
-    "--normalize", is_flag=True, default=True, help="Normalize ordinate to 2020."
+    "--normalize/--absolute", default=True, help="Normalize ordinate to 2020"
+)
+@click.option(
+    "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate"
 )
 @click.option("--categories", type=click.Choice(["T", "T+os"]), default="T")
 @click.option(
@@ -127,18 +130,18 @@ def debug():
     "--ar6-data",
     type=click.Choice(["world", "R5", "R10", "country", "raw"]),
     default="world",
-    help="Source for IPCC AR6 data.",
+    help="Source for IPCC AR6 data",
 )
 @click.option(
     "--item-data",
     type=click.Choice(["MIP2", "MIP3"]),
     default="MIP2",
-    help="Source or snapshot of iTEM data.",
+    help="Source or snapshot of iTEM data",
 )
 @click.option(
     "--load-only",
     is_flag=True,
-    help="Only load and preprocess data; no output.",
+    help="Only load and preprocess data; no output",
 )
 @click.argument("to_plot", metavar="FIGURES", type=int, nargs=-1)
 def plot(to_plot, **options):

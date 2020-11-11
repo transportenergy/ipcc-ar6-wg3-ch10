@@ -36,7 +36,7 @@ class Fig2(Figure):
       projections, 2020 index, based on integrated models for selected stabilization
       temperatures by 2100. Also included are global transport models Ref and Policy
       scenarios."""
-    normalized_version = True
+    has_option = dict(normalize=True)
 
     # Data preparation
     variables = [

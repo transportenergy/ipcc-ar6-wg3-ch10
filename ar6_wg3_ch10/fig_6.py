@@ -48,7 +48,7 @@ STATIC = (
 
 class Fig6(Figure):
     title = "Transport activity by mode — {{group}}"
-    normalized_version = True
+    has_option = dict(normalize=True)
 
     all_years = True
     variables = [

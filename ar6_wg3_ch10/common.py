@@ -191,9 +191,17 @@ class Figure:
     sources: Sequence[str]
 
     # Optional
-    #: :obj:`True` if the figure respects a "normalize" option.
-    normalized_version = False
+    #: :obj:`True` if the figure respects the following options.
+    has_option = dict(
+        normalize=False,
+        per_capita=False,
+    )
+
+    #: :obj:`True` if the ordinate should be normalized.
     normalize = True
+    #: :obj:`True` if the ordinate should be divided by population.
+    per_capita = False
+
     #: Filters for loading data
     filters = dict()
     #: :obj:`True` to load data for all years, not merely :data:`YEARS`.
@@ -215,19 +223,23 @@ class Figure:
         self.__dict__.update(options)
 
         # Base filename
-        self.base_fn = "-".join([
+        fn_parts = [
             self.__class__.__name__.lower(),
             self.sources[0].replace(' ', '-'),
             self.sources[1].replace(' ', '-'),
-        ])
-        if self.normalized_version and not self.normalize:
-            # Distinguish normalized and absolute versions in file name
-            self.base_fn += "-absolute"
+        ]
+        # Distintuish optional variants in file name
+        if self.has_option["per_capita"] and self.per_capita:
+            fn_parts.insert(-2, "percap")
+        if self.has_option["normalize"] and not self.normalize:
+            fn_parts.insert(-2, "abs")
+        self.base_fn = "-".join(fn_parts)
 
         # Set filters based on all years property.
         if not self.all_years:
             self.filters["year"] = YEARS
 
+        # TODO replace with categorization option to aggregate C0–C2 etc.
         self.overshoot = self.categories == "T+os"
 
         # Store figure size: 190 mm in inches, aspect ratio from a property
@@ -256,6 +268,14 @@ class Figure:
             .pipe(remove_categoricals)
             .pipe(maybe_drop_nca, self.include_nca)
         )
+        if self.has_option["per_capita"] and self.per_capita:
+            # Load population data for per capita calculations
+            pop_args = args.copy()
+            pop_args["variable"] = ["Population"]
+            data["population"] = get_data(source=self.sources[0], **pop_args)
+        else:
+            data["population"] = pd.DataFrame()
+
         # Load iTEM data
         data["item"] = get_data(source=self.sources[1], conform_to="AR6", **args).pipe(
             remove_categoricals

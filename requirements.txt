@@ -1,5 +1,6 @@
 adjusttext
 click
+iam-units
 pandas
 plotnine
 PyYAML
