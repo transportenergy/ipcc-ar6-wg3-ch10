@@ -71,14 +71,16 @@ SCALE_CAT_OS = pd.concat(
 )
 
 
+# Labels
 SCALE_FUEL = pd.DataFrame(
     columns=["limit", "fill", "label"],
     data=[
         ["Liquids|Oil", "#f7a800", "Oil"],
-        ["Liquids|Biomass", "#de4911", "Biofuels"],
-        ["Gases", "#9e2b18", "Gas"],
+        ["Biofuels", "#de4911", "Biofuels"],
+        ["Gases", "#9e2b18", "Gases"],
         ["Electricity", "#9fca71", "Electricity"],
         ["Hydrogen", "#59a431", "Hydrogen"],
+        ["Other", "#999999", "Other"],
     ],
 )
 

@@ -53,6 +53,52 @@ for definition in [
     UNITS.define(definition)
 
 
+# Mapping from groups to fuels included.
+GROUP_FUEL = {
+    "Electricity": ["Electricity"],
+    "Gases": ["Gases"],
+    "Hydrogen": ["Hydrogen"],
+    "Liquids|Oil": ["Liquids|Oil"],
+    "Biofuel": ["Liquids|Bioenergy", "Liquids|Biomass"],
+    "Other": [
+        "Liquids|Coal",
+        "Liquids|Fossil synfuel",
+        "Liquids|Gas",
+        "Liquids|Natural Gas",
+        "Solar",
+        "Solids|Biomass",
+        "Solids|Coal",
+    ]
+}
+
+# Reversed mapping
+FUEL_GROUP = dict()
+for group, fuels in GROUP_FUEL.items():
+    FUEL_GROUP.update({fuel: group for fuel in fuels})
+
+
+def aggregate_fuels(df):
+    """Compute a custom aggregation of fuels using `GROUP_FUEL`."""
+
+    # - Assign the "fuel_group" column based on "fuel".
+    # - Fill in None/NaN values so they are not ignored by groupby(), below.
+    tmp = (
+        df.assign(fuel_group=df["fuel"].apply(lambda f: FUEL_GROUP.get(f)))
+        .fillna(dict(fuel="NONE", fuel_group="NONE"))
+    )
+
+    id_cols = ["model", "scenario", "region", "fuel_group", "year"]
+
+    return (
+        tmp.groupby(id_cols)
+        .sum(numeric_only=True)
+        .pipe(pd.merge, tmp, left_index=True, right_on=id_cols, suffixes=("", "_y"))
+        .replace(dict(fuel_group={"NONE": None}))
+        .drop(columns=["fuel", "value_y"])
+        .rename(columns={"fuel_group": "fuel"})
+    )
+
+
 def compute_descriptives(df, on=["variable"], groupby=[]):
     """Compute descriptive statistics on *df*.
 

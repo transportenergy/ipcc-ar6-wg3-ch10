@@ -4,7 +4,12 @@ import numpy as np
 import plotnine as p9
 
 from .common import COMMON, SCALE_FUEL, Figure, scale_category
-from .data import compute_descriptives, compute_shares, select_indicator_scenarios
+from .data import (
+    aggregate_fuels,
+    compute_descriptives,
+    compute_shares,
+    select_indicator_scenarios
+)
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
@@ -77,27 +82,41 @@ class Fig5(Figure):
 
     # Data preparation
     variables = [
-        # See data/variables-AR6.txt for a fuller list
-        "Final Energy|Transportation",  # denominator in shares
+        # The following include all Final Energy|Transportation|* variables except
+        # those with "Freight" or "Passenger" as the third element.
+        # Denominator in shares
+        "Final Energy|Transportation",
+
+        # aggregate_fuels() preserves these values
         "Final Energy|Transportation|Electricity",
-        # "Final Energy|Transportation|Fossil",
         "Final Energy|Transportation|Gases",
+        "Final Energy|Transportation|Hydrogen",
+        "Final Energy|Transportation|Liquids|Oil",
+        # aggregate_fuels() sums these as "Biofuels"
+        "Final Energy|Transportation|Liquids|Bioenergy",
+        "Final Energy|Transportation|Liquids|Biomass",
+        # aggregate_fuels() sums these as "Other"
+        "Final Energy|Transportation|Liquids|Coal",
+        "Final Energy|Transportation|Liquids|Fossil synfuel",
+        "Final Energy|Transportation|Liquids|Gas",
+        "Final Energy|Transportation|Liquids|Natural Gas",
+        "Final Energy|Transportation|Solar",
+        "Final Energy|Transportation|Solids|Biomass",
+        "Final Energy|Transportation|Solids|Coal",
+
+        # Other variables that appear in the template, but are not plotted:
+
+        # # Not used because subsets are aggregated differently
+        # "Final Energy|Transportation|Liquids",
+
+        # # Distinct categorizations & partial sums
+        # "Final Energy|Transportation|Fossil",
+        # "Final Energy|Transportation|Heat",
+
+        # # Omitted
         # "Final Energy|Transportation|Gases|Bioenergy",
         # "Final Energy|Transportation|Gases|Fossil",
         # "Final Energy|Transportation|Geothermal",
-        # "Final Energy|Transportation|Heat",
-        "Final Energy|Transportation|Hydrogen",
-        # "Final Energy|Transportation|Liquids",
-        # "Final Energy|Transportation|Liquids|Bioenergy",
-        "Final Energy|Transportation|Liquids|Biomass",
-        # "Final Energy|Transportation|Liquids|Coal",
-        # "Final Energy|Transportation|Liquids|Fossil synfuel",
-        # "Final Energy|Transportation|Liquids|Gas",
-        # "Final Energy|Transportation|Liquids|Natural Gas",
-        "Final Energy|Transportation|Liquids|Oil",
-        # "Final Energy|Transportation|Solar",
-        # "Final Energy|Transportation|Solids|Biomass",
-        # "Final Energy|Transportation|Solids|Coal",
     ]
     restore_dims = r"Final Energy\|Transportation(?:\|(?P<fuel>.*))?"
 
@@ -107,8 +126,11 @@ class Fig5(Figure):
 
     def prepare_data(self, data):
         # Compute fuel shares by type for IAM scenarios
+        data["iam-raw"] = data["iam"].copy()
+
         data["iam"] = (
             data["iam"]
+            .pipe(aggregate_fuels)
             .pipe(compute_shares, on="fuel", groupby=["region"])
             .assign(variable="Fuel share")
         )
@@ -126,6 +148,7 @@ class Fig5(Figure):
                     }
                 }
             )
+            .pipe(aggregate_fuels)
             .pipe(compute_shares, on="fuel", groupby=["region"])
             .assign(variable="Fuel share")
         )
