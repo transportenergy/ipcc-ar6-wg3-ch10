@@ -227,8 +227,8 @@ class Figure:
         # Base filename
         fn_parts = [
             self.__class__.__name__.lower(),
-            self.sources[0].replace(' ', '-'),
-            self.sources[1].replace(' ', '-'),
+            self.sources[0].replace(" ", "-"),
+            self.sources[1].replace(" ", "-"),
         ]
         # Distintuish optional variants in file name
         if self.has_option["per_capita"] and self.per_capita:

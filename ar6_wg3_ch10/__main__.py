@@ -113,9 +113,7 @@ def debug():
 
 
 @cli.command()
-@click.option(
-    "--normalize/--absolute", default=True, help="Normalize ordinate to 2020"
-)
+@click.option("--normalize/--absolute", default=True, help="Normalize ordinate to 2020")
 @click.option(
     "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate"
 )
@@ -155,7 +153,8 @@ def plot(to_plot, **options):
     _start_log()
 
     options["sources"] = (
-        f"AR6 {options.pop('ar6_data')}", f"iTEM {options.pop('item_data')}"
+        f"AR6 {options.pop('ar6_data')}",
+        f"iTEM {options.pop('item_data')}",
     )
 
     # Plot each figure

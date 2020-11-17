@@ -8,7 +8,7 @@ from .data import (
     aggregate_fuels,
     compute_descriptives,
     compute_shares,
-    select_indicator_scenarios
+    select_indicator_scenarios,
 )
 from .util import groupby_multi
 
@@ -84,9 +84,10 @@ class Fig5(Figure):
     variables = [
         # The following include all Final Energy|Transportation|* variables except
         # those with "Freight" or "Passenger" as the third element.
+        #
         # Denominator in shares
         "Final Energy|Transportation",
-
+        #
         # aggregate_fuels() preserves these values
         "Final Energy|Transportation|Electricity",
         "Final Energy|Transportation|Gases",
@@ -103,16 +104,13 @@ class Fig5(Figure):
         "Final Energy|Transportation|Solar",
         "Final Energy|Transportation|Solids|Biomass",
         "Final Energy|Transportation|Solids|Coal",
-
+        #
         # Other variables that appear in the template, but are not plotted:
-
         # # Not used because subsets are aggregated differently
         # "Final Energy|Transportation|Liquids",
-
         # # Distinct categorizations & partial sums
         # "Final Energy|Transportation|Fossil",
         # "Final Energy|Transportation|Heat",
-
         # # Omitted
         # "Final Energy|Transportation|Gases|Bioenergy",
         # "Final Energy|Transportation|Gases|Fossil",

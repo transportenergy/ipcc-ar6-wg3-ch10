@@ -61,6 +61,7 @@ GROUP_FUEL = {
     "Liquids|Oil": ["Liquids|Oil"],
     "Biofuels": ["Liquids|Bioenergy", "Liquids|Biomass"],
     "Other": [
+        "Other",
         "Liquids|Coal",
         "Liquids|Fossil synfuel",
         "Liquids|Gas",
@@ -68,7 +69,7 @@ GROUP_FUEL = {
         "Solar",
         "Solids|Biomass",
         "Solids|Coal",
-    ]
+    ],
 }
 
 # Reversed mapping
@@ -77,17 +78,16 @@ for group, fuels in GROUP_FUEL.items():
     FUEL_GROUP.update({fuel: group for fuel in fuels})
 
 
-def aggregate_fuels(df):
+def aggregate_fuels(df, groupby=[]):
     """Compute a custom aggregation of fuels using `GROUP_FUEL`."""
 
     # - Assign the "fuel_group" column based on "fuel".
     # - Fill in None/NaN values so they are not ignored by groupby(), below.
-    tmp = (
-        df.assign(fuel_group=df["fuel"].apply(lambda f: FUEL_GROUP.get(f)))
-        .fillna(dict(fuel="NONE", fuel_group="NONE"))
+    tmp = df.assign(fuel_group=df["fuel"].apply(lambda f: FUEL_GROUP.get(f))).fillna(
+        dict(fuel="NONE", fuel_group="NONE")
     )
 
-    id_cols = ["model", "scenario", "region", "fuel_group", "year"]
+    id_cols = ["model", "scenario", "region", "fuel_group", "year"] + groupby
 
     return (
         tmp.groupby(id_cols)
@@ -162,23 +162,21 @@ def per_capita_if(data, population, condition):
     unit_denom = unique_units(denom)
 
     log.info(
-        f"  ({len(num)} obs) [{unit_num}] / "
-        f"  ({len(denom)} obs) [{unit_denom}]"
+        f"  ({len(num)} obs) [{unit_num}] / " f"  ({len(denom)} obs) [{unit_denom}]"
     )
 
     result = num["value"] / denom["value"]
 
-    assert (
-        unit_num == "Mt CO2/yr" and unit_denom == UNITS("1 million")
-    ), (unit_num, unit_denom)
+    assert unit_num == "Mt CO2/yr" and unit_denom == UNITS("1 million"), (
+        unit_num,
+        unit_denom,
+    )
     unit_result = "t / person / year"
 
     log.info(f"  {len(result)} result obs [{unit_result}]")
 
     result = (
-        pd.merge(
-            num, result.rename("result"), left_index=True, right_index=True
-        )
+        pd.merge(num, result.rename("result"), left_index=True, right_index=True)
         .drop(columns=["value"])
         .rename(columns={"result": "value"})
         .assign(unit=unit_result)
