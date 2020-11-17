@@ -59,7 +59,7 @@ GROUP_FUEL = {
     "Gases": ["Gases"],
     "Hydrogen": ["Hydrogen"],
     "Liquids|Oil": ["Liquids|Oil"],
-    "Biofuel": ["Liquids|Bioenergy", "Liquids|Biomass"],
+    "Biofuels": ["Liquids|Bioenergy", "Liquids|Biomass"],
     "Other": [
         "Liquids|Coal",
         "Liquids|Fossil synfuel",
