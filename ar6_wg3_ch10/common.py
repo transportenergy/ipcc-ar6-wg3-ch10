@@ -35,12 +35,15 @@ SCALE_CAT = pd.DataFrame(
         # ["2.0 - 2.5C", "#ca34de", "#ca34de", "2–2.5°C"],
         # ["2.5 - 3.5C", "red", "red", "2.5–3.5°C"],
         # ["Above 3.5C", "brown", "brown", ">3.5°C"],
+        #
+        # C0 was removed from metadata as of 2020-11-18
+        #
+        # ["C0", "C0: 1.5°C with no OS", "C0: 1.5°C no OS", "darkgreen", "darkgreen"],
         # Current categorization
-        ["C0", "C0: 1.5°C with no OS", "C0: 1.5°C no OS", "darkgreen", "darkgreen"],
-        ["C1", "C1: 1.5°C with no or low OS1.6", "C1: 1.5°C lo OS", "green", "green"],
+        ["C1", "C1: 1.5°C with no or low OS", "C1: 1.5°C lo OS", "green", "green"],
         [
             "C2",
-            "C2: 1.5°C with high OS_1.6",
+            "C2: 1.5°C with high OS",
             "C2: 1.5°C hi OS",
             "yellowgreen",
             "yellowgreen",
@@ -51,27 +54,19 @@ SCALE_CAT = pd.DataFrame(
         ["C6", "C6: below 3.0°C", "C6: <3.0°C", "brown", "brown"],
         ["C7", "C7: above 3.0°C", "C7: >3.0°C", "purple", "purple"],
         ["NCA", "no-climate-assessment", "No assessment", "#eeeeee", "#999999"],
+        #
         # Sectoral scenarios
         ["P", "policy", "Sectoral/policy", "#eeeeee", "#999999"],
         ["R", "reference", "Sectoral/ref", "#999999", "#111111"],
     ],
 )
 
-# Same, with overshoot
-SCALE_CAT_OS = pd.concat(
-    [
-        SCALE_CAT.loc[:0, :],
-        pd.DataFrame(
-            [["CX", "CX: Below 1.6C OS", "CX: <1.6°C*", "green", "green"]],
-            columns=["short", "limit", "label", "fill", "color"],
-        ),
-        SCALE_CAT.loc[1:, :],
-    ],
-    ignore_index=True,
-)
+# Unused
+# TODO remove
+SCALE_CAT_OS = None
 
 
-# Labels
+# Scale for fuel aggregates; see aggregate_fuels()
 SCALE_FUEL = pd.DataFrame(
     columns=["limit", "fill", "label"],
     data=[

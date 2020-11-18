@@ -22,7 +22,11 @@ log = logging.getLogger(__name__)
 LOCAL_DATA = {
     "ADVANCE": "advance_compare_20171018-134445.csv",
     "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv",
-    "AR6 metadata": "raw/ar6_full_metadata_indicators2020_08_27.xlsx",
+    # # From AR6 Scenario Explorer download with ID 1605622065355
+    # "AR6 metadata": "raw/ar6_full_metadata_indicators_v2020_10_14v5_v2.xlsx",
+    # A file e-mailed by Ed Byers 2020-11-18
+    # FIXME retrieve this from an official source
+    "AR6 metadata": "raw/ar6_full_metadata_indicators_merge_vetted2020_10_14v5_v2.xlsx",
     "AR6 world": "raw/snapshot_world_with_globalmeantemps_iamc_ar6_12020_10_03.csv.gz",
     "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2020_10_03.csv.gz",
     "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2020_10_03.csv.gz",
@@ -100,36 +104,13 @@ def aggregate_fuels(df, groupby=[]):
 
 
 def compute_descriptives(df, on=["variable"], groupby=[]):
-    """Compute descriptive statistics on *df*.
-
-    Descriptives are returned for each ('variable', 'category', 'year') and
-    ('variable', 'category+1', 'year').
-    """
-
-    def _describe(df, col):
-        return (
-            df.groupby(on + ["year", col] + groupby)
-            .describe(percentiles=[0.05, 0.25, 0.5, 0.75, 0.95])
-            .loc[:, "value"]
-            .reset_index()
-        )
-
-    # Compute descriptive statistics, by category
-    dfs = [df.pipe(_describe, "category")]
-
-    # by supercategory. The rename creates a new category named '2C' when
-    # concat()'d below
-    if "category+1" in df.columns:
-        supercat = df.pipe(_describe, "category+1").rename(
-            columns={"category+1": "category"}
-        )
-
-        # Discard the statistics for scenarios not part of either supercategory
-        supercat = supercat[supercat.category != ""]
-
-        dfs.append(supercat)
-
-    return pd.concat(dfs)
+    """Compute descriptive statistics on *df*."""
+    return (
+        df.groupby(on + ["year", "category"] + groupby)
+        .describe(percentiles=[0.05, 0.25, 0.5, 0.75, 0.95])
+        .loc[:, "value"]
+        .reset_index()
+    )
 
 
 def unique_units(df):
@@ -452,38 +433,38 @@ def categorize(df, source, **options):
         result = df.merge(cat_data, how="left", on=["model", "scenario"])
 
     elif source.startswith("AR6"):
-        # Read an Excel file; the most recent available
-        path = DATA_PATH / LOCAL_DATA["AR6 metadata"]
-        cat_data = pd.read_excel(path).rename(
-            columns={
-                # Appears in older file
-                "Temperature-in-2100_bin": "category",
-                # Appears in newer file(s) (1587047839051 and later)
-                "Category_name": "category",
-                "overshoot years|1.5°C": "os15",
-                "overshoot years|2.0°C": "os2",
-            }
+        cat_data = (
+            # Read from file
+            pd.read_excel(DATA_PATH / LOCAL_DATA["AR6 metadata"], sheet_name="meta")
+            # Simplify column names
+            .rename(
+                columns={
+                    # Appears in older file
+                    "Temperature-in-2100_bin": "category",
+                    # Appears in newer file(s) (1587047839051 and later)
+                    "Category_name": "category",
+                    "overshoot years|1.5°C": "os15",
+                    "overshoot years|2.0°C": "os2",
+                    # Appears in file #1605622065355 and later
+                    "normal_v5_vetting_normal_v5": "vetted",
+                }
+            )
         )
 
-        if options["categories"] == "T+os":
-            # Use overshoot columns to adjust categories
-
-            # Criterion
-            # NB one can add '2.0 - 2.5C' to this list. There are no overshoot
-            #    scenarios in the '1.6 - 2.0C' category, by construction
-            os = (
-                ~cat_data.os15.isna() | ~cat_data.os2.isna()
-            ) & cat_data.category.isin(["Below 1.6C"])
-
-            cat_data["category"] = cat_data["category"].mask(
-                cond=os, other=cat_data["category"] + " OS"
-            )
-
+        # Merge the metadata columns with the data
         result = df.merge(
-            cat_data[["model", "scenario", "category"]],
+            cat_data[["model", "scenario", "category", "vetted"]],
             how="left",
             on=["model", "scenario"],
         )
+
+        if options.get("vetted_only", True):
+            # Drop all but vetted scenarios
+            N = len(result)
+            result = result.query("vetted != 'FAIL'")
+            log.info(
+                f"Drop {N - len(result)} / {N} obs from scenarios that failed vetting"
+            )
 
     elif source.startswith("iTEM"):
         # From the iTEM database metadata
