@@ -3,7 +3,12 @@ import logging
 import pandas as pd
 import plotnine as p9
 
-from .data import compute_descriptives, normalize_if, select_indicator_scenarios
+from .data import (
+    compute_descriptives,
+    normalize_if,
+    per_capita_if,
+    select_indicator_scenarios,
+)
 from .common import COMMON, Figure, scale_category
 from .util import groupby_multi
 
@@ -48,7 +53,7 @@ STATIC = (
 
 class Fig6(Figure):
     title = "Transport activity by mode — {{group}}"
-    has_option = dict(normalize=True)
+    has_option = dict(normalize=True, per_capita=True)
 
     all_years = True
     variables = [
@@ -108,8 +113,15 @@ class Fig6(Figure):
             data["item-absolute"] = data["item"]
 
         # Combine all data to a single data frame; optionally normalize
-        data["plot"] = pd.concat([data["iam"], data["item"]], sort=False).pipe(
-            normalize_if, self.normalize, year=2020, drop=False
+        data["plot"] = (
+            pd.concat([data["iam"], data["item"]], sort=False)
+            .pipe(
+                per_capita_if,
+                data["population"],
+                self.per_capita,
+                groupby=["type", "mode"]
+            )
+            .pipe(normalize_if, self.normalize, year=2020, drop=False)
         )
 
         # Select indicator scenarios
