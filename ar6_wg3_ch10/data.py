@@ -141,7 +141,7 @@ def unique_units(df):
         return units[0]
 
 
-def per_capita_if(data, population, condition):
+def per_capita_if(data, population, condition, groupby=[]):
     """
 
     Parameters
@@ -155,35 +155,36 @@ def per_capita_if(data, population, condition):
 
     id_cols = ["model", "scenario", "region", "year"]
 
-    num = data.set_index(id_cols)
-    unit_num = unique_units(num)
+    results = []
+    for group, group_df in data.groupby(groupby) if len(groupby) else ((None, data),):
+        num = group_df.set_index(id_cols)
+        unit_num = unique_units(num)
 
-    denom = population.set_index(id_cols)
-    unit_denom = unique_units(denom)
+        if isinstance(unit_num, str) and "CO2" in unit_num:
+            log.info(f"Remove 'CO2' from {repr(unit_num)}")
+            unit_num = UNITS(unit_num.replace("CO2", ""))
 
-    log.info(
-        f"  ({len(num)} obs) [{unit_num}] / " f"  ({len(denom)} obs) [{unit_denom}]"
-    )
+        denom = population.set_index(id_cols)
+        unit_denom = unique_units(denom)
 
-    result = num["value"] / denom["value"]
+        log.info(
+            f"  ({len(num)} obs) [{unit_num}] / " f"  ({len(denom)} obs) [{unit_denom}]"
+        )
 
-    assert unit_num == "Mt CO2/yr" and unit_denom == UNITS("1 million"), (
-        unit_num,
-        unit_denom,
-    )
-    unit_result = "t / person / year"
+        result = num["value"] / denom["value"]
+        unit_result = unit_num / unit_denom
 
-    log.info(f"  {len(result)} result obs [{unit_result}]")
+        log.info(f"  {len(result)} result obs [{unit_result}]")
 
-    result = (
-        pd.merge(num, result.rename("result"), left_index=True, right_index=True)
-        .drop(columns=["value"])
-        .rename(columns={"result": "value"})
-        .assign(unit=unit_result)
-        .reset_index()
-    )
+        results.append(
+            pd.merge(num, result.rename("result"), left_index=True, right_index=True)
+            .drop(columns=["value"])
+            .rename(columns={"result": "value"})
+            .assign(unit=unit_result)
+            .reset_index()
+        )
 
-    return result
+    return pd.concat(results)
 
 
 def compute_ratio(df: pd.DataFrame, num: str, denom: str, groupby=[]) -> pd.DataFrame:
