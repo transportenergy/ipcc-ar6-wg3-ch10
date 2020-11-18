@@ -107,7 +107,7 @@ def compute_descriptives(df, on=["variable"], groupby=[]):
     """Compute descriptive statistics on *df*."""
     return (
         df.groupby(on + ["year", "category"] + groupby)
-        .describe(percentiles=[0.05, 0.25, 0.5, 0.75, 0.95])
+        .describe(percentiles=[0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95])
         .loc[:, "value"]
         .reset_index()
     )

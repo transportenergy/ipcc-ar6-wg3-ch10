@@ -24,29 +24,12 @@ STATIC = (
     ]
     + COMMON["x year"]
     + [
-        # Geoms
-        # # 1 lines per scenario
-        # p9.geom_line(p9.aes(y='value', group='model + scenario + category'),
-        #           alpha=0.6),
-        #
-        # 1 band per category
-        p9.geom_ribbon(
-            p9.aes(ymin="5%", ymax="95%", fill="category"), alpha=0.25, color=None
-        ),
-        p9.geom_line(p9.aes(y="50%", color="category"), alpha=1, size=0.2),
-        p9.geom_line(p9.aes(y="5%", color="category"), alpha=1, size=0.1),
-        p9.geom_line(p9.aes(y="95%", color="category"), alpha=1, size=0.1),
-        #
-        # # 3 lines: low, middle, high
-        # p9.geom_line(p9.aes(y="5%", color="category"), alpha=1, size=0.1),
-        # p9.geom_line(p9.aes(y="95%", color="category"), alpha=1, size=0.1),
-        # p9.geom_line(p9.aes(y="50%", color="category"), alpha=0.5),
-        #
         # Axis labels
-        p9.labs(x="", y="", color="IAM/sectoral scenarios"),
-        # p9.theme(axis_text_x=p9.element_blank()),
+        p9.labs(x="", y="", fill="Category"),
+        #
         # Appearance
         COMMON["theme"],
+        p9.guides(color=None),
         p9.theme(
             axis_text=p9.element_text(size=7),
             panel_grid=p9.element_line(color="#dddddd", size=0.2),
@@ -91,6 +74,7 @@ class Fig6(Figure):
 
     # Plotting
     aspect_ratio = 1
+    geoms = STATIC
 
     def prepare_data(self, data):
         # Drop years 2095, 2085, etc. for which only a subset of scenarios include data
@@ -126,7 +110,7 @@ class Fig6(Figure):
                 per_capita_if,
                 data["population"],
                 self.per_capita,
-                groupby=["type", "mode"]
+                groupby=["type", "mode"],
             )
             .pipe(normalize_if, self.normalize, year=2020, drop=False)
         )
@@ -144,6 +128,32 @@ class Fig6(Figure):
             units = "; ".join(data["iam"]["unit"].str.replace("bn", "10⁹").unique())
 
         self.formatted_title = self.formatted_title.format(units=units)
+
+        # Adjust filename to reflect bandwidth
+        fn_parts = self.base_fn.split("-", maxsplit=1)
+        self.base_fn = "-".join([fn_parts[0], f"bw{self.bandwidth}", fn_parts[1]])
+
+        # Select statistics for edges of bands
+        lo, hi = {5: ("25%", "75%"), 8: ("10%", "90%"), 9: ("5%", "95%")}[
+            self.bandwidth
+        ]
+
+        self.geoms.extend(
+            [
+                # # 1 lines per scenario
+                # p9.geom_line(p9.aes(y='value', group='model + scenario + category'),
+                #           alpha=0.6),
+                #
+                # 1 band per category
+                p9.geom_ribbon(
+                    p9.aes(ymin=lo, ymax=hi, fill="category"), alpha=0.2, color=None
+                ),
+                # Median and edge lines
+                p9.geom_line(p9.aes(y="50%", color="category"), alpha=1, size=0.2),
+                p9.geom_line(p9.aes(y=lo, color="category"), alpha=1, size=0.1),
+                p9.geom_line(p9.aes(y=hi, color="category"), alpha=1, size=0.1),
+            ]
+        )
 
         return data
 

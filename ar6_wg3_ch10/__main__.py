@@ -113,22 +113,17 @@ def debug():
 
 
 @cli.command()
-@click.option("--normalize/--absolute", default=True, help="Normalize ordinate to 2020")
-@click.option(
-    "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate"
-)
-@click.option("--recategorize", type=click.Choice(["A", "B"]), default=None)
-@click.option(
-    "--include-nca",
-    is_flag=True,
-    default=False,
-    help="Include scenarios with no climate assessment (default: False)",
-)
 @click.option(
     "--ar6-data",
     type=click.Choice(["world", "R5", "R10", "country", "raw"]),
     default="world",
     help="Source for IPCC AR6 data",
+)
+@click.option(
+    "--recategorize",
+    type=click.Choice(["A", "B"]),
+    default=None,
+    help="Group scenarios categories into fewer.",
 )
 @click.option(
     "--item-data",
@@ -141,14 +136,30 @@ def debug():
     is_flag=True,
     help="Only load and preprocess data; no output",
 )
+@click.option("--normalize/--absolute", default=True, help="Normalize ordinate to 2020")
+@click.option(
+    "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate"
+)
+@click.option(
+    "--include-nca",
+    is_flag=True,
+    default=False,
+    help="Include scenarios with no climate assessment (default: False)",
+)
+@click.option(
+    "--bandwidth",
+    type=click.Choice(["5", "8", "9"]),
+    default="9",
+    callback=lambda ctx, param, value: int(value),
+    help="Width of bands (fig_5 only) in deciles",
+)
 @click.argument("to_plot", metavar="FIGURES", type=int, nargs=-1)
 def plot(to_plot, **options):
     """Plot figures, writing to output/.
 
     FIGURES is a sequence of ints, e.g. "1 4 5" to plot figures 1, 4, and 5.
 
-    Options --normalize and --categories do not affect the appearance of every
-    figure.
+    Not every option is recognized by every figure.
     """
     _start_log()
 
