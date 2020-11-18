@@ -36,8 +36,6 @@ STATIC = (
 class Fig4(Figure):
     """Energy intensity of transport
 
-    TODO compute passenger/freight aggregates of sectoral data by mode.
-
     TODO add emissions intensity computed as:
 
     - "Emissions|CO2|Energy|Demand|Transportation" divided by
