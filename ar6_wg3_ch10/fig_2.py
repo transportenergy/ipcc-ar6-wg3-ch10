@@ -2,7 +2,12 @@ import logging
 
 import plotnine as p9
 
-from .data import compute_descriptives, normalize_if, select_indicator_scenarios
+from .data import (
+    compute_descriptives,
+    normalize_if,
+    per_capita_if,
+    select_indicator_scenarios,
+)
 from .common import COMMON, Figure, scale_category
 from .util import groupby_multi
 
@@ -36,7 +41,7 @@ class Fig2(Figure):
       projections, 2020 index, based on integrated models for selected stabilization
       temperatures by 2100. Also included are global transport models Ref and Policy
       scenarios."""
-    has_option = dict(normalize=True)
+    has_option = dict(normalize=True, per_capita=True)
 
     # Data preparation
     variables = [
@@ -57,7 +62,11 @@ class Fig2(Figure):
         )
 
         # Normalize
-        data["iam"] = normalize_if(data["iam"], self.normalize, year=2020)
+        data["iam"] = (
+            data["iam"]
+            .pipe(per_capita_if, data["population"], self.per_capita, groupby=["type"])
+            .pipe(normalize_if, self.normalize, year=2020)
+        )
 
         # Select indicator scenarios
         data["indicator"] = select_indicator_scenarios(data["iam"])
@@ -73,7 +82,11 @@ class Fig2(Figure):
             data["item-absolute"] = data["item"]
 
         # Replace with the normalized data
-        data["item"] = normalize_if(data["item"], self.normalize, year=2020)
+        data["item"] = (
+            data["item"]
+            .pipe(per_capita_if, data["population"], self.per_capita, groupby=["type"])
+            .pipe(normalize_if, self.normalize, year=2020)
+        )
 
         data["plot-item"] = compute_descriptives(
             data["item"], groupby=["type", "region"]
@@ -85,6 +98,9 @@ class Fig2(Figure):
                 p9.expand_limits(y=[0]),
             ]
             units = "Index, 2020 level = 1.0"
+        elif self.per_capita:
+            scale_y = scale_y(limits=(-1, 5), minor_breaks=3)
+            units = "; ".join(data["iam"]["unit"].unique())
         else:
             scale_y = []
             units = "; ".join(data["iam"]["unit"].str.replace("bn", "10⁹").unique())
