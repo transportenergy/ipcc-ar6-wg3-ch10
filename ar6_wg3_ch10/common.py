@@ -4,6 +4,7 @@ from abc import abstractmethod
 from collections import ChainMap
 from pathlib import Path
 from typing import Dict, List, Sequence
+from zipfile import ZIP_DEFLATED, ZipFile
 
 import matplotlib as mpl
 import numpy as np
@@ -318,10 +319,20 @@ class Figure:
         self.data = self.prepare_data(data)
 
         # Dump data for reference
-        for label, df in self.data.items():
-            path = OUTPUT_PATH / "data" / f"{self.base_fn}_{label}.csv"
-            log.info(f"Dump {len(df):5} obs to {path}")
-            df.to_csv(path)
+        path_zf = OUTPUT_PATH / "data" / f"{self.base_fn}.zip"
+        log.info(f"Dump data to {path_zf}")
+        with ZipFile(path_zf, "w", compression=ZIP_DEFLATED) as zf:
+            for label, df in sorted(
+                self.data.items(), key=lambda i: len(i[1]), reverse=True
+            ):
+                if not len(df):
+                    continue
+
+                log.info(f"{len(df):7} obs for {repr(label)}")
+                path_tmp = OUTPUT_PATH / "data" / f"{self.base_fn}_{label}.csv"
+                df.to_csv(path_tmp)
+                zf.write(path_tmp, arcname=f"{label}.csv")
+                path_tmp.unlink()
 
     @staticmethod
     @abstractmethod
