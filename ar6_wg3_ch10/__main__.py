@@ -117,7 +117,7 @@ def debug():
 @click.option(
     "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate"
 )
-@click.option("--categories", type=click.Choice(["T", "T+os"]), default="T")
+@click.option("--recategorize", type=click.Choice(["A", "B"]), default=None)
 @click.option(
     "--include-nca",
     is_flag=True,

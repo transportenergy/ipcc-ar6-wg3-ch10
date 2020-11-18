@@ -11,7 +11,7 @@ import yaml
 
 import item.model
 
-from common import DATA_PATH
+from common import DATA_PATH, CAT_GROUP
 from iiasa_se_client import AuthClient
 from util import cached
 
@@ -322,7 +322,7 @@ def get_data(
     drop=("meta", "runId", "time"),
     conform_to=None,
     default_item_filters=True,
-    categories=None,
+    recategorize=None,
     **filters,
 ):
     """Retrieve and return data as a pandas.DataFrame.
@@ -421,7 +421,7 @@ def get_data(
         .pipe(_item_clean_data, source, scale)
         .dropna(subset=["value"])
         .drop(list(d for d in drop if d in result.columns), axis=1)
-        .pipe(categorize, source, categories=categories, drop_uncategorized=True)
+        .pipe(categorize, source, recategorize=recategorize, drop_uncategorized=True)
     )
 
 
@@ -466,14 +466,25 @@ def categorize(df, source, **options):
                 f"Drop {N - len(result)} / {N} obs from scenarios that failed vetting"
             )
 
+        recategorize = options.get("recategorize")
+        if recategorize:
+            # Mapping from original categories to new
+            cg = CAT_GROUP[recategorize]
+
+            log.info(f"Recategorize scenarios using scheme {repr(recategorize)}")
+
+            # Split 'category' column on ":", look up the first part in `cg`
+            result = result.assign(
+                category=result["category"].str.split(":", expand=True)[0].replace(cg)
+            )
+
     elif source.startswith("iTEM"):
         # From the iTEM database metadata
-        df["category"] = df.apply(_item_cat_for_scen, axis=1).replace(
-            "policy-extra", "policy"
+        result = df.assign(
+            category=df.apply(_item_cat_for_scen, axis=1).replace(
+                "policy-extra", "policy"
+            )
         )
-        # Directly
-        df["category+1"] = "item"
-        result = df
 
     else:
         pass

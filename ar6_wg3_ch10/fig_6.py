@@ -28,13 +28,20 @@ STATIC = (
         # # 1 lines per scenario
         # p9.geom_line(p9.aes(y='value', group='model + scenario + category'),
         #           alpha=0.6),
+        #
         # 1 band per category
-        # p9.geom_ribbon(
-        #     p9.aes(ymin="5%", ymax="95%", fill="category"), alpha=0.25, color=None
-        # ),
+        p9.geom_ribbon(
+            p9.aes(ymin="5%", ymax="95%", fill="category"), alpha=0.25, color=None
+        ),
+        p9.geom_line(p9.aes(y="50%", color="category"), alpha=1, size=0.2),
         p9.geom_line(p9.aes(y="5%", color="category"), alpha=1, size=0.1),
         p9.geom_line(p9.aes(y="95%", color="category"), alpha=1, size=0.1),
-        p9.geom_line(p9.aes(y="50%", color="category"), alpha=0.5),
+        #
+        # # 3 lines: low, middle, high
+        # p9.geom_line(p9.aes(y="5%", color="category"), alpha=1, size=0.1),
+        # p9.geom_line(p9.aes(y="95%", color="category"), alpha=1, size=0.1),
+        # p9.geom_line(p9.aes(y="50%", color="category"), alpha=0.5),
+        #
         # Axis labels
         p9.labs(x="", y="", color="IAM/sectoral scenarios"),
         # p9.theme(axis_text_x=p9.element_blank()),
@@ -148,8 +155,8 @@ class Fig6(Figure):
                 p9.ggplot(data=d[0])
                 + p9.ggtitle(self.formatted_title.format(group=group))
                 + STATIC
-                + scale_category("color", overshoot=self.overshoot)
-                + scale_category("fill", overshoot=self.overshoot)
+                + scale_category("color", self)
+                + scale_category("fill", self)
                 # + p9.geom_line(
                 #     p9.aes(x="year", y="value"),
                 #     d[1],

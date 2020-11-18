@@ -132,9 +132,9 @@ class Fig4(Figure):
             + p9.ggtitle(self.formatted_title.format(group=group))
             + STATIC
             # Aesthetics and scales
-            + scale_category("x", overshoot=self.overshoot)
-            + scale_category("color", overshoot=self.overshoot)
-            + scale_category("fill", overshoot=self.overshoot)
+            + scale_category("x", self)
+            + scale_category("color", self)
+            + scale_category("fill", self)
         )
 
         if len(data[1]):
