@@ -392,7 +392,11 @@ def get_data(
         # Variables for pandas melt()
         id_vars = ["model", "scenario", "region", "variable", "unit"]
         if "iTEM" in source:
+            # Additional columns in iTEM MIP2 and MIP3
             id_vars.extend(["mode", "technology", "fuel"])
+        if "MIP3" in source:
+            # Additional columns in iTEM MIP3 data only
+            id_vars.extend(["service", "vehicle_type", "liquid_fuel_type"])
 
         result = _raw_local_data(DATA_PATH / LOCAL_DATA[source], tuple(id_vars))
     elif source in REMOTE_DATA:
@@ -476,8 +480,11 @@ def categorize(df, source, **options):
 
     elif source.startswith("iTEM"):
         # From the iTEM database metadata
+
+        # Version of the iTEM database, e.g. 2 for MIP2
+        mip_number = int(source[-1])
         result = df.assign(
-            category=df.apply(_item_cat_for_scen, axis=1).replace(
+            category=df.apply(_item_cat_for_scen, axis=1, args=(mip_number,)).replace(
                 "policy-extra", "policy"
             )
         )
@@ -513,9 +520,9 @@ def select_indicator_scenarios(df):
     )
 
 
-def _item_cat_for_scen(row):
+def _item_cat_for_scen(row, mip):
     """Return the iTEM scenario category for model & scenario info."""
-    return _item_scen_info(row["model"])[row["scenario"]]["category"]
+    return _item_scen_info(row["model"], mip)[row["scenario"]]["category"]
 
 
 def _item_clean_data(df, source, scale):
@@ -532,10 +539,10 @@ def _item_clean_data(df, source, scale):
 
 
 @lru_cache()
-def _item_scen_info(name):
+def _item_scen_info(name, mip):
     """Return iTEM metadata for model *name*."""
-    name = {"WEPS+": "EIA"}.get(name, name)
-    return item.model.load_model_scenarios(name.lower(), 2)
+    name = {"WEPS+": "EIA", "ITEDD": "EIA"}.get(name, name)
+    return item.model.load_model_scenarios(name.lower(), mip)
 
 
 @lru_cache()
