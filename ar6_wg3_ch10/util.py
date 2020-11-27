@@ -70,7 +70,7 @@ def cached(load_func):
     return cached_load
 
 
-def groupby_multi(dfs, *args, **kwargs):
+def groupby_multi(dfs, *args, skip_first_empty=True, **kwargs):
     """Similar to pd.DataFrame.groupby, but aligned across multiple dataframes."""
     gbs = list(map(lambda df: df.groupby(*args, **kwargs), dfs))
 
@@ -88,5 +88,11 @@ def groupby_multi(dfs, *args, **kwargs):
             except KeyError:
                 log.debug(f"Unbalanced group {repr(name)} for df #{i}")
                 data.append(pd.DataFrame(columns=dfs[i].columns))
+
+        if skip_first_empty and len(data[0]) == 0:
+            log.info(
+                f"Skip {repr(name)}; no data in first dataframe (usually IAM data)"
+            )
+            continue
 
         yield name, data

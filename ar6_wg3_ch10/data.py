@@ -263,7 +263,7 @@ def normalize_if(df, condition, year, drop=True):
         log.info(f"Discard data for {year}")
         return df[df["year"] != year]
 
-    log.info(f"Normalize {len(df)} obs")
+    log.info(f"Normalize {len(df)} obs on year {year}")
 
     # Move all but 'value' columns to index
     id_cols = list(filter(lambda c: c != "value", df.columns))

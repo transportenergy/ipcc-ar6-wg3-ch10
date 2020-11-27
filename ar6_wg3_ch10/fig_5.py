@@ -175,12 +175,7 @@ class Fig5(Figure):
     def generate(self):
         keys = ["plot", "indicator", "plot-item", "item"]
         for region, d in groupby_multi([self.data[k] for k in keys], "region"):
-            if len(d[0]) == 0:
-                log.info(f"Skip {region}; no IAM data")
-                continue
-
             log.info(f"Region: {region}")
-
             yield self.plot_single(d, self.format_title(region=region))
 
     def plot_single(self, data, title):

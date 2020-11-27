@@ -162,6 +162,7 @@ class Fig6(Figure):
         for region, d in groupby_multi(
             (self.data["descriptives"], self.data["indicator"]), "region"
         ):
+            log.info(f"Region: {region}")
             yield (
                 p9.ggplot(data=d[0])
                 + self.format_title(region=region)

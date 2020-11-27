@@ -95,12 +95,7 @@ class Fig7(Figure):
     def generate(self):
         keys = ["plot", "indicator"]
         for group, d in groupby_multi([self.data[k] for k in keys], ["type", "region"]):
-            if len(d[0]) == 0:
-                log.info(f"Skip {group}; no IAM data")
-                continue
-
             log.info(f"Type, region: {group}")
-
             yield self.plot_single(d, self.format_title(type=group[0], region=group[1]))
 
     def plot_single(self, data, title):
