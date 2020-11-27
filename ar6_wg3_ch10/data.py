@@ -180,20 +180,32 @@ def compute_ratio(df: pd.DataFrame, num: str, denom: str, groupby=[]) -> pd.Data
 
     id_cols = ["model", "scenario", "region", "year"]
     results = []
-    for group, group_df in df.groupby(groupby):
+
+    groups = df.groupby(groupby) if groupby else ((None, df),)
+    for group, group_df in groups:
         tmp = {}
         unit = {}
+        skip = False
+
         for n, query in ("num", num), ("denom", denom):
             # Subset the data
             tmp[n] = group_df.set_index(id_cols + groupby).query(query)
 
+            if len(tmp[n]) == 0:
+                log.info(f"  Group {repr(group)}: 0 {n} obs; skip")
+                skip = True
+                break
+
             # Retrieve units
             unit[n] = unique_units(tmp[n])
 
+        if skip:
+            continue
+
         # Compute the ratio
         log.info(
-            f"  ({len(tmp['num'])} obs) [{unit['num']}] / "
-            f"  ({len(tmp['denom'])} obs) [{unit['denom']}]"
+            f"  Group {repr(group)}: ({len(tmp['num'])} obs) [{unit['num']}] / "
+            f"({len(tmp['denom'])} obs) [{unit['denom']}]"
         )
 
         result = (tmp["num"]["value"] / tmp["denom"]["value"]).dropna()
