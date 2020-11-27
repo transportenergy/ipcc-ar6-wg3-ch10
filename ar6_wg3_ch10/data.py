@@ -115,7 +115,11 @@ def unique_units(df):
     try:
         return UNITS(units[0])
     except pint.UndefinedUnitError:
-        return units[0]
+        if "CO2" in units[0]:
+            log.info(f"Remove 'CO2' from unit expression {repr(units[0])}")
+            return UNITS(units[0].replace("CO2", ""))
+        else:
+            return units[0]
 
 
 def per_capita_if(data, population, condition, groupby=[]):
@@ -136,10 +140,6 @@ def per_capita_if(data, population, condition, groupby=[]):
     for group, group_df in data.groupby(groupby) if len(groupby) else ((None, data),):
         num = group_df.set_index(id_cols)
         unit_num = unique_units(num)
-
-        if isinstance(unit_num, str) and "CO2" in unit_num:
-            log.info(f"Remove 'CO2' from {repr(unit_num)}")
-            unit_num = UNITS(unit_num.replace("CO2", ""))
 
         denom = population.set_index(id_cols)
         unit_denom = unique_units(denom)
