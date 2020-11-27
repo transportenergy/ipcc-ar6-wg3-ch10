@@ -20,19 +20,15 @@ log = logging.getLogger(__name__)
 
 # Filenames for local data
 LOCAL_DATA = {
-    "ADVANCE": "advance_compare_20171018-134445.csv",
-    "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv",
-    # # From AR6 Scenario Explorer download with ID 1605622065355
-    # "AR6 metadata": "raw/ar6_full_metadata_indicators_v2020_10_14v5_v2.xlsx",
-    # A file e-mailed by Ed Byers 2020-11-18
-    # FIXME retrieve this from an official source
-    "AR6 metadata": "raw/ar6_full_metadata_indicators_merge_vetted2020_10_14v5_v2.xlsx",
-    "AR6 world": "raw/snapshot_world_with_globalmeantemps_iamc_ar6_12020_10_03.csv.gz",
-    "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2020_10_03.csv.gz",
-    "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2020_10_03.csv.gz",
-    "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2020_10_03.csv.gz",
+    "ADVANCE": "advance_compare_20171018-134445.csv.gz",
+    "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv.gz",
+    "AR6 metadata": "raw/ar6_full_metadata_indicators_merge_vetted2020_11_19v5_v2.xlsx",
+    "AR6 world": "raw/snapshot_world_with_globalmeantemps_iamc_ar6_2020_11_19.csv.gz",
+    "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2020_11_19.csv.gz",
+    "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2020_11_19.csv.gz",
+    "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2020_10_14.csv.gz",
     "iTEM MIP2": "iTEM-MIP2.csv",
-    "iTEM MIP3": "2019_11_19_item_region_data.csv",
+    "iTEM MIP3": "raw/2019_11_19_item_region_data.csv",
 }
 
 # IIASA Scenario Explorer names for remote data
