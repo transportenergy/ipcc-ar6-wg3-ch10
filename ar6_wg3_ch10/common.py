@@ -218,7 +218,6 @@ class Figure:
 
     # Required
     id: str
-    title: str
     aspect_ratio: float
     variables: List[str]
 
@@ -248,10 +247,16 @@ class Figure:
     geoms = []
     #: Aspect ratio for output
     aspect_ratio = 1.0 / 1.9
+    #: Units
+    units = "MISSING UNITS"
 
     def __init__(self, options: Dict):
         # Log output
         log.info("-" * 10)
+
+        # Title template = first line of docstring
+        self.title = self.__doc__.split("\n")[0]
+
         log.info(f"{self.__class__.__name__}: {self.title}")
 
         # Update properties from options
@@ -263,7 +268,7 @@ class Figure:
             self.sources[0].replace(" ", "-"),
             self.sources[1].replace(" ", "-"),
         ]
-        # Distintuish optional variants in file name
+        # Distinguish optional variants in file name
         if self.has_option.get("per_capita", False) and self.per_capita:
             fn_parts.insert(-2, "percap")
         if self.has_option.get("normalize", False) and not self.normalize:
@@ -279,8 +284,10 @@ class Figure:
         # Store figure size: 190 mm in inches, aspect ratio from a property
         self.geoms.append(p9.theme(figure_size=(7.48, 7.48 * self.aspect_ratio)))
 
-        # Title template
-        self.formatted_title = f"{self.title} [{{units}}] ({self.base_fn})"
+    def format_title(self, **kwargs):
+        """Return a :func:`plotnine.ggtitle` from :attr:`title` with `kwargs`."""
+        template = f"{self.title} [{self.units}] ({self.base_fn})"
+        return p9.ggtitle(template.format(**kwargs))
 
     def _prepare_data(self):
         from .data import get_data, restore_dims

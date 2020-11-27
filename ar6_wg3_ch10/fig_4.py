@@ -31,7 +31,7 @@ STATIC = (
 
 
 class Fig4(Figure):
-    """Energy intensity of transport
+    """Energy intensity of transport — {region}
 
     TODO add emissions intensity computed as:
 
@@ -43,7 +43,6 @@ class Fig4(Figure):
       "Final Energy|Transportation|Freight"
     """
 
-    title = "Energy intensity of transport — {{group}}"
     has_option = dict(normalize=True)
 
     # Data preparation
@@ -114,32 +113,31 @@ class Fig4(Figure):
             scale_y = p9.scale_y_continuous(
                 limits=(0, 1.4), minor_breaks=4, expand=(0, 0, 0, 0.08)
             )
-            units = "Index, 2020 level = 1.0"
+            self.units = "Index, 2020 level = 1.0"
         else:
             scale_y = (p9.scale_y_continuous(limits=(0, 0.0045)),)
-            units = sorted(map(str, data["iam"]["unit"].unique()))
+            self.units = sorted(map(str, data["iam"]["unit"].unique()))
 
         self.geoms.append(scale_y)
-        self.formatted_title = self.formatted_title.format(units=units)
 
         return data
 
     def generate(self):
         keys = ["plot", "plot-item", "item"]
-        for group, d in groupby_multi([self.data[k] for k in keys], "region"):
+        for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             if len(d[0]) == 0:
-                log.info(f"Skip {group}; no IAM data")
+                log.info(f"Skip {region}; no IAM data")
                 continue
 
-            log.info(f"Plot: {group}")
+            log.info(f"Region: {region}")
 
-            yield self.plot_single(group, d)
+            yield self.plot_single(region, self.format_title(region=region))
 
-    def plot_single(self, group, data):
+    def plot_single(self, data, title):
         # Base plot
         p = (
             p9.ggplot(data=data[0])
-            + p9.ggtitle(self.formatted_title.format(group=group))
+            + title
             + self.geoms
             # Aesthetics and scales
             + scale_category("x", self)

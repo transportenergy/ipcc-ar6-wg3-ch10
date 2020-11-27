@@ -37,18 +37,20 @@ STATIC = (
 
 
 class Fig1(Figure):
-    title = "Direct transport CO₂ emissions — {{group}}"
-    caption = """
-      IAM results are grouped by temperature targets. Sectoral studies are grouped by
-      baseline and policy categories because they don’t track global emissions so
-      cannot solve for achieving temperature targets. Numbers above the bars indicate
-      the number of scenarios.
+    """Direct transport CO₂ emissions — {region}
 
-      Sources: IAMs —IPCC WGIII AR6 Scenario Database (Annex II.10). Sectoral models:
-      MoMo (IEA), EPPA5 (MIT), Roadmap (ICCT), GCAM (PNNL), and MESSAGE (IIASA). The
-      policy scenarios in global transport models (GTMs) cover a wide range of
-      “non-BAU” scenarios (to be defined) that are not necessarily designed to achieve
-      the targets set in the Paris Agreements."""
+    IAM results are grouped by temperature targets. Sectoral studies are grouped by
+    baseline and policy categories because they don’t track global emissions so
+    cannot solve for achieving temperature targets. Numbers above the bars indicate
+    the number of scenarios.
+
+    Sources: IAMs —IPCC WGIII AR6 Scenario Database (Annex II.10). Sectoral models:
+    MoMo (IEA), EPPA5 (MIT), Roadmap (ICCT), GCAM (PNNL), and MESSAGE (IIASA). The
+    policy scenarios in global transport models (GTMs) cover a wide range of
+    “non-BAU” scenarios (to be defined) that are not necessarily designed to achieve
+    the targets set in the Paris Agreements.
+    """
+
     has_option = dict(normalize=True, per_capita=True)
 
     # Data preparation
@@ -95,36 +97,35 @@ class Fig1(Figure):
             scale_y = scale_y(
                 limits=(-0.5, 2.5), minor_breaks=4, expand=(0, 0, 0, 0.08)
             )
-            units = "Index, 2020 level = 1.0"
+            self.units = "Index, 2020 level = 1.0"
         elif self.per_capita:
             scale_y = scale_y(limits=(-1, 5), minor_breaks=3)
-            units = unique_units(data["iam"])
+            self.units = unique_units(data["iam"])
         else:
             # NB if this figure is re-added to the text, re-check this scale
             scale_y = scale_y(limits=(-5000, 20000))
-            units = unique_units(data["iam"])
+            self.units = unique_units(data["iam"])
 
         self.geoms.append(scale_y)
-        self.formatted_title = self.formatted_title.format(units=units)
 
         return data
 
     def generate(self):
         keys = ["plot", "indicator", "plot-item", "item"]
-        for group, d in groupby_multi([self.data[k] for k in keys], "region"):
+        for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             if len(d[0]) == 0:
-                log.info(f"Skip {group}; no IAM data")
+                log.info(f"Skip {region}; no IAM data")
                 continue
 
-            log.info(f"Plot: {group}")
+            log.info(f"Region: {region}")
 
-            yield self.plot_single(group, d)
+            yield self.plot_single(d, self.format_title(region=region))
 
-    def plot_single(self, group, data):
+    def plot_single(self, data, title):
         # Base plot
         p = (
             p9.ggplot(data=data[0])
-            + p9.ggtitle(self.formatted_title.format(group=group))
+            + title
             + self.geoms
             # Aesthetics and scales
             + scale_category("x", self, short_label=True)

@@ -24,12 +24,13 @@ log = logging.getLogger(__name__)
 
 
 class Fig7(Figure):
-    title = "Fuel shares of transport final energy — {{type}} — {{group}}"
-    caption = """
-        Based on integrated models grouped by CO2eq concentration levels by 2100 and
-        compared with sectoral models (grouped by baseline and policies) in 2050.
-        Box plots show minimum/maximum, 25th/75th percentile and median.
-        Numbers above each bar represent the # of scenarios."""
+    """Fuel shares of transport final energy — {type} — {region}
+
+    Based on integrated models grouped by CO2eq concentration levels by 2100 and
+    compared with sectoral models (grouped by baseline and policies) in 2050. Box plots
+    show minimum/maximum, 25th/75th percentile and median. Numbers above each bar
+    represent the # of scenarios.
+    """
 
     # Data preparation
     variables = [
@@ -60,6 +61,7 @@ class Fig7(Figure):
     # Plotting
     geoms = STATIC
     aspect_ratio = 2
+    units = "share"
 
     def prepare_data(self, data):
         # Compute fuel shares by type for IAM scenarios
@@ -88,8 +90,6 @@ class Fig7(Figure):
             data["iam"], groupby=["fuel", "region", "type"]
         )
 
-        self.formatted_title = self.formatted_title.format(units="share")
-
         return data
 
     def generate(self):
@@ -99,18 +99,13 @@ class Fig7(Figure):
                 log.info(f"Skip {group}; no IAM data")
                 continue
 
-            log.info(f"Plot: {group}")
+            log.info(f"Type, region: {group}")
 
-            yield self.plot_single(group, d)
+            yield self.plot_single(d, self.format_title(type=group[0], region=group[1]))
 
-    def plot_single(self, group, data):
+    def plot_single(self, data, title):
         # Base plot
-        p = (
-            p9.ggplot(data=data[0])
-            + self.geoms
-            + p9.ggtitle(self.formatted_title.format(type=group[0], group=group[1]))
-            + p9.labs(shape="Indicator scenario")
-        )
+        p = p9.ggplot(data=data[0]) + title + self.geoms
 
         if len(data[1]):
             # Points for indicator scenarios

@@ -42,7 +42,8 @@ STATIC = (
 
 
 class Fig6(Figure):
-    title = "Transport activity by mode — {{group}}"
+    """Transport activity by mode — {region}"""
+
     has_option = dict(normalize=True, per_capita=True)
 
     all_years = True
@@ -123,11 +124,11 @@ class Fig6(Figure):
         )
 
         if self.normalize:
-            units = "Index, 2020 level = 1.0"
+            self.units = "Index, 2020 level = 1.0"
         else:
-            units = "; ".join(data["iam"]["unit"].str.replace("bn", "10⁹").unique())
-
-        self.formatted_title = self.formatted_title.format(units=units)
+            self.units = "; ".join(
+                data["iam"]["unit"].str.replace("bn", "10⁹").unique()
+            )
 
         # Adjust filename to reflect bandwidth
         fn_parts = self.base_fn.split("-", maxsplit=1)
@@ -158,13 +159,13 @@ class Fig6(Figure):
         return data
 
     def generate(self):
-        for group, d in groupby_multi(
+        for region, d in groupby_multi(
             (self.data["descriptives"], self.data["indicator"]), "region"
         ):
             yield (
                 p9.ggplot(data=d[0])
-                + p9.ggtitle(self.formatted_title.format(group=group))
-                + STATIC
+                + self.format_title(region=region)
+                + self.geoms
                 + scale_category("color", self)
                 + scale_category("fill", self)
                 # + p9.geom_line(

@@ -35,12 +35,14 @@ STATIC = (
 
 
 class Fig2(Figure):
-    title = "Transport activity — {{group}}"
-    caption = """
-      Global passenger (billion p-km/yr) and freight (billion t-km/yr) demand
-      projections, 2020 index, based on integrated models for selected stabilization
-      temperatures by 2100. Also included are global transport models Ref and Policy
-      scenarios."""
+    """Transport activity — {region}
+
+    Global passenger (billion p-km/yr) and freight (billion t-km/yr) activity
+    projections, 2020 index, based on integrated models for selected stabilization
+    temperatures by 2100. Also included are global transport models Ref and Policy
+    scenarios.
+    """
+
     has_option = dict(normalize=True, per_capita=True)
 
     # Data preparation
@@ -97,35 +99,36 @@ class Fig2(Figure):
                 p9.scale_y_continuous(limits=(-0.2, 4.8), minor_breaks=4),
                 p9.expand_limits(y=[0]),
             ]
-            units = "Index, 2020 level = 1.0"
+            self.units = "Index, 2020 level = 1.0"
         elif self.per_capita:
             scale_y = scale_y(limits=(-1, 5), minor_breaks=3)
-            units = "; ".join(data["iam"]["unit"].unique())
+            self.units = "; ".join(data["iam"]["unit"].unique())
         else:
             scale_y = []
-            units = "; ".join(data["iam"]["unit"].str.replace("bn", "10⁹").unique())
+            self.units = "; ".join(
+                data["iam"]["unit"].str.replace("bn", "10⁹").unique()
+            )
 
-        self.formatted_title = self.formatted_title.format(units=units)
         self.geoms.extend(scale_y)
 
         return data
 
     def generate(self):
         keys = ["plot", "indicator", "plot-item", "item"]
-        for group, d in groupby_multi([self.data[k] for k in keys], "region"):
+        for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             if len(d[0]) == 0:
-                log.info(f"Skip {group}; no IAM data")
+                log.info(f"Skip {region}; no IAM data")
                 continue
 
-            log.info(f"Plot: {group}")
+            log.info(f"Region: {region}")
 
-            yield self.plot_single(group, d)
+            yield self.plot_single(d, self.format_title(region=region))
 
-    def plot_single(self, group, data):
+    def plot_single(self, data, title):
         # Base plot
         p = (
             p9.ggplot(data=data[0])
-            + p9.ggtitle(self.formatted_title.format(group=group))
+            + title
             + self.geoms
             # Aesthetics and scales
             + scale_category("x", self, short_label=True)

@@ -30,11 +30,12 @@ STATIC = (
 
 
 class Fig3(Figure):
-    title = "Mode shares of transport activity"
-    caption = """
-      Global passenger (billion p-km/yr) and freight (billion t-km/yr) demand
-      projections, 2020 index, based on IAM for selected stabilization temperatures by
-      2100. Also included are global transport models Ref and Policy scenarios."""
+    """Mode shares of transport activity
+
+    Global passenger (billion p-km/yr) and freight (billion t-km/yr) activity
+    projections, 2020 index, based on IAM for selected stabilization temperatures by
+    2100. Also included are global transport models Ref and Policy scenarios.
+    """
 
     # Data preparation
     all_years = True
@@ -64,6 +65,8 @@ class Fig3(Figure):
         r"Energy Service\|Transportation\|"
         r"(?P<type>Freight|Passenger)(?:\|(?P<mode>.*))?"
     )
+
+    units = "0̸"
 
     def prepare_data(self, data):
         # Compute mode shares by type for IAM scenarios
@@ -102,13 +105,12 @@ class Fig3(Figure):
         # for k in data.keys():
         #     data[k]['mode'] = k + '|' + data[k]['mode']
 
-        self.formatted_title = self.formatted_title.format(units="0̸")
-
         return data
 
     def generate(self):
         yield (
             p9.ggplot(data=self.data["iam"])
+            + self.format_title()
             + STATIC
             + p9.geom_line(
                 p9.aes(y="value", group="model + scenario + mode"),

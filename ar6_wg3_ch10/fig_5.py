@@ -62,7 +62,7 @@ STATIC = (
         #     size=3,
         # ),
         # Axis labels
-        p9.labs(y="", fill="Energy carrier"),
+        p9.labs(y="", fill="Energy carrier", shape="Indicator scenario"),
         # Hide legend for 'color'
         p9.guides(color=None),
         # Appearance
@@ -73,12 +73,13 @@ STATIC = (
 
 
 class Fig5(Figure):
-    title = "Fuel shares of transport final energy — {{group}}"
-    caption = """
-        Based on integrated models grouped by CO2eq concentration levels by 2100 and
-        compared with sectoral models (grouped by baseline and policies) in 2050.
-        Box plots show minimum/maximum, 25th/75th percentile and median.
-        Numbers above each bar represent the # of scenarios."""
+    """Fuel shares of transport final energy — {region}
+
+    Based on integrated models grouped by CO2eq concentration levels by 2100 and
+    compared with sectoral models (grouped by baseline and policies) in 2050. Box plots
+    show minimum/maximum, 25th/75th percentile and median. Numbers above each bar
+    represent the # of scenarios.
+    """
 
     # Data preparation
     variables = [
@@ -121,6 +122,7 @@ class Fig5(Figure):
     # Plotting
     geoms = STATIC
     aspect_ratio = 2
+    units = "share"
 
     def prepare_data(self, data):
         # Compute fuel shares by type for IAM scenarios
@@ -168,29 +170,22 @@ class Fig5(Figure):
             .pipe(compute_descriptives, groupby=["fuel", "region"])
         )
 
-        self.formatted_title = self.formatted_title.format(units="share")
-
         return data
 
     def generate(self):
         keys = ["plot", "indicator", "plot-item", "item"]
-        for group, d in groupby_multi([self.data[k] for k in keys], "region"):
+        for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             if len(d[0]) == 0:
-                log.info(f"Skip {group}; no IAM data")
+                log.info(f"Skip {region}; no IAM data")
                 continue
 
-            log.info(f"Plot: {group}")
+            log.info(f"Region: {region}")
 
-            yield self.plot_single(group, d)
+            yield self.plot_single(d, self.format_title(region=region))
 
-    def plot_single(self, group, data):
+    def plot_single(self, data, title):
         # Base plot
-        p = (
-            p9.ggplot(data=data[0])
-            + self.geoms
-            + p9.ggtitle(self.formatted_title.format(group=group))
-            + p9.labs(shape="Indicator scenario")
-        )
+        p = p9.ggplot(data=data[0]) + title + self.geoms
 
         if len(data[1]):
             # Points for indicator scenarios
