@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import plotnine as p9
 
-from .data import compute_descriptives, compute_ratio
+from .data import compute_descriptives, compute_ratio, normalize_if
 from .common import COMMON, Figure, scale_category
 from .util import groupby_multi
 
@@ -20,14 +20,11 @@ STATIC = (
     + COMMON["ranges"]
     + [
         COMMON["counts"],
-        p9.scale_y_continuous(limits=(0, 0.0045)),
         # Axis labels
         p9.labs(y="", fill="IAM/sectoral scenarios"),
         # Appearance
         COMMON["theme"],
-        p9.theme(
-            panel_grid_major_x=p9.element_blank(),
-        ),
+        p9.theme(panel_grid_major_x=p9.element_blank()),
         p9.guides(color=None),
     ]
 )
@@ -47,6 +44,7 @@ class Fig4(Figure):
     """
 
     title = "Energy intensity of transport — {{group}}"
+    has_option = dict(normalize=True)
 
     # Data preparation
     variables = [
@@ -59,6 +57,7 @@ class Fig4(Figure):
 
     # Plotting
     aspect_ratio = 1.33
+    geoms = STATIC
 
     def prepare_data(self, data):
         # Compute energy intensity for IAM scenarios
@@ -71,6 +70,7 @@ class Fig4(Figure):
                 denom="quantity == 'Energy Service'",
             )
             .assign(variable="Energy intensity of transport")
+            .pipe(normalize_if, self.normalize, year=2020)
         )
 
         data["plot"] = compute_descriptives(data["iam"], groupby=["type", "region"])
@@ -102,6 +102,7 @@ class Fig4(Figure):
                 denom="quantity == 'Energy Service'",
             )
             .assign(variable="Energy intensity of transport")
+            .pipe(normalize_if, self.normalize, year=2020)
         )
         data["plot-item"] = compute_descriptives(
             data["item"], groupby=["type", "region"]
@@ -109,7 +110,16 @@ class Fig4(Figure):
 
         # TODO compute carbon intensity of energy
 
-        units = sorted(map(str, data["iam"]["unit"].unique()))
+        if self.normalize:
+            scale_y = p9.scale_y_continuous(
+                limits=(0, 1.4), minor_breaks=4, expand=(0, 0, 0, 0.08)
+            )
+            units = "Index, 2020 level = 1.0"
+        else:
+            scale_y = (p9.scale_y_continuous(limits=(0, 0.0045)),)
+            units = sorted(map(str, data["iam"]["unit"].unique()))
+
+        self.geoms.append(scale_y)
         self.formatted_title = self.formatted_title.format(units=units)
 
         return data
@@ -130,7 +140,7 @@ class Fig4(Figure):
         p = (
             p9.ggplot(data=data[0])
             + p9.ggtitle(self.formatted_title.format(group=group))
-            + STATIC
+            + self.geoms
             # Aesthetics and scales
             + scale_category("x", self)
             + scale_category("color", self)

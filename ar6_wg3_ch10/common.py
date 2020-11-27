@@ -264,9 +264,9 @@ class Figure:
             self.sources[1].replace(" ", "-"),
         ]
         # Distintuish optional variants in file name
-        if self.has_option["per_capita"] and self.per_capita:
+        if self.has_option.get("per_capita", False) and self.per_capita:
             fn_parts.insert(-2, "percap")
-        if self.has_option["normalize"] and not self.normalize:
+        if self.has_option.get("normalize", False) and not self.normalize:
             fn_parts.insert(-2, "abs")
         if self.recategorize:
             fn_parts.insert(-1, f"recat{self.recategorize}")
@@ -302,7 +302,7 @@ class Figure:
             .pipe(remove_categoricals)
             .pipe(maybe_drop_nca, self.include_nca)
         )
-        if self.has_option["per_capita"] and self.per_capita:
+        if self.has_option.get("per_capita", False) and self.per_capita:
             # Load population data for per capita calculations
             pop_args = args.copy()
             pop_args["variable"] = ["Population"]
