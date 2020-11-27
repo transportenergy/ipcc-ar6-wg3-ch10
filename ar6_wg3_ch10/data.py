@@ -223,7 +223,7 @@ def compute_ratio(df: pd.DataFrame, num: str, denom: str, groupby=[]) -> pd.Data
             .reset_index()
         )
 
-    return pd.concat(results)
+    return pd.concat(results) if len(results) else pd.DataFrame(columns=df.columns)
 
 
 def compute_shares(df, on, groupby=[]):
@@ -284,10 +284,8 @@ def normalize_if(df, condition, year, drop=True):
     # bool mask for numerator/denominator
     mask = tmp.index.isin([year], level="year")
 
-    if drop:
-        num = tmp[~mask]
-    else:
-        num = tmp
+    # Drop the reference year from the numerator if indicated
+    num = tmp[~mask] if drop else tmp
 
     # Remove 'year' index from denominator so it divides all values; compute;
     # return with all data as columns

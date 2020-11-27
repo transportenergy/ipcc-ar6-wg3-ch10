@@ -10,11 +10,20 @@ from .util import groupby_multi
 log = logging.getLogger(__name__)
 
 
+PANEL_VAR = {
+    "0": "Passenger energy intensity",
+    "1": "Freight energy intensity",
+    "2": "Fuel carbon intensity",
+}
+VAR_PANEL = {v: p for p, v in PANEL_VAR.items()}
+
 # Non-dynamic features of fig_4
 STATIC = (
     [
         # Horizontal panels by freight/passenger
-        p9.facet_grid("type ~ year"),
+        p9.facet_grid(
+            "panel ~ year", scales="free_y", labeller=lambda v: PANEL_VAR.get(v, v)
+        ),
         # Geoms
     ]
     + COMMON["ranges"]
@@ -31,102 +40,97 @@ STATIC = (
 
 
 class Fig4(Figure):
-    """Energy intensity of transport — {region}
-
-    TODO add emissions intensity computed as:
-
-    - "Emissions|CO2|Energy|Demand|Transportation" divided by
-      "Final Energy|Transportation"
-    - "Emissions|CO2|Energy|Demand|Transportation|Passenger" divided by
-      "Final Energy|Transportation|Passenger"
-    - "Emissions|CO2|Energy|Demand|Transportation|Freight" divided by
-      "Final Energy|Transportation|Freight"
-    """
+    """Energy/CO₂ intensity of transport — {region}"""
 
     has_option = dict(normalize=True)
 
     # Data preparation
     variables = [
+        "Emissions|CO2|Energy|Demand|Transportation",
         "Energy Service|Transportation|Freight",
         "Energy Service|Transportation|Passenger",
+        "Final Energy|Transportation",
         "Final Energy|Transportation|Freight",
         "Final Energy|Transportation|Passenger",
     ]
-    restore_dims = r"(?P<quantity>[^\|]*)\|Transportation(?:\|(?P<type>.*))?"
+    restore_dims = r"^(?P<quantity>.*)\|Transportation(?:\|(?P<type>.*))?"
 
     # Plotting
     aspect_ratio = 1.33
     geoms = STATIC
 
     def prepare_data(self, data):
-        # Compute energy intensity for IAM scenarios
-        data["iam"] = (
-            data["iam"]
-            .pipe(
-                compute_ratio,
-                groupby=["type"],
-                num="quantity == 'Final Energy'",
-                denom="quantity == 'Energy Service'",
-            )
-            .assign(variable="Energy intensity of transport")
-            .pipe(normalize_if, self.normalize, year=2020)
-        )
-
-        data["plot"] = compute_descriptives(data["iam"], groupby=["type", "region"])
+        # Fill 'type' column in IAM data
+        data["iam"] = data["iam"].fillna(dict(type="All"))
 
         # Restore the 'type' dimension to sectoral data
-        # TODO "energy": "Passenger" is incorrect; fix
         data["item"]["type"] = data["item"]["variable"].replace(
-            {"tkm": "Freight", "pkm": "Passenger", "energy": "Passenger"}
+            {"tkm": "Freight", "pkm": "Passenger", "energy": "All", "ttw_co2": "All"}
         )
         data["item"]["quantity"] = data["item"]["variable"].replace(
-            {"tkm": "Energy Service", "pkm": "Energy Service", "energy": "Final Energy"}
-        )
-        # Duplicate energy data
-        # TODO this is incorrect; fix
-        data["item"] = pd.concat(
-            [
-                data["item"],
-                data["item"].query("variable == 'energy'").assign(type="Freight"),
-            ]
+            {
+                "tkm": "Energy Service",
+                "pkm": "Energy Service",
+                "energy": "Final Energy",
+                "ttw_co2": "Emissions|CO2|Energy|Demand",
+            }
         )
 
-        # Compute energy intensity for sectoral scenarios
-        data["item"] = (
-            data["item"]
-            .pipe(
-                compute_ratio,
-                groupby=["type"],
-                num="quantity == 'Final Energy'",
-                denom="quantity == 'Energy Service'",
+        # Same calculations for both IAMs and sectoral models
+        for key in "iam", "item":
+            # Compute energy intensity
+            ei = (
+                data[key]
+                .pipe(
+                    compute_ratio,
+                    groupby=["type"],
+                    num="quantity == 'Final Energy'",
+                    denom="quantity == 'Energy Service'",
+                )
+                .assign(variable=lambda df: df["type"] + " energy intensity")
             )
-            .assign(variable="Energy intensity of transport")
-            .pipe(normalize_if, self.normalize, year=2020)
-        )
-        data["plot-item"] = compute_descriptives(
-            data["item"], groupby=["type", "region"]
-        )
 
-        # TODO compute carbon intensity of energy
+            # Compute emissions intensity
+            co2i = (
+                data[key]
+                .query("type == 'All'")
+                .pipe(
+                    compute_ratio,
+                    num="quantity == 'Emissions|CO2|Energy|Demand'",
+                    denom="quantity == 'Final Energy'",
+                )
+                .assign(variable="Fuel carbon intensity")
+            )
+
+            tmp = (
+                pd.concat([ei, co2i])
+                .pipe(normalize_if, self.normalize, year=2020)
+                .assign(panel=lambda df: df["variable"].replace(VAR_PANEL))
+                .sort_values("panel")
+            )
+
+            if key == "item" and self.normalize:
+                data.update({"item-abs": data["item"], "item": tmp})
+
+            data[f"plot-{key}"] = compute_descriptives(
+                tmp, groupby=["type", "region", "panel"]
+            )
 
         if self.normalize:
-            scale_y = p9.scale_y_continuous(
-                limits=(0, 1.4), minor_breaks=4, expand=(0, 0, 0, 0.08)
-            )
+            # Free scales
             self.units = "Index, 2020 level = 1.0"
         else:
             scale_y = (p9.scale_y_continuous(limits=(0, 0.0045)),)
+            self.geoms.append(scale_y)
             self.units = sorted(map(str, data["iam"]["unit"].unique()))
-
-        self.geoms.append(scale_y)
 
         return data
 
     def generate(self):
-        keys = ["plot", "plot-item", "item"]
+        keys = ["plot-iam", "plot-item", "item"]
         for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             log.info(f"Region: {region}")
-            yield self.plot_single(region, self.format_title(region=region))
+            yield self.plot_single(d, self.format_title(region=region))
 
     def plot_single(self, data, title):
         # Base plot
