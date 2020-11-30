@@ -28,7 +28,7 @@ LOCAL_DATA = {
     "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2020_11_19.csv.gz",
     "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2020_10_14.csv.gz",
     "iTEM MIP2": "iTEM-MIP2.csv",
-    "iTEM MIP3": "raw/2019_11_19_item_region_data.csv",
+    "iTEM MIP3": "raw/2020_06_15_item_region_data.csv",
 }
 
 # IIASA Scenario Explorer names for remote data
