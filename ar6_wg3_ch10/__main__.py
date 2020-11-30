@@ -117,7 +117,7 @@ def debug():
     "--ar6-data",
     type=click.Choice(["world", "R5", "R10", "country", "raw"]),
     default="world",
-    help="Source for IPCC AR6 data",
+    help="Source snapshort for IPCC/IAM data.",
 )
 @click.option(
     "--recategorize",
@@ -129,29 +129,31 @@ def debug():
     "--item-data",
     type=click.Choice(["MIP2", "MIP3"]),
     default="MIP2",
-    help="Source or snapshot of iTEM data",
+    help="Source of iTEM data.",
 )
 @click.option(
     "--load-only",
     is_flag=True,
-    help="Only load and preprocess data; no output",
+    help="Only load and preprocess data; no output.",
 )
-@click.option("--normalize/--absolute", default=True, help="Normalize ordinate to 2020")
 @click.option(
-    "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate"
+    "--normalize/--absolute", default=True, help="Normalize ordinate to 2020 (default)."
+)
+@click.option(
+    "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate."
 )
 @click.option(
     "--include-nca",
     is_flag=True,
     default=False,
-    help="Include scenarios with no climate assessment (default: False)",
+    help="Include scenarios with no climate assessment",
 )
 @click.option(
     "--bandwidth",
     type=click.Choice(["5", "8", "9"]),
-    default="9",
+    default="8",
     callback=lambda ctx, param, value: int(value),
-    help="Width of bands (fig_5 only) in deciles",
+    help="Width of bands, in deciles (fig_5 only; default: 8)",
 )
 @click.argument("to_plot", metavar="FIGURES", type=int, nargs=-1)
 def plot(to_plot, **options):
