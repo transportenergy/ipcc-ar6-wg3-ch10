@@ -43,6 +43,9 @@ client = None
 # Mapping between variable names in different data sources
 VARIABLES = yaml.safe_load(open(DATA_PATH / "variables-map.yaml"))
 
+# Identifiers for groups of scenarios
+SCENARIOS = yaml.safe_load(open(DATA_PATH / "scenarios.yaml"))
+
 for definition in [
     "bn = 10**9",
     # "person = [person]",
@@ -523,7 +526,7 @@ def restore_dims(df, expr=None):
 
 
 def select_indicator_scenarios(df):
-    info = _ar6_scen_info()
+    info = SCENARIOS["indicator"]
     return df.pipe(
         _filter,
         dict(model=[s["model"] for s in info], scenario=[s["scenario"] for s in info]),
@@ -553,12 +556,6 @@ def _item_scen_info(name, mip):
     """Return iTEM metadata for model *name*."""
     name = {"WEPS+": "EIA", "ITEDD": "EIA"}.get(name, name)
     return item.model.load_model_scenarios(name.lower(), mip)
-
-
-@lru_cache()
-def _ar6_scen_info():
-    """Return the list of AR6 indicators scenarios."""
-    return yaml.safe_load(open(DATA_PATH / "indicator-scenarios.yaml"))
 
 
 @lru_cache()
