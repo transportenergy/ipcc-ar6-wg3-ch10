@@ -82,21 +82,25 @@ class Fig6(Figure):
         years_to_drop = [y for y in data["iam"]["year"].unique() if y % 10 != 0]
         data["iam"] = data["iam"][~data["iam"]["year"].isin(years_to_drop)]
 
-        # Drop data with no climate assessment; these contain erroneous high values
-        data["iam"] = data["iam"][~(data["iam"]["category"] == "no-climate-assessment")]
-
         # Add 'All' to the 'mode' column for IAM data
-        data["iam"]["mode"] = data["iam"]["mode"].where(
-            ~data["iam"]["mode"].isna(), "All"
+        data["iam"] = (
+            data["iam"]
+            .fillna(dict(mode="All"))
+            .replace(dict(mode={"Road|2W and 3W": "2W and 3W", "Road|Bus": "Bus"}))
         )
 
         # Restore the 'type' dimension to sectoral data
-        data["item"]["type"] = data["item"]["variable"].replace(
-            {"tkm": "Freight", "pkm": "Passenger"}
-        )
         # Convert sectoral 'mode' data to common label
-        data["item"] = data["item"].replace(
-            {"mode": {"Freight Rail": "Railways", "Passenger Rail": "Railways"}}
+        data["item"] = (
+            data["item"]
+            .assign(
+                type=lambda df: df["variable"].replace(
+                    {"tkm": "Freight", "pkm": "Passenger"}
+                )
+            )
+            .replace(
+                dict(mode={"Freight Rail": "Railways", "Passenger Rail": "Railways"})
+            )
         )
 
         if self.normalize:
