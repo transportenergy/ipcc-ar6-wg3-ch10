@@ -1,5 +1,6 @@
 import logging
 
+import pandas as pd
 import plotnine as p9
 
 from .data import (
@@ -25,7 +26,7 @@ STATIC = (
     + [
         COMMON["counts"],
         # Axis labels
-        p9.labs(y="", fill="IAM/sectoral scenarios", shape="Indicator scenario"),
+        p9.labs(y="", fill="Model type & category", shape="Indicator scenario"),
         # Appearance
         COMMON["theme"],
         p9.theme(panel_grid_major_x=p9.element_blank()),
@@ -76,8 +77,8 @@ class Fig2(Figure):
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(data["iam"], groupby=["type", "region"])
 
-        # Discard 2100 sectoral data
-        data["item"] = data["item"][data["item"].year != 2100]
+        # Discard 2100 iTEM data; combine with national-sectoral data from the database
+        data["item"] = pd.concat([data["item"][data["item"].year != 2100], data["ns"]])
 
         if self.normalize:
             # Store the absolute data
@@ -126,18 +127,20 @@ class Fig2(Figure):
             + title
             + self.geoms
             # Aesthetics and scales
-            + scale_category("x", self, short_label=True)
+            + scale_category("x", self)
             + scale_category("color", self)
             + scale_category("fill", self)
+        )
+
+        if len(data[1]):
             # Points for indicator scenarios
-            + p9.geom_point(
+            p += p9.geom_point(
                 p9.aes(y="value", shape="scenario"),
                 data[1],
                 color="cyan",
                 size=1,
                 fill=None,
             )
-        )
 
         if len(data[2]):
             # Points and bar for sectoral models
