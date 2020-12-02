@@ -57,329 +57,491 @@ indicator:
 national:
 - model: AIM/Enduse-Japan 2.1
   scenario: CDLINKS-NDC
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CDLINKS-NDC1000
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CDLINKS-NDC1600
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CDLINKS-NoPOL
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: CDLINKS-NPi
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: CDLINKS-NPi1000
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CDLINKS-NPi1600
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_2Deg2020
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_2Deg2030
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_BAU
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_Bridge
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_CurPol
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_GPP
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_LowCarbon
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_NDC
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_NDCMCS
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: CO_NDCplus
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_16by30+80by50_Def
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+70by50_Def
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_Def
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_HighInt
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_HiImportCost
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_HiVREcost
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_HiVREpot
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LimNuc
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoDem
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoDemBld
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoDemInd
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoDemTra
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoInt
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoStorageCost
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoVREcost
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_LoVREpot
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_NoCCS
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+80by50_NoNuc
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_26by30+90by50_Def
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_36by30+80by50_Def
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_Def
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_HighInt
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_HiImportCost
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_HiVREcost
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_HiVREpot
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LimNuc
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoDem
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoDemBld
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoDemInd
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoDemTra
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoInt
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoStorageCost
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoVREcost
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_LoVREpot
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_NoCCS
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: EMF35JMIP_Baseline_NoNuc
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: MILES_baseline
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: MILES_INDC80
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: NDC1000
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: NDC1600
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: NoPOL
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: NPi
+  category: reference
 - model: AIM/Enduse-Japan 2.1
   scenario: NPi1000
+  category: policy
 - model: AIM/Enduse-Japan 2.1
   scenario: NPi1600
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: Advanced_tech_high
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: APS_strong
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: Baseline
+  category: reference
 - model: AIM/Transport-National 1.0
   scenario: Carbon_pricing
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: Ene_Efficiency_High
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: Mass_transit
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: Occupancy_high
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: SpeedHigh
+  category: policy
 - model: AIM/Transport-National 1.0
   scenario: Sustainable development (SD)
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CD-LINKS_INDC
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CD-LINKS_INDC2030_low
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CD-LINKS_NPi
+  category: reference
 - model: BLUES-Brazil 1.0
   scenario: CD-LINKS_NPi2020_low
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CD-LINKS_NPi2020_verylow
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CO_2Deg2020
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CO_2Deg2030
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CO_BAU
+  category: reference
 - model: BLUES-Brazil 1.0
   scenario: CO_Bridge
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CO_Bridge_notax
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CO_CurPol
+  category: reference
 - model: BLUES-Brazil 1.0
   scenario: CO_GPP
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CO_GPP_notax
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: CO_NDCplus
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: IEG Extended
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: IEG_Extended
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: SEG_Extended
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: WEG Extended
+  category: policy
 - model: BLUES-Brazil 1.0
   scenario: WEG_Extended
+  category: policy
 - model: COPPE_MSB-Brazil 2.0
   scenario: BL
+  category: reference
 - model: COPPE_MSB-Brazil 2.0
   scenario: OR
+  category: policy
 - model: ELENA-Ecuador 1.0
   scenario: DDP_High
+  category: policy
 - model: ELENA-Ecuador 1.0
   scenario: MinC
+  category: policy
 - model: GCAM-USA 4.2
   scenario: CO_2Deg2020
+  category: policy
 - model: GCAM-USA 4.2
   scenario: CO_2Deg2030
+  category: policy
 - model: GCAM-USA 4.2
   scenario: CO_BAU
+  category: reference
 - model: GCAM-USA 4.2
   scenario: CO_Bridge
+  category: policy
 - model: GCAM-USA 4.2
   scenario: CO_CurPol
+  category: reference
 - model: GCAM-USA 4.2
   scenario: CO_GPP
+  category: policy
 - model: GCAM-USA 4.2
   scenario: CO_NDCMCS
+  category: policy
 - model: GENeSYS-MOD-CHN 2.3
   scenario: Ambitious 1.0
+  category: policy
 - model: GENeSYS-MOD-CHN 2.3
   scenario: Limited Effort 1.0
+  category: policy
 - model: GENeSYS-MOD-CHN 2.3
   scenario: Paris Agreement 1.0
+  category: policy
 - model: GENeSYS-MOD-MEX 2.1
   scenario: 100% Renewable 1.0
+  category: policy
 - model: GENeSYS-MOD-MEX 2.1
   scenario: BAU 1.0
+  category: reference
 - model: GENeSYS-MOD-MEX 2.1
   scenario: Climate Goals 1.0
+  category: policy
 - model: GENeSYS-MOD-MEX 2.1
   scenario: National Targets 1.0
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_16by30+80by50_Def
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+70by50_Def
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_Def
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_HighInt
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_HiImportCost
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_HiVREcost
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_HiVREpot
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LimNuc
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoDem
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoDemBld
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoDemInd
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoDemTra
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoInt
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoStorageCost
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoVREcost
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_LoVREpot
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_NoCCS
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_26by30+80by50_NoNuc
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_36by30+80by50_Def
+  category: policy
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_Def
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_HighInt
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_HiImportCost
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_HiVREcost
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_HiVREpot
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LimNuc
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoDem
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoDemBld
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoDemInd
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoDemTra
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoInt
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoStorageCost
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoVREcost
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_LoVREpot
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_NoCCS
+  category: reference
 - model: IEEJ-Japan 2.0
   scenario: EMF35JMIP_Baseline_NoNuc
+  category: reference
 - model: IPAC-AIM/technology-China 1.0
   scenario: CO_1.5Deg2020
+  category: policy
 - model: IPAC-AIM/technology-China 1.0
   scenario: CO_1.5Deg2030
+  category: policy
 - model: IPAC-AIM/technology-China 1.0
   scenario: CO_2Deg2020
+  category: policy
 - model: IPAC-AIM/technology-China 1.0
   scenario: CO_BAU
+  category: reference
 - model: IPAC-AIM/technology-China 1.0
   scenario: CO_Bridge
+  category: policy
 - model: IPAC-AIM/technology-China 1.0
   scenario: CO_GPP
+  category: policy
 - model: MARKAL-India 1.0
   scenario: CO_2Deg2020
+  category: policy
 - model: MARKAL-India 1.0
   scenario: CO_2Deg2030
+  category: policy
 - model: MARKAL-India 1.0
   scenario: CO_BAU
+  category: reference
 - model: MARKAL-India 1.0
   scenario: CO_Bridge
+  category: policy
 - model: MARKAL-India 1.0
   scenario: CO_CD-LINKS-INDC_V4
+  category: policy
 - model: MARKAL-India 1.0
   scenario: CO_CD-LINKS-INDC2030_low_V4
+  category: policy
 - model: MARKAL-India 1.0
   scenario: CO_CurPol
+  category: reference
 - model: MARKAL-India 1.0
   scenario: CO_GPP
+  category: policy
 - model: MARKAL-India 1.0
   scenario: CO_NDCplus
+  category: policy
 
 # Known sectoral models
 
 sectoral:
 - model: IEA Energy Technology Perspective Model 2017
   scenario: B2DS
+  category: policy
 - model: IEA World Energy Model 2017
   scenario: Faster Transition Scenario
+  category: policy
 - model: MESSAGE-Transport V.5
   scenario: ADVANCE_WP2_TRA-450-FullTech
+  category: policy
 - model: MESSAGE-Transport V.5
   scenario: ADVANCE_WP2_TRA-Base-FullTech
+  category: reference
 - model: MESSAGE-Transport V.5
   scenario: ADVANCE_WP2_TRA-Ctax-FullTech
+  category: policy
