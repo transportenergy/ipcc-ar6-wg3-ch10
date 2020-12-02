@@ -8,7 +8,7 @@ from .data import (
     aggregate_fuels,
     compute_descriptives,
     compute_shares,
-    select_indicator_scenarios,
+    split_scenarios,
 )
 from .util import groupby_multi
 
@@ -158,7 +158,7 @@ class Fig5(Figure):
         data["item"] = data["item"][data["item"].year != 2020]
 
         # Select indicator scenarios
-        data["indicator"] = select_indicator_scenarios(data["iam"])
+        data["indicator"], _ = split_scenarios(data["iam"], groups=["indicator"])
 
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(data["iam"], groupby=["fuel", "region"])

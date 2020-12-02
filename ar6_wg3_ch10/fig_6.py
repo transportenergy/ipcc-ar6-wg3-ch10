@@ -7,7 +7,7 @@ from .data import (
     compute_descriptives,
     normalize_if,
     per_capita_if,
-    select_indicator_scenarios,
+    split_scenarios,
 )
 from .common import COMMON, Figure, scale_category
 from .util import groupby_multi
@@ -121,7 +121,7 @@ class Fig6(Figure):
         )
 
         # Select indicator scenarios
-        data["indicator"] = select_indicator_scenarios(data["plot"])
+        data["indicator"], _ = split_scenarios(data["plot"], groups=["indicator"])
 
         data["descriptives"] = compute_descriptives(
             data["plot"], on=["type", "mode"], groupby=["region"]

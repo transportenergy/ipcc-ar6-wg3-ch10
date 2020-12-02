@@ -290,7 +290,7 @@ class Figure:
         return p9.ggtitle(template.format(**kwargs))
 
     def _prepare_data(self):
-        from .data import get_data, restore_dims
+        from .data import get_data, restore_dims, split_scenarios
 
         # Temporary storage for data
         data = {}
@@ -316,6 +316,11 @@ class Figure:
             data["population"] = get_data(source=self.sources[0], **pop_args)
         else:
             data["population"] = pd.DataFrame()
+
+        # Split national and sectoral models
+        data["ns"], data["iam"] = split_scenarios(
+            data["iam"], groups=["national", "sectoral"]
+        )
 
         # Load iTEM data
         data["item"] = get_data(source=self.sources[1], conform_to="AR6", **args).pipe(

@@ -7,7 +7,7 @@ from .data import (
     compute_descriptives,
     normalize_if,
     per_capita_if,
-    select_indicator_scenarios,
+    split_scenarios,
     unique_units,
 )
 from .common import COMMON, Figure, scale_category
@@ -68,7 +68,7 @@ class Fig1(Figure):
         )
 
         # Select indicator scenarios
-        data["indicator"] = select_indicator_scenarios(data["iam"])
+        data["indicator"], _ = split_scenarios(data["iam"], groups=["indicator"])
 
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(data["iam"], groupby=["region"])

@@ -3,6 +3,7 @@ import json
 import logging
 from copy import copy
 from functools import lru_cache
+from itertools import chain
 
 from iam_units import registry as UNITS
 import pandas as pd
@@ -446,6 +447,7 @@ def categorize(df, source, **options):
         result = df.merge(cat_data, how="left", on=["model", "scenario"])
 
     elif source.startswith("AR6"):
+        # Load category data for IAMs from a file
         cat_data = (
             # Read from file
             pd.read_excel(DATA_PATH / LOCAL_DATA["AR6 metadata"], sheet_name="meta")
@@ -463,6 +465,14 @@ def categorize(df, source, **options):
                 }
             )
         )
+
+        # Add categories for national and sectoral scenario data in the database
+        info = chain(SCENARIOS["national"], SCENARIOS["sectoral"])
+        cat_data_ns = pd.DataFrame(
+            [[s["model"], s["scenario"], s["category"]] for s in info],
+            columns=["model", "scenario", "category"],
+        ).assign(vetted="N/A")
+        cat_data = pd.concat([cat_data, cat_data_ns])
 
         # Merge the metadata columns with the data
         result = df.merge(
@@ -525,12 +535,29 @@ def restore_dims(df, expr=None):
     return pd.concat([df, df["variable"].str.extract(expr)], axis=1)
 
 
-def select_indicator_scenarios(df):
-    info = SCENARIOS["indicator"]
-    return df.pipe(
-        _filter,
-        dict(model=[s["model"] for s in info], scenario=[s["scenario"] for s in info]),
+def split_scenarios(df: pd.DataFrame, groups=[]):
+    """Split `df` into two data frames using `groups`.
+
+    `groups` contains 0 or more names of groups found in scenarios.yaml. Scenarios with
+    model and scenario names that match those in the group are returned in one data
+    frame; all others in a second.
+    """
+    # Identifiers of desired scenarios
+    names = set(
+        [
+            "{model}/{scenario}".format(**s)
+            for s in chain(*[SCENARIOS[g] for g in groups])
+        ]
     )
+
+    # Binary mask of rows in `df` with matching identifiers
+    mask = (df["model"] + "/" + df["scenario"]).isin(names)
+
+    log.info(
+        f"Split {mask.sum()}, {len(df) - mask.sum()} obs using {repr(groups)} groups"
+    )
+
+    return df[mask], df[~mask]
 
 
 def _item_cat_for_scen(row, mip):
