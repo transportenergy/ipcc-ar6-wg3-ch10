@@ -319,7 +319,9 @@ class Figure:
             # Load population data for per capita calculations
             pop_args = args.copy()
             pop_args["variable"] = ["Population"]
-            data["population"] = get_data(source=self.sources[0], **pop_args)
+            data["population"] = get_data(source=self.sources[0], **pop_args).replace(
+                {"unit": {"Million": "million"}}
+            )
         else:
             data["population"] = pd.DataFrame()
 

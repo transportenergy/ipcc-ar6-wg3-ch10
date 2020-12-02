@@ -77,6 +77,16 @@ class Fig2(Figure):
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(data["iam"], groupby=["type", "region"])
 
+        # Make consistent units for national-sectoral data from the database
+        ns = []
+        for unit, df in data["ns"].groupby("unit"):
+            if unit in ("Million tkm", "Million pkm"):
+                df = df.assign(
+                    value=df["value"] * 1e-3, unit=unit.replace("Million", "bn") + "/yr"
+                )
+            ns.append(df)
+        data["ns"] = pd.concat(ns)
+
         # Discard 2100 iTEM data; combine with national-sectoral data from the database
         data["item"] = pd.concat([data["item"][data["item"].year != 2100], data["ns"]])
 
