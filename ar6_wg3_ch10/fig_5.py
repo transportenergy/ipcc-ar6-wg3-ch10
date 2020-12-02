@@ -157,12 +157,8 @@ class Fig5(Figure):
 
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(data["iam"], groupby=["fuel", "region"])
-
-        # Omit supercategories ('category+1') from iTEM descriptives
-        data["plot-item"] = (
-            data["item"]
-            .drop("category+1", axis=1)
-            .pipe(compute_descriptives, groupby=["fuel", "region"])
+        data["plot-item"] = compute_descriptives(
+            data["item"], groupby=["fuel", "region"]
         )
 
         return data
