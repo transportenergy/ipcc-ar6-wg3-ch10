@@ -10,7 +10,7 @@ import logging
 import pandas as pd
 import plotnine as p9
 
-from .common import Figure
+from .common import Figure, scale_category
 from .data import (
     aggregate_fuels,
     compute_descriptives,
@@ -100,7 +100,12 @@ class Fig7(Figure):
 
     def plot_single(self, data, title):
         # Base plot
-        p = p9.ggplot(data=data[0]) + title + self.geoms
+        p = (
+            p9.ggplot(data=data[0])
+            + title
+            + self.geoms
+            + scale_category("x", self, short_label=True)
+        )
 
         if len(data[1]):
             # Points for indicator scenarios
@@ -110,7 +115,6 @@ class Fig7(Figure):
                 position=p9.position_dodge(width=0.9),
                 color="cyan",
                 size=1,
-                # shape="x",
                 fill=None,
             )
 
