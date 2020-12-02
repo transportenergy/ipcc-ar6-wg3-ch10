@@ -3,7 +3,7 @@ import logging
 from abc import abstractmethod
 from collections import ChainMap
 from pathlib import Path
-from typing import Dict, List, Sequence
+from typing import Dict, Iterable, List, Sequence
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import matplotlib as mpl
@@ -161,9 +161,9 @@ COMMON = {
 }
 
 
-def maybe_drop_nca(df, include_nca):
+def drop_nca_if(df, condition):
     """Remove data with no climate assessment from `df`."""
-    return df if include_nca else df.query("category != 'no-climate-assessment'")
+    return df.query("category != 'no-climate-assessment'") if condition else df
 
 
 def remove_categoricals(df):
@@ -307,7 +307,7 @@ class Figure:
             get_data(source=self.sources[0], **args)
             .pipe(restore_dims, self.restore_dims)
             .pipe(remove_categoricals)
-            .pipe(maybe_drop_nca, self.include_nca)
+            .pipe(drop_nca_if, not self.include_nca)
         )
         if self.has_option.get("per_capita", False) and self.per_capita:
             # Load population data for per capita calculations
@@ -369,10 +369,10 @@ class Figure:
 
         log.info(f"Save {base_fn.with_suffix('.pdf')}")
 
-        try:
+        if isinstance(plot, Iterable):
+            # Iterator containing multiple plots
+            p9.save_as_pdf_pages(plot, base_fn.with_suffix(".pdf"), verbose=False)
+        else:
             # Single plot
             plot.save(base_fn.with_suffix(".pdf"), verbose=False)
             plot.save(base_fn.with_suffix(".png"), verbose=False, dpi=300)
-        except AttributeError:
-            # Iterator containing multiple plots
-            p9.save_as_pdf_pages(plot, base_fn.with_suffix(".pdf"), verbose=False)
