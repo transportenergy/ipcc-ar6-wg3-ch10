@@ -463,22 +463,27 @@ def categorize(df, source, **options):
                     # Appears in file #1605622065355 and later
                     "normal_v5_vetting_normal_v5": "vetted",
                 }
-            )
+            ).set_index(["model", "scenario"])
         )
 
+        if cat_data.index.has_duplicates:
+            dupe = cat_data.index.duplicated()
+            log.info(f"Drop {dupe.sum()} duplicated (model, scenario) from metadata")
+            cat_data = cat_data[~dupe]
+
         # Add categories for national and sectoral scenario data in the database
-        info = chain(SCENARIOS["national"], SCENARIOS["sectoral"])
-        cat_data_ns = pd.DataFrame(
-            [[s["model"], s["scenario"], s["category"]] for s in info],
-            columns=["model", "scenario", "category"],
-        ).assign(vetted="N/A")
-        cat_data = pd.concat([cat_data, cat_data_ns])
+        for info in chain(SCENARIOS["national"], SCENARIOS["sectoral"]):
+            key = (info["model"], info["scenario"])
+            cat_data.loc[key, :] = pd.Series(
+                dict(category=info["category"], vetted="N/A")
+            )
 
         # Merge the metadata columns with the data
         result = df.merge(
-            cat_data[["model", "scenario", "category", "vetted"]],
+            cat_data[["category", "vetted"]],
             how="left",
-            on=["model", "scenario"],
+            left_on=["model", "scenario"],
+            right_index=True,
         )
 
         if options.get("vetted_only", True):
