@@ -7,32 +7,32 @@ indicator:
 - model: AIM/CGE 2.2
   scenario: EN_NPi2020_600
   # The IDs for the other indicator scenarios are currently unknown
-  id: 1.5NBZ
+  id: 1.5-NBZ
 - model: AIM/CGE 2.2
   scenario: EN_NPi2020_600f
-  id: 1.5Sup
+  id: 1.5-Sup
 - model: COFFEE 1.1
   scenario: EN_NPi2020_600
-  id: <2NBZ
+  id: 2.0-NBZ
 - model: COFFEE 1.1
   scenario: EN_NPi2020_600f
-  id: <2Sup
+  id: 2.0-Sup
 - model: REMIND 2.1
   # The space here is *not* a typo
   scenario: "DeepElec_SSP2_ HighRE_Budg900"
-  id: 1.5Ren
+  id: 1.5-Ren
 - model: REMIND-MAgPIE 2.1-4.2
   scenario: SusDev_SDP-PkBudg1000
-  id: 1.5SP
+  id: 1.5-SP
 - model: MESSAGEix-GLOBIOM_GEI 1.0
   scenario: SSP2_openres_lc_50
-  id: <2Ren
+  id: 2.0-Ren
 - model: WITCH 5.0
   scenario: CO_Bridge
-  id: <2GS
+  id: 2.0-GS
 - model: MESSAGEix-GLOBIOM 1.0
   scenario: LowEnergyDemand_1.3_IPCC
-  id: 1.5LD
+  id: 1.5-LD
 - model: IMAGE 3.0
   scenario: EN_INDCi2030_3000f
   # version: 3
