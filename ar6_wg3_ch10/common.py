@@ -340,7 +340,10 @@ class Figure:
 
         # Dump data for reference
         path_zf = OUTPUT_PATH / "data" / f"{self.base_fn}.zip"
+
         log.info(f"Dump data to {path_zf}")
+        path_zf.parent.mkdir(parents=True, exist_ok=True)
+
         with ZipFile(path_zf, "w", compression=ZIP_DEFLATED) as zf:
             for label, df in sorted(
                 self.data.items(), key=lambda i: len(i[1]), reverse=True
