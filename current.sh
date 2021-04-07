@@ -11,8 +11,8 @@ for recat in "" "--recategorize=A" "--recategorize=B"; do
 # Add --per-capita here, e.g. for fig_2
 $PLOT --ar6-data="$ss" $recat $fig
 
-# # fig_6 variants for M.Craig. --bandwidth=9 is default, so don't repeat
-# for bw in 5 8; do
+# # fig_6 variants for M.Craig. --bandwidth=8 is default, so don't repeat
+# for bw in 5 9; do
 #
 # $PLOT --ar6-data="$ss" $recat --bandwidth="$bw" 6
 #
