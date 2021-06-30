@@ -72,6 +72,17 @@ def remote(action, source):
         raise NotImplementedError
 
 
+@cli.command(name="clear-cache")
+@click.argument("pattern")
+def clear_cache(pattern):
+    """Clear cached/intermediate data matching PATTERN."""
+    from .common import DATA_PATH
+
+    for path in DATA_PATH.joinpath("cache").glob(f"{pattern}*.pkl"):
+        print(path)
+        path.unlink()
+
+
 @cli.command()
 @click.option("--all-vars", is_flag=True, default=False, help="Check all variables.")
 @click.option(
