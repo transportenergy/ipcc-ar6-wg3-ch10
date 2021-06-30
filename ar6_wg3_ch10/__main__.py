@@ -56,8 +56,7 @@ def cache(action, source):
 
     \b
     The download takes:
-    - AR6: ~60 minutes for 895 scenarios / 3.3 GiB.
-      all.h5 is 9.1 GiB.
+    - AR6: ~60 minutes for 895 scenarios / 3.3 GiB. all.h5 is 9.1 GiB.
     - SR15: ~15 minutes for 416 scenarios / 832 MiB.
     """
     _start_log()
@@ -226,8 +225,8 @@ def upload(go):
     Requires the following configuration:
     - Rclone installed from https://rclone.org.
     - At least one remote configured.
-    - In config.json, a key 'rclone' and sub-key
-      'output' with a destination ("remote:path").
+    - In config.json, a key 'rclone' and sub-key 'output' with a destination
+      ("remote:path").
     """
     from subprocess import check_call
     from data import CONFIG
@@ -247,9 +246,8 @@ def upload(go):
 def variables():
     """Write lists of variables for each data source.
 
-    The lists are written to data/variables-SOURCE-all.txt. These lists are
-    *manually* trimmed to variables-SOURCE.txt, which in turn are used to
-    filter data imports
+    The lists are written to data/variables-SOURCE-all.txt. These lists are *manually*
+    trimmed to variables-SOURCE.txt, which in turn are used to filter data imports.
     """
     _start_log()
 
