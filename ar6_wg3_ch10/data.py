@@ -314,7 +314,7 @@ def get_client(source):
 
 
 @cached
-def _raw_local_data(path, id_vars):
+def _raw_local_data(path, id_vars, mtime=None):
     """Cache loaded CSV files in memory, for performance."""
     return (
         pd.read_csv(path)
@@ -411,7 +411,8 @@ def get_data(
             # Additional columns in iTEM MIP3 data only
             id_vars.extend(["service", "vehicle_type", "liquid_fuel_type"])
 
-        result = _raw_local_data(DATA_PATH / LOCAL_DATA[source], tuple(id_vars))
+        path = DATA_PATH / LOCAL_DATA[source]
+        result = _raw_local_data(path, tuple(id_vars), mtime=path.stat().st_mtime)
     elif source in REMOTE_DATA:
         from cache import load_csv
 
