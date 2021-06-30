@@ -460,8 +460,11 @@ def categorize(df, source, **options):
                     "Category_name": "category",
                     "overshoot years|1.5°C": "os15",
                     "overshoot years|2.0°C": "os2",
-                    # Appears in file #1605622065355 and later
-                    "normal_v5_vetting_normal_v5": "vetted",
+                    #
+                    # Appears in snapshot from 2021-06-14
+                    "Vetting_historical": "vetted",
+                    # Older name(s)
+                    # "normal_v5_vetting_normal_v5": "vetted",
                 }
             ).set_index(["model", "scenario"])
         )
