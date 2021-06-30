@@ -44,7 +44,7 @@ def cached(load_func):
     it is used instead of calling the (possibly slow) method; *unless* the *skip_cache*
     configuration option is given, in which case it is loaded again.
     """
-    log.debug(f"Wrapping {load_func.__name__} in cached()")
+    # log.debug(f"Wrapping {load_func.__name__} in cached()")
 
     # Wrap the call to load_func
     def cached_load(*args, **kwargs):

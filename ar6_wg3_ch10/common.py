@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 import plotnine as p9
 
-log = logging.getLogger(f"root.{__name__}")
+log = logging.getLogger(__name__)
 
 
 # Matplotlib style

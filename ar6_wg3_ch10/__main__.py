@@ -21,6 +21,8 @@ from .data import REMOTE_DATA
 OUTPUT_PATH = Path("output")
 NOW = datetime.now().isoformat(timespec="seconds")
 
+log = logging.getLogger(__name__)
+
 # Log configuration
 _LC = yaml.safe_load(open(Path(__file__).parents[1] / "data" / "logging.yaml"))
 
@@ -41,15 +43,15 @@ def cli(skip_cache, verbose):
         _LC["handlers"]["console"]["level"] = "DEBUG"
 
     if skip_cache:
-        import util
+        from . import util
 
         util.SKIP_CACHE = True
 
 
 @cli.command()
-@click.argument("action", type=click.Choice(["refresh", "clear", "compile"]))
+@click.argument("action", type=click.Choice(["refresh", "compile"]))
 @click.argument("source", type=click.Choice(REMOTE_DATA.keys()))
-def cache(action, source):
+def remote(action, source):
     """Retrive data from remote databases to data/cache/SOURCE/.
 
     An HDF5 file named all.h5 is also created to speed retrieval.

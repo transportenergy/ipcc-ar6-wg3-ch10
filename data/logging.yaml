@@ -18,7 +18,7 @@ root:
   handlers: [console, file]
 
 loggers:
-  util:
+  ar6_wg3_ch10:
     level: NOTSET
 
 version: 1
