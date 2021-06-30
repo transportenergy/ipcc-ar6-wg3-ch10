@@ -1,4 +1,10 @@
-"""Command-line interface using 'click'."""
+"""Command-line interface for IPCC AR6 WGIII Ch.10 figures.
+
+Reads a file config.json in the current directory. See config-example.json.
+
+Verbose log information for certain commands is written to a timestamped .log file in
+output/.
+"""
 import logging
 import logging.config
 from datetime import datetime
@@ -10,7 +16,7 @@ import click
 import pandas as pd
 import yaml
 
-from data import REMOTE_DATA
+from .data import REMOTE_DATA
 
 OUTPUT_PATH = Path("output")
 NOW = datetime.now().isoformat(timespec="seconds")
@@ -23,19 +29,12 @@ def _start_log():
     logging.config.dictConfig(_LC)
 
 
-@click.group()
+@click.group(help=__doc__)
 @click.option("--skip-cache", is_flag=True, help="Don't use cached intermediate data.")
 @click.option(
     "--verbose", is_flag=True, help="Also print DEBUG log messages to stdout."
 )
 def cli(skip_cache, verbose):
-    """Command-line interface for IPCC AR6 WGIII Ch.10 figures.
-
-    Reads a file config.json in the current directory. See config-example.json.
-
-    Verbose log information for certain commands is written to a timestamped
-    .log file in output/.
-    """
     _LC["handlers"]["file"]["filename"] = OUTPUT_PATH / f"{NOW}.log"
 
     if verbose:

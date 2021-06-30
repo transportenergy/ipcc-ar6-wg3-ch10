@@ -12,9 +12,9 @@ import yaml
 
 import item.model
 
-from common import DATA_PATH, CAT_GROUP
-from iiasa_se_client import AuthClient
-from util import cached
+from .common import DATA_PATH, CAT_GROUP
+from .iiasa_se_client import AuthClient
+from .util import cached
 
 log = logging.getLogger(__name__)
 

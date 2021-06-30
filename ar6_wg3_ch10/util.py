@@ -5,7 +5,7 @@ from hashlib import sha1
 
 import pandas as pd
 
-from data import DATA_PATH
+from .data import DATA_PATH
 
 log = logging.getLogger(__name__)
 

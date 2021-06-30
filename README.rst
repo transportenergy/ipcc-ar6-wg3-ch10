@@ -36,7 +36,7 @@ Generating all the plots
 
 1. Download the snapshots from the AR6 Scenario Explorer website.
 2. Place the contents in the directory ``data/raw/``.
-3. Run the script `current.sh <./current.sh>`__ (about 20 minutes) or single commands therefrom.
+3. Run ``python -m ar6_wg3_ch10 all`` (about 20 minutes) or other commands (``python -m ar6_wg3_ch10 --help``).
 
 
 Other actions
@@ -63,8 +63,8 @@ Then:
    $ pip install -r requirements.txt
 
    # Show help text
-   $ python3 ar6_wg3_ch10 --help
-   Usage: ar6_wg3_ch10 [OPTIONS] COMMAND [ARGS]...
+   $ python -m ar6_wg3_ch10 --help
+   Usage: python -m ar6_wg3_ch10 [OPTIONS] COMMAND [ARGS]...
 
      Command-line interface for IPCC AR6 WGIII Ch.10 figures.
 
@@ -80,6 +80,7 @@ Then:
      --help        Show this message and exit.
 
    Commands:
+     all        Generate all plots.
      cache      Retrive data from remote databases to data/cache/SOURCE/.
      coverage   Report coverage per data/coverage-checks.yaml.
      debug      Demo or debug code.
@@ -89,10 +90,10 @@ Then:
      variables  Write lists of variables for each data source.
 
    # Cache all raw data
-   $ python3 main.py cache refresh AR6  # about 60 minutes
+   $ python -m ar6_wg3_ch10 cache refresh AR6  # about 60 minutes
 
    # Run a particular command
-   $ python3 ar6_wg3_ch10 plot
+   $ python -m ar6_wg3_ch10 plot
 
 
 History
