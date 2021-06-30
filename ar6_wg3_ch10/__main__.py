@@ -100,7 +100,7 @@ def debug():
     """Demo or debug code."""
     _start_log()
 
-    from data import get_client, get_data
+    from .data import get_client, get_data
 
     client = get_client()
 
@@ -211,7 +211,7 @@ def _all(ctx, **options):
 @cli.command()
 def refs():
     """Retrieve reference files to ref/."""
-    from cache import get_references
+    from .cache import get_references
 
     get_references()
 
@@ -251,7 +251,7 @@ def variables():
     """
     _start_log()
 
-    from data import DATA_PATH, LOCAL_DATA, get_data
+    from .data import DATA_PATH, LOCAL_DATA, get_data
 
     def write_vars(src, vars):
         (DATA_PATH / f"variables-{source}-all.txt").write_text("\n".join(vars))
