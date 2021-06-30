@@ -3,6 +3,7 @@ import logging
 import logging.config
 from datetime import datetime
 from importlib import import_module
+from itertools import product
 from pathlib import Path
 
 import click
@@ -178,6 +179,35 @@ def plot(to_plot, **options):
     # # Extra plots: Render and save
     # extra_fn = (output_path / f'extra_{now}').with_suffix('.pdf')
     # p9.save_as_pdf_pages(gen_plots(), extra_fn)
+
+
+@cli.command(name="all")
+@click.option(
+    "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate."
+)
+@click.pass_context
+def _all(ctx, **options):
+    """Generate all plots.
+
+    Use --skip-cache when the initial data-loading code changes.
+    Use --per-capita for e.g. fig_2.
+    """
+
+    figures = [1, 2, 4, 5, 6, 7]
+    source = ["world", "R5", "R10", "country"]
+    recategorize = [None, "A", "B"]
+
+    for f, s, r in product(figures, source, recategorize):
+        options.update(dict(to_plot=f, source=s, recategorize=r))
+
+        # commented: fig_6 variants for M.Craig
+        # if f == 6:
+        #     for bw in [5, 8, 9]:
+        #         options.update(bandwidth=bw)
+        #         ctx.invoke(plot, **options)
+        #     continue
+
+        ctx.invoke(plot, **options)
 
 
 @cli.command()
