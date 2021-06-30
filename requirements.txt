@@ -1,5 +1,5 @@
 adjusttext
-click
+click >= 8.0
 iam-units
 pandas
 plotnine
