@@ -4,13 +4,13 @@ import logging
 from copy import copy
 from functools import lru_cache
 from itertools import chain
+from typing import Dict, List, Optional
 
-from iam_units import registry as UNITS
+import item.model
 import pandas as pd
 import pint
 import yaml
-
-import item.model
+from iam_units import registry as UNITS
 
 from .common import DATA_PATH, CAT_GROUP
 from .iiasa_se_client import AuthClient
@@ -82,7 +82,7 @@ for group, fuels in GROUP_FUEL.items():
     FUEL_GROUP.update({fuel: group for fuel in fuels})
 
 
-def aggregate_fuels(df, groupby=[]):
+def aggregate_fuels(df: pd.DataFrame, groupby=[]) -> pd.DataFrame:
     """Compute a custom aggregation of fuels using `GROUP_FUEL`."""
 
     # - Assign the "fuel_group" column based on "fuel".
@@ -113,7 +113,7 @@ def compute_descriptives(df, on=["variable"], groupby=[]):
     )
 
 
-def unique_units(df):
+def unique_units(df: pd.DataFrame):
     units = df["unit"].unique()
     assert len(units) == 1, f"Units {units} in {df}"
     try:
@@ -126,8 +126,10 @@ def unique_units(df):
             return units[0]
 
 
-def per_capita_if(data, population, condition, groupby=[]):
-    """
+def per_capita_if(
+    data: pd.DataFrame, population: Optional[pd.DataFrame], condition: bool, groupby=[]
+) -> pd.DataFrame:
+    """Compute per-capita values of `data` (using `population`) if `condition`
 
     Parameters
     ----------
@@ -258,22 +260,23 @@ def compute_shares(df, on, groupby=[]):
     return pd.concat(results)
 
 
-def normalize_if(df, condition, year, drop=True):
-    """Normalize if *condition* is True.
+def normalize_if(
+    df: pd.DataFrame, condition: bool, year: int, drop: bool = True
+) -> pd.DataFrame:
+    """Normalize if `condition` is True.
 
     Parameters
     ----------
-    df : pd.DataFrame
+    df
         Data to normalize.
-    condition : bool
-        If True, return *df* normalized as of *year*.
-        If False, simply discard observations for *year*.
-    year : int
+    condition
+        If True, return `df` normalized as of `year`.
+        If False, simply discard observations for `year`.
+    year
         Year to normalize against.
-    drop : bool, optional
-        If True and *condition* is True, discard the observations from the
-        normalization year; otherwise, retain these observations (all equal to
-        1.0).
+    drop
+        If True and `condition` is True, discard the observations from the normalization
+        year; otherwise, retain these observations (all equal to 1.0).
     """
     if not condition:
         log.info(f"Discard data for {year}")
@@ -327,7 +330,7 @@ def _raw_local_data(path, id_vars, mtime=None):
 
 @cached
 def get_data(
-    source="AR6",
+    source: str = "AR6",
     vars_from_file=True,
     drop=("meta", "runId", "time"),
     conform_to=None,
@@ -339,7 +342,7 @@ def get_data(
 
     Parameters
     ----------
-    source : str
+    source
         Source of data; one of the keys in LOCAL_DATA or REMOTE_DATA. In the latter
         case, the data must have first been cached using ``$ python main.py cache
         SOURCE``; they are read from the corresponding file all.h5.
@@ -356,8 +359,7 @@ def get_data(
         retrieve.
     variables : list of str or str
         Names of variables to retrieve. When *source* includes 'iTEM', a bare
-        str for *variables* is used to retrieve *filters* from
-        data/variables-map.yaml.
+        str for *variables* is used to retrieve *filters* from data/variables-map.yaml.
     """
     if vars_from_file and "variable" not in filters:
         variables = (
