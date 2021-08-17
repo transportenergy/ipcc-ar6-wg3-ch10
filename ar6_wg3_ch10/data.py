@@ -23,11 +23,11 @@ log = logging.getLogger(__name__)
 LOCAL_DATA = {
     "ADVANCE": "advance_compare_20171018-134445.csv.gz",
     "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv.gz",
-    "AR6 metadata": "raw/ar6_full_metadata_indicators2021_06_14.xlsx",
-    "AR6 world": "raw/snapshot_world_with_key_climate_iamc_ar6_2021_06_14.csv.gz",
-    "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2021_06_14.csv.gz",
-    "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2021_06_14.csv.gz",
-    "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2021_02_20.csv.gz",
+    "AR6 metadata": "raw/ar6_full_metadata_indicators2021_07_09.xlsx",
+    "AR6 world": "raw/snapshot_world_with_key_climate_iamc_ar6_2021_07_09.csv.gz",
+    "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2021_07_09.csv.gz",
+    "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2021_07_09.csv.gz",
+    "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2021_07_09.csv.gz",
     "iTEM MIP2": "iTEM-MIP2.csv",
     "iTEM MIP3": "raw/2020_06_15_item_region_data.csv",
 }
