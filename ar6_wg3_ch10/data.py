@@ -2,17 +2,16 @@
 import json
 import logging
 from copy import copy
-from functools import lru_cache
 from itertools import chain
 from typing import Dict, List, Optional
 
-import item.model
 import pandas as pd
 import pint
 import yaml
 from iam_units import registry as UNITS
 
 from .common import DATA_PATH, CAT_GROUP
+from . import item
 from .iiasa_se_client import AuthClient
 from .util import cached, restore_dims
 
@@ -445,7 +444,7 @@ def get_data(
 
         # Combine additional filters for the particular iTEM variable; also
         # retrieve a scaling factor
-        _filters, scale = _item_var_info(conform_to, filters["variable"])
+        _filters, scale = item.var_info(conform_to, filters["variable"])
         filters.update(_filters)
     else:
         scale = None
@@ -566,7 +565,7 @@ def categorize(df, source, **options):
         # Version of the iTEM database, e.g. 2 for MIP2
         mip_number = int(source[-1])
         result = df.assign(
-            category=df.apply(_item_cat_for_scen, axis=1, args=(mip_number,)).replace(
+            category=df.apply(item.cat_for_scen, axis=1, args=(mip_number,)).replace(
                 "policy-extra", "policy"
             )
         )
@@ -603,47 +602,3 @@ def split_scenarios(df: pd.DataFrame, groups=[]):
     )
 
     return df[mask], df[~mask]
-
-
-def _item_cat_for_scen(row, mip):
-    """Return the iTEM scenario category for model & scenario info."""
-    return _item_scen_info(row["model"], mip)[row["scenario"]]["category"]
-
-
-def _item_clean_data(df, source, scale):
-    """Clean iTEM data by removing commercial projections and scaling."""
-    if "iTEM" not in source:
-        return df
-
-    # Apply scaling
-    df["value"] = df["value"] * scale
-    df["region"] = df["region"].replace({"Global": "World"})
-
-    # Remove private companies' projections
-    return df.loc[~df.model.isin(["BP", "ExxonMobil", "Shell"]), :]
-
-
-@lru_cache()
-def _item_scen_info(name, mip):
-    """Return iTEM metadata for model *name*."""
-    name = {"WEPS+": "EIA", "ITEDD": "EIA"}.get(name, name)
-    return item.model.load_model_scenarios(name.lower(), mip)
-
-
-@lru_cache()
-def _item_var_info(source, name, errors="both"):
-    """Return iTEM variable info corresponding to *name* in *source*."""
-    result = None
-    for variable in VARIABLES:
-        if variable.get(source, None) == name:
-            info = variable["iTEM MIP2"].copy()
-            result = (info.get("select", dict()), float(info.get("scale", 1)))
-
-    if not result:
-        if errors in ("warn", "both"):
-            log.warning(f"No iTEM variable matching {source}: {name!r}")
-            result = (dict(variable=[]), 1)
-        if errors in ("raise", "both"):
-            raise KeyError(name)
-
-    return result
