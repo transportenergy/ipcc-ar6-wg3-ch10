@@ -210,7 +210,7 @@ def _all(ctx, **options):
     recategorize = [None, "A", "B"]
 
     for f, s, r in product(figures, source, recategorize):
-        options.update(dict(to_plot=f, source=s, recategorize=r))
+        options.update(dict(to_plot=[f], ar6_data=s, recategorize=r))
 
         # commented: fig_6 variants for M.Craig
         # if f == 6:
