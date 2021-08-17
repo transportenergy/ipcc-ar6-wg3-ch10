@@ -1,5 +1,6 @@
 adjusttext
 click >= 8.0
+genno
 iam-units
 pandas
 plotnine
