@@ -50,3 +50,17 @@ def groupby_multi(dfs, *args, skip_first_empty=True, **kwargs):
             continue
 
         yield name, data
+
+
+def restore_dims(df: pd.DataFrame, expr: str = None) -> pd.DataFrame:
+    """Restore dimensions of `df` from its "variable" column.
+
+    `expr` is a regular expression with one or more named groups. It is applied to the
+    "variable" dimension/column of `df`. The returned data frame has one additional
+    column for each named group in `expr`. The "variable" column is not modified.
+    """
+    if not expr:
+        # No-op
+        return df
+
+    return pd.concat([df, df["variable"].str.extract(expr)], axis=1)

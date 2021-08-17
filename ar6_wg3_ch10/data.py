@@ -14,7 +14,7 @@ from iam_units import registry as UNITS
 
 from .common import DATA_PATH, CAT_GROUP
 from .iiasa_se_client import AuthClient
-from .util import cached
+from .util import cached, restore_dims
 
 log = logging.getLogger(__name__)
 
@@ -578,20 +578,6 @@ def categorize(df, source, **options):
         result = result.dropna(subset=["category"])
 
     return result
-
-
-def restore_dims(df, expr=None):
-    """Restore dimensions of *df* from its 'variable' column.
-
-    *expr* is a regular expression with one or more named groups. It is applied
-    to the 'variable' column, and *df* is returned with one additional column
-    for each named group. The 'variable' column is not modified.
-    """
-    if not expr:
-        # No-op
-        return df
-
-    return pd.concat([df, df["variable"].str.extract(expr)], axis=1)
 
 
 def split_scenarios(df: pd.DataFrame, groups=[]):
