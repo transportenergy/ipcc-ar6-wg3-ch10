@@ -193,7 +193,7 @@ def plot(to_plot, **options):
     # p9.save_as_pdf_pages(gen_plots(), extra_fn)
 
 
-@cli.command(name="all")
+@cli.command(name="plot-all")
 @click.option(
     "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate."
 )
