@@ -1,3 +1,8 @@
+"""Retrieve data from the AR6 Scenario Explorer and cache it locally.
+
+As of 2021-08-17, this is mostly unused; the plots are generated using the prepared
+snapshots provided by the AR6 WGIII Chapter 3 scenarios team.
+"""
 import json
 import logging
 from datetime import datetime

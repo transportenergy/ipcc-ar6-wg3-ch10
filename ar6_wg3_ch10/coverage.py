@@ -1,3 +1,4 @@
+"""Utility code for checking data coverage."""
 import yaml
 
 from data import DATA_PATH, get_data
