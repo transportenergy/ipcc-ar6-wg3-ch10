@@ -4,6 +4,8 @@ from abc import ABC, abstractmethod
 
 import requests
 
+from .common import CONFIG, REMOTE_DATA
+
 
 class BaseClient(ABC):
     """Abstract base class for clients."""
@@ -124,3 +126,18 @@ class AppClient(BaseClient):
 
     def variables(self, run_id, filters=[]):
         return self.get(f"runs/{run_id}/vars", params={"filters": "[]"})
+
+
+client = None
+
+
+def get_client(source: str):
+    """Return a client for the configured application."""
+    global client
+
+    if client:
+        return client
+
+    auth_client = AuthClient(**CONFIG["scenario explorer credentials"])
+    client = auth_client.get_app(REMOTE_DATA[source])
+    return client

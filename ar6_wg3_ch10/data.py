@@ -9,20 +9,15 @@ import pandas as pd
 from . import item
 from .common import (
     CAT_GROUP,
-    CONFIG,
     DATA_PATH,
     FUEL_GROUP,
     LOCAL_DATA,
     SCENARIOS,
     REMOTE_DATA,
 )
-from .iiasa_se_client import AuthClient
 from .util import cached, unique_units
 
 log = logging.getLogger(__name__)
-
-
-client = None
 
 
 def aggregate_fuels(df: pd.DataFrame, groupby=[]) -> pd.DataFrame:
@@ -263,18 +258,6 @@ def apply_filters(df: pd.DataFrame, dims, filters: Dict) -> pd.DataFrame:
     return base[base.isin(filters)[list(filters.keys())].all(axis=1)]
 
 
-def get_client(source: str):
-    """Return a client for the configured application."""
-    global client
-
-    if client:
-        return client
-
-    auth_client = AuthClient(**CONFIG["scenario explorer credentials"])
-    client = auth_client.get_app(REMOTE_DATA[source])
-    return client
-
-
 @cached
 def raw_local_data(path, dims: List[str], mtime: float = 0.0) -> pd.DataFrame:
     """Load raw local data from a CSV file at `path`.
@@ -398,9 +381,9 @@ def get_data(
         path = DATA_PATH / LOCAL_DATA[source]
         result = raw_local_data(path, id_vars, path.stat().st_mtime)
     elif source in REMOTE_DATA:
+        # Load remote data from a local cache
         from cache import load_csv
 
-        # Load data from cache
         result = load_csv(source, filters)
         log.info(f"  done; {len(result)} observations.")
     else:
