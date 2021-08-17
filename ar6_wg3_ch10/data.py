@@ -299,12 +299,41 @@ def normalize_if(
     return (num / tmp[mask].droplevel("year")).reset_index()
 
 
-def _filter(df, filters):
-    """Filter *df*."""
-    return df[df.isin(filters)[list(filters.keys())].all(axis=1)]
+def apply_filters(df: pd.DataFrame, dims, filters: Dict) -> pd.DataFrame:
+    """Filter `df`.
+
+    Return only rows that satisfy all `filters`.
+
+    If `df` is in ‘wide’ format (with the "year" dimension as columns, such as from
+    raw_local_data()), additionally melt the data from ‘wide’ to ‘long’ format.
+    """
+    if "value" not in df.columns:
+        # Wide format
+        # Columns to retain: dims and any columns matching the "year" filter
+        years = filters.get("year", [])
+        columns = list(
+            filter(lambda c: c in dims or not years or int(c) in years, df.columns)
+        )
+        # - Select matching columns.
+        # - Melt.
+        # - Convert "year" to integer.
+        # - Drop NaNs.
+        base = (
+            df[columns]
+            .melt(dims, var_name="year")
+            .astype({"year": int})
+            .dropna(subset=["value"])
+        )
+    else:
+        base = df
+
+    # - Compute a boolean mask using DataFrame.isin().
+    # - Use all() on rows for a 1D mask of where all filter conditions are met.
+    # - Use this mask to select from `base`
+    return base[base.isin(filters)[list(filters.keys())].all(axis=1)]
 
 
-def get_client(source):
+def get_client(source: str):
     """Return a client for the configured application."""
     global client
 
@@ -317,15 +346,35 @@ def get_client(source):
 
 
 @cached
-def _raw_local_data(path, id_vars, mtime=None):
-    """Cache loaded CSV files in memory, for performance."""
-    return (
-        pd.read_csv(path)
-        .rename(columns=lambda c: c.lower())
-        .astype({c: "category" for c in id_vars})
-        .melt(id_vars=id_vars, var_name="year")
-        .dropna(subset=["value"])
-    )
+def raw_local_data(path, dims: List[str], mtime: float = 0.0) -> pd.DataFrame:
+    """Load raw local data from a CSV file at `path`.
+
+    - Column names matching `dims` except for case are renamed to lower case and
+      returned as categoricals.
+    - Cached data is used if it exists and unless SKIP_CACHE is True.
+
+    The returned data frame is in ‘wide’ format, i.e. with the "year" dimension as
+    columns; the tranformation to ‘long’ format is done in apply_filters(), above.
+    This is done because the data frame is large before filtering, so melt() is slow.
+
+    Parameters
+    ----------
+    path :
+        Path to load.
+    dims :
+        Dimension names.
+    mtime :
+        Last modification time of `path`.
+    """
+    # Peek at column names
+    dtype = {}  # Columns to read as categorical
+    rename = {}  # Map for renaming columns
+    for name in filter(lambda c: c.lower() in dims, pd.read_csv(path, nrows=0).columns):
+        rename[name] = name.lower()
+        dtype[name] = "category"
+
+    # Apply dtypes as data is read, instead of in a separate step
+    return pd.read_csv(path, dtype=dtype).rename(columns=rename)
 
 
 @cached
@@ -413,8 +462,9 @@ def get_data(
             # Additional columns in iTEM MIP3 data only
             id_vars.extend(["service", "vehicle_type", "liquid_fuel_type"])
 
+        # Path to data
         path = DATA_PATH / LOCAL_DATA[source]
-        result = _raw_local_data(path, tuple(id_vars), mtime=path.stat().st_mtime)
+        result = raw_local_data(path, id_vars, path.stat().st_mtime)
     elif source in REMOTE_DATA:
         from cache import load_csv
 
@@ -425,16 +475,15 @@ def get_data(
         raise ValueError(source)
 
     # Finalize:
-    # - Year column as integer,
     # - Apply filters,
     # - Apply iTEM-specific cleaning and scaling
     # - Drop missing values,
     # - Drop undesired columns,
     # - Read and apply category metadata, if any.
     return (
-        result.astype({"year": int})
-        .pipe(_filter, filters)
-        .pipe(_item_clean_data, source, scale)
+        result.pipe(apply_filters, id_vars, filters)
+        .astype({"year": int})
+        .pipe(item.clean_data, source, scale)
         .dropna(subset=["value"])
         .drop(list(d for d in drop if d in result.columns), axis=1)
         .pipe(categorize, source, recategorize=recategorize, drop_uncategorized=True)
