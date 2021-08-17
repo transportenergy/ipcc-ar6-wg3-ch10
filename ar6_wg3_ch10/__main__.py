@@ -11,6 +11,7 @@ from datetime import datetime
 from importlib import import_module
 from itertools import product
 from pathlib import Path
+from traceback import print_exc
 
 import click
 import pandas as pd
@@ -218,7 +219,12 @@ def _all(ctx, **options):
         #         ctx.invoke(plot, **options)
         #     continue
 
-        ctx.invoke(plot, **options)
+        try:
+            ctx.invoke(plot, **options)
+        except Exception:
+            print()
+            print_exc()
+            print()
 
 
 @cli.command()
