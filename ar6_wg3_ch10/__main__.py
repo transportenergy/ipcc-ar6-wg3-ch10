@@ -14,7 +14,6 @@ from pathlib import Path
 from traceback import print_exc
 
 import click
-import pandas as pd
 import yaml
 
 from .data import REMOTE_DATA
@@ -112,17 +111,21 @@ def coverage(all_vars, dump):
 @cli.command()
 def debug():
     """Demo or debug code."""
+
     _start_log()
 
-    from .data import get_client, get_data
+    from .data import get_data
 
-    client = get_client()
-
-    # List of all scenarios
-    print(pd.DataFrame.from_dict(client.runs()))
-
-    # Data for particular runs
-    print(get_data(runs=[746, 791]))
+    print(
+        get_data(
+            "AR6 R5",
+            variable=[
+                "Energy Service|Transportation|Freight",
+                "Energy Service|Transportation|Passenger",
+            ],
+            year=[2020, 2030, 2100],
+        )
+    )
 
 
 @cli.command()
@@ -206,7 +209,10 @@ def _all(ctx, **options):
     """
 
     figures = [1, 2, 4, 5, 6, 7]
+    # Use line(s) like the following to limit plots
+    # figures = [1]
     source = ["world", "R5", "R10", "country"]
+    # source = ["R10"]
     recategorize = [None, "A", "B"]
 
     for f, s, r in product(figures, source, recategorize):
