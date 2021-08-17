@@ -1,4 +1,5 @@
-"""Common codes for plotting."""
+"""Common codes for data handling and plotting."""
+import json
 import logging
 from abc import abstractmethod
 from collections import ChainMap
@@ -10,21 +11,75 @@ import matplotlib as mpl
 import numpy as np
 import pandas as pd
 import plotnine as p9
+import yaml
 
 log = logging.getLogger(__name__)
-
 
 # Matplotlib style
 mpl.rc("font", **{"family": "sans-serif", "sans-serif": ["Helvetica"]})
 
-
+# Configuration
+CONFIG = json.load(open("config.json"))
 DATA_PATH = (Path(__file__).parents[1] / "data").resolve()
-
 OUTPUT_PATH = Path("output")
 
-YEARS = [2020, 2030, 2050, 2100]
+# Filenames for local data
+LOCAL_DATA = {
+    "ADVANCE": "advance_compare_20171018-134445.csv.gz",
+    "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv.gz",
+    "AR6 metadata": "raw/ar6_full_metadata_indicators2021_07_09.xlsx",
+    "AR6 world": "raw/snapshot_world_with_key_climate_iamc_ar6_2021_07_09.csv.gz",
+    "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2021_07_09.csv.gz",
+    "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2021_07_09.csv.gz",
+    "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2021_07_09.csv.gz",
+    "iTEM MIP2": "iTEM-MIP2.csv",
+    "iTEM MIP3": "raw/2020_06_15_item_region_data.csv",
+}
+
+# IIASA Scenario Explorer names for remote data
+REMOTE_DATA = {
+    "AR6 raw": "IXSE_AR6",
+    "SR15 raw": "IXSE_SR15",
+}
 
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
+
+# Mapping between variable names in different data sources
+VARIABLES = yaml.safe_load(open(DATA_PATH / "variables-map.yaml"))
+
+# Identifiers for groups of scenarios
+SCENARIOS = yaml.safe_load(open(DATA_PATH / "scenarios.yaml"))
+
+# Information about specific dimensions
+
+# Years often used in plots
+YEARS = [2020, 2030, 2050, 2100]
+
+# Mapping from groups to fuels included.
+GROUP_FUEL = {
+    "Electricity": ["Electricity"],
+    "Gases": ["Gases"],
+    "Hydrogen": ["Hydrogen"],
+    "Liquids|Oil": ["Liquids|Oil"],
+    "Biofuels": ["Liquids|Bioenergy", "Liquids|Biomass"],
+    "Other": [
+        "Other",
+        "Liquids|Coal",
+        "Liquids|Fossil synfuel",
+        "Liquids|Gas",
+        "Liquids|Natural Gas",
+        "Solar",
+        "Solids|Biomass",
+        "Solids|Coal",
+    ],
+}
+
+# Reversed mapping
+FUEL_GROUP = dict()
+for group, fuels in GROUP_FUEL.items():
+    FUEL_GROUP.update({fuel: group for fuel in fuels})
+
+# Plotnine scales
 
 # Scale for scenario categories
 SCALE_CAT_BASE = pd.DataFrame(
