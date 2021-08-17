@@ -5,8 +5,6 @@ from itertools import chain
 from typing import Dict, List, Optional
 
 import pandas as pd
-import pint
-from iam_units import registry as UNITS
 
 from . import item
 from .common import (
@@ -19,21 +17,12 @@ from .common import (
     REMOTE_DATA,
 )
 from .iiasa_se_client import AuthClient
-from .util import cached, restore_dims
+from .util import cached, unique_units
 
 log = logging.getLogger(__name__)
 
 
 client = None
-
-for definition in [
-    "bn = 10**9",
-    # "person = [person]",
-    # "pkm = person * kilometer",
-    # "tkm = tonne * kilometre",
-    # "yr = year",
-]:
-    UNITS.define(definition)
 
 
 def aggregate_fuels(df: pd.DataFrame, groupby=[]) -> pd.DataFrame:
@@ -65,19 +54,6 @@ def compute_descriptives(df, on=["variable"], groupby=[]):
         .loc[:, "value"]
         .reset_index()
     )
-
-
-def unique_units(df: pd.DataFrame):
-    units = df["unit"].unique()
-    assert len(units) == 1, f"Units {units} in {df}"
-    try:
-        return UNITS(units[0])
-    except pint.UndefinedUnitError:
-        if "CO2" in units[0]:
-            log.info(f"Remove 'CO2' from unit expression {repr(units[0])}")
-            return UNITS(units[0].replace("CO2", ""))
-        else:
-            return units[0]
 
 
 def per_capita_if(

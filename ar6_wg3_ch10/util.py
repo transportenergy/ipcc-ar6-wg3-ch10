@@ -3,11 +3,15 @@ from typing import Callable
 
 import genno.caching
 import pandas as pd
+import pint
+from iam_units import registry
 
 from .common import DATA_PATH, SKIP_CACHE
 
 log = logging.getLogger(__name__)
 
+# Define non-standard units appearing in the AR6 Scenario Explorer snapshots
+registry.define("bn = 10**9")
 
 
 def cached(func: Callable) -> Callable:
@@ -62,3 +66,17 @@ def restore_dims(df: pd.DataFrame, expr: str = None) -> pd.DataFrame:
         return df
 
     return pd.concat([df, df["variable"].str.extract(expr)], axis=1)
+
+
+def unique_units(df: pd.DataFrame):
+    """Return unique units from `df`."""
+    units = df["unit"].unique()
+    assert len(units) == 1, f"Units {units} in {df}"
+    try:
+        return registry(units[0])
+    except pint.UndefinedUnitError:
+        if "CO2" in units[0]:
+            log.info(f"Remove 'CO2' from unit expression {repr(units[0])}")
+            return registry(units[0].replace("CO2", ""))
+        else:
+            return units[0]
