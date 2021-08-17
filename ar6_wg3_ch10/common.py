@@ -57,8 +57,8 @@ SCALE_CAT_BASE = pd.DataFrame(
         ["NCA", "no-climate-assessment", "No assessment", "#eeeeee", "#999999"],
         #
         # Sectoral scenarios
-        ["policy", "policy", "G-/NTEM Policy", "#eeeeee", "#999999"],
-        ["reference", "reference", "G-/NTEM Reference", "#999999", "#111111"],
+        ["Pol", "policy", "G-/NTEM Policy", "#eeeeee", "#999999"],
+        ["Ref", "reference", "G-/NTEM Reference", "#999999", "#111111"],
     ],
 )
 
