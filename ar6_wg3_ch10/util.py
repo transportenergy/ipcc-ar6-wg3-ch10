@@ -4,12 +4,10 @@ from typing import Callable
 import genno.caching
 import pandas as pd
 
-from .data import DATA_PATH
+from .common import DATA_PATH, SKIP_CACHE
 
 log = logging.getLogger(__name__)
 
-
-SKIP_CACHE = False
 
 
 def cached(func: Callable) -> Callable:

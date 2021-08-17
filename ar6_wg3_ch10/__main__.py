@@ -7,7 +7,6 @@ output/.
 """
 import logging
 import logging.config
-from datetime import datetime
 from importlib import import_module
 from itertools import product
 from pathlib import Path
@@ -16,10 +15,7 @@ from traceback import print_exc
 import click
 import yaml
 
-from .data import REMOTE_DATA
-
-OUTPUT_PATH = Path("output")
-NOW = datetime.now().isoformat(timespec="seconds")
+from .common import NOW, OUTPUT_PATH, REMOTE_DATA
 
 log = logging.getLogger(__name__)
 

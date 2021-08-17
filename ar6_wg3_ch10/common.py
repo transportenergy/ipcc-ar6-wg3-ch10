@@ -3,6 +3,7 @@ import json
 import logging
 from abc import abstractmethod
 from collections import ChainMap
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, Iterable, List, Sequence
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -22,6 +23,7 @@ mpl.rc("font", **{"family": "sans-serif", "sans-serif": ["Helvetica"]})
 CONFIG = json.load(open("config.json"))
 DATA_PATH = (Path(__file__).parents[1] / "data").resolve()
 OUTPUT_PATH = Path("output")
+SKIP_CACHE = False
 
 # Filenames for local data
 LOCAL_DATA = {
@@ -42,6 +44,8 @@ REMOTE_DATA = {
     "SR15 raw": "IXSE_SR15",
 }
 
+# Dates
+NOW = datetime.now().isoformat(timespec="seconds")
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
 # Mapping between variable names in different data sources
