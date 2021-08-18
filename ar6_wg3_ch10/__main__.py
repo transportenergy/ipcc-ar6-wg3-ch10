@@ -204,11 +204,21 @@ def _all(ctx, **options):
     Use --per-capita for e.g. fig_2.
     """
 
-    figures = [1, 2, 4, 5, 6, 7]
-    # Use line(s) like the following to limit plots
-    # figures = [1]
-    source = ["world", "R5", "R10", "country"]
-    # source = ["R10"]
+    # Comment out entries to reduce the set of plots generated
+    figures = [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+    ]
+    source = [
+        "world",
+        "R5",
+        "R10",
+        "country",
+    ]
     recategorize = [None, "A", "B"]
 
     options["bandwidth"] = 8

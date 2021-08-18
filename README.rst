@@ -14,7 +14,7 @@ Contents: Important links & notes
 
     - ``AR6-world``, ``AR6-R5``, ``AR6-R10``, ``AR6-country``—these indicate which snapshot of data from the AR6 database is used.
 
-  - Each dated folder contains a ``data/`` subfolder with CSV dumps of the data used each plot.
+  - Each dated folder contains a ``data/`` subfolder with ZIP files containing CSV dumps of the data used each plot.
     The file names match figure file names, with additions, e.g.:
 
     - ``_plot.csv``: the actual values, e.g. descriptive statistics (median etc.) displayed in the plot.
@@ -36,7 +36,7 @@ Generating all the plots
 
 1. Download the snapshots from the AR6 Scenario Explorer website.
 2. Place the contents in the directory ``data/raw/``.
-3. Run ``python -m ar6_wg3_ch10 all`` (about 20 minutes) or other commands (``python -m ar6_wg3_ch10 --help``).
+3. Run ``python -m ar6_wg3_ch10 plot-all`` (about 20 minutes) or other commands (``python -m ar6_wg3_ch10 --help``).
 
 
 Other actions
