@@ -235,9 +235,9 @@ def apply_filters(df: pd.DataFrame, dims, filters: Dict) -> pd.DataFrame:
     if "value" not in df.columns:
         # Wide format
         # Columns to retain: dims and any columns matching the "year" filter
-        years = filters.get("year", [])
+        years = list(map(str, filters.get("year", [])))
         columns = list(
-            filter(lambda c: c in dims or not years or int(c) in years, df.columns)
+            filter(lambda c: c in dims or not years or c in years, df.columns)
         )
         # - Select matching columns.
         # - Melt.
