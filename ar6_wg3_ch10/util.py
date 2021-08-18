@@ -73,10 +73,10 @@ def unique_units(df: pd.DataFrame):
     units = df["unit"].unique()
     assert len(units) == 1, f"Units {units} in {df}"
     try:
-        return registry(units[0])
+        return registry.parse_units(units[0])
     except pint.UndefinedUnitError:
         if "CO2" in units[0]:
             log.info(f"Remove 'CO2' from unit expression {repr(units[0])}")
-            return registry(units[0].replace("CO2", ""))
+            return registry.parse_units(units[0].replace("CO2", ""))
         else:
             return units[0]
