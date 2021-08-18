@@ -211,12 +211,14 @@ def _all(ctx, **options):
     # source = ["R10"]
     recategorize = [None, "A", "B"]
 
+    options["bandwidth"] = 8
+
     for f, s, r in product(figures, source, recategorize):
         options.update(dict(to_plot=[f], ar6_data=s, recategorize=r))
 
         # commented: fig_6 variants for M.Craig
         # if f == 6:
-        #     for bw in [5, 8, 9]:
+        #     for bw in ["5", "8", "9"]:
         #         options.update(bandwidth=bw)
         #         ctx.invoke(plot, **options)
         #     continue
