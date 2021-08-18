@@ -355,7 +355,8 @@ class Figure:
         return p9.ggtitle(template.format(**kwargs))
 
     def _prepare_data(self):
-        from .data import get_data, restore_dims, split_scenarios
+        from .data import get_data, split_scenarios
+        from .util import restore_dims
 
         # Temporary storage for data
         data = {}
