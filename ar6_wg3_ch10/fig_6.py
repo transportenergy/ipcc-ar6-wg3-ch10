@@ -46,7 +46,7 @@ class Fig6(Figure):
 
     has_option = dict(normalize=True, per_capita=True)
 
-    all_years = True
+    years = list(range(2020, 2100 + 1, 10))
     variables = [
         "Energy Service|Transportation|Aviation",
         "Energy Service|Transportation|Freight",
@@ -78,10 +78,6 @@ class Fig6(Figure):
     geoms = STATIC
 
     def prepare_data(self, data):
-        # Drop years 2095, 2085, etc. for which only a subset of scenarios include data
-        years_to_drop = [y for y in data["iam"]["year"].unique() if y % 10 != 0]
-        data["iam"] = data["iam"][~data["iam"]["year"].isin(years_to_drop)]
-
         # Add 'All' to the 'mode' column for IAM data
         data["iam"] = (
             data["iam"]

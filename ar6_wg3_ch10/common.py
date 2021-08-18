@@ -285,6 +285,7 @@ class Figure:
     id: str
     aspect_ratio: float
     variables: List[str]
+    years: List[int] = YEARS
 
     #: Names of sources for IAM and sectoral model data. Length 2.
     sources: Sequence[str]
@@ -303,8 +304,6 @@ class Figure:
 
     #: Filters for loading data
     filters = dict()
-    #: :obj:`True` to load data for all years, not merely :data:`YEARS`.
-    all_years = False
     #: Regular expression to unpack dimensions from variable names. Captured groups
     #: '(?P<name>...)' are added as new columns in the loaded data.
     restore_dims = None
@@ -342,9 +341,8 @@ class Figure:
             fn_parts.insert(-1, f"recat{self.recategorize}")
         self.base_fn = "-".join(fn_parts)
 
-        # Set filters based on all years property.
-        if not self.all_years:
-            self.filters["year"] = YEARS
+        # Set years filter
+        self.filters["year"] = self.years
 
         # Store figure size: 190 mm in inches, aspect ratio from a property
         self.geoms.append(p9.theme(figure_size=(7.48, 7.48 * self.aspect_ratio)))
