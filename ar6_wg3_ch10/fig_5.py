@@ -58,7 +58,7 @@ STATIC = [
     #     size=3,
     # ),
     # Axis labels
-    p9.labs(y="", fill="Energy carrier", shape="Illustrative pathway"),
+    p9.labs(y="", fill="Energy carrier"),
     # Hide legend for 'color'
     p9.guides(color=None),
     # Appearance
@@ -180,13 +180,17 @@ class Fig5(Figure):
 
         if len(data[1]):
             # Points for indicator scenarios
-            p += p9.geom_point(
-                p9.aes(y="value", shape="scenario", group="fuel"),
-                data[1],
-                position=p9.position_dodge(width=0.9),
-                color="cyan",
-                size=1,
-                fill=None,
+            p = (
+                p
+                + p9.geom_point(
+                    p9.aes(y="value", shape="scenario", group="fuel"),
+                    data[1],
+                    position=p9.position_dodge(width=0.9),
+                    color="cyan",
+                    size=2,
+                    fill=None,
+                )
+                + COMMON["shape ip"]
             )
 
         if len(data[2]):

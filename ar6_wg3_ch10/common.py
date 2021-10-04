@@ -177,6 +177,9 @@ SCALE_FUEL = pd.DataFrame(
     ],
 )
 
+# Unpack indicative pathway information to create a scale
+_IP_LAB = {s["scenario"]: s["id"] for s in SCENARIOS["indicator"]}
+
 
 # Common plot components.
 
@@ -222,6 +225,12 @@ COMMON = {
             labels=["", 2040, "", 2080, ""],
         ),
         p9.labs(x=""),
+    ],
+    "shape ip": [
+        p9.scale_shape(
+            unfilled=True, labels=lambda breaks: [_IP_LAB[b] for b in breaks]
+        ),
+        p9.labs(shape="Illustrative pathway"),
     ],
 }
 

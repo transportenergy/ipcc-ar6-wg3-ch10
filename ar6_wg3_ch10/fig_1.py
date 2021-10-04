@@ -130,16 +130,17 @@ class Fig1(Figure):
 
         if len(data[1]):
             # Points for indicator scenarios
-            p = p + [
-                p9.geom_point(
+            p = (
+                p
+                + p9.geom_point(
                     p9.aes(y="value", shape="scenario"),
                     data[1],
                     color="cyan",
-                    size=1,
+                    size=2,
                     fill=None,
-                ),
-                p9.labs(shape="Illustrative pathway"),
-            ]
+                )
+                + COMMON["shape ip"]
+            )
 
         if len(data[2]):
             # Points and bar for sectoral models

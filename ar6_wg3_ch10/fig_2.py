@@ -26,7 +26,7 @@ STATIC = (
     + [
         COMMON["counts"],
         # Axis labels
-        p9.labs(y="", fill="Model type & category", shape="Illustrative pathway"),
+        p9.labs(y="", fill="Model type & category"),
         # Appearance
         COMMON["theme"],
         p9.theme(panel_grid_major_x=p9.element_blank()),
@@ -144,12 +144,16 @@ class Fig2(Figure):
 
         if len(data[1]):
             # Points for indicator scenarios
-            p += p9.geom_point(
-                p9.aes(y="value", shape="scenario"),
-                data[1],
-                color="cyan",
-                size=1,
-                fill=None,
+            p = (
+                p
+                + p9.geom_point(
+                    p9.aes(y="value", shape="scenario"),
+                    data[1],
+                    color="cyan",
+                    size=2,
+                    fill=None,
+                )
+                + COMMON["shape ip"]
             )
 
         if len(data[2]):
