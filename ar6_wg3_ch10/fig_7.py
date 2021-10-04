@@ -10,7 +10,7 @@ import logging
 import pandas as pd
 import plotnine as p9
 
-from .common import Figure, scale_category
+from .common import COMMON, Figure, ranges, scale_category
 from .data import (
     aggregate_fuels,
     compute_descriptives,
@@ -104,18 +104,24 @@ class Fig7(Figure):
             p9.ggplot(data=data[0])
             + title
             + self.geoms
+            # Geoms, aesthetics, and scales that respond to options
+            + ranges(self, group="fuel", counts=False, position="dodge", width=0.9)
             + scale_category("x", self, short_label=True)
         )
 
         if len(data[1]):
             # Points for indicator scenarios
-            p += p9.geom_point(
-                p9.aes(y="value", shape="scenario", group="fuel"),
-                data[1],
-                position=p9.position_dodge(width=0.9),
-                color="cyan",
-                size=1,
-                fill=None,
+            p = (
+                p
+                + p9.geom_point(
+                    p9.aes(y="value", shape="scenario", group="fuel"),
+                    data[1],
+                    position=p9.position_dodge(width=0.9),
+                    color="cyan",
+                    size=2,
+                    fill=None,
+                )
+                + COMMON["shape ip"]
             )
 
         return p

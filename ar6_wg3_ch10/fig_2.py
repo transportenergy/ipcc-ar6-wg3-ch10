@@ -9,30 +9,10 @@ from .data import (
     per_capita_if,
     split_scenarios,
 )
-from .common import COMMON, Figure, scale_category
+from .common import COMMON, Figure, ranges, scale_category
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
-
-
-# Non-dynamic features of fig_2
-STATIC = (
-    [
-        # Horizontal panels by type; vertical panels by years
-        p9.facet_grid("type ~ year", scales="free_y"),
-        # Geoms
-    ]
-    + COMMON["ranges"]
-    + [
-        COMMON["counts"],
-        # Axis labels
-        p9.labs(y="", fill="Model type & category"),
-        # Appearance
-        COMMON["theme"],
-        p9.theme(panel_grid_major_x=p9.element_blank()),
-        p9.guides(color=None),
-    ]
-)
 
 
 class Fig2(Figure):
@@ -56,7 +36,17 @@ class Fig2(Figure):
 
     # Plotting
     aspect_ratio = 1
-    geoms = STATIC
+    # Non-dynamic features
+    geoms = [
+        # Horizontal panels by type; vertical panels by years
+        p9.facet_grid("type ~ year", scales="free_y"),
+        # Axis labels
+        p9.labs(y="", fill="Model type & category"),
+        # Appearance
+        COMMON["theme"],
+        p9.theme(panel_grid_major_x=p9.element_blank()),
+        p9.guides(color=None),
+    ]
 
     def prepare_data(self, data):
         # Restore the 'type' dimension to sectoral data
@@ -136,7 +126,8 @@ class Fig2(Figure):
             p9.ggplot(data=data[0])
             + title
             + self.geoms
-            # Aesthetics and scales
+            # Geoms, aesthetics, and scales that respond to options
+            + ranges(self)
             + scale_category("x", self)
             + scale_category("color", self)
             + scale_category("fill", self)

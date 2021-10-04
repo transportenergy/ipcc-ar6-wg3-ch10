@@ -4,7 +4,7 @@ import pandas as pd
 import plotnine as p9
 
 from .data import compute_descriptives, compute_ratio, normalize_if
-from .common import COMMON, Figure, scale_category
+from .common import COMMON, Figure, ranges, scale_category
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
@@ -16,27 +16,6 @@ PANEL_VAR = {
     "2": "Fuel carbon intensity",
 }
 VAR_PANEL = {v: p for p, v in PANEL_VAR.items()}
-
-# Non-dynamic features of fig_4
-STATIC = (
-    [
-        # Horizontal panels by freight/passenger
-        p9.facet_grid(
-            "panel ~ year", scales="free_y", labeller=lambda v: PANEL_VAR.get(v, v)
-        ),
-        # Geoms
-    ]
-    + COMMON["ranges"]
-    + [
-        COMMON["counts"],
-        # Axis labels
-        p9.labs(y="", fill="IAM/sectoral scenarios"),
-        # Appearance
-        COMMON["theme"],
-        p9.theme(panel_grid_major_x=p9.element_blank()),
-        p9.guides(color=None),
-    ]
-)
 
 
 class Fig4(Figure):
@@ -57,7 +36,19 @@ class Fig4(Figure):
 
     # Plotting
     aspect_ratio = 1.33
-    geoms = STATIC
+    # Non-dynamic features
+    geoms = [
+        # Horizontal panels by freight/passenger
+        p9.facet_grid(
+            "panel ~ year", scales="free_y", labeller=lambda v: PANEL_VAR.get(v, v)
+        ),
+        # Axis labels
+        p9.labs(y="", fill="IAM/sectoral scenarios"),
+        # Appearance
+        COMMON["theme"],
+        p9.theme(panel_grid_major_x=p9.element_blank()),
+        p9.guides(color=None),
+    ]
 
     def prepare_data(self, data):
         # Fill 'type' column in IAM data
@@ -138,7 +129,8 @@ class Fig4(Figure):
             p9.ggplot(data=data[0])
             + title
             + self.geoms
-            # Aesthetics and scales
+            # Geoms, aesthetics, and scales that respond to options
+            + ranges(self)
             + scale_category("x", self)
             + scale_category("color", self)
             + scale_category("fill", self)

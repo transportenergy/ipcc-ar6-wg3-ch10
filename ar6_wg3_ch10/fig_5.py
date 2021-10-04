@@ -3,7 +3,7 @@ import logging
 import numpy as np
 import plotnine as p9
 
-from .common import COMMON, SCALE_FUEL, Figure, scale_category
+from .common import COMMON, SCALE_FUEL, Figure, ranges, scale_category
 from .data import (
     aggregate_fuels,
     compute_descriptives,
@@ -32,22 +32,7 @@ STATIC = [
         values=SCALE_FUEL["fill"],
         labels=SCALE_FUEL["label"],
     ),
-    # Geoms
-    # Like COMMON['ranges'], with fill='fuel', position='dodge' and no width=
-    p9.geom_crossbar(
-        p9.aes(ymin="min", y="50%", ymax="max", group="fuel"),
-        position="dodge",
-        color="black",
-        fill="white",
-        width=0.9,
-    ),
-    p9.geom_crossbar(
-        p9.aes(ymin="25%", y="50%", ymax="75%", fill="fuel"),
-        position="dodge",
-        color="black",
-        width=0.9,
-    ),
-    # # Like COMMON['counts'], except color is 'fuel'
+    # Like COMMON['counts'], except color is 'fuel'
     # p9.geom_text(
     #     p9.aes(label="count", y=-0.01, angle=45, color="fuel"),
     #     position=p9.position_dodge(width=0.9),
@@ -175,6 +160,8 @@ class Fig5(Figure):
             p9.ggplot(data=data[0])
             + title
             + self.geoms
+            # Geoms, aesthetics, and scales that respond to options
+            + ranges(self, aes="fuel", counts=False, position="dodge", width=0.9)
             + scale_category("x", self, short_label=True)
         )
 

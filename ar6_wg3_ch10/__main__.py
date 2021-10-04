@@ -162,10 +162,11 @@ def debug():
 )
 @click.option(
     "--bandwidth",
-    type=click.Choice(["5", "8", "9"]),
-    default="8",
+    "--bw",
+    type=click.Choice(["5", "8", "9", "10", "0"]),
+    default="0",
     callback=lambda ctx, param, value: int(value),
-    help="Width of bands, in deciles (fig_5 only; default: 8)",
+    help="Width of bands, in deciles (default varies by figure)",
 )
 @click.argument("to_plot", metavar="FIGURES", type=int, nargs=-1)
 def plot(to_plot, **options):
@@ -221,24 +222,25 @@ def _all(ctx, **options):
     ]
     recategorize = [None, "A", "B"]
 
-    options["bandwidth"] = 8
-
     for f, s, r in product(figures, source, recategorize):
         options.update(dict(to_plot=[f], ar6_data=s, recategorize=r))
 
-        # commented: fig_6 variants for M.Craig
-        # if f == 6:
-        #     for bw in ["5", "8", "9"]:
-        #         options.update(bandwidth=bw)
-        #         ctx.invoke(plot, **options)
-        #     continue
+        if f == 6:
+            bandwidths = [8]
+            # commented: fig_6 variants for M. Craig to investigate
+            # bandwidths = [5, 8, 9]
+        else:
+            # For investigation
+            bandwidths = [9, 10]
 
-        try:
-            ctx.invoke(plot, **options)
-        except Exception:
-            print()
-            print_exc()
-            print()
+        for bw in bandwidths:
+            options.update(bandwidth=bw)
+            try:
+                ctx.invoke(plot, **options)
+            except Exception:
+                print()
+                print_exc()
+                print()
 
 
 @cli.command()

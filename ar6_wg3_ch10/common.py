@@ -181,23 +181,13 @@ SCALE_FUEL = pd.DataFrame(
 _IP_LAB = {s["scenario"]: s["id"] for s in SCENARIOS["indicator"]}
 
 
+# Mapping from a "bandwidth" to corresponding minimum and maximum quantiles, as labeled
+# by pd.DataFrame.describe()
+BW_STAT = {5: ("25%", "75%"), 8: ("10%", "90%"), 9: ("5%", "95%"), 10: ("min", "max")}
+
 # Common plot components.
 
 COMMON = {
-    # Ranges of data as vertical bars
-    "ranges": [
-        p9.geom_crossbar(
-            p9.aes(ymin="min", y="50%", ymax="max"),
-            color="black",
-            fill="white",
-            width=None,
-        ),
-        p9.geom_crossbar(
-            p9.aes(ymin="25%", y="50%", ymax="75%", fill="category"),
-            color="black",
-            width=None,
-        ),
-    ],
     "theme": p9.theme(
         text=p9.element_text(font="Fira Sans"),
         # Background colours
@@ -208,13 +198,6 @@ COMMON = {
         panel_grid_minor_y=p9.element_line(color="#eeeeee", size=0.1),
         # Plot title
         plot_title=p9.element_text(size=10),
-    ),
-    # Labels with group counts
-    "counts": p9.geom_text(
-        p9.aes(label="count", y="max", color="category"),
-        format_string="{:.0f}",
-        va="bottom",
-        size=7,
     ),
     # Scales
     "x year": [
@@ -244,6 +227,43 @@ def remove_categoricals(df):
     """Convert categorical columns in `df` to string."""
     cols = [n for n, dt in df.dtypes.items() if isinstance(dt, pd.CategoricalDtype)]
     return df.astype({c: str for c in cols})
+
+
+def ranges(plot, aes="category", counts=True, position="identity", width=None):
+    """Ranges of data as vertical bars with labels for group counts.
+
+    Drawn as two `geom_crossbar`; a smaller, coloured one covering a larger white one
+    with black outline.
+    """
+    # Select statistics for edges of bands
+    lo, hi = BW_STAT[plot.bandwidth]
+
+    args = dict(ymin=lo, y="50%", ymax=hi)
+    if aes != "category":
+        args.update(group=aes)
+
+    result = [
+        p9.geom_crossbar(
+            p9.aes(**args), color="black", fill="white", position=position, width=width
+        ),
+        p9.geom_crossbar(
+            p9.aes(ymin="25%", y="50%", ymax="75%", fill=aes),
+            color="black",
+            position=position,
+            width=width,
+        ),
+        p9.geom_text(
+            p9.aes(label="count", y=hi, color=aes),
+            format_string="{:.0f}",
+            va="bottom",
+            size=7,
+        ),
+    ]
+
+    if not counts:
+        result.pop(-1)
+
+    return result
 
 
 def scale_category(aesthetic, plot=None, **options):
@@ -310,6 +330,8 @@ class Figure:
     normalize = True
     #: :obj:`True` if the ordinate should be divided by population.
     per_capita = False
+    #: Default bandwidth
+    bandwidth_default = 10
 
     #: Filters for loading data
     filters = dict()
@@ -332,6 +354,9 @@ class Figure:
 
         log.info(f"{self.__class__.__name__}: {self.title}")
 
+        # Use default bandwidth
+        self.bandwidth = options.pop("bandwidth", 0) or self.bandwidth_default
+
         # Update properties from options
         self.__dict__.update(options)
 
@@ -340,6 +365,7 @@ class Figure:
             self.__class__.__name__.lower(),
             self.sources[0].replace(" ", "-"),
             self.sources[1].replace(" ", "-"),
+            f"bw{self.bandwidth}",
         ]
         # Distinguish optional variants in file name
         if self.has_option.get("per_capita", False) and self.per_capita:

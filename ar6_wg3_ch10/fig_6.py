@@ -9,7 +9,7 @@ from .data import (
     per_capita_if,
     split_scenarios,
 )
-from .common import COMMON, Figure, scale_category
+from .common import BW_STAT, COMMON, Figure, scale_category
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
@@ -73,6 +73,8 @@ class Fig6(Figure):
         r"(?P<type>Freight|Passenger)(?:\|(?P<mode>.*))?"
     )
 
+    bandwidth_default = 8
+
     # Plotting
     aspect_ratio = 1
     geoms = STATIC
@@ -130,35 +132,12 @@ class Fig6(Figure):
                 data["iam"]["unit"].str.replace("bn", "10⁹").unique()
             )
 
-        # Adjust filename to reflect bandwidth
-        fn_parts = self.base_fn.split("-", maxsplit=1)
-        self.base_fn = "-".join([fn_parts[0], f"bw{self.bandwidth}", fn_parts[1]])
-
-        # Select statistics for edges of bands
-        lo, hi = {5: ("25%", "75%"), 8: ("10%", "90%"), 9: ("5%", "95%")}[
-            self.bandwidth
-        ]
-
-        self.geoms.extend(
-            [
-                # # 1 lines per scenario
-                # p9.geom_line(p9.aes(y='value', group='model + scenario + category'),
-                #           alpha=0.6),
-                #
-                # 1 band per category
-                p9.geom_ribbon(
-                    p9.aes(ymin=lo, ymax=hi, fill="category"), alpha=0.2, color=None
-                ),
-                # Median and edge lines
-                p9.geom_line(p9.aes(y="50%", color="category"), alpha=1, size=0.2),
-                p9.geom_line(p9.aes(y=lo, color="category"), alpha=1, size=0.1),
-                p9.geom_line(p9.aes(y=hi, color="category"), alpha=1, size=0.1),
-            ]
-        )
-
         return data
 
     def generate(self):
+        # Select statistics for edges of bands
+        lo, hi = BW_STAT[self.bandwidth]
+
         for region, d in groupby_multi(
             (self.data["descriptives"], self.data["indicator"]), "region"
         ):
@@ -167,11 +146,22 @@ class Fig6(Figure):
                 p9.ggplot(data=d[0])
                 + self.format_title(region=region)
                 + self.geoms
+                + [
+                    # commented: 1 line per scenario
+                    # p9.geom_line(
+                    #     p9.aes(y='value', group='model + scenario + category'),
+                    #     alpha=0.6
+                    # ),
+                    # 1 band per category
+                    p9.geom_ribbon(
+                        p9.aes(ymin=lo, ymax=hi, fill="category"), alpha=0.2, color=None
+                    ),
+                    # Median and edge lines
+                    p9.geom_line(p9.aes(y="50%", color="category"), alpha=1, size=0.2),
+                    p9.geom_line(p9.aes(y=lo, color="category"), alpha=1, size=0.1),
+                    p9.geom_line(p9.aes(y=hi, color="category"), alpha=1, size=0.1),
+                ]
                 + scale_category("color", self)
                 + scale_category("fill", self)
-                # + p9.geom_line(
-                #     p9.aes(x="year", y="value"),
-                #     d[1],
-                #     color="yellow",
-                # )
+                # + p9.geom_line(p9.aes(x="year", y="value"), d[1], color="yellow")
             )
