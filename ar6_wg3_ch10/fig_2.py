@@ -26,7 +26,7 @@ STATIC = (
     + [
         COMMON["counts"],
         # Axis labels
-        p9.labs(y="", fill="Model type & category", shape="Indicator scenario"),
+        p9.labs(y="", fill="Model type & category", shape="Illustrative pathway"),
         # Appearance
         COMMON["theme"],
         p9.theme(panel_grid_major_x=p9.element_blank()),

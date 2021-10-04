@@ -138,7 +138,7 @@ class Fig1(Figure):
                     size=1,
                     fill=None,
                 ),
-                p9.labs(shape="Indicator scenario"),
+                p9.labs(shape="Illustrative pathway"),
             ]
 
         if len(data[2]):

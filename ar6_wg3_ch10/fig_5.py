@@ -58,7 +58,7 @@ STATIC = [
     #     size=3,
     # ),
     # Axis labels
-    p9.labs(y="", fill="Energy carrier", shape="Indicator scenario"),
+    p9.labs(y="", fill="Energy carrier", shape="Illustrative pathway"),
     # Hide legend for 'color'
     p9.guides(color=None),
     # Appearance
