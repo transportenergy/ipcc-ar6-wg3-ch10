@@ -360,21 +360,25 @@ class Figure:
         # Update properties from options
         self.__dict__.update(options)
 
-        # Base filename
-        fn_parts = [
-            self.__class__.__name__.lower(),
-            self.sources[0].replace(" ", "-"),
-            self.sources[1].replace(" ", "-"),
-            f"bw{self.bandwidth}",
-        ]
-        # Distinguish optional variants in file name
-        if self.has_option.get("per_capita", False) and self.per_capita:
-            fn_parts.insert(-2, "percap")
-        if self.has_option.get("normalize", False) and not self.normalize:
-            fn_parts.insert(-2, "abs")
-        if self.recategorize:
-            fn_parts.insert(-1, f"recat{self.recategorize}")
-        self.base_fn = "-".join(fn_parts)
+        # Base filename, distinguishing optional variants
+        self.base_fn = "-".join(
+            filter(
+                None,
+                [
+                    self.__class__.__name__.lower(),
+                    self.sources[0].replace(" ", "-"),
+                    self.sources[1].replace(" ", "-"),
+                    "abs"
+                    if self.has_option.get("normalize", False) and not self.normalize
+                    else None,
+                    "percap"
+                    if self.has_option.get("per_capita", False) and self.per_capita
+                    else None,
+                    f"recat{self.recategorize}" if self.recategorize else None,
+                    f"bw{self.bandwidth}",
+                ],
+            )
+        )
 
         # Set years filter
         self.filters["year"] = self.years
