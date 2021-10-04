@@ -20,5 +20,10 @@ root:
 loggers:
   ar6_wg3_ch10:
     level: NOTSET
+  # Loggers which are noisy when root level is NOTSET
+  matplotlib.font_manager:
+    level: INFO
+  matplotlib.backends:
+    level: INFO
 
 version: 1
