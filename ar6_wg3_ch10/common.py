@@ -99,21 +99,33 @@ SCALE_CAT_BASE = pd.DataFrame(
         # C0 was removed from metadata as of 2020-11-18
         # ["C0", "C0: 1.5°C with no OS", "C0: 1.5°C no OS", "darkgreen", "darkgreen"],
         #
-        # Current categorization
-        ["C1", "C1: 1.5°C with no or low OS", "IAM C1: 1.5°C lo OS", "green", "green"],
+        # Current categorization as of 2021-10-04
+        [
+            "C1",
+            "C1: 1.5°C with no or low OS",
+            "IAM C1: 1.5°C lo OS",
+            "#00b050",
+            "#00b050",
+        ],
         [
             "C2",
             "C2: 1.5°C with high OS",
             "IAM C2: 1.5°C hi OS",
-            "yellowgreen",
-            "yellowgreen",
+            "#4b9ffb",
+            "#4b9ffb",
         ],
-        ["C3", "C3: likely 2°C", "IAM C3: likely 2°C", "#fca503", "#fca503"],
-        ["C4", "C4: median 2°C", "IAM C4: median 2°C", "#fe5302", "#fe5302"],
-        ["C5", "C5: below 2.5°C", "IAM C5: <2.5°C", "red", "red"],
-        ["C6", "C6: below 3.0°C", "IAM C6: <3.0°C", "brown", "brown"],
-        ["C7", "C7: above 3.0°C", "IAM C7: >3.0°C", "purple", "purple"],
-        ["NCA", "no-climate-assessment", "No assessment", "#eeeeee", "#999999"],
+        ["C3", "C3: likely 2°C", "IAM C3: likely 2°C", "#71ebe8", "#71ebe8"],
+        ["C4", "C4: median 2°C", "IAM C4: median 2°C", "#ffff75", "#ffff75"],
+        ["C5", "C5: below 2.5°C", "IAM C5: <2.5°C", "#ffd13f", "#ffd13f"],
+        ["C6", "C6: below 3.0°C", "IAM C6: <3.0°C", "#ff5d5d", "#ff5d5d"],
+        ["C7", "C7: above 3.0°C", "IAM C7: >3.0°C", "#ac5252", "#ac5252"],
+        #
+        # With anticipated 2021-10-05 categorization
+        # ["C7", "C7: below 4.0°C", "IAM C7: <4.0°C", "#ac5252", "#ac5252"],
+        # ["C8", "C8: above 4.0°C", "IAM C8: >4.0°C", "#833c0c", "#833c0c"],
+        #
+        # Unused
+        # ["NCA", "no-climate-assessment", "No assessment", "#eeeeee", "#999999"],
         #
         # Sectoral scenarios
         ["Pol", "policy", "G-/NTEM Policy", "#eeeeee", "#999999"],
@@ -134,6 +146,9 @@ SCALE_CAT_A = pd.DataFrame(
             "#fe5302",
         ],
         ["C6–7", "C6 or C7: above 2.5°C", "IAM C6–7: ≥3.0°C", "purple", "purple"],
+        #
+        # With anticipated 2021-10-05 categorization
+        # ["C6–8", "C6–8: above 2.5°C", "IAM C6–8: ≥3.0°C", "purple", "purple"],
     ],
 )
 
@@ -144,6 +159,9 @@ SCALE_CAT_B = pd.DataFrame(
         ["C2,4", "C2 or C4", "IAM C2,4", "#fe5302", "#fe5302"],
         ["C3,5", "C3 or C5", "IAM C3,5", "red", "red"],
         ["C6,7", "C6 or C7", "IAM C6,7: ≥2.5°C", "purple", "purple"],
+        #
+        # With anticipated 2021-10-05 categorization
+        # ["C6–8", "C6–8", "IAM C6–8: ≥2.5°C", "purple", "purple"],
     ],
 )
 
@@ -156,6 +174,11 @@ _CG = (
     ("C5", "C3–5", "C3,5"),
     ("C6", "C6–7", "C6,7"),
     ("C7", "C6–7", "C6,7"),
+    #
+    # With anticipated 2021-10-05 categorization
+    # ("C6", "C6–8", "C6–8"),
+    # ("C7", "C6–8", "C6–8"),
+    # ("C8", "C6–8", "C6–8"),
 )
 
 CAT_GROUP = dict(
