@@ -145,10 +145,10 @@ SCALE_CAT_A = pd.DataFrame(
             "#fe5302",
             "#fe5302",
         ],
-        ["C6–7", "C6 or C7: above 2.5°C", "IAM C6–7: ≥3.0°C", "purple", "purple"],
+        ["C6–7", "C6 or C7: above 2.5°C", "IAM C6–7: ≥2.5°C", "purple", "purple"],
         #
         # With anticipated 2021-10-05 categorization
-        # ["C6–8", "C6–8: above 2.5°C", "IAM C6–8: ≥3.0°C", "purple", "purple"],
+        # ["C6–8", "C6–8: above 2.5°C", "IAM C6–8: ≥2.5°C", "purple", "purple"],
     ],
 )
 
