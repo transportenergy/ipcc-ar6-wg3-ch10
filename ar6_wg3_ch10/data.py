@@ -406,7 +406,19 @@ def get_data(
 
 
 def categorize(df, source, **options):
-    """Modify *df* from *source* to add 'category' columns."""
+    """Modify `df` from `source` to add 'category' columns.
+
+    This involved merging the contents of `df` with appropriate metadata.
+
+    `options` include:
+
+    - ``vetted_only``: if :obj:`True`, remove scenarios for which the "vetted"
+      attribute contains the string "FAIL"; retain all others. NB this column name has
+      varied, so the code below maps the varying name to "vetted". This gives the same
+      result as excluding scenarios for which the "exclude" attribute is "True".
+    - ``recategorize``: either "A" or "B". Values from :data:`CAT_GROUP` are used to
+      recategorize, i.e. by merging together categories from the base data.
+    """
     if source in ("SR15",):
         # Read a CSV file
         cat_data = pd.read_csv(DATA_PATH / f"categories-{source}.csv")
