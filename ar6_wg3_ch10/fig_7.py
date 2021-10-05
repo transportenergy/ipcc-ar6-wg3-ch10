@@ -117,7 +117,7 @@ class Fig7(Figure):
                     p9.aes(y="value", shape="scenario", group="fuel"),
                     data[1],
                     position=p9.position_dodge(width=0.9),
-                    color="cyan",
+                    color="magenta",
                     size=2,
                     fill=None,
                 )

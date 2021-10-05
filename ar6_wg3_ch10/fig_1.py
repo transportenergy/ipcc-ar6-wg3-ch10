@@ -126,7 +126,7 @@ class Fig1(Figure):
                 + p9.geom_point(
                     p9.aes(y="value", shape="scenario"),
                     data[1],
-                    color="cyan",
+                    color="magenta",
                     size=2,
                     fill=None,
                 )
