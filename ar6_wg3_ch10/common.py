@@ -114,9 +114,9 @@ SCALE_CAT_BASE = pd.DataFrame(
             "#4b9ffb",
             "#4b9ffb",
         ],
-        ["C3", "C3: likely 2°C", "IAM C3: likely 2°C", "#71ebe8", "#71ebe8"],
-        ["C4", "C4: median 2°C", "IAM C4: median 2°C", "#ffff75", "#ffff75"],
-        ["C5", "C5: below 2.5°C", "IAM C5: <2.5°C", "#ffd13f", "#ffd13f"],
+        ["C3", "C3: likely 2°C", "IAM C3: likely 2°C", "#71ebe8", "#10706d"],
+        ["C4", "C4: below 2°C", "IAM C4: below 2°C", "#ffff75", "#808000"],
+        ["C5", "C5: below 2.5°C", "IAM C5: <2.5°C", "#ffd13f", "#806100"],
         ["C6", "C6: below 3.0°C", "IAM C6: <3.0°C", "#ff5d5d", "#ff5d5d"],
         ["C7", "C7: above 3.0°C", "IAM C7: >3.0°C", "#ac5252", "#ac5252"],
         #
