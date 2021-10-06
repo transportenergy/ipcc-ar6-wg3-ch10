@@ -279,40 +279,43 @@ def ranges(plot, aes="category", counts=True, position="identity", width=None):
 
 def scale_category(aesthetic, plot=None, **options):
     """Generate scales based on the AR6 categories, with options."""
+    # Options from the plot object or kwargs
     options = ChainMap(getattr(plot, "__dict__", {}), options)
 
+    # Data for the scale
     data = SCALE_CAT_BASE.copy()
 
     recategorize = options.get("recategorize")
     if recategorize:
-        data = pd.concat([globals()[f"SCALE_CAT_{recategorize}"], data.iloc[-3:, :]])
+        data = pd.concat([globals()[f"SCALE_CAT_{recategorize}"], data.iloc[-2:, :]])
+        # Recategorized contain the short category IDs e.g. "C2"
+        data.iloc[:-2, :]["limit"] = data.iloc[:-2, :]["short"]
 
     if not options.get("include_nca", False):
         # Remove no-climate-assessment point on scale
         data = data.query("short != 'NCA'").reset_index(drop=True)
 
     short_label = options.get("short_label", False)
-    limit = "short" if recategorize else "limit"
     label = "short" if short_label else "label"
 
     if aesthetic == "x":
         theme_kwarg = dict() if short_label else dict(axis_text_x=p9.element_blank())
         return [
             p9.aes(x="category"),
-            p9.scale_x_discrete(limits=data[limit], labels=data[label]),
+            p9.scale_x_discrete(limits=data["limit"], labels=data[label]),
             p9.labs(x=""),
             p9.theme(axis_ticks_major_x=p9.element_blank(), **theme_kwarg),
         ]
     elif aesthetic == "fill":
         return [
             p9.scale_fill_manual(
-                limits=data[limit], values=data["fill"], labels=data[label]
+                limits=data["limit"], values=data["fill"], labels=data[label]
             )
         ]
     elif aesthetic == "color":
         return [
             p9.aes(color="category"),
-            p9.scale_color_manual(limits=data[limit], values=data["color"]),
+            p9.scale_color_manual(limits=data["limit"], values=data["color"]),
         ]
     else:
         raise ValueError(aesthetic)
