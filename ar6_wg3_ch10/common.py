@@ -452,7 +452,7 @@ class Figure:
         else:
             data["population"] = pd.DataFrame()
 
-        # Split national and sectoral models
+        # Split national (NTEM) and sectoral (GTEM) models
         data["ns"], data["iam"] = split_scenarios(
             data["iam"], groups=["national", "sectoral"]
         )
@@ -461,6 +461,14 @@ class Figure:
         data["item"] = get_data(source=self.sources[1], conform_to="AR6", **args).pipe(
             remove_categoricals
         )
+
+        # Merge item and ns data
+        if len(data["ns"]):
+            log.info(
+                f"Concatenate {len(data['ns'])} obs from G-/NTEMs to "
+                f"{len(data['item'])} from iTEM"
+            )
+            data["item"] = pd.concat([data["item"], data["ns"]])
 
         # Use a subclass method to further prepare data
         self.data = self.prepare_data(data)

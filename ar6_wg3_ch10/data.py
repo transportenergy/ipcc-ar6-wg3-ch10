@@ -326,10 +326,14 @@ def get_data(
         str for *variables* is used to retrieve *filters* from data/variables-map.yaml.
     """
     if vars_from_file and "variable" not in filters:
+        # Only load a subset of variables, as defined in a particular file
         variables = (
             (DATA_PATH / f"variables-{source}.txt").read_text().strip().split("\n")
         )
         filters["variable"] = sorted(variables)
+
+    # Variable name replacements, if any.
+    replace_var = None
 
     if "iTEM" in source and not isinstance(filters["variable"], str):
         # Recurse: handle each iTEM variable individually
@@ -343,7 +347,7 @@ def get_data(
                 continue
         return pd.concat(dfs) if len(dfs) else pd.DataFrame()
     elif "iTEM" in source:
-        # Single iTEM variable
+        # Single iTEM variable: construct filters
 
         # Default filters for iTEM data
         if default_item_filters:
@@ -361,6 +365,11 @@ def get_data(
         # Combine additional filters for the particular iTEM variable; also
         # retrieve a scaling factor
         _filters, scale = item.var_info(conform_to, filters["variable"])
+
+        # Store the mapping for later use
+        assert len(_filters["variable"]) == 1
+        replace_var = {_filters["variable"][0]: filters["variable"]}
+
         filters.update(_filters)
     else:
         scale = None
@@ -391,14 +400,14 @@ def get_data(
 
     # Finalize:
     # - Apply filters,
-    # - Apply iTEM-specific cleaning and scaling
+    # - Apply iTEM-specific cleaning and scaling; rename "variable" entries.
     # - Drop missing values,
     # - Drop undesired columns,
     # - Read and apply category metadata, if any.
     return (
         result.pipe(apply_filters, id_vars, filters)
         .astype({"year": int})
-        .pipe(item.clean_data, source, scale)
+        .pipe(item.clean_data, source, scale, replace_var)
         .dropna(subset=["value"])
         .drop(list(d for d in drop if d in result.columns), axis=1)
         .pipe(categorize, source, recategorize=recategorize, drop_uncategorized=True)

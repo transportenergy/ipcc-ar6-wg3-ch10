@@ -16,17 +16,29 @@ def cat_for_scen(row: pd.Series, mip: str):
     return scen_info(row["model"], mip)[row["scenario"]]["category"]
 
 
-def clean_data(df: pd.DataFrame, source: str, scale: float) -> pd.DataFrame:
-    """Clean iTEM data by removing commercial projections and scaling."""
+def clean_data(
+    df: pd.DataFrame, source: str, scale: float, replace_var: dict = None
+) -> pd.DataFrame:
+    """Clean iTEM data.
+
+    - Remove commercial projections and scaling.
+    - Map "variable" column labels to AR6 names.
+    """
     if "iTEM" not in source:
         return df
+
+    # Variable mapping.
+    replace_var = replace_var or dict()
 
     # Apply scaling
     df["value"] = df["value"] * scale
     df["region"] = df["region"].replace({"Global": "World"})
 
-    # Remove private companies' projections
-    return df.loc[~df.model.isin(["BP", "ExxonMobil", "Shell"]), :]
+    # - Remove private companies' projections.
+    # - Replace values in the "variable" column.
+    return df[~df.model.isin(["BP", "ExxonMobil", "Shell"])].replace(
+        dict(variable=replace_var)
+    )
 
 
 @lru_cache()
