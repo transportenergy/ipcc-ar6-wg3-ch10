@@ -136,7 +136,7 @@ SCALE_CAT_BASE = pd.DataFrame(
         #
         # Sectoral scenarios
         ["Pol", "policy", "G-/NTEM Policy", "#eeeeee", "#999999"],
-        ["Ref", "reference", "G-/NTEM Reference", "#999999", "#111111"],
+        ["Ref", "reference", "G-/NTEM Reference", "#999999", "#555555"],
     ],
 )
 
