@@ -20,11 +20,11 @@ from .common import NOW, OUTPUT_PATH, REMOTE_DATA
 log = logging.getLogger(__name__)
 
 # Log configuration
-_LC = yaml.safe_load(open(Path(__file__).parents[1] / "data" / "logging.yaml"))
+LC = yaml.safe_load(open(Path(__file__).parents[1] / "data" / "logging.yaml"))
 
 
 def _start_log():
-    logging.config.dictConfig(_LC)
+    logging.config.dictConfig(LC)
 
 
 @click.group(help=__doc__)
@@ -33,10 +33,10 @@ def _start_log():
     "--verbose", is_flag=True, help="Also print DEBUG log messages to stdout."
 )
 def cli(skip_cache, verbose):
-    _LC["handlers"]["file"]["filename"] = OUTPUT_PATH / f"{NOW}.log"
+    LC["handlers"]["file"]["filename"] = OUTPUT_PATH / f"{NOW}.log"
 
     if verbose:
-        _LC["handlers"]["console"]["level"] = "DEBUG"
+        LC["handlers"]["console"]["level"] = "DEBUG"
 
     if skip_cache:
         from . import util
