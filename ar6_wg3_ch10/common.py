@@ -441,20 +441,20 @@ class Figure:
             data["iam"], groups=["national", "sectoral"]
         )
 
-        # Load iTEM data
-        data["item"] = get_data(source=self.sources[1], conform_to="AR6", **args).pipe(
+        # Load G-/NTEM data
+        data["tem"] = get_data(source=self.sources[1], conform_to="AR6", **args).pipe(
             remove_categoricals
         )
 
         # Merge item and ns data
         if len(data["ns"]):
             log.info(
-                f"Concatenate {len(data['ns'])} obs from G-/NTEMs to "
-                f"{len(data['item'])} from iTEM"
+                f"Concatenate G-/NTEM {len(data['ns'])} obs from AR6 database to "
+                f"{len(data['tem'])} from iTEM"
             )
-            data["item"] = pd.concat([data["item"], data.pop("ns")])
+            data["tem"] = pd.concat([data["tem"], data.pop("ns")])
 
-        # Use a subclass method to further prepare data
+        # Allow the plot subclass method to further prepare data
         self.data = self.prepare_data(data)
 
         # Dump data for reference
