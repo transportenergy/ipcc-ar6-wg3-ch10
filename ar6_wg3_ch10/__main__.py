@@ -128,11 +128,13 @@ def debug():
 @click.option(
     "--ar6-data",
     type=click.Choice(["world", "R5", "R10", "country", "raw"]),
+    # type=click.Choice(["world", "R5", "R6", "R10", "country", "raw"]),
     default="world",
     help="Source snapshort for IPCC/IAM data.",
 )
 @click.option(
     "--recategorize",
+    "--recat",
     type=click.Choice(["A", "B"]),
     default=None,
     help="Group scenarios categories into fewer.",
@@ -217,6 +219,7 @@ def _all(ctx, **options):
     source = [
         "world",
         "R5",
+        # "R6",
         "R10",
         "country",
     ]
