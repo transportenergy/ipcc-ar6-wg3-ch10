@@ -452,7 +452,7 @@ class Figure:
                 f"Concatenate {len(data['ns'])} obs from G-/NTEMs to "
                 f"{len(data['item'])} from iTEM"
             )
-            data["item"] = pd.concat([data["item"], data["ns"]])
+            data["item"] = pd.concat([data["item"], data.pop("ns")])
 
         # Use a subclass method to further prepare data
         self.data = self.prepare_data(data)
