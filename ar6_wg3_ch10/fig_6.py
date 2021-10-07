@@ -89,8 +89,8 @@ class Fig6(Figure):
 
         # Restore the 'type' dimension to sectoral data
         # Convert sectoral 'mode' data to common label
-        data["item"] = (
-            data["item"]
+        data["tem"] = (
+            data["tem"]
             .assign(
                 type=lambda df: df["variable"].replace(
                     {"tkm": "Freight", "pkm": "Passenger"}
@@ -104,11 +104,11 @@ class Fig6(Figure):
         if self.normalize:
             # Store the absolute data
             data["iam-absolute"] = data["iam"]
-            data["item-absolute"] = data["item"]
+            data["tem-absolute"] = data["tem"]
 
         # Combine all data to a single data frame; optionally normalize
         data["plot"] = (
-            pd.concat([data["iam"], data["item"]], sort=False)
+            pd.concat([data["iam"], data["tem"]], sort=False)
             .pipe(
                 per_capita_if,
                 data["population"],
@@ -118,8 +118,8 @@ class Fig6(Figure):
             .pipe(normalize_if, self.normalize, year=2020, drop=False)
         )
 
-        # Select indicator scenarios
-        data["indicator"], _ = split_scenarios(data["plot"], groups=["indicator"])
+        # Select IPs
+        data["ip"], _ = split_scenarios(data["plot"], groups=["indicator"])
 
         data["descriptives"] = compute_descriptives(
             data["plot"], on=["type", "mode"], groupby=["region"]
@@ -139,7 +139,7 @@ class Fig6(Figure):
         lo, hi = BW_STAT[self.bandwidth]
 
         for region, d in groupby_multi(
-            (self.data["descriptives"], self.data["indicator"]), "region"
+            (self.data["descriptives"], self.data[""]), "region"
         ):
             log.info(f"Region: {region}")
             yield (

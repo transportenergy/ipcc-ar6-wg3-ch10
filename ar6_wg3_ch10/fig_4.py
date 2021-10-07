@@ -55,10 +55,10 @@ class Fig4(Figure):
         data["iam"] = data["iam"].fillna(dict(type="All"))
 
         # Restore the 'type' dimension to sectoral data
-        data["item"]["type"] = data["item"]["variable"].replace(
+        data["tem"]["type"] = data["tem"]["variable"].replace(
             {"tkm": "Freight", "pkm": "Passenger", "energy": "All", "ttw_co2": "All"}
         )
-        data["item"]["quantity"] = data["item"]["variable"].replace(
+        data["tem"]["quantity"] = data["tem"]["variable"].replace(
             {
                 "tkm": "Energy Service",
                 "pkm": "Energy Service",
@@ -68,7 +68,7 @@ class Fig4(Figure):
         )
 
         # Same calculations for both IAMs and sectoral models
-        for key in "iam", "item":
+        for key in "iam", "tem":
             # Compute energy intensity
             ei = (
                 data[key]
@@ -100,8 +100,8 @@ class Fig4(Figure):
                 .sort_values("panel")
             )
 
-            if key == "item" and self.normalize:
-                data.update({"item-abs": data["item"], "item": tmp})
+            if key == "tem" and self.normalize:
+                data.update({"tem-abs": data["tem"], "tem": tmp})
 
             data[f"plot-{key}"] = compute_descriptives(
                 tmp, groupby=["type", "region", "panel"]
@@ -118,7 +118,7 @@ class Fig4(Figure):
         return data
 
     def generate(self):
-        keys = ["plot-iam", "plot-item", "item"]
+        keys = ["plot-iam", "plot-tem", "tem"]
         for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             log.info(f"Region: {region}")
             yield self.plot_single(d, self.format_title(region=region))
@@ -141,14 +141,14 @@ class Fig4(Figure):
             p = p + [
                 p9.geom_crossbar(
                     p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
-                    self.data["plot-item"],
+                    self.data["plot-tem"],
                     color="black",
                     fatten=0,
                     width=None,
                 ),
                 p9.geom_point(
                     p9.aes(y="value"),
-                    self.data["item"],
+                    self.data["tem"],
                     color="black",
                     size=1,
                     shape="x",

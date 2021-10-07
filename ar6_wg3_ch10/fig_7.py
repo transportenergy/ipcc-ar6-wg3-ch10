@@ -76,14 +76,14 @@ class Fig7(Figure):
 
         # Compute fuel shares for sectoral scenarios
         # - Modify labels to match IAM format
-        data["item"] = pd.DataFrame(columns=data["iam"].columns)
+        data["tem"] = pd.DataFrame(columns=data["iam"].columns)
 
         # Discard 2020 data
         data["iam"] = data["iam"][data["iam"].year != 2020]
-        # data["item"] = data["item"][data["item"].year != 2020]
+        # data["tem"] = data["tem"][data["tem"].year != 2020]
 
-        # Select indicator scenarios
-        data["indicator"], _ = split_scenarios(data["iam"], groups=["indicator"])
+        # Select IPs
+        data["ip"], _ = split_scenarios(data["iam"], groups=["indicator"])
 
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(
@@ -93,7 +93,7 @@ class Fig7(Figure):
         return data
 
     def generate(self):
-        keys = ["plot", "indicator"]
+        keys = ["plot", "ip"]
         for group, d in groupby_multi([self.data[k] for k in keys], ["type", "region"]):
             log.info(f"Type, region: {group}")
             yield self.plot_single(d, self.format_title(type=group[0], region=group[1]))
@@ -110,7 +110,7 @@ class Fig7(Figure):
         )
 
         if len(data[1]):
-            # Points for indicator scenarios
+            # Points for IPs
             p = (
                 p
                 + p9.geom_point(

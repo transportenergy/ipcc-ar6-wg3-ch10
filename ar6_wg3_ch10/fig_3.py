@@ -78,10 +78,10 @@ class Fig3(Figure):
 
         # Compute fuel shares for sectoral scenarios
         # - Modify labels to match IAM format
-        data["item"] = (
-            data["item"]
+        data["tem"] = (
+            data["tem"]
             .assign(
-                type=data["item"]["variable"].replace(
+                type=data["tem"]["variable"].replace(
                     {"pkm": "Passenger", "tkm": "Freight"}
                 )
             )
@@ -114,7 +114,7 @@ class Fig3(Figure):
             + STATIC
             + p9.geom_line(
                 p9.aes(y="value", group="model + scenario + mode"),
-                self.data["item"],
+                self.data["tem"],
                 alpha=0.6,
             )
         )

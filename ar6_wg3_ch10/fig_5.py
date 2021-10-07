@@ -117,8 +117,8 @@ class Fig5(Figure):
 
         # Compute fuel shares for sectoral scenarios
         # - Modify labels to match IAM format
-        data["item"] = (
-            data["item"]
+        data["tem"] = (
+            data["tem"]
             .replace(
                 {
                     "fuel": {
@@ -135,21 +135,19 @@ class Fig5(Figure):
 
         # Discard 2020 data
         data["iam"] = data["iam"][data["iam"].year != 2020]
-        data["item"] = data["item"][data["item"].year != 2020]
+        data["tem"] = data["tem"][data["tem"].year != 2020]
 
         # Select indicator scenarios
-        data["indicator"], _ = split_scenarios(data["iam"], groups=["indicator"])
+        data["ip"], _ = split_scenarios(data["iam"], groups=["indicator"])
 
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(data["iam"], groupby=["fuel", "region"])
-        data["plot-item"] = compute_descriptives(
-            data["item"], groupby=["fuel", "region"]
-        )
+        data["plot-tem"] = compute_descriptives(data["tem"], groupby=["fuel", "region"])
 
         return data
 
     def generate(self):
-        keys = ["plot", "indicator", "plot-item", "item"]
+        keys = ["plot", "ip", "plot-tem", "tem"]
         for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             log.info(f"Region: {region}")
             yield self.plot_single(d, self.format_title(region=region))
@@ -166,7 +164,7 @@ class Fig5(Figure):
         )
 
         if len(data[1]):
-            # Points for indicator scenarios
+            # Points for IPs
             p = (
                 p
                 + p9.geom_point(
