@@ -1,5 +1,6 @@
 import logging
 
+import numpy as np
 import pandas as pd
 import plotnine as p9
 
@@ -117,12 +118,15 @@ class Fig4(Figure):
             )
 
         if self.normalize:
-            # Free scales
+            scale_y = p9.scale_y_continuous(
+                limits=(0, 1.332), breaks=np.arange(0, 1.25, 0.2)
+            )
             self.units = "Index, 2020 level = 1.0"
         else:
-            scale_y = (p9.scale_y_continuous(limits=(0, 0.0045)),)
-            self.geoms.append(scale_y)
+            scale_y = p9.scale_y_continuous(limits=(0, 0.0045))
             self.units = sorted(map(str, data["iam"]["unit"].unique()))
+
+        self.geoms.append(scale_y)
 
         return data
 
