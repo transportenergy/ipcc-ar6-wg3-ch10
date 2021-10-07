@@ -98,6 +98,17 @@ class Fig4(Figure):
                 .sort_values("panel")
             )
 
+            # Drop erroneous energy intensity values
+            threshold = 1.5
+
+            mask = tmp["variable"].str.contains("energy intensity") & (
+                tmp["value"] >= threshold
+            )
+            log.info(
+                f"Drop {sum(mask)} / {len(tmp)} energy intensity values >= {threshold}"
+            )
+            tmp = tmp[~mask]
+
             if key == "tem" and self.normalize:
                 data.update({"tem-abs": data["tem"], "tem": tmp})
 
