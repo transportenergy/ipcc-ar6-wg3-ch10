@@ -560,3 +560,12 @@ sectoral:
 - model: MESSAGE-Transport V.5
   scenario: ADVANCE_WP2_TRA-Ctax-FullTech
   category: policy
+- model: Global Transportation Roadmap 2019.05
+  scenario: ICE Policy Potential
+  category: policy
+- model: Global Transportation Roadmap 2019.05
+  scenario: ICE+EV Policy Potential (MGIS)
+  category: policy
+- model: Global Transportation Roadmap 2019.05
+  scenario: With Currently Adopted Policies
+  category: reference
