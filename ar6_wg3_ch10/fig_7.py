@@ -105,7 +105,7 @@ class Fig7(Figure):
             + title
             + self.geoms
             # Geoms, aesthetics, and scales that respond to options
-            + ranges(self, group="fuel", counts=False, position="dodge", width=0.9)
+            + ranges(self, aes="fuel", counts=False, position="dodge", width=0.9)
             + scale_category("x", self, short_label=True)
         )
 
