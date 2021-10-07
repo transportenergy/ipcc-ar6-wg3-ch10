@@ -55,16 +55,14 @@ class Fig4(Figure):
         data["iam"] = data["iam"].fillna(dict(type="All"))
 
         # Restore the 'type' dimension to sectoral data
-        data["tem"]["type"] = data["tem"]["variable"].replace(
-            {"tkm": "Freight", "pkm": "Passenger", "energy": "All", "ttw_co2": "All"}
-        )
-        data["tem"]["quantity"] = data["tem"]["variable"].replace(
-            {
-                "tkm": "Energy Service",
-                "pkm": "Energy Service",
-                "energy": "Final Energy",
-                "ttw_co2": "Emissions|CO2|Energy|Demand",
-            }
+        data["tem"] = data["tem"].assign(
+            type=lambda df: df["variable"]
+            .str.replace(r".*\|(Transportation|Freight|Passenger)", r"\1")
+            .replace("Transportation", "All"),
+            quantity=lambda df: df["variable"].str.replace(
+                r"^(.*)\|Transportation(|\|Passenger|\|Freight)$", r"\1"
+            ),
+            unit=lambda df: df["unit"].replace("PJ/yr", "EJ/yr"),
         )
 
         # Same calculations for both IAMs and sectoral models
