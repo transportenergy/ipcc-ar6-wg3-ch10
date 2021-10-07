@@ -141,18 +141,19 @@ class Fig4(Figure):
 
             p = p + [
                 p9.geom_crossbar(
-                    p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
+                    p9.aes(
+                        ymin=lo, y="50%", ymax=hi, color="category", fill="category"
+                    ),
                     self.data["plot-tem"],
-                    color="black",
-                    fatten=0,
+                    fatten=1,
                     width=None,
                 ),
                 p9.geom_point(
                     p9.aes(y="value"),
                     self.data["tem"],
                     color="black",
-                    size=1,
-                    shape="x",
+                    size=3,
+                    shape="_",
                     fill=None,
                 ),
             ]
