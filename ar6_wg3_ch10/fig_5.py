@@ -3,7 +3,7 @@ import logging
 import numpy as np
 import plotnine as p9
 
-from .common import COMMON, SCALE_FUEL, Figure, ranges, scale_category
+from .common import BW_STAT, COMMON, SCALE_FUEL, Figure, ranges, scale_category
 from .data import (
     aggregate_fuels,
     compute_descriptives,
@@ -180,6 +180,9 @@ class Fig5(Figure):
 
         if len(data[2]):
             # Points and bar for sectoral models
+            # Select statistics for edges of bands
+            lo, hi = BW_STAT[self.bandwidth]
+
             p = p + [
                 p9.geom_crossbar(
                     p9.aes(ymin="min", y="50%", ymax="max", fill="fuel"),

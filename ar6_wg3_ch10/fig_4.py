@@ -4,7 +4,7 @@ import pandas as pd
 import plotnine as p9
 
 from .data import compute_descriptives, compute_ratio, normalize_if
-from .common import COMMON, Figure, ranges, scale_category
+from .common import BW_STAT, COMMON, Figure, ranges, scale_category
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
@@ -138,6 +138,9 @@ class Fig4(Figure):
 
         if len(data[1]):
             # Points and bar for sectoral models
+            # Select statistics for edges of bands
+            lo, hi = BW_STAT[self.bandwidth]
+
             p = p + [
                 p9.geom_crossbar(
                     p9.aes(ymin="min", y="50%", ymax="max", fill="category"),
