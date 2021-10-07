@@ -17,8 +17,8 @@ log = logging.getLogger(__name__)
 
 # Non-dynamic features of fig_5
 STATIC = [
-    # Horizontal panels by 'year'
-    p9.facet_wrap("year", nrow=3),
+    # Vertical panels by 'year', horizontal by 'type'
+    p9.facet_grid("type ~ year"),
     # Aesthetics and scales
     p9.aes(color="fuel"),
     p9.scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
@@ -101,7 +101,7 @@ class Fig5(Figure):
 
     # Plotting
     geoms = STATIC
-    aspect_ratio = 2
+    aspect_ratio = 1
     units = "share"
 
     def prepare_data(self, data):

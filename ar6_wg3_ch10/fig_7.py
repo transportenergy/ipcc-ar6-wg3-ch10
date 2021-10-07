@@ -24,7 +24,7 @@ log = logging.getLogger(__name__)
 
 
 class Fig7(Figure):
-    """Fuel shares of transport final energy — {type} — {region}
+    """Fuel shares of transport final energy by service — {region}
 
     Based on integrated models grouped by CO2eq concentration levels by 2100 and
     compared with sectoral models (grouped by baseline and policies) in 2050. Box plots
@@ -60,7 +60,7 @@ class Fig7(Figure):
 
     # Plotting
     geoms = STATIC
-    aspect_ratio = 2
+    aspect_ratio = 1
     units = "share"
 
     def prepare_data(self, data):
@@ -74,9 +74,11 @@ class Fig7(Figure):
             .assign(variable="Fuel share")
         )
 
-        # Compute fuel shares for sectoral scenarios
-        # - Modify labels to match IAM format
+        # NB G-/NTEM data are discarded here, since they do not have the 'type'
+        # (freight, passenger) dimension necessary to appear in this plot
         data["tem"] = pd.DataFrame(columns=data["iam"].columns)
+
+        # Here we would compute fuel shares for sectoral scenarios
 
         # Discard 2020 data
         data["iam"] = data["iam"][data["iam"].year != 2020]
@@ -94,9 +96,9 @@ class Fig7(Figure):
 
     def generate(self):
         keys = ["plot", "ip"]
-        for group, d in groupby_multi([self.data[k] for k in keys], ["type", "region"]):
-            log.info(f"Type, region: {group}")
-            yield self.plot_single(d, self.format_title(type=group[0], region=group[1]))
+        for region, d in groupby_multi([self.data[k] for k in keys], "region"):
+            log.info(f"Region: {region}")
+            yield self.plot_single(d, self.format_title(region=region))
 
     def plot_single(self, data, title):
         # Base plot
@@ -106,7 +108,7 @@ class Fig7(Figure):
             + self.geoms
             # Geoms, aesthetics, and scales that respond to options
             + ranges(self, aes="fuel", counts=False, position="dodge", width=0.9)
-            + scale_category("x", self, short_label=True)
+            + scale_category("x", self, short_label=True, without_tem=True)
         )
 
         if len(data[1]):

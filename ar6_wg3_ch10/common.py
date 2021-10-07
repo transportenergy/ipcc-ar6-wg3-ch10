@@ -296,6 +296,9 @@ def scale_category(aesthetic, plot=None, **options):
         # Remove no-climate-assessment point on scale
         data = data.query("short != 'NCA'").reset_index(drop=True)
 
+    if options.get("without_tem", False):
+        data = data[:-2]
+
     short_label = options.get("short_label", False)
     label = "short" if short_label else "label"
 
