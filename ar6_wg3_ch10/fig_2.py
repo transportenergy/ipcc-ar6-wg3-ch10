@@ -1,5 +1,6 @@
 import logging
 
+import numpy as np
 import plotnine as p9
 
 from .data import (
@@ -99,21 +100,23 @@ class Fig2(Figure):
 
         data["plot-tem"] = compute_descriptives(data["tem"], groupby=["type", "region"])
 
+        self.scale_y = dict(default=[])
+
         if self.normalize:
-            scale_y = scale_y_clip(
+            self.scale_y["default"] = scale_y_clip(
                 limits=(-0.2, 5.5), breaks=range(0, 6), expand=(0, 0, 0, 0.2)
+            )
+            self.scale_y["R10AFRICA"] = scale_y_clip(
+                limits=(-0.2, 20), breaks=np.arange(0, 21, 4), expand=(0, 0, 0, 0.2)
             )
             self.units = "Index, 2020 level = 1.0"
         elif self.per_capita:
-            scale_y = scale_y_clip(limits=(-1, 5), minor_breaks=3)
+            self.scale_y["default"] = scale_y_clip(limits=(-1, 5), minor_breaks=3)
             self.units = "; ".join(data["iam"]["unit"].unique())
         else:
-            scale_y = []
             self.units = "; ".join(
                 data["iam"]["unit"].str.replace("bn", "10⁹").unique()
             )
-
-        self.geoms.append(scale_y)
 
         return data
 
@@ -121,14 +124,19 @@ class Fig2(Figure):
         keys = ["plot", "ip", "plot-tem", "tem"]
         for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             log.info(f"Region: {region}")
-            yield self.plot_single(d, self.format_title(region=region))
+            yield self.plot_single(
+                d,
+                self.format_title(region=region),
+                scale_y=self.scale_y.get(region, self.scale_y["default"]),
+            )
 
-    def plot_single(self, data, title):
+    def plot_single(self, data, title, scale_y):
         # Base plot
         p = (
             p9.ggplot(data=data[0])
             + title
             + self.geoms
+            + scale_y
             # Geoms, aesthetics, and scales that respond to options
             + ranges(self)
             + scale_category("x", self)
