@@ -289,7 +289,7 @@ def scale_category(aesthetic, plot=None, **options):
     if recategorize:
         data = pd.concat([globals()[f"SCALE_CAT_{recategorize}"], data.iloc[-2:, :]])
         # Recategorized contain the short category IDs e.g. "C2"
-        data.iloc[:-2, :]["limit"] = data.iloc[:-2, :]["short"]
+        data.iloc[:-2, :].loc[:, "limit"] = data.iloc[:-2, :]["short"]
 
     if not options.get("include_nca", False):
         # Remove no-climate-assessment point on scale
