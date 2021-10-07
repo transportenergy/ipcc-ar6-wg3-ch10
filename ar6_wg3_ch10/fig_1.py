@@ -1,4 +1,3 @@
-from functools import partial
 import logging
 
 import plotnine as p9
@@ -10,7 +9,7 @@ from .data import (
     split_scenarios,
     unique_units,
 )
-from .common import BW_STAT, COMMON, Figure, ranges, scale_category
+from .common import BW_STAT, COMMON, Figure, ranges, scale_category, scale_y_clip
 from .util import groupby_multi
 
 log = logging.getLogger(__name__)
@@ -63,10 +62,8 @@ class Fig1(Figure):
         # Transform from individual data points to descriptives
         data["plot"] = compute_descriptives(data["iam"], groupby=["region"])
 
-        # Discard 2100 sectoral data
-        data["tem"] = data["tem"].query(
-            "year in [2020, 2030, 2050] and category in ['policy', 'reference']"
-        )
+        # Discard 2100 G-/NTEM data
+        data["tem"] = data["tem"].query("year in [2020, 2030, 2050]")
 
         if self.normalize:
             # Store the absolute data
@@ -81,19 +78,17 @@ class Fig1(Figure):
         data["plot-tem"] = compute_descriptives(data["tem"], groupby=["region"])
 
         # Set the y scale
-        # Clip out-of-bounds data to the scale limits
-        scale_y = partial(p9.scale_y_continuous, oob=lambda s, lim: s.clip(*lim))
         if self.normalize:
-            scale_y = scale_y(
+            scale_y = scale_y_clip(
                 limits=(-0.5, 2.5), minor_breaks=4, expand=(0, 0, 0, 0.08)
             )
             self.units = "Index, 2020 level = 1.0"
         elif self.per_capita:
-            scale_y = scale_y(limits=(-1, 5), minor_breaks=3)
+            scale_y = scale_y_clip(limits=(-1, 5), minor_breaks=3)
             self.units = unique_units(data["iam"])
         else:
             # NB if this figure is re-added to the text, re-check this scale
-            scale_y = scale_y(limits=(-5000, 20000))
+            scale_y = scale_y_clip(limits=(-5000, 20000))
             self.units = unique_units(data["iam"])
 
         self.geoms.append(scale_y)
@@ -141,7 +136,7 @@ class Fig1(Figure):
             p = p + [
                 p9.geom_crossbar(
                     p9.aes(
-                        ymin=lo, y="50%", ymax=hi, fill="category", color="category"
+                        ymin=lo, y="50%", ymax=hi, color="category", fill="category"
                     ),
                     data[2],
                     fatten=1,

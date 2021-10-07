@@ -4,6 +4,7 @@ import logging
 from abc import abstractmethod
 from collections import ChainMap
 from datetime import datetime
+from functools import partial
 from pathlib import Path
 from typing import Dict, Iterable, List, Sequence
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -319,6 +320,10 @@ def scale_category(aesthetic, plot=None, **options):
         ]
     else:
         raise ValueError(aesthetic)
+
+
+# Clip out-of-bounds data to the scale limits
+scale_y_clip = partial(p9.scale_y_continuous, oob=lambda s, lim: s.clip(*lim))
 
 
 class Figure:
