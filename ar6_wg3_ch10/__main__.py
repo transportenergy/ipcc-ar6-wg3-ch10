@@ -200,13 +200,12 @@ def plot(to_plot, **options):
     "--per-capita", is_flag=True, default=False, help="Compute per-capita ordinate."
 )
 @click.pass_context
-def _all(ctx, **options):
+def plot_all(ctx, **options):
     """Generate all plots.
 
     Use --skip-cache when the initial data-loading code changes.
     Use --per-capita for e.g. fig_2.
     """
-
     # Comment out entries to reduce the set of plots generated
     figures = [
         1,
