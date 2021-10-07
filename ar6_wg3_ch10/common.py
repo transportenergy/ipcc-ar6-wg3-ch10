@@ -345,7 +345,7 @@ class Figure:
     #: :obj:`True` if the ordinate should be divided by population.
     per_capita = False
     #: Default bandwidth
-    bandwidth_default = 10
+    bandwidth_default = 9
 
     #: Filters for loading data
     filters = dict()
