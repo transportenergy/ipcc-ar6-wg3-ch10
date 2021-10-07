@@ -91,10 +91,13 @@ class Fig6(Figure):
         # Convert sectoral 'mode' data to common label
         data["tem"] = (
             data["tem"]
+            .fillna(dict(mode="All"))
             .assign(
-                type=lambda df: df["variable"].replace(
-                    {"tkm": "Freight", "pkm": "Passenger"}
-                )
+                variable=lambda df: df["variable"].str.replace(
+                    r"Energy Service\|Transportation\|([^\|]*).*",
+                    r"\1",
+                ),
+                type=lambda df: df["variable"],
             )
             .replace(
                 dict(mode={"Freight Rail": "Railways", "Passenger Rail": "Railways"})
@@ -139,7 +142,7 @@ class Fig6(Figure):
         lo, hi = BW_STAT[self.bandwidth]
 
         for region, d in groupby_multi(
-            (self.data["descriptives"], self.data[""]), "region"
+            (self.data["descriptives"], self.data["ip"]), "region"
         ):
             log.info(f"Region: {region}")
             yield (
