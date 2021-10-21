@@ -26,18 +26,25 @@ DATA_PATH = (Path(__file__).parents[1] / "data").resolve()
 OUTPUT_PATH = Path("output")
 SKIP_CACHE = False
 
-# Filenames for local data
+# Paths for local data files
 LOCAL_DATA = {
-    "ADVANCE": "advance_compare_20171018-134445.csv.gz",
-    "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv.gz",
-    "AR6 metadata": "raw/ar6_full_metadata_indicators2021_09_28.xlsx",
-    "AR6 world": "raw/snapshot_world_with_key_climate_iamc_ar6_2021_09_28.csv.gz",
-    "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2021_09_28.csv.gz",
-    # "AR6 R6": "raw/snapshot_R6_regions_iamc_ar6_2021_09_28.csv.gz",
-    "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2021_09_28.csv.gz",
-    "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2021_09_28.csv.gz",
+    # Obtained from the AR6 Scenario Explorer "Downloads" page
+    "AR6 metadata": "raw/ar6_full_metadata_indicators2021_10_14_v3.xlsx",
+    "AR6 world": "raw/snapshot_world_with_key_climate_iamc_ar6_2021_10_14.csv.gz",
+    "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2021_10_14.csv.gz",
+    "AR6 R6": "raw/snapshot_R6_regions_iamc_ar6_2021_10_14.csv.gz",
+    "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2021_10_14.csv.gz",
+    "AR6 country": "raw/snapshot_ISOs_iamc_ar6_2021_10_14.csv.gz",
+    #
+    # Internal to iTEM, including unpublished/non-public data. Only public, published
+    # data are extracted from these files and included in plots and accompanying data
+    # dumps
     "iTEM MIP2": "iTEM-MIP2.csv",
     "iTEM MIP3": "raw/2020_06_15_item_region_data.csv",
+    #
+    # Older, used for prototyping but not for AR6 figures
+    "ADVANCE": "advance_compare_20171018-134445.csv.gz",
+    "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv.gz",
 }
 
 # IIASA Scenario Explorer names for remote data
