@@ -218,7 +218,7 @@ def plot_all(ctx, **options):
     source = [
         "world",
         "R5",
-        # "R6",
+        "R6",
         "R10",
         "country",
     ]
