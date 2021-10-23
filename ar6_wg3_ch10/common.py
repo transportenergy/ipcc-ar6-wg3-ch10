@@ -190,8 +190,8 @@ SCALE_FUEL = pd.DataFrame(
         ["Liquids|Oil", "#f7a800", "Oil"],
         ["Biofuels", "#de4911", "Biofuels"],
         ["Gases", "#9e2b18", "Gases"],
-        ["Electricity", "#9fca71", "Electricity"],
-        ["Hydrogen", "#59a431", "Hydrogen"],
+        ["Electricity", "#59a431", "Electricity"],
+        ["Hydrogen", "#4c7bd9", "Hydrogen"],
         ["Other", "#999999", "Other"],
     ],
 )
