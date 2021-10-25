@@ -127,8 +127,7 @@ def debug():
 @cli.command()
 @click.option(
     "--ar6-data",
-    type=click.Choice(["world", "R5", "R10", "country", "raw"]),
-    # type=click.Choice(["world", "R5", "R6", "R10", "country", "raw"]),
+    type=click.Choice(["world", "R5", "R6", "R10", "country", "raw"]),
     default="world",
     help="Source snapshort for IPCC/IAM data.",
 )
