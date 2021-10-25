@@ -1,3 +1,4 @@
+# TODO update docstrings to reflect usage in the final report
 """Variant of Fig5 to diaggregate by type (freight / passenger).
 
 This file is substantially similar to fig_5.py, so a violation of DRY (“don't repeat
@@ -74,11 +75,22 @@ class Fig7(Figure):
             .assign(variable="Fuel share")
         )
 
+        # Filter erroneous data, e.g. from model "WITCH 5.0", with high hydrogen fuel
+        # share. These result from erroneous high absolute values (tentatively,
+        # overstated by a factor of ~10³) for energy from this fuel only.
+        h2_max = 0.99
+        mask = data["iam"].eval(f"fuel == 'Hydrogen' and value > {h2_max}")
+        log.info(f"Discard {mask.sum()} obs in which hydrogen fuel share is > {h2_max}")
+        # Include in the data dump
+        data["h2-debug"] = data["iam"][mask]
+        # Remove from the plotted data
+        data["iam"] = data["iam"][~mask]
+
         # NB G-/NTEM data are discarded here, since they do not have the 'type'
         # (freight, passenger) dimension necessary to appear in this plot
         data["tem"] = pd.DataFrame(columns=data["iam"].columns)
 
-        # Here we would compute fuel shares for sectoral scenarios
+        # (Here we would compute fuel shares for sectoral scenarios, if data existed.)
 
         # Discard 2020 data
         data["iam"] = data["iam"][data["iam"].year != 2020]
