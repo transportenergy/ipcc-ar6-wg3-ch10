@@ -222,24 +222,18 @@ def plot_all(ctx, **options):
         "country",
     ]
     recategorize = [None, "A", "B"]
+    bandwidths = [8, 9, 10]
 
-    for f, s, r in product(figures, source, recategorize):
-        options.update(dict(to_plot=[f], ar6_data=s, recategorize=r))
+    for f, s, r, bw in product(figures, source, recategorize, bandwidths):
+        options.update(to_plot=[f], ar6_data=s, recategorize=r, bandwidth=bw)
 
-        # Select the list of bandwidths to iterate over
-        bandwidths = [8] if f == 6 else [8, 9, 10]
-        # commented: fig_6 variants for M. Craig to investigate
-        # bandwidths = [5, 8, 9] if f == 6 else [8, 9, 10]
-
-        for bw in bandwidths:
-            options.update(bandwidth=bw)
-            try:
-                ctx.invoke(plot, **options)
-            except Exception:
-                # Print the exception, but continue
-                print()
-                print_exc()
-                print()
+        try:
+            ctx.invoke(plot, **options)
+        except Exception:
+            # Print the exception, but continue
+            print()
+            print_exc()
+            print()
 
 
 @cli.command()
