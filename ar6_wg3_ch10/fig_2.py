@@ -106,9 +106,14 @@ class Fig2(Figure):
             self.scale_y["default"] = scale_y_clip(
                 limits=(-0.2, 5.5), breaks=range(0, 6), expand=(0, 0, 0, 0.2)
             )
-            self.scale_y["R10AFRICA"] = scale_y_clip(
+
+            # Use a wider y-scale for Africa to accommodate large growth
+            y_africa = scale_y_clip(
                 limits=(-0.2, 20), breaks=np.arange(0, 21, 4), expand=(0, 0, 0, 0.2)
             )
+            self.scale_y["R10AFRICA"] = y_africa
+            self.scale_y["R6AFRICA"] = y_africa
+
             self.units = "Index, 2020 level = 1.0"
         elif self.per_capita:
             self.scale_y["default"] = scale_y_clip(limits=(-1, 5), minor_breaks=3)
