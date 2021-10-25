@@ -64,8 +64,9 @@ class Fig6(Figure):
         "Energy Service|Transportation|Passenger|Other",
         "Energy Service|Transportation|Passenger|Railways",
         "Energy Service|Transportation|Passenger|Road",
-        "Energy Service|Transportation|Passenger|Road|2W and 3W",
-        "Energy Service|Transportation|Passenger|Road|Bus",
+        # Not shown; limited data so limited usefulness
+        # "Energy Service|Transportation|Passenger|Road|2W and 3W",
+        # "Energy Service|Transportation|Passenger|Road|Bus",
         "Energy Service|Transportation|Passenger|Road|LDV",
     ]
     restore_dims = (
