@@ -7,8 +7,7 @@ indicator:
   color: "#f0a824"
 
 - model: MESSAGEix-GLOBIOM 1.0
-  # Scenario name has a whitespace at the end - to be fixed in the database
-  scenario: "LowEnergyDemand_1.3_IPCC "
+  scenario: LowEnergyDemand_1.3_IPCC
   id: 1.5-LD
   color: "#dee823"
 
