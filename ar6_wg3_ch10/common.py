@@ -487,7 +487,7 @@ class Figure:
 
                 log.info(f"{len(df):7} obs for {repr(label)}")
                 path_tmp = OUTPUT_PATH / "data" / f"{self.base_fn}_{label}.csv"
-                df.to_csv(path_tmp)
+                df.to_csv(path_tmp, index=False)
                 zf.write(path_tmp, arcname=f"{label}.csv")
                 path_tmp.unlink()
 
