@@ -210,7 +210,6 @@ def plot_all(ctx, **options):
         1,
         2,
         4,
-        5,
         6,
         7,
     ]
