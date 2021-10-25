@@ -6,8 +6,25 @@ Contents: Important links & notes
 — `History <#history>`__
 — `References <#references>`__
 
+This code generates plots used in figures in Section 10.7, titled “Scenarios from integrated, sectoral, and regional models”.
+The code does not generate plots for other parts of Chapter 10.
 
-- Recent figures are uploaded on `Box.com <https://app.box.com/folder/92464968722>`__, in the ``7 Scenarios/plots/`` folder.
+- Each plot responds to multiple configuration options; thus, there are at least 30 variants of each plot, many with multiple pages (one per spatial region).
+
+  The figures in the final text of Chapter 10 contains **1 or more** pages from **1 or 2** variants of each plot, selected to best support the assessment text.
+  The commands which will generate the specific plots used in the figures are:
+
+  - **Figure 10.18**: ``fig_1``, created using:
+
+    - ``python -m ar6_wg3_ch10 plot --ar6-data=R6 --bw=9 1`` (regional panels)
+    - ``python -m ar6_wg3_ch10 plot --ar6-data=R6 --bw=9 1`` (regional panels)
+
+  - **Figure 10.19**: ``fig_2``, created using: ``…``
+  - **Figure 10.20**: ``fig_6``, created using: ``…``
+  - **Figure 10.21**: ``fig_4``, created using: ``…``
+  - **Figure 10.22**: ``fig_7``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 --recat=A 7``.
+
+- Earlier versions of figures used by the chapter authors in earlier drafts of the report are uploaded on `Box.com <https://app.box.com/folder/92464968722>`__, in the ``7 Scenarios/plots/`` folder.
 
   - Subfolders are named by date.
   - There are multiple variants of each figure, as indicated by the file name:
@@ -20,7 +37,7 @@ Contents: Important links & notes
     - ``_plot.csv``: the actual values, e.g. descriptive statistics (median etc.) displayed in the plot.
     - ``_iam.csv``: the individual scenario values used to compute these statistics.
     - ``_indicator.csv``: a subset of scenario values for the Chapter 3-designated indicator scenarios.
-    - ``_item.csv``: data from the iTEM (sectoral) models.
+    - ``_tem.csv``: data from the G-/NTEM (sectoral and national) models.
 
 - The file `NOTES.rst <./NOTES.rst>`__ contains some earlier plans and notes, not all up to date.
   Refer to the code for latest information, comments, pending ``TODO``s, etc.
@@ -31,11 +48,24 @@ Contents: Important links & notes
 Running the code
 ================
 
-Generating all the plots
-------------------------
+Generating all plots
+--------------------
 
-1. Download the snapshots from the AR6 Scenario Explorer website.
+1. Download the snapshots from the `AR6 Scenario Explorer <https://data.ene.iiasa.ac.at/ar6-scenario-submission/>`__ website.
+
+   This data is submitted by a variety of parties, and processed in various ways by the Chapter 3 team.
+   The code here uses the metadata produced by Chapter 3 to select data to be plotted.
+
 2. Place the contents in the directory ``data/raw/``.
+
+   Data must be converted to ``.csv.gz`` format, using a process like:
+
+   - Unpack the ``.zip`` snapshot and enter the directory created.
+   - Compress the data using the Gzip command-line program, available on most \*nix systems: ``gzip *.csv``.
+   - Move the file created to ``data/raw/``.
+
+   Refer to the file ``common.py`` for the expected file names.
+
 3. Run ``python -m ar6_wg3_ch10 plot-all`` (about 20 minutes) or other commands (``python -m ar6_wg3_ch10 --help``).
 
 
