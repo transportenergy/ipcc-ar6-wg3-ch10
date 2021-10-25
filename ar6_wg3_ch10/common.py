@@ -396,7 +396,6 @@ class Figure:
                 [
                     self.__class__.__name__.lower(),
                     self.sources[0].replace(" ", "-"),
-                    self.sources[1].replace(" ", "-"),
                     "abs"
                     if self.has_option.get("normalize", False) and not self.normalize
                     else None,
