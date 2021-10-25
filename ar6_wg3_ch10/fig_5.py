@@ -1,3 +1,8 @@
+"""Unused.
+
+This figure is not used in the final report; instead, fig_7 is used. The code here is
+not fully up to date with changes made to fig_5.
+"""
 import logging
 
 import numpy as np
@@ -57,8 +62,9 @@ class Fig5(Figure):
 
     Based on integrated models grouped by CO2eq concentration levels by 2100 and
     compared with sectoral models (grouped by baseline and policies) in 2050. Box plots
-    show minimum/maximum, 25th/75th percentile and median. Numbers above each bar
-    represent the # of scenarios.
+    show full bandwidth (according to the option: either min/max, 5/95th, or 10/90th
+    precentiles), 25/75th percentiles, and median. Marks show illustrative pathways.
+    Numbers above each bar represent the # of scenarios.
     """
 
     # Data preparation

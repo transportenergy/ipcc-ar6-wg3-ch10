@@ -1,11 +1,4 @@
-# TODO update docstrings to reflect usage in the final report
-"""Variant of Fig5 to diaggregate by type (freight / passenger).
-
-This file is substantially similar to fig_5.py, so a violation of DRY (“don't repeat
-yourself”). However, as this is a rough discussion item for the benefit of the author
-team, it is kept separate to avoid disturbing Figure 5, which in contrast is to appear
-in the report.
-"""
+"""Variant of fig_5 with type/service (freight / passenger) dimension."""
 import logging
 
 import pandas as pd
@@ -29,8 +22,9 @@ class Fig7(Figure):
 
     Based on integrated models grouped by CO2eq concentration levels by 2100 and
     compared with sectoral models (grouped by baseline and policies) in 2050. Box plots
-    show minimum/maximum, 25th/75th percentile and median. Numbers above each bar
-    represent the # of scenarios.
+    show full bandwidth (according to the option: either min/max, 5/95th, or 10/90th
+    precentiles), 25/75th percentiles, and median. Marks show illustrative pathways.
+    Numbers above each bar represent the # of scenarios.
     """
 
     # Data preparation
