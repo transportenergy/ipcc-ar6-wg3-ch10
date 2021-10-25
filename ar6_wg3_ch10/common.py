@@ -416,7 +416,9 @@ class Figure:
 
     def format_title(self, **kwargs):
         """Return a :func:`plotnine.ggtitle` from :attr:`title` with `kwargs`."""
-        template = f"{self.title} [{self.units}] ({self.base_fn})"
+        # For development: include the filename in the title for disambiguation
+        # template = f"{self.title} [{self.units}] ({self.base_fn})"
+        template = f"{self.title} [{self.units}]"
         return p9.ggtitle(template.format(**kwargs))
 
     def _prepare_data(self):
