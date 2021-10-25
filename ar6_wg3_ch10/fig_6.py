@@ -64,9 +64,8 @@ class Fig6(Figure):
         "Energy Service|Transportation|Passenger|Other",
         "Energy Service|Transportation|Passenger|Railways",
         "Energy Service|Transportation|Passenger|Road",
-        # Not shown; limited data so limited usefulness
-        # "Energy Service|Transportation|Passenger|Road|2W and 3W",
-        # "Energy Service|Transportation|Passenger|Road|Bus",
+        "Energy Service|Transportation|Passenger|Road|2W and 3W",
+        "Energy Service|Transportation|Passenger|Road|Bus",
         "Energy Service|Transportation|Passenger|Road|LDV",
     ]
     restore_dims = (
@@ -81,12 +80,23 @@ class Fig6(Figure):
     geoms = STATIC
 
     def prepare_data(self, data):
-        # Add 'All' to the 'mode' column for IAM data
-        data["iam"] = (
-            data["iam"]
-            .fillna(dict(mode="All"))
-            .replace(dict(mode={"Road|2W and 3W": "2W and 3W", "Road|Bus": "Bus"}))
+        replace_mode = dict(
+            mode={
+                "2W and 3W": "Road: 2/3W",
+                "Bus": "Road: Bus",
+                "Freight Rail": "Rail",
+                "HDT": "Road: HDT",
+                "Passenger Rail": "Rail",
+                "Railways": "Rail",
+                "Road|2W and 3W": "Road: 2/3W",
+                "Road|Bus": "Road: Bus",
+                "Road|LDV": "Road: LDV",
+            }
         )
+
+        # - Add 'All' to the 'mode' column for IAM data
+        # - Remove "Road|" from 'mode' labels
+        data["iam"] = data["iam"].fillna(dict(mode="All")).replace(replace_mode)
 
         # Restore the 'type' dimension to sectoral data
         # Convert sectoral 'mode' data to common label
@@ -100,9 +110,7 @@ class Fig6(Figure):
                 ),
                 type=lambda df: df["variable"],
             )
-            .replace(
-                dict(mode={"Freight Rail": "Railways", "Passenger Rail": "Railways"})
-            )
+            .replace(replace_mode)
         )
 
         if self.normalize:
