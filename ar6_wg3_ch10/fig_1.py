@@ -56,7 +56,7 @@ class Fig1(Figure):
             .pipe(normalize_if, self.normalize, year=2020)
         )
 
-        # Select indicator scenarios
+        # Select illustrative pathways data only
         data["ip"], _ = split_scenarios(data["iam"], groups=["indicator"])
 
         # Transform from individual data points to descriptives
