@@ -229,8 +229,10 @@ COMMON = {
         p9.labs(x=""),
     ],
     "shape ip": [
-        p9.scale_shape(
-            unfilled=True, labels=lambda breaks: [_IP_LAB[b] for b in breaks]
+        p9.scale_shape_manual(
+            unfilled=True,
+            labels=lambda breaks: [_IP_LAB[b] for b in breaks],
+            values={s["scenario"]: s["shape"] for s in SCENARIOS["indicator"]},
         ),
         p9.labs(shape="Illustrative pathway"),
     ],

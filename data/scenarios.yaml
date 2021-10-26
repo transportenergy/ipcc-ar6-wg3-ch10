@@ -5,33 +5,39 @@ indicator:
   scenario: CO_Bridge
   id: 2.0-GS
   color: "#f0a824"
+  shape: "2"
 
 - model: MESSAGEix-GLOBIOM 1.0
   scenario: LowEnergyDemand_1.3_IPCC
   id: 1.5-LD
   color: "#dee823"
+  shape: "."
 
 - model: REMIND-MAgPIE 2.1-4.3
   # The space here is *not* a typo
   scenario: "DeepElec_SSP2_ HighRE_Budg900"
   id: 1.5-Ren
   color: "#41963c"
+  shape: "1"
 
 # "2.0 sensitivity"
 - model: MESSAGEix-GLOBIOM_GEI 1.0
   scenario: SSP2_openres_lc_50
   id: 2.0-Ren
   color: "#63e05c"
+  shape: "o"
 
 - model: REMIND-MAgPIE 2.1-4.2
   scenario: SusDev_SDP-PkBudg1000
   id: 1.5-SP
   color: "#7c449e"
+  shape: "*"
 
 - model: COFFEE 1.1
   scenario: EN_NPi2020_400f_lowBECCS
   id: 1.5-Sup
   color: "#061496"
+  shape: "3"
 
 # "2.0 sensitivity"
 - model: AIM/CGE 2.2
@@ -39,17 +45,20 @@ indicator:
   id: 2.0-Sup
   # Color TBD
   color: "#000000"
+  shape: "4"
 
 - model: GCAM 5.3
   scenario: NGFS2_Current Policies
   id: CurPol
   color: "#830b22"
+  shape: "+"
 
 - model: IMAGE 3.0
   scenario: EN_INDCi2030_3000f
   # version: 3
   id: ModAct
   color: "#f11111"
+  shape: "x"
 
 
 # Set prior to 2020-10-21
