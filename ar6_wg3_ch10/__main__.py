@@ -105,6 +105,17 @@ def coverage(all_vars, dump):
 
 
 @cli.command()
+def count():
+    """Count model and scenario names in final data.
+
+    This command requires that the figures have been generated.
+    """
+    from . import coverage
+
+    coverage.count_ids()
+
+
+@cli.command()
 def debug():
     """Demo or debug code."""
 
