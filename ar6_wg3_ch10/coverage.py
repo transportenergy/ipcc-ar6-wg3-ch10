@@ -107,5 +107,5 @@ def count_ids():
     # Output
     for key, values in names.items():
         path = OUTPUT_PATH.joinpath("data", f"count-{key}-{NOW}.txt")
-        path.write_text("\n".join(values))
+        path.write_text("\n".join(sorted(values)))
         print(f"Wrote {len(values)} {key} name(s) to {path}")
