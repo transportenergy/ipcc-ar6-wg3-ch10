@@ -9,7 +9,7 @@ log = logging.getLogger(__name__)
 
 
 class Fig9(Figure):
-    """Direct transport CO₂ emissions from aviation"""
+    """Direct transport CO₂ emissions from {mode}"""
 
     has_option = dict(normalize=True)
 
@@ -22,12 +22,16 @@ class Fig9(Figure):
 
     variables = [
         "Emissions|CO2|Energy|Demand|Transportation|Aviation",
+        "Emissions|CO2|Energy|Demand|Transportation|Maritime",
         #
         # Omitted: do not plot by service (pax/freight). This may omit scenarios which
-        # have submitted data for these two variables but not their total, above.
+        # have submitted data for these variables but not their totals, above.
         # "Emissions|CO2|Energy|Demand|Transportation|Aviation|Freight",
         # "Emissions|CO2|Energy|Demand|Transportation|Aviation|Passenger",
+        # "Emissions|CO2|Energy|Demand|Transportation|Maritime|Freight",
+        # "Emissions|CO2|Energy|Demand|Transportation|Maritime|Passenger",
     ]
+    restore_dims = r"Emissions\|CO2\|Energy\|Demand\|Transportation\|(?P<mode>.*)"
 
     def prepare_data(self, data):
         # Discard G-/NTEM data
@@ -46,7 +50,9 @@ class Fig9(Figure):
             .pipe(normalize_if, self.normalize, year=2020, drop=False)
         )
 
-        data["plot"] = compute_descriptives(data["iam"], groupby=["region"])
+        data["plot"] = compute_descriptives(
+            data["iam"], on=["mode"], groupby=["region"]
+        )
 
         if self.normalize:
             self.units = "Index, 2020 level = 1.0"
@@ -57,10 +63,18 @@ class Fig9(Figure):
         return data
 
     def generate(self):
-        # Select statistics for edges of bands
-        lo, hi = BW_STAT[self.bandwidth]
+        for mode, data in self.data["plot"].groupby("mode"):
+            yield self.plot_single(
+                data,
+                self.format_title(
+                    mode="shipping" if mode == "Maritime" else mode.lower()
+                ),
+                # Select statistics for edges of bands
+                *BW_STAT[self.bandwidth]
+            )
 
-        yield (
+    def plot_single(self, data, title, lo, hi):
+        return (
             #
             # Version 'A' with 1 line per (model, scenario)
             # p9.ggplot(
@@ -70,10 +84,7 @@ class Fig9(Figure):
             # + p9.geom_line()
             #
             # Version 'B' with bands by climate outcome category
-            p9.ggplot(
-                p9.aes(x="year", color="category", fill="category"),
-                self.data["plot"],
-            )
+            p9.ggplot(p9.aes(x="year", color="category", fill="category"), data)
             # 1 band per category
             + p9.geom_ribbon(
                 p9.aes(ymin=lo, ymax=hi, fill="category"), alpha=0.2, color=None
@@ -86,7 +97,7 @@ class Fig9(Figure):
             + scale_category("fill", self, without_tem=True)
             #
             # Common / appearance
-            + self.format_title()
+            + title
             + p9.guides(color=None)
             + p9.labs(x="", y="", fill="Model / scenario")
         )
