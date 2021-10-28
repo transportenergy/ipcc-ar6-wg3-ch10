@@ -72,11 +72,12 @@ def count_ids():
     figures = [
         "fig1-AR6-R6-bw9",
         "fig1-AR6-world-bw9",
-        "fig2-AR6-R6-recatB-bw9",
-        "fig2-AR6-world-recatB-bw9",
+        "fig2-AR6-R6-bw9",
+        "fig2-AR6-world-bw9",
         "fig4-AR6-world-bw9",
         "fig6-AR6-world-recatA-bw8",
         "fig7-AR6-world-recatA-bw9",
+        "fig7-AR6-world-bw9",
     ]
 
     # Sets of unique names

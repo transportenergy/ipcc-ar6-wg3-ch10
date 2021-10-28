@@ -12,10 +12,15 @@ log = logging.getLogger(__name__)
 
 
 class Fig8(Figure):
-    """Data for an IP box figure.
+    """Illustrative pathways.
 
-    This figure (for now) is not plotted by the code in this file; only the data is
-    extracted and dumped.
+    This generates plots of both (a) CO₂ emissions from transport and (b) energy by
+    fuel source in each scenario, for *only* the "illustrative pathway" (IP) scenarios
+    selected by the Chapter 3 authors.
+
+    This figure may be plotted with either --ar6-data=IP or --ar6-data=world. The
+    results should be the same, as the former data snapshot is a strict subset of
+    the latter.
     """
 
     has_option = dict(normalize=True)
@@ -28,8 +33,12 @@ class Fig8(Figure):
         # Discard G-/NTEM data
         data.pop("tem")
 
-        # Select illustrative pathways data only
-        data["ip"], _ = split_scenarios(data.pop("iam"), groups=["indicator"])
+        # Select illustrative pathways and global data only
+        data["ip"] = (
+            data.pop("iam")
+            .pipe(split_scenarios, groups=["indicator"])[0]
+            .query("region == 'World'")
+        )
 
         @lru_cache()
         def id_for_scenario(name):

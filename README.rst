@@ -21,12 +21,13 @@ The code does not generate plots for other parts of Chapter 10.
 
   - **Figure 10.19**: ``fig_2``, created using:
 
-    - ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 --recat=B 2`` (world panel)
-    - ``python -m ar6_wg3_ch10 plot --ar6-data=R6 --bw=9 --recat=B 2`` (regional panels)
+    - ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 2`` (world panel)
+    - ``python -m ar6_wg3_ch10 plot --ar6-data=R6 --bw=9 2`` (regional panels)
 
   - **Figure 10.20**: ``fig_6``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=8 --recat=A 6``.
   - **Figure 10.21**: ``fig_4``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 4``.
   - **Figure 10.22**: ``fig_7``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 --recat=A 7``.
+  - **Figure 10.23** (in Box 10.5): ``fig_8``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=IP 8``.
 
 - Earlier versions of figures used by the chapter authors in earlier drafts of the report are uploaded on `Box.com <https://app.box.com/folder/92464968722>`__, in the ``7 Scenarios/plots/`` folder.
 

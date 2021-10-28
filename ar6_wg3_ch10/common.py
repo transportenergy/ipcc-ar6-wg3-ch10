@@ -31,6 +31,7 @@ LOCAL_DATA = {
     # Obtained from the AR6 Scenario Explorer "Downloads" page
     "AR6 metadata": "raw/ar6_full_metadata_indicators2021_10_14_v3.xlsx",
     "AR6 world": "raw/snapshot_world_with_key_climate_iamc_ar6_2021_10_14.csv.gz",
+    "AR6 IP": "raw/snapshot_worldR5R10_iamc_ar6_IPs_2021_10_14.csv.gz",
     "AR6 R5": "raw/snapshot_R5_regions_iamc_ar6_2021_10_14.csv.gz",
     "AR6 R6": "raw/snapshot_R6_regions_iamc_ar6_2021_10_14.csv.gz",
     "AR6 R10": "raw/snapshot_R10_regions_iamc_ar6_2021_10_14.csv.gz",
