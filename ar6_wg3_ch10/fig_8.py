@@ -19,14 +19,14 @@ class Fig8(Figure):
     selected by the Chapter 3 authors.
 
     This figure may be plotted with either --ar6-data=IP or --ar6-data=world. The
-    results should be the same, as the former data snapshot is a strict subset of
-    the latter.
+    results should be the same, as the former data snapshot is a strict subset of the
+    latter.
     """
 
     has_option = dict(normalize=True)
 
     # Data preparation
-    years = list(range(2020, 2100 + 1, 10))
+    years = list(range(2020, 2100 + 1, 5))
     variables = Fig1.variables + Fig5.variables
     restore_dims = Fig5.restore_dims
 
