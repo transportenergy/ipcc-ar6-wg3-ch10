@@ -31,12 +31,21 @@ def aggregate_fuels(df: pd.DataFrame, groupby=[]) -> pd.DataFrame:
 
     id_cols = ["model", "scenario", "region", "fuel_group", "year"] + groupby
 
+    # - Sum within fuel groups.
+    # - Merge with original data, discarding original 'fuel' and 'variable' indices and
+    #   values. This preserves additional, non-numeric indicators like 'category'.
+    # - Transform the "NONE" value back to NaN.
+    # - Use the fuel group as new 'fuel' keys.
     return (
         tmp.groupby(id_cols)
         .sum(numeric_only=True)
-        .pipe(pd.merge, tmp, left_index=True, right_on=id_cols, suffixes=("", "_y"))
+        .pipe(
+            pd.merge,
+            tmp.drop(["fuel", "value", "variable"], axis=1).drop_duplicates(),
+            left_index=True,
+            right_on=id_cols,
+        )
         .replace(dict(fuel_group={"NONE": None}))
-        .drop(columns=["fuel", "value_y"])
         .rename(columns={"fuel_group": "fuel"})
     )
 

@@ -26,6 +26,7 @@ class Fig8(Figure):
     has_option = dict(normalize=True)
 
     # Data preparation
+    years = list(range(2020, 2100 + 1, 10))
     variables = Fig1.variables + Fig5.variables
     restore_dims = Fig5.restore_dims
 
@@ -62,12 +63,12 @@ class Fig8(Figure):
             normalize_if, self.normalize, year=2020, drop=False
         )
 
-        # - Aggregate energy by fuels
-        # - Drop the total
+        # - Aggregate energy by fuels.
+        # - Drop the total.
         data["energy"] = (
             data["ip"][~mask]
             .pipe(aggregate_fuels, groupby=["id"])
-            .query("variable != 'Final Energy|Transportation'")
+            .dropna(subset=["fuel"])
         )
 
         return data
@@ -94,7 +95,7 @@ class Fig8(Figure):
                 values=SCALE_FUEL["fill"],
                 labels=SCALE_FUEL["label"],
             )
-            + p9.ylim(-10, 175)
+            + p9.ylim(-10, 225 if ip_id == "ModAct" else 175)
             + p9.labs(x="", y="", fill="Fuel")
             + p9.ggtitle(f"Transport final energy [EJ / year] — {ip_id}")
         )
