@@ -14,6 +14,7 @@ The code does not generate plots for other parts of Chapter 10.
   The figures in the final text of Chapter 10 contains **1 or more** pages from **1 or 2** variants of each plot, selected to best support the assessment text.
   The commands which will generate the specific plots used in the figures are:
 
+  - **Figure 10.14**: ``fig_9``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world 9``
   - **Figure 10.18**: ``fig_1``, created using:
 
     - ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 1`` (world panel)
