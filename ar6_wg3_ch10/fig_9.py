@@ -17,6 +17,9 @@ class Fig9(Figure):
     years = list(range(2020, 2100 + 1, 5))
     variables = [
         "Emissions|CO2|Energy|Demand|Transportation|Aviation",
+        #
+        # Omitted: do not plot by service (pax/freight). This may omit scenarios which
+        # have submitted data for these two variables but not their total, above.
         # "Emissions|CO2|Energy|Demand|Transportation|Aviation|Freight",
         # "Emissions|CO2|Energy|Demand|Transportation|Aviation|Passenger",
     ]
