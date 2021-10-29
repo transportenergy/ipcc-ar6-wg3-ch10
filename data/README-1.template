@@ -1,0 +1,8 @@
+This ZIP archive contains 1 or more further ZIP archives for IPCC AR6 WGIII
+Figure {final_id}.
+
+The archives correspond 1:1 to the PDF files named "{basename}-vector-N.pdf",
+containing panels used in the composite sketch/mock-up "{basename}.png".
+Together, they contain all data appearing directly in the final figure appearing
+in the report, as well as a partially processed subset of the AR6 WGIII scenario
+database content.

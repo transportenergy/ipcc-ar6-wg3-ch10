@@ -4,7 +4,7 @@ from zipfile import ZipFile
 
 import pandas as pd
 
-from .common import DATA_PATH, NOW, OUTPUT_PATH
+from .common import DATA_PATH, FINAL, NOW, OUTPUT_PATH
 from .data import get_data
 
 
@@ -69,16 +69,9 @@ def run_checks(from_file=True, dump_path=None):
 def count_ids():
     """Count and output unique model- and scenario names in the final figures."""
     # Identifiers of final figures
-    figures = [
-        "fig1-AR6-R6-bw9",
-        "fig1-AR6-world-bw9",
-        "fig2-AR6-R6-bw9",
-        "fig2-AR6-world-bw9",
-        "fig4-AR6-world-bw9",
-        "fig6-AR6-world-recatA-bw8",
-        "fig7-AR6-world-recatA-bw9",
-        "fig7-AR6-world-bw9",
-    ]
+    figures = set()
+    for _, info in FINAL.items():
+        figures.update(info["ids"])
 
     # Sets of unique names
     names = dict(model=set(), scenario=set())

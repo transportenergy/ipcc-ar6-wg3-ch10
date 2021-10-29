@@ -15,7 +15,7 @@ from traceback import print_exc
 import click
 import yaml
 
-from .common import NOW, OUTPUT_PATH, REMOTE_DATA
+from .common import DATA_PATH, FINAL, NOW, OUTPUT_PATH, REMOTE_DATA
 
 log = logging.getLogger(__name__)
 
@@ -260,6 +260,62 @@ def plot_all(ctx, **options):
             print()
             print_exc()
             print()
+
+
+@cli.command()
+def prepare():
+    """Prepare files for submission.
+
+    Results are stored in OUTPUT_PATH/submission/.
+    """
+    import shutil
+    from zipfile import ZipFile
+
+    import requests
+
+    base_path = OUTPUT_PATH / "submission"
+    print(base_path)
+    base_path.mkdir(exist_ok=True)
+
+    for final_id, info in FINAL.items():
+        basename = f"Figure-{final_id}"
+
+        zf_name = base_path.joinpath(f"{basename}-data.zip")
+        with ZipFile(zf_name, mode="w") as zf:
+            for i, id in enumerate(info["ids"]):
+                # Raw/vector graphics
+                from_ = OUTPUT_PATH.joinpath(f"{id}.pdf")
+                to_ = base_path.joinpath(f"{basename}-vector-{i}.pdf")
+
+                print(f"Copy {from_} to {to_}")
+                shutil.copyfile(from_, to_)
+
+                # Data
+                from_ = OUTPUT_PATH.joinpath("data", f"{id}.zip")
+                print(f"Add {from_} to {zf_name}")
+                zf.write(from_, arcname=f"{basename}-data-0.zip")
+
+                # Data README
+                print(f"Add README to {zf_name}")
+                zf.writestr(
+                    "README.txt",
+                    DATA_PATH.joinpath("README-1.template")
+                    .read_text()
+                    .format(final_id=final_id, basename=basename),
+                )
+
+    # Mirror code
+    URL = (
+        "https://github.com/transportenergy/ipcc-ar6-wg3-ch10/archive/refs/heads/"
+        "master.zip"
+    )
+    to_ = base_path.joinpath("Section-10.7-code.zip")
+
+    print(f"Download {URL} to {to_}")
+
+    with open(to_, "wb") as fd:
+        for chunk in requests.get(URL).iter_content(chunk_size=4096):
+            fd.write(chunk)
 
 
 @cli.command()
