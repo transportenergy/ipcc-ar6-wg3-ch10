@@ -150,8 +150,8 @@ def debug():
     help="Group scenarios categories into fewer.",
 )
 @click.option(
-    "--item-data",
-    type=click.Choice(["MIP2", "MIP3"]),
+    "--tem-data",
+    type=click.Choice(["MIP2", "MIP3", "IMO"]),
     default="MIP2",
     help="Source of G-/NTEM data.",
 )
@@ -190,9 +190,10 @@ def plot(to_plot, **options):
     """
     _start_log()
 
+    tem_data = options.pop("tem_data")
     options["sources"] = (
         f"AR6 {options.pop('ar6_data')}",
-        f"iTEM {options.pop('item_data')}",
+        f"iTEM {tem_data}" if "MIP" in tem_data else tem_data,
     )
 
     # Plot each figure

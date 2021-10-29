@@ -516,8 +516,11 @@ def categorize(df, source, **options):
             )
         )
 
+    elif source == "IMO":
+        result = df.assign(category="IMO")
+
     else:
-        pass
+        result = df
 
     if options.get("drop_uncategorized", False):
         result = result.dropna(subset=["category"])

@@ -43,6 +43,11 @@ LOCAL_DATA = {
     "iTEM MIP2": "iTEM-MIP2.csv",
     "iTEM MIP3": "raw/2020_06_15_item_region_data.csv",
     #
+    # From the 4th IMO GHG study (2020): https://www.imo.org/en/OurWork/Environment/
+    # Pages/Fourth-IMO-Greenhouse-Gas-Study-2020.aspx. Data provided by Jasper Faber via
+    # e-mail to Chapter 10 authors.
+    "IMO": "IMO.csv",
+    #
     # Older, used for prototyping but not for AR6 figures
     "ADVANCE": "advance_compare_20171018-134445.csv.gz",
     "AR5": "ar5_public_version102_compare_compare_20150629-130000.csv.gz",
