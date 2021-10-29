@@ -3,7 +3,8 @@ import logging
 import plotnine as p9
 
 from .common import BW_STAT, Figure, scale_category
-from .data import compute_descriptives, normalize_if, unique_units
+from .data import compute_descriptives, normalize_if, unique_units, split_scenarios
+from .util import groupby_multi
 
 log = logging.getLogger(__name__)
 
@@ -39,8 +40,7 @@ class Fig9(Figure):
 
         # - Drop values that are exactly '0'.
         # - Use "{model name} {scenario name}" to label lines (for version 'A').
-        # - Drop high-side outliers.
-        #   TODO reimplement as > median + 1.5 × IQR.
+        # - Drop data that are high-side outliers (i.e. > median + 1.5 × IQR).
         # - Normalize.
         data["iam"] = (
             data["iam"]
@@ -49,6 +49,9 @@ class Fig9(Figure):
             .query("label != 'IMAGE 3.2 SSP5-baseline'")
             .pipe(normalize_if, self.normalize, year=2020, drop=False)
         )
+
+        # Select illustrative pathways data only
+        data["ip"], _ = split_scenarios(data["iam"], groups=["indicator"])
 
         data["plot"] = compute_descriptives(
             data["iam"], on=["mode"], groupby=["region"]
@@ -63,17 +66,26 @@ class Fig9(Figure):
         return data
 
     def generate(self):
-        for mode, data in self.data["plot"].groupby("mode"):
-            yield self.plot_single(
-                data,
-                self.format_title(
-                    mode="shipping" if mode == "Maritime" else mode.lower()
-                ),
+        for mode, (band_data, ip_data) in groupby_multi(
+            [self.data["plot"], self.data["ip"]], "mode"
+        ):
+            title = self.format_title(
+                mode="shipping" if mode == "Maritime" else mode.lower()
+            )
+            yield self.plot_bands(
+                band_data,
+                title,
                 # Select statistics for edges of bands
                 *BW_STAT[self.bandwidth]
             )
 
-    def plot_single(self, data, title, lo, hi):
+            if not len(ip_data):
+                print("No data for IPs from mode '{mode}'; no plot")
+                continue
+
+            yield self.plot_ips(ip_data, title)
+
+    def plot_bands(self, data, title, lo, hi):
         return (
             #
             # Version 'A' with 1 line per (model, scenario)
@@ -100,4 +112,12 @@ class Fig9(Figure):
             + title
             + p9.guides(color=None)
             + p9.labs(x="", y="", fill="Model / scenario")
+        )
+
+    def plot_ips(self, data, title):
+        return (
+            p9.ggplot(p9.aes(x="year", color="scenario"), data)
+            + p9.geom_line()
+            + title
+            + p9.labs(x="", y="")
         )
