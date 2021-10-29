@@ -157,14 +157,17 @@ For example, ``python -m ar6_wg3_ch10 --help`` gives:
      --help        Show this message and exit.
 
    Commands:
-     all        Generate all plots.
-     cache      Retrive data from remote databases to data/cache/SOURCE/.
-     coverage   Report coverage per data/coverage-checks.yaml.
-     debug      Demo or debug code.
-     plot       Plot figures, writing to output/.
-     refs       Retrieve reference files to ref/.
-     upload     Sync output/ to a remote directory using rclone.
-     variables  Write lists of variables for each data source.
+     clear-cache  Clear cached/intermediate data matching PATTERN.
+     count        Count model and scenario names in final data.
+     coverage     Report coverage of transport variables.
+     debug        Demo or debug code.
+     plot         Plot figures, writing to output/.
+     plot-all     Generate all plots.
+     prepare      Prepare files for submission.
+     refs         Retrieve reference files to ref/.
+     remote       Retrive data from remote databases to data/cache/SOURCE/.
+     upload       Sync output/ to a remote directory using rclone.
+     variables    Write lists of variables for each data source.
 
 History
 =======
