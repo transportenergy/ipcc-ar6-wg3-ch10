@@ -3,18 +3,29 @@ Plotting & other codes for Ch.10 “Transport” of IPCC AR6 WGIII
 
 Contents: Important links & notes
 — `Running the code <#running-the-code>`__
+— `CLI --help text <#cli-help-text>`__
 — `History <#history>`__
 — `References <#references>`__
 
-This code generates plots used in figures in Section 10.7, titled “Scenarios from integrated, sectoral, and regional models”.
-The code does not generate plots for other parts of Chapter 10.
+This code generates plots used in figures in Chapter 10, mainly Section 10.7,
+titled “Scenarios from integrated, sectoral, and regional models”. The code does
+not generate other Chapter 10 plots or figures not mentioned.
 
-- Each plot responds to multiple configuration options; thus, there are at least 30 variants of each plot, many with multiple pages (one per spatial region).
+The code, including its entire edit history, is available on GitHub at:
+https://github.com/transportenergy/ipcc-ar6-wg3-ch10
 
-  The figures in the final text of Chapter 10 contains **1 or more** pages from **1 or 2** variants of each plot, selected to best support the assessment text.
-  The commands which will generate the specific plots used in the figures are:
+- Each plot responds to multiple configuration options; thus, there are at least
+  30 variants of each plot, many with multiple pages (one per spatial region).
 
-  - **Figure 10.14**: ``fig_9``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world 9``
+  The figures in the final text of Chapter 10 each contain **1 or more** pages
+  from **1 or 2** variants of each plot, selected to best support the assessment
+  text. The commands which will generate the specific plots used in the figures
+  are:
+
+  - **Figure 10.14**: ``fig_9``, created using:
+    ``python -m ar6_wg3_ch10 plot --ar6-data=world 9``
+  - **Figure 10.14**: ``fig_9``, created using:
+    ``python -m ar6_wg3_ch10 plot --ar6-data=world 10``
   - **Figure 10.18**: ``fig_1``, created using:
 
     - ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 1`` (world panel)
@@ -25,31 +36,45 @@ The code does not generate plots for other parts of Chapter 10.
     - ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 2`` (world panel)
     - ``python -m ar6_wg3_ch10 plot --ar6-data=R6 --bw=9 2`` (regional panels)
 
-  - **Figure 10.20**: ``fig_6``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=8 --recat=A 6``.
-  - **Figure 10.21**: ``fig_4``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 4``.
-  - **Figure 10.22**: ``fig_7``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 --recat=A 7``.
-  - **Figure 10.23** (in Box 10.5): ``fig_8``, created using: ``python -m ar6_wg3_ch10 plot --ar6-data=IP 8``.
+  - **Figure 10.20**: ``fig_6``, created using:
+    ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=8 --recat=A 6``.
+  - **Figure 10.21**: ``fig_4``, created using:
+    ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 4``.
+  - **Figure 10.22**: ``fig_7``, created using:
+    ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 --recat=A 7``.
+  - **Figure 10.23** (in Box 10.5): ``fig_8``, created using:
+    ``python -m ar6_wg3_ch10 plot --ar6-data=IP 8``.
 
-- Earlier versions of figures used by the chapter authors in earlier drafts of the report are uploaded on `Box.com <https://app.box.com/folder/92464968722>`__, in the ``7 Scenarios/plots/`` folder.
+- Earlier versions of figures used by the chapter authors in earlier drafts of
+  the report are uploaded on
+  `Box.com <https://app.box.com/folder/92464968722>`__ (access for report
+  contributors only), in the ``7 Scenarios/plots/`` folder.
 
   - Subfolders are named by date.
   - There are multiple variants of each figure, as indicated by the file name:
 
-    - ``AR6-world``, ``AR6-R5``, ``AR6-R10``, ``AR6-country``—these indicate which snapshot of data from the AR6 database is used.
+    - ``AR6-world``, ``AR6-R5``, ``AR6-R10``, ``AR6-country``—these indicate
+      which snapshot of data from the AR6 database is used.
 
-  - Each dated folder contains a ``data/`` subfolder with ZIP files containing CSV dumps of the data used each plot.
+  - Each dated folder contains a ``data/`` subfolder with ZIP files containing
+    CSV dumps of the data used each plot.
     The file names match figure file names, with additions, e.g.:
 
-    - ``_plot.csv``: the actual values, e.g. descriptive statistics (median etc.) displayed in the plot.
-    - ``_iam.csv``: the individual scenario values used to compute these statistics.
-    - ``_indicator.csv``: a subset of scenario values for the Chapter 3-designated indicator scenarios.
+    - ``_plot.csv``: the actual values, e.g. descriptive statistics (median
+      etc.) displayed in the plot.
+    - ``_iam.csv``: the individual scenario values used to compute these
+      statistics.
+    - ``_indicator.csv``: a subset of scenario values for the Chapter
+      3-designated indicator scenarios.
     - ``_tem.csv``: data from the G-/NTEM (sectoral and national) models.
 
-- The file `NOTES.rst <./NOTES.rst>`__ contains some earlier plans and notes, not all up to date.
+- The file `NOTES.rst <./NOTES.rst>`__ contains some earlier plans and notes,
+  not all up to date.
   Refer to the code for latest information, comments, pending ``TODO``s, etc.
   The files all follow a similar pattern.
 
-  For instance, for information on ``fig2``, refer to the file `ar6_wg3_ch10/fig_2.py <./ar6_wg3_ch10/fig_2.py>`__.
+  For instance, for information on ``fig2``, refer to the file
+  `ar6_wg3_ch10/fig_2.py <./ar6_wg3_ch10/fig_2.py>`__.
 
 Running the code
 ================
@@ -59,26 +84,32 @@ Generating all plots
 
 1. Download the snapshots from the `AR6 Scenario Explorer <https://data.ene.iiasa.ac.at/ar6-scenario-submission/>`__ website.
 
-   This data is submitted by a variety of parties, and processed in various ways by the Chapter 3 team.
-   The code here uses the metadata produced by Chapter 3 to select data to be plotted.
+   This data is submitted by a variety of parties, and processed in various ways
+   by the Chapter 3 team. The code here uses the metadata produced by Chapter 3
+   to select data to be plotted.
 
 2. Place the contents in the directory ``data/raw/``.
 
    Data must be converted to ``.csv.gz`` format, using a process like:
 
    - Unpack the ``.zip`` snapshot and enter the directory created.
-   - Compress the data using the Gzip command-line program, available on most \*nix systems: ``gzip *.csv``.
+   - Compress the data using the Gzip command-line program, available on most
+     \*nix systems: ``gzip *.csv``.
    - Move the file created to ``data/raw/``.
 
    Refer to the file ``common.py`` for the expected file names.
 
-3. Run ``python -m ar6_wg3_ch10 plot-all`` (about 20 minutes) or other commands (``python -m ar6_wg3_ch10 --help``).
+3. Install requirements: ``pip install -r requirements.txt``
 
+4. Run ``python -m ar6_wg3_ch10 plot-all`` (about 30 minutes) or other commands
+  (see below).
 
 Other actions
 -------------
 
-To retrieve raw data from the Scenario Explorer API, modify ``config-example.json`` to create a file named ``config.json`` with content like::
+To retrieve raw data from the Scenario Explorer API, modify
+``config-example.json`` to create a file named ``config.json`` with content
+like::
 
     {
       "credentials": {
@@ -90,15 +121,25 @@ To retrieve raw data from the Scenario Explorer API, modify ``config-example.jso
       }
     }
 
-(NB. do **not** commit this file to the git repository; your password will become a permanent part of the history, and you will need to change it.)
-
-Then:
+(NB. do **not** commit this file to the git repository; your password will
+become a permanent part of the history, and you will need to change it.)
 
 .. code-block::
 
-   $ pip install -r requirements.txt
+   # Cache all raw data
+   $ python -m ar6_wg3_ch10 cache refresh AR6  # about 60 minutes
 
-   # Show help text
+Note that the final process to generate figures used in the report does not use
+this raw data directly, but rather the post-processed "snapshots" provided by
+the Chapter 3 team, as mentioned above.
+
+CLI help text
+-------------
+
+The top-level CLI and each command provide help text; use ``--help``.
+For example, ``python -m ar6_wg3_ch10 --help`` gives:
+
+.. code-block::
    $ python -m ar6_wg3_ch10 --help
    Usage: python -m ar6_wg3_ch10 [OPTIONS] COMMAND [ARGS]...
 
@@ -125,22 +166,15 @@ Then:
      upload     Sync output/ to a remote directory using rclone.
      variables  Write lists of variables for each data source.
 
-   # Cache all raw data
-   $ python -m ar6_wg3_ch10 cache refresh AR6  # about 60 minutes
-
-   # Run a particular command
-   $ python -m ar6_wg3_ch10 plot
-
-
 History
 =======
 
 Use ``git log`` on the command line or the “commits” tab on the GitHub website.
 
-
 References
 ==========
 
-These are only for convenience; the chapter/section Mendeley collections should be used to store all key references.
+These are only for convenience; the chapter/section Mendeley collections should
+be used to store all key references.
 
 - `AR5 WGIII chapters & figures <https://archive.ipcc.ch/report/ar5/wg3/>`_
