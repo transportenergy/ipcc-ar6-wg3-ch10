@@ -223,6 +223,8 @@ def plot_all(ctx, **options):
         4,
         6,
         7,
+        8,
+        9,
     ]
     source = [
         "world",
@@ -231,11 +233,25 @@ def plot_all(ctx, **options):
         "R10",
         "country",
     ]
-    recategorize = [None, "A", "B"]
-    bandwidths = [8, 9, 10]
+    normalize = [
+        True,
+        False,
+    ]
+    recategorize = [
+        None,
+        "A",
+        "B",
+    ]
+    bandwidths = [
+        8,
+        9,
+        10,
+    ]
 
-    for f, s, r, bw in product(figures, source, recategorize, bandwidths):
-        options.update(to_plot=[f], ar6_data=s, recategorize=r, bandwidth=bw)
+    for f, s, n, r, bw in product(figures, source, normalize, recategorize, bandwidths):
+        options.update(
+            to_plot=[f], ar6_data=s, normalize=n, recategorize=r, bandwidth=bw
+        )
 
         try:
             ctx.invoke(plot, **options)
