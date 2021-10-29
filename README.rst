@@ -24,8 +24,8 @@ https://github.com/transportenergy/ipcc-ar6-wg3-ch10
 
   - **Figure 10.14**: ``fig_9``, created using:
     ``python -m ar6_wg3_ch10 plot --ar6-data=world 9``
-  - **Figure 10.14**: ``fig_9``, created using:
-    ``python -m ar6_wg3_ch10 plot --ar6-data=world 10``
+  - **Figure 10.17**: ``fig_10``, created using:
+    ``python -m ar6_wg3_ch10 plot --tem-data=IMO --bw=8 10``
   - **Figure 10.18**: ``fig_1``, created using:
 
     - ``python -m ar6_wg3_ch10 plot --ar6-data=world --bw=9 1`` (world panel)
