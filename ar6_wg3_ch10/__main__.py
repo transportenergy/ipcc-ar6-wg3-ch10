@@ -226,6 +226,7 @@ def plot_all(ctx, **options):
         7,
         8,
         9,
+        10,
     ]
     source = [
         "world",

@@ -17,17 +17,17 @@ class Fig10(Fig9):
         data.pop("iam")
 
         # - Drop values that are exactly '0'.
-        # - Use "{model name} {scenario name}" to label lines (for version 'A').
         # - Normalize.
-        data["tem"] = (
-            data["tem"]
+        data["imo"] = (
+            data.pop("tem")
             .assign(mode="Maritime")
             .query("value > 0")
-            .assign(label=lambda df: df["model"] + " " + df["scenario"])
             .pipe(normalize_if, self.normalize, year=2020, drop=False)
         )
 
-        data["tem"] = compute_descriptives(data["tem"], on=["mode"], groupby=["region"])
+        data["plot"] = compute_descriptives(
+            data["imo"], on=["mode"], groupby=["region"]
+        )
 
         if self.normalize:
             self.units = "Index, 2020 level = 1.0"
@@ -40,7 +40,7 @@ class Fig10(Fig9):
     def generate(self):
         yield (
             self.plot_bands(
-                self.data["tem"],
+                self.data["plot"],
                 self.format_title(mode="shipping"),
                 # Select statistics for edges of bands
                 *BW_STAT[self.bandwidth]
