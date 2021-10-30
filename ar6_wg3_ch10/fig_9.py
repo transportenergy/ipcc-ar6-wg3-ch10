@@ -2,7 +2,7 @@ import logging
 
 import plotnine as p9
 
-from .common import BW_STAT, Figure, scale_category
+from .common import BW_STAT, COMMON, Figure, scale_category
 from .data import compute_descriptives, normalize_if, unique_units, split_scenarios
 from .util import groupby_multi
 
@@ -33,6 +33,9 @@ class Fig9(Figure):
         # "Emissions|CO2|Energy|Demand|Transportation|Maritime|Passenger",
     ]
     restore_dims = r"Emissions\|CO2\|Energy\|Demand\|Transportation\|(?P<mode>.*)"
+
+    # Appearance
+    geoms = [COMMON["theme"]]
 
     def prepare_data(self, data):
         # Discard G-/NTEM data
@@ -110,6 +113,7 @@ class Fig9(Figure):
             #
             # Common / appearance
             + title
+            + self.geoms
             + p9.guides(color=None)
             + p9.labs(x="", y="", fill="Model / scenario")
         )
@@ -119,5 +123,6 @@ class Fig9(Figure):
             p9.ggplot(p9.aes(x="year", color="scenario"), data)
             + p9.geom_line()
             + title
+            + self.geoms
             + p9.labs(x="", y="")
         )
