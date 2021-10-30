@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 
 
 class Fig10(Fig9):
-    """Direct transport CO₂ emissions from {mode} (IMO)"""
+    """Direct CO₂ emissions from {mode} (IMO)"""
 
     def prepare_data(self, data):
         # Discard IAM data
@@ -45,8 +45,8 @@ class Fig10(Fig9):
                 # Select statistics for edges of bands
                 *BW_STAT[self.bandwidth]
             )
-            + p9.lims(y=(0, 2.25))
-            + p9.scale_color_manual(values=["#000000"], limits=["IMO"])
-            + p9.scale_fill_manual(values=["#000000"], limits=["IMO"])
+            + p9.lims(y=(0, 2.25), x=(2020, 2100))
+            + p9.scale_color_manual(values=["#0000ff"], limits=["IMO"])
+            + p9.scale_fill_manual(values=["#0000ff"], limits=["IMO"])
             + p9.guides(fill=None)
         )
