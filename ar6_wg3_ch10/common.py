@@ -246,7 +246,7 @@ COMMON = {
 
 # Mapping from final figure name(s) to code and files
 FINAL = {
-    "10.14": {"ids": ["fig9-AR6-world-recatA-bw10"]},
+    "10.14": {"ids": ["fig9-AR6-world-bw10"]},
     "10.17": {"ids": ["fig9-AR6-world-bw10", "fig10-AR6-world-bw10"]},
     "10.18": {"ids": ["fig1-AR6-R6-bw9", "fig1-AR6-world-bw9"]},
     "10.19": {"ids": ["fig2-AR6-R6-bw9", "fig2-AR6-world-bw9"]},
