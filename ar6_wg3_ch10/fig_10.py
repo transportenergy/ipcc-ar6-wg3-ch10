@@ -46,6 +46,7 @@ class Fig10(Fig9):
                 *BW_STAT[self.bandwidth]
             )
             + p9.lims(y=(0, 2.25), x=(2020, 2100))
+            + p9.xlim(2020, 2100)
             + p9.scale_color_manual(values=["#0000ff"], limits=["IMO"])
             + p9.scale_fill_manual(values=["#0000ff"], limits=["IMO"])
             + p9.guides(fill=None)
