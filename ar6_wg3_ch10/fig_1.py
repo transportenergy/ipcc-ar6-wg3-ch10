@@ -1,5 +1,6 @@
 import logging
 
+import numpy as np
 import plotnine as p9
 
 from .data import (
@@ -78,20 +79,30 @@ class Fig1(Figure):
         data["plot-tem"] = compute_descriptives(data["tem"], groupby=["region"])
 
         # Set the y scale
+        self.scale_y = dict(default=[])
+
         if self.normalize:
-            scale_y = scale_y_clip(
-                limits=(-0.5, 2.5), minor_breaks=4, expand=(0, 0, 0, 0.08)
+            self.scale_y["default"] = scale_y_clip(
+                limits=(-0.1, 2.5), minor_breaks=4, expand=(0, 0, 0, 0.08)
             )
+
+            # Use a wider y-scale for Africa to accommodate large growth
+            y_africa = scale_y_clip(
+                limits=(-0.1, 10),
+                breaks=np.sort(list(range(0, 11, 2)) + [1]),
+                expand=(0, 0, 0, 0.08),
+            )
+            self.scale_y["R10AFRICA"] = y_africa
+            self.scale_y["R6AFRICA"] = y_africa
+
             self.units = "Index, 2020 level = 1.0"
         elif self.per_capita:
-            scale_y = scale_y_clip(limits=(-1, 5), minor_breaks=3)
+            self.scale_y["default"] = scale_y_clip(limits=(-1, 5), minor_breaks=3)
             self.units = unique_units(data["iam"])
         else:
             # NB if this figure is re-added to the text, re-check this scale
-            scale_y = scale_y_clip(limits=(-5000, 20000))
+            self.scale_y["default"] = scale_y_clip(limits=(-5000, 20000))
             self.units = unique_units(data["iam"])
-
-        self.geoms.append(scale_y)
 
         return data
 
@@ -99,14 +110,19 @@ class Fig1(Figure):
         keys = ["plot", "ip", "plot-tem", "tem"]
         for region, d in groupby_multi([self.data[k] for k in keys], "region"):
             log.info(f"Region: {region}")
-            yield self.plot_single(d, self.format_title(region=region))
+            yield self.plot_single(
+                d,
+                self.format_title(region=region),
+                scale_y=self.scale_y.get(region, self.scale_y["default"]),
+            )
 
-    def plot_single(self, data, title):
+    def plot_single(self, data, title, scale_y):
         # Base plot
         p = (
             p9.ggplot(data=data[0])
             + title
             + self.geoms
+            + scale_y
             # Geoms, aesthetics, and scales that respond to options
             + ranges(self)
             + scale_category("x", self, short_label=True)
