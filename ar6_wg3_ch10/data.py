@@ -170,6 +170,7 @@ def compute_shares(df, on, groupby=[]):
     log.info(f"Compute {on} shares from {len(df)} obs")
 
     id_cols = ["model", "scenario", "region", "year"]
+    to_drop = list({"value", "variable"} & set(df.columns))
     results = []
     grouped = df.groupby(groupby) if len(groupby) else ((None, df),)
     for group, group_df in grouped:
@@ -186,7 +187,7 @@ def compute_shares(df, on, groupby=[]):
 
         results.append(
             pd.merge(num, result.rename("result"), left_index=True, right_index=True)
-            .drop(columns=["value", "variable"])
+            .drop(columns=to_drop)
             .rename(columns={"result": "value"})
             .reset_index()
         )
