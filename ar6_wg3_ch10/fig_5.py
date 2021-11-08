@@ -108,7 +108,6 @@ class Fig5(Figure):
         # Horizontal panels by the years shown
         p9.facet_wrap("year", ncol=3),
     ]
-    aspect_ratio = 1
     units = "share"
 
     @staticmethod
