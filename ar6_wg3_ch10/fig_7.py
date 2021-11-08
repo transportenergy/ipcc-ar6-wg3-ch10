@@ -54,7 +54,10 @@ class Fig7(Figure):
     restore_dims = r"Final Energy\|Transportation\|(?P<type>[^\|]*)(?:\|(?P<fuel>.*))?"
 
     # Plotting
-    geoms = STATIC
+    geoms = STATIC + [
+        # Vertical panels by 'year', horizontal by 'type'
+        p9.facet_grid("type ~ year"),
+    ]
     aspect_ratio = 1
     units = "share"
 
@@ -69,16 +72,8 @@ class Fig7(Figure):
             .assign(variable="Fuel share")
         )
 
-        # Filter erroneous data, e.g. from model "WITCH 5.0", with high hydrogen fuel
-        # share. These result from erroneous high absolute values (tentatively,
-        # overstated by a factor of ~10³) for energy from this fuel only.
-        h2_max = 0.99
-        mask = data["iam"].eval(f"fuel == 'Hydrogen' and value > {h2_max}")
-        log.info(f"Discard {mask.sum()} obs in which hydrogen fuel share is > {h2_max}")
-        # Include in the data dump
-        data["h2-debug"] = data["iam"][mask]
-        # Remove from the plotted data
-        data["iam"] = data["iam"][~mask]
+        # Filter erroneous data with high hydrogen fuel share
+        data["iam"], data["h2-debug"] = self.filter_h2(data["iam"])
 
         # NB G-/NTEM data are discarded here, since they do not have the 'type'
         # (freight, passenger) dimension necessary to appear in this plot

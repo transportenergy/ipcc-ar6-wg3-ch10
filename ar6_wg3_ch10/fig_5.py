@@ -22,8 +22,6 @@ log = logging.getLogger(__name__)
 
 # Non-dynamic features of fig_5
 STATIC = [
-    # Vertical panels by 'year', horizontal by 'type'
-    p9.facet_grid("type ~ year"),
     # Aesthetics and scales
     p9.aes(color="fuel"),
     p9.scale_y_continuous(limits=(-0.02, 1), breaks=np.linspace(0, 1, 6)),
@@ -106,9 +104,29 @@ class Fig5(Figure):
     restore_dims = r"Final Energy\|Transportation(?:\|(?P<fuel>.*))?"
 
     # Plotting
-    geoms = STATIC
+    geoms = STATIC + [
+        # Horizontal panels by the years shown
+        p9.facet_wrap("year", ncol=3),
+    ]
     aspect_ratio = 1
     units = "share"
+
+    @staticmethod
+    def filter_h2(df, h2_max=0.99):
+        """Filter erroneous data with high hydrogen fuel share.
+
+        These result from erroneous high absolute values (e.g. from model "WITCH 5.0",
+        tentatively overstated by a factor of ~10³) for energy from this fuel but not
+        from others.
+
+        Returns 2 data frames: included, and excluded data
+        """
+        # High values to discard
+        mask = df.eval(f"fuel == 'Hydrogen' and value > {h2_max}")
+
+        log.info(f"Discard {mask.sum()} obs in which hydrogen fuel share is > {h2_max}")
+
+        return df[~mask], df[mask]
 
     def prepare_data(self, data):
         # Compute fuel shares by type for IAM scenarios
@@ -120,6 +138,9 @@ class Fig5(Figure):
             .pipe(compute_shares, on="fuel", groupby=["region"])
             .assign(variable="Fuel share")
         )
+
+        # Filter erroneous data with high hydrogen fuel share
+        data["iam"], data["h2-debug"] = self.filter_h2(data["iam"])
 
         # Compute fuel shares for sectoral scenarios
         # - Modify labels to match IAM format
@@ -178,7 +199,7 @@ class Fig5(Figure):
                     data[1],
                     position=p9.position_dodge(width=0.9),
                     color="magenta",
-                    size=2,
+                    size=1.5,
                     fill=None,
                 )
                 + COMMON["shape ip"]
