@@ -6,9 +6,18 @@ not fully up to date with changes made to fig_5.
 import logging
 
 import numpy as np
+import pandas as pd
 import plotnine as p9
 
-from .common import BW_STAT, COMMON, SCALE_FUEL, Figure, ranges, scale_category
+from .common import (
+    BW_STAT,
+    COMMON,
+    DATA_PATH,
+    SCALE_FUEL,
+    Figure,
+    ranges,
+    scale_category,
+)
 from .data import (
     aggregate_fuels,
     compute_descriptives,
@@ -140,6 +149,22 @@ class Fig5(Figure):
 
         # Filter erroneous data with high hydrogen fuel share
         data["iam"], data["h2-debug"] = self.filter_h2(data["iam"])
+
+        # DEBUG replace the data with externally filtered data
+        # - Load the filtered data from file.
+        # - Drop spurious columns.
+        # - Fill missing entries in "category" column.
+        tmp = (
+            pd.read_csv(DATA_PATH / "fig_5-filtered.csv")
+            .drop(columns=["Unnamed: 0", "index", "tolerance", "source"])
+            .groupby(["model", "scenario", "region", "year"])
+            .apply(lambda df: df.assign(category=df["category"].ffill()))
+            .reset_index(["model", "scenario", "region", "year"], drop=True)
+        )
+        log.info(
+            f"Bypass input data processing, use filtered data from file: {len(tmp)} obs"
+        )
+        data["iam"] = tmp
 
         # Compute fuel shares for sectoral scenarios
         # - Modify labels to match IAM format
