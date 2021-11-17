@@ -143,6 +143,8 @@ class Fig5(Figure):
         )
 
         # Filter erroneous data with high hydrogen fuel share
+        # NB this currently has no effect; observations that offend this filter are
+        #    already removed by filter_fuel_shares(), above
         data["iam"], data["h2-debug"] = self.filter_h2(data["iam"])
 
         # Compute fuel shares for sectoral scenarios
