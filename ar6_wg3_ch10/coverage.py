@@ -74,7 +74,7 @@ def count_ids():
         figures.update(info["ids"])
 
     # Sets of unique names
-    names = dict(model=set(), scenario=set())
+    names = {k: set() for k in ("model", "scenario", "model|scenario")}
 
     # Iterate over figures
     for id in figures:
@@ -90,6 +90,9 @@ def count_ids():
                 except KeyError:
                     print(f"  {filename}: does not exist")
                     continue
+
+                # Construct column merging model and scenario names
+                data["model|scenario"] = data["model"] + "|" + data["scenario"]
 
                 # Update the sets
                 for key in names:
