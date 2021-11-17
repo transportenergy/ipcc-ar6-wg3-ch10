@@ -60,6 +60,53 @@ def compute_descriptives(df, on=["variable"], groupby=[]):
     )
 
 
+def filter_fuel_shares(data: pd.DataFrame, groupby=[], atol=0.01) -> pd.DataFrame:
+    """Filter and infill fuel shares.
+
+    Applies two operations to `data`:
+
+    1. Discard groups on (model, scenario, region, year) where the sum of fuel shares is
+       different from 1.0 by more than `atol`. This has the effect of excluding groups
+       that do not report fuels totaling to reported transport final energy.
+    2. Insert 0 values for non-reported fuels. For groups that pass (1), existing data
+       sum to 1.0, so the remainder is implicitly 0, even when not reported.
+
+    Parameters
+    ----------
+    groupby : list of str
+        Additional dimensions/columns for grouping `data`.
+    atol : float
+        Absolute tolerance for the difference between the sum of fuel shares and 1.0.
+    """
+    # Dimensions for grouping
+    id_cols = ["model", "scenario", "region", "year"] + groupby
+    # All fuels expected in the output
+    fuels = set(data["fuel"].unique())
+
+    def _key(df):
+        return ", ".join(map(str, df[id_cols].iloc[0, :]))
+
+    def _filter(df):
+        """Filter one group, `df`."""
+        check = df["value"].sum()
+        if abs(check - 1) > atol:
+            log.debug(f"{_key(df)}: drop all data; sum |{check:.3f} - 1| > {atol}")
+            return df.iloc[0:0, :]  # Exclude: return an empty data frame
+
+        # Set of missing fuels
+        missing = fuels - set(df["fuel"])
+        if missing:
+            # Infill using existing data in `df`; overwrite 'fuel' and 'value'
+            log.debug(f"{_key(df)}: infill 0 for non-reported fuel(s) {missing}")
+            return pd.concat(
+                [df, df.iloc[: len(missing), :].assign(value=0, fuel=sorted(missing))],
+            )
+        else:
+            return df
+
+    return data.groupby(id_cols).apply(_filter).reset_index(drop=True)
+
+
 def per_capita_if(
     data: pd.DataFrame, population: Optional[pd.DataFrame], condition: bool, groupby=[]
 ) -> pd.DataFrame:

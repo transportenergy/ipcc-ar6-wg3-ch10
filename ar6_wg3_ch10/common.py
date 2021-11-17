@@ -252,7 +252,7 @@ FINAL = {
     "10.19": {"ids": ["fig2-AR6-R6-bw9", "fig2-AR6-world-bw9"]},
     "10.20": {"ids": ["fig6-AR6-world-recatA-bw8"]},
     "10.21": {"ids": ["fig4-AR6-world-bw9"]},
-    "10.22": {"ids": ["fig7-AR6-world-recatA-bw9", "fig7-AR6-world-bw9"]},
+    "10.22": {"ids": ["fig5-AR6-world-recatA-bw9"]},
     # "10.23": {"ids": []},  # Handled & archived separately
 }
 
