@@ -202,7 +202,7 @@ class Fig5(Figure):
                     data[1],
                     position=p9.position_dodge(width=0.9),
                     color="magenta",
-                    size=1.5,
+                    size=1.25,
                     fill=None,
                 )
                 + COMMON["shape ip"]
